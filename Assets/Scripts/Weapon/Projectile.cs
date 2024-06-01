@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
     public Vector2 Direction { get; set; }
     
     // Returns if the projectile is facing right   
-    public bool FacingRight { get; set; }
+    //public bool FacingRight { get; set; }
 
     // Returns the speed of the projectile    
     public float  Speed { get; set; }
@@ -29,7 +29,6 @@ public class Projectile : MonoBehaviour
     private void Awake()
     {
         Speed = speed;
-        FacingRight = true;
         canMove = true;
 		                
         myRigidbody2D = GetComponent<Rigidbody2D>();
@@ -75,11 +74,6 @@ public class Projectile : MonoBehaviour
 
         transform.rotation = rotation;
     }
-
-    public void ResetProjectile()
-    {
-        spriteRenderer.flipX = false;
-	}
 
     public void DisableProjectile()
     {

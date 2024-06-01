@@ -24,10 +24,10 @@ public class ReturnToPool : MonoBehaviour
     // Returns this object to the pool
     private void Return()
     {
-        if (projectile != null)
+        /* if (projectile != null)
         {
             projectile.ResetProjectile();
-        }  
+        }  */ 
       
         gameObject.SetActive(false);
     }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class SingleShotWeapon : Weapon
+public class ProjectileWeapon : Weapon
 {
     [SerializeField] private Vector3 projectileSpawnPosition;
     [SerializeField] private Vector3 projectileSpread;
@@ -20,7 +20,7 @@ public class SingleShotWeapon : Weapon
 
     protected override void Awake()
     {
-	  base.Awake();
+	    base.Awake();
 		
         projectileSpawnValue = projectileSpawnPosition;
         projectileSpawnValue.y = -projectileSpawnPosition.y; 
@@ -56,9 +56,7 @@ public class SingleShotWeapon : Weapon
         randomProjectileSpread.z = Random.Range(-projectileSpread.z, projectileSpread.z);
         Quaternion spread = Quaternion.Euler(randomProjectileSpread);
 
-        // Set direction and rotation
-        //Vector2 newDirection = WeaponOwner.GetComponent<CharacterFlip>().FacingRight ? spread * transform.right : spread * transform.right * -1;
-        //projectile.SetDirection(newDirection, transform.rotation, WeaponOwner.GetComponent<CharacterFlip>().FacingRight);
+        projectile.SetDirection(weaponFacing, Quaternion.Euler(weaponFacing));
 
         CanShoot = false;  
     }
@@ -66,18 +64,7 @@ public class SingleShotWeapon : Weapon
     // Calculates the position where our projectile is going to be fired
     private void EvaluateProjectileSpawnPosition()
     {
-        ProjectileSpawnPosition = transform.position;
-
-        /* if (WeaponOwner.GetComponent<CharacterFlip>().FacingRight)
-        {
-            // Right side
-            ProjectileSpawnPosition = transform.position + transform.rotation * projectileSpawnPosition;
-        }
-        else
-        {
-            // Left side
-            ProjectileSpawnPosition = transform.position - transform.rotation * projectileSpawnValue;
-        }    */    
+        ProjectileSpawnPosition = transform.position;   
     }
 
     private void OnDrawGizmosSelected()

@@ -6,9 +6,9 @@ public class CharacterLook : CharacterComponents
 {   
 
     public Vector3 currentAimAngle;
+    public Vector3 direction;
 
     private Camera mainCamera;
-    private Vector3 direction;
     private Vector3 mousePosition;
     
     protected override void Start()
@@ -35,7 +35,7 @@ public class CharacterLook : CharacterComponents
         mousePosition.z = 0;
 
         // Calculate the direction from the character to the mouse
-        Vector3 direction = mousePosition - transform.position;
+        direction = mousePosition - transform.position;
 
         // Calculate the angle in degrees
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

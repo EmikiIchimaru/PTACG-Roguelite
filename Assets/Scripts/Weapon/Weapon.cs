@@ -11,10 +11,10 @@ public class Weapon : MonoBehaviour
     [Header("Settings")] 
     [SerializeField] private float timeBtwShots = 0.5f;
 
-    [Header("Weapon")] 
+/*     [Header("Weapon")] 
     [SerializeField] private bool useMagazine = true;
     [SerializeField] private int magazineSize = 30;
-    [SerializeField] private bool autoReload = true;
+    [SerializeField] private bool autoReload = true; */
 /* 
     [Header("Recoil")] 
     [SerializeField] private bool useRecoil = true;
@@ -28,51 +28,37 @@ public class Weapon : MonoBehaviour
 
     // Reference of the Character that controls this Weapon
     public Character WeaponOwner { get; set; }
-
-    // Current Ammo we have
-    public int CurrentAmmo { get; set; }
-
-    // Reference to our WeaponAmmo
-	public WeaponAmmo WeaponAmmo { get; set; }
-
-    // Returns the aim of this weapon
-    public WeaponAim WeaponAim { get; set; }
-
-    // Returns if this weapon use magazine
-    public bool UseMagazine => useMagazine;
-
-    // Returns the size of our Magazine
-    public int MagazineSize => magazineSize;
+    public CharacterLook WeaponOwnerLook { get; set; }
+    protected Vector2 weaponFacing { get { return GetWeaponFacing(); } }
 
     // Returns if we can shoot now
     public bool CanShoot { get; set; }
 
     // Internal
     private float nextShotTime;
-    private PCController controller; // Because we need to know the character is facing which side for RECOIL
     //protected Animator animator;
     //private readonly int weaponUseParameter = Animator.StringToHash("WeaponUse");
 
     protected virtual void Awake()
-    {
-        WeaponAmmo = GetComponent<WeaponAmmo>();
-        WeaponAim = GetComponent<WeaponAim>();       
+    {     
         //animator = GetComponent<Animator>();
     }
 
     protected virtual void Update()
     {
-        WeaponCanShoot();
-        //RotateWeapon();   
+        if (Time.time > nextShotTime)  //Actual time in the game GREATER THAN fire rate
+        {
+            CanShoot = true;
+            nextShotTime = Time.time + timeBtwShots;
+        }  
     }
 
     // Trigger our Weapon in order to use it
     public virtual void UseWeapon()
     {
-        StartShooting();
+        RequestShot();
     }
 
-    // Makes our Weapon stop working
     public void StopWeapon()
     {
         /* if (useRecoil)
@@ -81,39 +67,10 @@ public class Weapon : MonoBehaviour
         } */
     }
 
-    // Activates our weapon in order to shoot
-    private void StartShooting()
-    {
-        if (useMagazine)
-        {
-            if (WeaponAmmo != null)
-            {
-                if (WeaponAmmo.CanUseWeapon())
-                {
-                    RequestShot();
-                }
-                else
-                {
-                    if (autoReload)
-                    {
-                        Reload();
-                    }
-                }
-            }
-        }
-        else
-        {
-            RequestShot();
-        }
-    }
-
     // Makes our weapon start shooting
     protected virtual void RequestShot()
     {
-        if (!CanShoot)
-        {
-            return;
-        }
+        if (!CanShoot) { return; }
 /* 
         if (useRecoil)
         {
@@ -121,63 +78,22 @@ public class Weapon : MonoBehaviour
         } */
          
         //animator.SetTrigger(weaponUseParameter);
-        WeaponAmmo.ConsumeAmmo(); 
+        //WeaponAmmo.ConsumeAmmo(); 
         //muzzlePS.Play();     
-    }
-
-    // Apply a force to our movement when we shoot
-/*     private void Recoil()
-    {
-        if (WeaponOwner != null)
-        {
-            if (WeaponOwner.GetComponent<CharacterFlip>().FacingRight)
-            {
-                controller.ApplyRecoil(Vector2.left, recoilForce);
-            }
-            else
-            {
-                controller.ApplyRecoil(Vector2.right, recoilForce);
-            }
-        }
-    } */
-
-    // Controls the next time we can shoot
-    protected virtual void WeaponCanShoot()
-    {
-        if (Time.time > nextShotTime)  //Actual time in the game GREATER THAN fire rate
-        {
-            CanShoot = true;
-            nextShotTime = Time.time + timeBtwShots;
-        }
     }
 
     // Reference the owner of this Weapon
     public void SetOwner(Character owner)
     {
         WeaponOwner = owner; 
-        controller = WeaponOwner.GetComponent<PCController>();
-    }
-      
-    public void Reload()
-    {
-        if (WeaponAmmo != null)
-        {
-            if (useMagazine)
-            {
-                WeaponAmmo.RefillAmmo();
-            }
-        }
+        WeaponOwnerLook = owner.GetComponent<CharacterLook>();
+        //controller = WeaponOwner.GetComponent<PCController>();
     }
 
-/*     protected virtual void RotateWeapon()
+    private Vector3 GetWeaponFacing()
     {
-        if (WeaponOwner.GetComponent<CharacterFlip>().FacingRight)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-        else
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-    } */
+        if ( WeaponOwnerLook == null ) { return Vector3.zero; }
+        return WeaponOwnerLook.direction;
+    }
+ 
 }

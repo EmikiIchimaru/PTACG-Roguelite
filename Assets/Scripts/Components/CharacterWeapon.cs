@@ -17,13 +17,10 @@ public class CharacterWeapon : CharacterComponents
     // Store the reference to the second weapon
     public Weapon SecondaryWeapon { get; set; }
 
-    // Returns the reference to our Current Weapon Aim
-    public WeaponAim WeaponAim { get; set; }
-
     protected override void Start()
     {
         base.Start();
-        //EquipWeapon(weaponToUse, weaponHolderPosition);
+        EquipWeapon(weaponToUse);
     }
 
     protected override void HandleInput()
@@ -40,10 +37,6 @@ public class CharacterWeapon : CharacterComponents
                 StopWeapon();    
             }
         
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                Reload();
-            }
 
             /* if (Input.GetKeyDown(KeyCode.Alpha1) && SecondaryWeapon != null)
             {
@@ -83,40 +76,27 @@ public class CharacterWeapon : CharacterComponents
         CurrentWeapon.StopWeapon();
     }
 
-    public void Reload()
-    {         
-        if (CurrentWeapon == null)
-        {
-            return;
-        }
-        
-        CurrentWeapon.Reload();
-        /* if (character.CharacterType == Character.CharacterTypes.Player)
-        {
-            UIManager.Instance.UpdateAmmo(CurrentWeapon.CurrentAmmo, CurrentWeapon.MagazineSize);
-        } */
-    }
 
-    /* public void EquipWeapon(Weapon weapon, Transform weaponPosition)
+    public void EquipWeapon(Weapon weapon)
     {
 
         if (CurrentWeapon != null)
         {
-            CurrentWeapon.WeaponAmmo.SaveAmmo();
-            WeaponAim.DestroyReticle();       // Each weapon has its own Reticle component
+            
+            //WeaponAim.DestroyReticle();       // Each weapon has its own Reticle component
             Destroy(GameObject.Find("Pool"));
             Destroy(CurrentWeapon.gameObject);
         }
 
-        CurrentWeapon = Instantiate(weapon, weaponPosition.position, weaponPosition.rotation);
-        CurrentWeapon.transform.parent = weaponPosition;
+        CurrentWeapon = Instantiate(weapon, transform.position, transform.rotation);
+        CurrentWeapon.transform.parent = transform;
         CurrentWeapon.SetOwner(character);     
-        WeaponAim = CurrentWeapon.GetComponent<WeaponAim>(); 
 
-        if (character.CharacterType == Character.CharacterTypes.Player)
+
+        /* if (character.CharacterType == Character.CharacterTypes.Player)
         {
             UIManager.Instance.UpdateAmmo(CurrentWeapon.CurrentAmmo, CurrentWeapon.MagazineSize);                
             UIManager.Instance.UpdateWeaponSprite(CurrentWeapon.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite);
-        }
-    } */
+        } */
+    } 
 }
