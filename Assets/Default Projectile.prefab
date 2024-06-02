@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletDamage: 1
-  speed: 50
+  speed: 25
   acceleration: 0
 --- !u!114 &1216820090565386373
 MonoBehaviour:
