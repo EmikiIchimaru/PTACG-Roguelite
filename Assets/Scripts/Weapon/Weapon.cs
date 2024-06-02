@@ -9,7 +9,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private string weaponName = "";
   
     [Header("Settings")] 
-    [SerializeField] private float attackCooltime = 0.5f;
+    [SerializeField] protected float attackCooltime = 0.5f;
 
 /*     [Header("Weapon")] 
     [SerializeField] private bool useMagazine = true;
@@ -32,10 +32,10 @@ public class Weapon : MonoBehaviour
     protected Vector2 weaponFacing { get { return GetWeaponFacing(); } }
 
     // Returns if we can shoot now
-    public bool CanShoot { get; set; }
+    public bool CanShoot { get { return internalCooldown <= 0f; } }
 
     // Internal
-    private float nextShotTime;
+    protected float internalCooldown = 0f;
     //protected Animator animator;
     //private readonly int weaponUseParameter = Animator.StringToHash("WeaponUse");
 
@@ -46,11 +46,7 @@ public class Weapon : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (Time.time > nextShotTime)  //Actual time in the game GREATER THAN fire rate
-        {
-            CanShoot = true;
-            nextShotTime = Time.time + attackCooltime;
-        }  
+        if (internalCooldown > 0f) { internalCooldown -= Time.deltaTime; }
     }
 
     // Trigger our Weapon in order to use it
@@ -71,7 +67,8 @@ public class Weapon : MonoBehaviour
     protected virtual void RequestShot()
     {
         if (!CanShoot) { return; }
-/* 
+        
+/*      
         if (useRecoil)
         {
             Recoil();

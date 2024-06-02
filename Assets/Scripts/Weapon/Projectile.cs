@@ -75,16 +75,14 @@ public class Projectile : MonoBehaviour
     } */
   
     // Set the direction and rotation in order to move  
-    public void SetDirection(Vector2 newDirection, Quaternion rotation) //, bool isFacingRight = true)
+    public void SetDirection(Vector2 newDirection) //, bool isFacingRight = true)
     {
-        Direction = newDirection;
-        
-        /* if (FacingRight != isFacingRight)
-        {
-            FlipProjectile();
-        } */
+        Direction = newDirection.normalized;
+         // Calculate the angle in degrees from the direction vector
+        float angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg;
 
-        transform.rotation = rotation;
+        // Set the rotation of the transform
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     public void DisableProjectile()

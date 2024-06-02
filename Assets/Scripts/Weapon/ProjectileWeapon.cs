@@ -31,17 +31,17 @@ public class ProjectileWeapon : Weapon
     protected override void RequestShot()
     {
         base.RequestShot();
-
-        if (!CanShoot) { return;}
+        if (!CanShoot) { return; }
         foreach (Transform child in transform)
         {
             //EvaluateProjectileSpawnPosition();
-            SpawnProjectile(child.position, child.rotation);
+            if (child.gameObject.activeInHierarchy) {SpawnProjectile(child.position, child.localRotation.z);}
         }
+        internalCooldown = attackCooltime;
     }
 
     // Spawns a projectile from the pool, setting it's new direction based on the character's direction (WeaponOwner)
-    private void SpawnProjectile(Vector2 spawnPosition, Quaternion rotation)
+    private void SpawnProjectile(Vector2 spawnPosition, float angle)
     {
         // Get Object from the pool
         GameObject projectilePooled = Pooler.GetObjectFromPool();
@@ -56,10 +56,11 @@ public class ProjectileWeapon : Weapon
         // Spread
         randomProjectileSpread.z = Random.Range(-projectileSpread.z, projectileSpread.z);
         Quaternion spread = Quaternion.Euler(randomProjectileSpread); */
+        //Debug.Log($"{weaponFacing}, {angle}");
+        Vector2 rotatedVector = Utility.RotateVector(weaponFacing.normalized, angle);
+        //Debug.Log($"{Quaternion.Euler(rotatedVector)}");
+        projectile.SetDirection(rotatedVector.normalized);
 
-        projectile.SetDirection(weaponFacing, Quaternion.Euler(weaponFacing)*rotation);
-
-        CanShoot = false;  
     }
 
     // Calculates the position where our projectile is going to be fired
