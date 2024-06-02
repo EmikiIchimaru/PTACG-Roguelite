@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
     [SerializeField] private float maxHealth = 10f;
 
     [Header("Shield")] 
-    [SerializeField] private float initialShield = 5f;
+    [SerializeField] private float initialShield = 0f;
     [SerializeField] private float maxShield = 5f;
 
     [Header("Settings")] 
@@ -23,11 +23,11 @@ public class Health : MonoBehaviour
     private new Collider2D collider2D;
     private SpriteRenderer spriteRenderer;
     private EnemyHealth enemyHealth;
+    private Loot loot;
     //private BossBaseShot bossBaseShot;
 
     private bool isPlayer;
     private bool shieldBroken;
-
     // Controls the current health of the object    
     public float CurrentHealth { get; set; }
 
@@ -40,9 +40,10 @@ public class Health : MonoBehaviour
         controller = GetComponent<CharController>();
         collider2D = GetComponent<Collider2D>();      
         enemyHealth = GetComponent<EnemyHealth>();  
+        loot = GetComponent<Loot>();
         //bossBaseShot = GetComponent<BossBaseShot>();
 
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         CurrentHealth = initialHealth;
         CurrentShield = initialShield;
@@ -114,6 +115,7 @@ public class Health : MonoBehaviour
         if (destroyObject)
         {
             DestroyObject();
+            if (loot != null) { loot.DropLoot();}
         }
     }
     
