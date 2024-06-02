@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PCController : MonoBehaviour
+public class CharController : MonoBehaviour
 {
     // Controls the current movement of this character    
     public Vector2 CurrentMovement { get; private set; }

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public float bulletDamage;
     [SerializeField] private float speed = 100f;
     [SerializeField] private float acceleration = 0f;
 
@@ -52,15 +53,26 @@ public class Projectile : MonoBehaviour
 
         Speed += acceleration * Time.deltaTime;
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))		
+        {
+			other.gameObject.GetComponent<EnemyHealth>().TakeDamage(bulletDamage);		
+            //fx
+            DisableProjectile();
+        }
+    }
+
    
     // Flips this projectile   
-    public void FlipProjectile()
+    /* public void FlipProjectile()
     {   
         if (spriteRenderer != null)
         {
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
-    }
+    } */
   
     // Set the direction and rotation in order to move  
     public void SetDirection(Vector2 newDirection, Quaternion rotation) //, bool isFacingRight = true)

@@ -9,7 +9,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private string weaponName = "";
   
     [Header("Settings")] 
-    [SerializeField] private float timeBtwShots = 0.5f;
+    [SerializeField] private float attackCooltime = 0.5f;
 
 /*     [Header("Weapon")] 
     [SerializeField] private bool useMagazine = true;
@@ -49,7 +49,7 @@ public class Weapon : MonoBehaviour
         if (Time.time > nextShotTime)  //Actual time in the game GREATER THAN fire rate
         {
             CanShoot = true;
-            nextShotTime = Time.time + timeBtwShots;
+            nextShotTime = Time.time + attackCooltime;
         }  
     }
 

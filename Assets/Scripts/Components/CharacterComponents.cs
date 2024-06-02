@@ -7,7 +7,7 @@ public class CharacterComponents : MonoBehaviour
     protected float horizontalInput;
     protected float verticalInput;
 
-    protected PCController controller;
+    protected CharController controller;
 	protected CharacterMovement characterMovement;
 	//protected CharacterWeapon characterWeapon;
     protected Animator animator;
@@ -15,7 +15,7 @@ public class CharacterComponents : MonoBehaviour
     
     protected virtual void Start()
     {
-        controller = GetComponent<PCController>();
+        controller = GetComponent<CharController>();
         character = GetComponent<Character>();
         //characterWeapon = GetComponent<CharacterWeapon>();
         characterMovement = GetComponent<CharacterMovement>();
