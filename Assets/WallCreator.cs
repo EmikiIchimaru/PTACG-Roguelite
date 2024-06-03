@@ -4,19 +4,30 @@ using UnityEngine;
 
 public class WallCreator : MonoBehaviour
 {
+    public int offsetX;
+    public int offsetY;
+
     [SerializeField] private GameObject blockPrefab;
     [SerializeField] private float wallSize = 10f;
     private float roomSize = 100f;
     private int blocksPerRoom;
     private float wallChance = 0.2f;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
         blocksPerRoom = (int) (roomSize / wallSize);
-        int offsetX = Random.Range(0, 10)-10;
-        int offsetY = Random.Range(0, 10)-10;
+        offsetX = Random.Range(0, 10)-10;
+        offsetY = Random.Range(0, 10)-10;
         Debug.Log($"offsetX = {offsetX}, offsetY = {offsetY}");
+        GenerateLevel();
+        
+    }
+
+    private void GenerateLevel()
+    {
         for (int i = 0; i <= 10; i++)
         {
             for (int j = 0; j <= 10; j++)
@@ -39,7 +50,6 @@ public class WallCreator : MonoBehaviour
                 if (j < 10) { GenerateWall((0.5f + i + offsetX) * roomSize, (0.5f + j + offsetY) * roomSize, false, isEdgeY); }
             }
         }
-        
     }
 
     private void GenerateWall(float pivotX, float pivotY, bool isHorizontal, bool isEdge, int extend = 0)
