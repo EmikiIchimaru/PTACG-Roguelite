@@ -17,23 +17,24 @@ public class WallGroup : MonoBehaviour
     public float pivotX;
     public float pivotY;
     public bool isHorizontal;
-    public bool isEdge;
-    public int extend = 0;
 
     private int door = -1;
 
-/* 
-    public void UpdateWall(int playerX, int playerY)
+    public void GenerateWall()
     {
-        if (ShouldGenerateWall(playerX, playerY))
+        if (door == -1) { door = Random.Range(1, blocksPerRoom-2); }
+        Vector3 wallVector = (isHorizontal)?new Vector2(wallSize,0f): new Vector2(0f, wallSize);
+        bool isWalled = (Random.Range(0f,1f) > wallChance);
+        for (int i = 0; i < blocksPerRoom; i++) 
         {
-            GenerateWall();
+            if (!isHorizontal && i == 0) { continue; }
+            if ((i == door || i == door+1) && isWalled) { continue; }
+            GameObject wallGO = Instantiate(blockPrefab, new Vector3(pivotX,pivotY,0f) + i * wallVector, Quaternion.identity, transform);
+            wallGO.transform.localScale = new Vector2(wallSize, wallSize);
+            //wallGO.GetComponent<WallBlock>().SetupBlock(isEdge);
         }
-        else
-        {
-            
-        }
-    } */
+    }
+
     public void ShowWall()
     {
         foreach(Transform child in transform)
@@ -61,18 +62,5 @@ public class WallGroup : MonoBehaviour
         return (adjRow || adjCol || topRight);
     } */
 
-    public void GenerateWall()
-    {
-        if (door == -1) { door = Random.Range(1, blocksPerRoom-2); }
-        Vector3 wallVector = (isHorizontal)?new Vector2(wallSize,0f): new Vector2(0f, wallSize);
-        bool isWalled = (Random.Range(0f,1f) > wallChance);
-        for (int i = 0; i < blocksPerRoom + extend; i++) 
-        {
-            if (!isHorizontal && i == 0) { continue; }
-            if (!isEdge && (i == door || i == door+1) && isWalled) { continue; }
-            GameObject wallGO = Instantiate(blockPrefab, new Vector3(pivotX,pivotY,0f) + i * wallVector, Quaternion.identity, transform);
-            wallGO.transform.localScale = new Vector2(wallSize, wallSize);
-            //wallGO.GetComponent<WallBlock>().SetupBlock(isEdge);
-        }
-    }
+
 }

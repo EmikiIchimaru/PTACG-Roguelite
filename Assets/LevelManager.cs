@@ -26,44 +26,38 @@ public class LevelManager : Singleton<LevelManager>
     // Start is called before the first frame update
     void Start()
     {
-        horiWalls = new WallGroup[levelSize*(levelSize+1)];
-        vertWalls = new WallGroup[levelSize*(levelSize+1)];
+        horiWalls = new WallGroup[levelSize*(levelSize-1)];
+        vertWalls = new WallGroup[levelSize*(levelSize-1)];
         rooms = new Room[levelSize*levelSize];
         offsetX = Random.Range(0, levelSize)-levelSize;
         offsetY = Random.Range(0, levelSize)-levelSize;
         blocksPerRoom = (int) (roomSize / wallSize);
         //Debug.Log($"offsetX = {offsetX}, offsetY = {offsetY}");
+        GenerateBoundary();
         GenerateWalls();
         GenerateRooms(); 
         //PlayerEnteredRoom(currentX,currentY);
     }
 
+    private void GenerateBoundary()
+    {
+        /* for (int i = 0; i < levelSize; i++)
+        {
+
+        }  */
+    }
     private void GenerateWalls()
     {
-        for (int i = 0; i <= levelSize; i++)
+        for (int i = 0; i < levelSize; i++)
         {
-            for (int j = 0; j <= levelSize; j++)
+            for (int j = 0; j < levelSize; j++)
             {
                 //setup walls
                 //Debug.Log($"{i}, {j}");
-                bool isEdgeX = (j == 0 || j == levelSize);
-                bool isEdgeY = (i == 0 || i == levelSize); 
-                if (i < levelSize)
-                {
-                    if (i == levelSize-1)
-                    {
-                        horiWalls[XYToRoomNumber(i,j)] = SetupWallGroup(i, j, true, isEdgeX, 1);
-                    }
-                    else
-                    {
-                        horiWalls[XYToRoomNumber(i,j)] = SetupWallGroup(i, j, true, isEdgeX);
-                    }
-                }
-                if (j < levelSize)
-                {
-                    vertWalls[XYToWallNumber(i,j)] = SetupWallGroup(i, j, false, isEdgeY); 
-                }
-
+                //bool isEdgeX = (j == 0 || j == levelSize);
+                //bool isEdgeY = (i == 0 || i == levelSize);
+                if (j > 0) { horiWalls[XYToWallNumber(i,j,true)] = SetupWallGroup(i, j, true); }
+                if (i > 0) { vertWalls[XYToWallNumber(i,j,false)] = SetupWallGroup(i, j, false); }
             }
         }
     }
@@ -82,7 +76,7 @@ public class LevelManager : Singleton<LevelManager>
 
 
 
-    private WallGroup SetupWallGroup(int indexX, int indexY, bool isHorizontal, bool isEdge, int extend = 0)
+    private WallGroup SetupWallGroup(int indexX, int indexY, bool isHorizontal)
     {
         float pivotX = (0.5f + indexX + offsetX) * roomSize;
         float pivotY = (0.5f + indexY + offsetY) * roomSize;
@@ -96,10 +90,8 @@ public class LevelManager : Singleton<LevelManager>
         wallGroup.pivotX = pivotX;
         wallGroup.pivotY = pivotY;
         wallGroup.isHorizontal = isHorizontal;
-        wallGroup.isEdge = isEdge;
-        wallGroup.extend = extend;
         wallGroup.GenerateWall();
-        wallGroup.HideWall();
+        //wallGroup.HideWall();
         return wallGroup;
     }
 
@@ -154,17 +146,17 @@ public class LevelManager : Singleton<LevelManager>
     private List<int> GetHorizontalWalls(int indexX, int indexY)
     {
         List<int> horiWallsIndices = new List<int>();
-      
-        if (indexX < levelSize) { horiWallsIndices.Add(XYToRoomNumber(indexX,indexY)); }
+        horiWallsIndices.Add(XYToWallNumber(indexX,indexY, true));
+        if (indexX < levelSize) { horiWallsIndices.Add(XYToWallNumber(indexX,indexY, true)); }
         return horiWallsIndices;  
     }
 
     private List<int> GetVerticalWalls(int indexX, int indexY)
     {
         List<int> vertWallsIndices = new List<int>();
-        vertWallsIndices.Add(XYToWallNumber(indexX,indexY));
-        if (indexX < levelSize) { vertWallsIndices.Add(XYToWallNumber(indexX +1,indexY)); }
-        if (indexX > 0) { vertWallsIndices.Add(XYToWallNumber(indexX-1,indexY)); }
+        vertWallsIndices.Add(XYToWallNumber(indexX,indexY, false));
+        if (indexX < levelSize) { vertWallsIndices.Add(XYToWallNumber(indexX +1,indexY, false)); }
+        if (indexX > 0) { vertWallsIndices.Add(XYToWallNumber(indexX-1,indexY,false)); }
         return vertWallsIndices;  
     }
 
@@ -181,10 +173,18 @@ public class LevelManager : Singleton<LevelManager>
 
     private int XYToRoomNumber(int X, int Y)
     {
-        return X + Y * levelSize;
+        return X + Y * (levelSize);
     }
-    private int XYToWallNumber(int X, int Y)
+    private int XYToWallNumber(int X, int Y, bool isHorizontal)
     {
-        return X + Y * (levelSize+1);
+        if(isHorizontal)
+        {
+            return X + (Y - 1) * (levelSize);
+        }
+        else
+        {
+            return X - 1 + Y * (levelSize - 1);
+        }
+        
     }
 }
