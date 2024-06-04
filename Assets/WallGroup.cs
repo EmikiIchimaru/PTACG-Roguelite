@@ -22,7 +22,7 @@ public class WallGroup : MonoBehaviour
 
     private int door = -1;
 
-
+/* 
     public void UpdateWall(int playerX, int playerY)
     {
         if (ShouldGenerateWall(playerX, playerY))
@@ -31,13 +31,24 @@ public class WallGroup : MonoBehaviour
         }
         else
         {
-            while(transform.childCount > 0)
-            {
-                Destroy(transform.GetChild(0).gameObject);
-            }
+            
+        }
+    } */
+    public void ShowWall()
+    {
+        foreach(Transform child in transform)
+        {
+            child.gameObject.SetActive(true);
         }
     }
-
+    public void HideWall()
+    {
+        foreach(Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+    }
+/* 
     private bool ShouldGenerateWall(int playerX, int playerY)
     {
         //check if too far
@@ -48,7 +59,7 @@ public class WallGroup : MonoBehaviour
         bool topRight = ((positionIndexX == playerX + 1) && (positionIndexY == playerY + 1));
         //check for one side
         return (adjRow || adjCol || topRight);
-    }
+    } */
 
     public void GenerateWall()
     {
@@ -61,7 +72,7 @@ public class WallGroup : MonoBehaviour
             if (!isEdge && (i == door || i == door+1) && isWalled) { continue; }
             GameObject wallGO = Instantiate(blockPrefab, new Vector3(pivotX,pivotY,0f) + i * wallVector, Quaternion.identity, transform);
             wallGO.transform.localScale = new Vector2(wallSize, wallSize);
-            wallGO.GetComponent<WallBlock>().SetupBlock(isEdge);
+            //wallGO.GetComponent<WallBlock>().SetupBlock(isEdge);
         }
     }
 }

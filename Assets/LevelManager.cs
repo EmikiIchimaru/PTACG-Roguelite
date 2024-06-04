@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class LevelManager : Singleton<LevelManager>
 {
+    
+    public int currentX;
+    public int currentY;
     public WallGroup[] horiWalls;
     public WallGroup[] vertWalls;
     public Room[] rooms;
-
-    public int currentX;
-    public int currentY;
     public int offsetX;
     public int offsetY;
 
@@ -35,6 +35,7 @@ public class LevelManager : Singleton<LevelManager>
         //Debug.Log($"offsetX = {offsetX}, offsetY = {offsetY}");
         GenerateWalls();
         GenerateRooms(); 
+        //PlayerEnteredRoom(currentX,currentY);
     }
 
     private void GenerateWalls()
@@ -44,7 +45,7 @@ public class LevelManager : Singleton<LevelManager>
             for (int j = 0; j <= levelSize; j++)
             {
                 //setup walls
-                Debug.Log($"{i}, {j}");
+                //Debug.Log($"{i}, {j}");
                 bool isEdgeX = (j == 0 || j == levelSize);
                 bool isEdgeY = (i == 0 || i == levelSize); 
                 if (i < levelSize)
@@ -98,6 +99,7 @@ public class LevelManager : Singleton<LevelManager>
         wallGroup.isEdge = isEdge;
         wallGroup.extend = extend;
         wallGroup.GenerateWall();
+        wallGroup.HideWall();
         return wallGroup;
     }
 
@@ -114,21 +116,37 @@ public class LevelManager : Singleton<LevelManager>
         rooms[tempRoomNumber] = room;
     }
 
-    public void PlayerEnteredRoom(int roomNumber, int playerX, int playerY)
+    public void PlayerEnteredRoom(int playerX, int playerY)
     {
         foreach(int adjIndex in GetAdjacentRooms(currentX, currentY))
         {
             rooms[adjIndex].HideRoom();
         } 
-/*         foreach(WallGroup wallGroup in wallGroups)
+        foreach(int wallIndex in GetHorizontalWalls(currentX,currentY))
         {
-            wallGroup.UpdateWall(playerX, playerY);
-        } */
+            horiWalls[wallIndex].HideWall();
+            Debug.Log($"delete horizontal wall {wallIndex}");
+        }
+        foreach(int wallIndex2 in GetVerticalWalls(currentX,currentY))
+        {
+            vertWalls[wallIndex2].HideWall();
+            Debug.Log($"delete vertical wall {wallIndex2}");
+        }
         currentX = playerX;
         currentY = playerY;
-        foreach(int adjIndex in GetAdjacentRooms(currentX,currentY))
+        foreach(int adjIndex1 in GetAdjacentRooms(currentX,currentY))
         {
-            rooms[adjIndex].ShowRoom();
+            rooms[adjIndex1].ShowRoom();
+        }
+        foreach(int wallIndex3 in GetHorizontalWalls(currentX,currentY))
+        {
+            horiWalls[wallIndex3].ShowWall();
+            Debug.Log($"create horizontal wall {wallIndex3}");
+        }
+        foreach(int wallIndex4 in GetVerticalWalls(currentX,currentY))
+        {
+            vertWalls[wallIndex4].ShowWall();
+            Debug.Log($"create vertical wall {wallIndex4}");
         }
 
     }
@@ -144,8 +162,9 @@ public class LevelManager : Singleton<LevelManager>
     private List<int> GetVerticalWalls(int indexX, int indexY)
     {
         List<int> vertWallsIndices = new List<int>();
-      
-        if (indexX < levelSize) { vertWallsIndices.Add(XYToWallNumber(indexX,indexY)); }
+        vertWallsIndices.Add(XYToWallNumber(indexX,indexY));
+        if (indexX < levelSize) { vertWallsIndices.Add(XYToWallNumber(indexX +1,indexY)); }
+        if (indexX > 0) { vertWallsIndices.Add(XYToWallNumber(indexX-1,indexY)); }
         return vertWallsIndices;  
     }
 
@@ -155,7 +174,8 @@ public class LevelManager : Singleton<LevelManager>
        List<int> adjRoomsIndex = new List<int>();
        if (include) { adjRoomsIndex.Add(XYToRoomNumber(indexX,indexY)); }
        //get right
-       //if (indexX < levelSize) { adjRooms.Add(rooms[XYToRoomNumber(indexX+1,indexY)]); }
+       if (indexX < levelSize-1) { adjRoomsIndex.Add(XYToRoomNumber(indexX+1,indexY)); }
+       if (indexX > 0) { adjRoomsIndex.Add(XYToRoomNumber(indexX-1,indexY)); }
        return adjRoomsIndex;
     }
 

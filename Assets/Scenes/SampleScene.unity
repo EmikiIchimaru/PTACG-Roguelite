@@ -201,18 +201,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c445d1e511c0c4c918150e11903d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentX: 0
+  currentY: 0
   horiWalls: []
   vertWalls: []
   rooms: []
-  currentX: 0
-  currentY: 0
   offsetX: 0
   offsetY: 0
   wallPrefab: {fileID: 568332425795463292, guid: 5f9ee58536a403b4890852d89afdbb4e, type: 3}
   roomPrefab: {fileID: 3392653186384542890, guid: 31d8affe9129a764e9d4f2433a1bee08, type: 3}
   wallSize: 5
   roomSize: 50
-  levelSize: 5
+  levelSize: 20
 --- !u!4 &409139389
 Transform:
   m_ObjectHideFlags: 0
@@ -627,6 +627,7 @@ GameObject:
   - component: {fileID: 1940298617}
   - component: {fileID: 1940298614}
   - component: {fileID: 1940298618}
+  - component: {fileID: 1940298619}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -766,7 +767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3b2ad0397db13e4ba9a91a1fddcc0d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
+  walkSpeed: 15
 --- !u!114 &1940298616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -829,6 +830,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.6
+--- !u!114 &1940298619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940298609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31fe479cf343b1b4780f5b6b86d233da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3110202466994014266
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -15,6 +15,11 @@ public class Room : MonoBehaviour
     private Character character;
     private GameObject objectCollided;
 
+    void Start()
+    {
+        HideRoom();
+    }
+
     public void ShowRoom()
     {
         if (!isLoaded)
@@ -23,32 +28,28 @@ public class Room : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(true);
-            GetComponent<Collider2D>().enabled = true;
+            //gameObject.SetActive(true);
+            GetComponent<SpriteRenderer>().enabled = true;
         }
     }
 
     public void HideRoom()
     {
-        GetComponent<Collider2D>().enabled = false;
-        gameObject.SetActive(false);
+        GetComponent<SpriteRenderer>().enabled = false;
+        //gameObject.SetActive(false);
         Debug.Log($"hide room {roomNumber}");
     }
 
     private void InitializeRoom()
     {
         Debug.Log($"init room {roomNumber}");
+        GetComponent<SpriteRenderer>().enabled = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void PlayerEnter()
     {
-        //
-        if (other.gameObject.tag != "Player") { return; }
-        Debug.Log($"{other.gameObject} entered room {roomNumber}! position({positionIndexX}, {positionIndexY})");
-        //objectCollided = other.gameObject;
-        //objectCollided.GetComponent<Character>(); 
-        LevelManager.Instance.PlayerEnteredRoom(roomNumber, positionIndexX, positionIndexY);
-	} 
+        LevelManager.Instance.PlayerEnteredRoom(positionIndexX, positionIndexY);
+    }
 
 /*     private bool IsPlayer()
     {
