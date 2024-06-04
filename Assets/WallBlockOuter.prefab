@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 8068903490394177021}
   - component: {fileID: 5337067858805597384}
   - component: {fileID: 6710698038264167671}
-  - component: {fileID: 749365477586057897}
   m_Layer: 6
-  m_Name: WallBlock
+  m_Name: WallBlockOuter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 16670a8eff9e203489fd047fd6090ce3, type: 3}
-  m_Color: {r: 0.4032265, g: 0.25787735, b: 0.497, a: 1}
+  m_Color: {r: 0.20194489, g: 0.12940158, b: 0.249, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -159,17 +158,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!114 &749365477586057897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6744666814527503897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f48a71ede8aabe4189f190331d44732, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  edgeColour: {r: 0.23839997, g: 0.14899999, b: 0.29799998, a: 1}
-  isEdge: 0

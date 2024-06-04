@@ -18,9 +18,8 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField] private float wallSize = 10f;
     [SerializeField] private float roomSize = 50f;
     [SerializeField] private int levelSize = 10;
+    [SerializeField] private float wallChance = 0.2f;
     private int blocksPerRoom;
-    private float wallChance = 0.2f;
-
 
 
     // Start is called before the first frame update
@@ -29,8 +28,9 @@ public class LevelManager : Singleton<LevelManager>
         horiWalls = new WallGroup[levelSize*(levelSize-1)];
         vertWalls = new WallGroup[levelSize*(levelSize-1)];
         rooms = new Room[levelSize*levelSize];
-        offsetX = Random.Range(0, levelSize)-levelSize;
-        offsetY = Random.Range(0, levelSize)-levelSize;
+        //does not spawn in corner
+        offsetX = Random.Range(1, levelSize-1)-levelSize;
+        offsetY = Random.Range(1, levelSize-1)-levelSize;
         blocksPerRoom = (int) (roomSize / wallSize);
         //Debug.Log($"offsetX = {offsetX}, offsetY = {offsetY}");
         GenerateBoundary();
@@ -41,10 +41,16 @@ public class LevelManager : Singleton<LevelManager>
 
     private void GenerateBoundary()
     {
-        /* for (int i = 0; i < levelSize; i++)
+        for (int i = 0; i < levelSize; i++)
         {
-
-        }  */
+            SetupWallGroup(i, 0, true, true);
+            SetupWallGroup(i, levelSize, true, true);
+        } 
+        for (int j = 0; j < levelSize; j++)
+        {
+            SetupWallGroup(0, j, false, true);
+            SetupWallGroup(levelSize, j, false, true);
+        }
     }
     private void GenerateWalls()
     {
@@ -56,8 +62,8 @@ public class LevelManager : Singleton<LevelManager>
                 //Debug.Log($"{i}, {j}");
                 //bool isEdgeX = (j == 0 || j == levelSize);
                 //bool isEdgeY = (i == 0 || i == levelSize);
-                if (j > 0) { horiWalls[XYToWallNumber(i,j,true)] = SetupWallGroup(i, j, true); }
-                if (i > 0) { vertWalls[XYToWallNumber(i,j,false)] = SetupWallGroup(i, j, false); }
+                if (j > 0) { horiWalls[XYToWallNumber(i,j,true)] = SetupWallGroup(i, j, true, false); }
+                if (i > 0) { vertWalls[XYToWallNumber(i,j,false)] = SetupWallGroup(i, j, false, false); }
             }
         }
     }
@@ -68,15 +74,13 @@ public class LevelManager : Singleton<LevelManager>
         {
             for (int j = 0; j < levelSize; j++)
             {
-                Debug.Log("setup room");
+                //Debug.Log("setup room");
                 SetupRoom(i,j); 
             }
         }
     }
 
-
-
-    private WallGroup SetupWallGroup(int indexX, int indexY, bool isHorizontal)
+    private WallGroup SetupWallGroup(int indexX, int indexY, bool isHorizontal, bool isBorder)
     {
         float pivotX = (0.5f + indexX + offsetX) * roomSize;
         float pivotY = (0.5f + indexY + offsetY) * roomSize;
@@ -85,11 +89,13 @@ public class LevelManager : Singleton<LevelManager>
         wallGroup.blocksPerRoom = blocksPerRoom;
         wallGroup.wallChance = wallChance;
         wallGroup.wallSize = wallSize;
+        wallGroup.levelSize = levelSize;
         wallGroup.positionIndexX = indexX;
         wallGroup.positionIndexY = indexY;
-        wallGroup.pivotX = pivotX;
-        wallGroup.pivotY = pivotY;
+        //wallGroup.pivotX = pivotX;
+        //wallGroup.pivotY = pivotY;
         wallGroup.isHorizontal = isHorizontal;
+        wallGroup.isBorder = isBorder;
         wallGroup.GenerateWall();
         //wallGroup.HideWall();
         return wallGroup;

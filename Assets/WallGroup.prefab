@@ -45,13 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockPrefab: {fileID: 6744666814527503897, guid: 77045ca66dae8084f83ec7d82598c312, type: 3}
+  borderPrefab: {fileID: 6744666814527503897, guid: fc75fb0b915532c4998d62044e00ba2b, type: 3}
+  isBorder: 0
   positionIndexX: 0
   positionIndexY: 0
   blocksPerRoom: 0
   wallChance: 0
   wallSize: 0
-  pivotX: 0
-  pivotY: 0
   isHorizontal: 0
-  isEdge: 0
-  extend: 0
