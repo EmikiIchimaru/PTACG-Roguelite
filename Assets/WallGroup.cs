@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WallGroup : MonoBehaviour
 {
-    public LevelGenerator levelGen;
     
     [SerializeField] private GameObject blockPrefab;
 
@@ -21,6 +20,24 @@ public class WallGroup : MonoBehaviour
     public bool isEdge;
     public int extend = 0;
 
+    private int door = -1;
+
+
+    public void UpdateWall(int playerX, int playerY)
+    {
+        if (ShouldGenerateWall(playerX, playerY))
+        {
+            GenerateWall();
+        }
+        else
+        {
+            while(transform.childCount > 0)
+            {
+                Destroy(transform.GetChild(0).gameObject);
+            }
+        }
+    }
+
     private bool ShouldGenerateWall(int playerX, int playerY)
     {
         //check if too far
@@ -33,15 +50,15 @@ public class WallGroup : MonoBehaviour
         return (adjRow || adjCol || topRight);
     }
 
-    private void GenerateWall()
+    public void GenerateWall()
     {
-        int door = Random.Range(1, blocksPerRoom-1);
+        if (door == -1) { door = Random.Range(1, blocksPerRoom-2); }
         Vector3 wallVector = (isHorizontal)?new Vector2(wallSize,0f): new Vector2(0f, wallSize);
         bool isWalled = (Random.Range(0f,1f) > wallChance);
         for (int i = 0; i < blocksPerRoom + extend; i++) 
         {
             if (!isHorizontal && i == 0) { continue; }
-            if (!isEdge && (i == door /* || i == door+1 */) && isWalled) { continue; }
+            if (!isEdge && (i == door || i == door+1) && isWalled) { continue; }
             GameObject wallGO = Instantiate(blockPrefab, new Vector3(pivotX,pivotY,0f) + i * wallVector, Quaternion.identity, transform);
             wallGO.transform.localScale = new Vector2(wallSize, wallSize);
             wallGO.GetComponent<WallBlock>().SetupBlock(isEdge);

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
-    public LevelGenerator levelGen;
+    //public LevelManager levelManager;
+    public int roomNumber;
 
     public int positionIndexX;
     public int positionIndexY;
@@ -14,23 +15,45 @@ public class Room : MonoBehaviour
     private Character character;
     private GameObject objectCollided;
 
+    public void ShowRoom()
+    {
+        if (!isLoaded)
+        {
+            InitializeRoom();
+        }
+        else
+        {
+            gameObject.SetActive(true);
+        }
+    }
+
+    public void HideRoom()
+    {
+        gameObject.SetActive(false);
+    }
+
+    private void InitializeRoom()
+    {
+        Debug.Log($"init room {roomNumber}");
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        objectCollided = other.gameObject;
-        if (IsPlayer())
-        {
-            Debug.Log("player entered room");
-            //levelGen.LoadWalls(positionIndexX,pxy
-        }
+        //
+        if (other.gameObject.tag != "Player") { return; }
+        Debug.Log($"{other.gameObject} entered room {roomNumber}! position({positionIndexX}, {positionIndexY})");
+        //objectCollided = other.gameObject;
+        //objectCollided.GetComponent<Character>(); 
+        LevelManager.Instance.PlayerEnteredRoom(roomNumber, positionIndexX, positionIndexY);
 	} 
 
-    private bool IsPlayer()
+/*     private bool IsPlayer()
     {
-        character = objectCollided.GetComponent<Character>();
+        character = 
         if (character == null)
         {
             return false;
         }
         return character.CharacterType == Character.CharacterTypes.Player;
-	}
+	} */
 }

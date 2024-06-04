@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7543366408180738239}
   - component: {fileID: 2074540032459223621}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WallGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eb2800dc1b4a614aa78b309dc38702b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelGen: {fileID: 0}
   blockPrefab: {fileID: 6744666814527503897, guid: 77045ca66dae8084f83ec7d82598c312, type: 3}
+  positionIndexX: 0
+  positionIndexY: 0
   blocksPerRoom: 0
   wallChance: 0
   wallSize: 0
