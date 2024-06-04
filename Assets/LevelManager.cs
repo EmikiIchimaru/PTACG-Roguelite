@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class LevelManager : Singleton<LevelManager>
 {
-    public List<WallGroup> wallGroups = new List<WallGroup>();
+    public WallGroup[] horiWalls;
+    public WallGroup[] vertWalls;
     public Room[] rooms;
 
     public int currentX;
@@ -25,11 +26,13 @@ public class LevelManager : Singleton<LevelManager>
     // Start is called before the first frame update
     void Start()
     {
-        blocksPerRoom = (int) (roomSize / wallSize);
+        horiWalls = new WallGroup[levelSize*(levelSize+1)];
+        vertWalls = new WallGroup[levelSize*(levelSize+1)];
         rooms = new Room[levelSize*levelSize];
         offsetX = Random.Range(0, levelSize)-levelSize;
         offsetY = Random.Range(0, levelSize)-levelSize;
-        Debug.Log($"offsetX = {offsetX}, offsetY = {offsetY}");
+        blocksPerRoom = (int) (roomSize / wallSize);
+        //Debug.Log($"offsetX = {offsetX}, offsetY = {offsetY}");
         GenerateWalls();
         GenerateRooms(); 
     }
@@ -48,16 +51,16 @@ public class LevelManager : Singleton<LevelManager>
                 {
                     if (i == levelSize-1)
                     {
-                        SetupWallGroup(i, j, true, isEdgeX, 1);
+                        horiWalls[XYToRoomNumber(i,j)] = SetupWallGroup(i, j, true, isEdgeX, 1);
                     }
                     else
                     {
-                        SetupWallGroup(i, j, true, isEdgeX);
+                        horiWalls[XYToRoomNumber(i,j)] = SetupWallGroup(i, j, true, isEdgeX);
                     }
                 }
                 if (j < levelSize)
                 {
-                    SetupWallGroup(i, j, false, isEdgeY); 
+                    vertWalls[XYToWallNumber(i,j)] = SetupWallGroup(i, j, false, isEdgeY); 
                 }
 
             }
@@ -78,14 +81,12 @@ public class LevelManager : Singleton<LevelManager>
 
 
 
-    private void SetupWallGroup(int indexX, int indexY, bool isHorizontal, bool isEdge, int extend = 0)
+    private WallGroup SetupWallGroup(int indexX, int indexY, bool isHorizontal, bool isEdge, int extend = 0)
     {
-        
         float pivotX = (0.5f + indexX + offsetX) * roomSize;
         float pivotY = (0.5f + indexY + offsetY) * roomSize;
         GameObject wallGroupGO = Instantiate(wallPrefab, new Vector2(pivotX,pivotY), Quaternion.identity);
         WallGroup wallGroup = wallGroupGO.GetComponent<WallGroup>();
-        wallGroups.Add(wallGroup);
         wallGroup.blocksPerRoom = blocksPerRoom;
         wallGroup.wallChance = wallChance;
         wallGroup.wallSize = wallSize;
@@ -96,7 +97,8 @@ public class LevelManager : Singleton<LevelManager>
         wallGroup.isHorizontal = isHorizontal;
         wallGroup.isEdge = isEdge;
         wallGroup.extend = extend;
-        //wallGroup.GenerateWall();
+        wallGroup.GenerateWall();
+        return wallGroup;
     }
 
     private void SetupRoom(int indexX, int indexY)
@@ -114,34 +116,55 @@ public class LevelManager : Singleton<LevelManager>
 
     public void PlayerEnteredRoom(int roomNumber, int playerX, int playerY)
     {
-        foreach(WallGroup wallGroup in wallGroups)
+        foreach(int adjIndex in GetAdjacentRooms(currentX, currentY))
+        {
+            rooms[adjIndex].HideRoom();
+        } 
+/*         foreach(WallGroup wallGroup in wallGroups)
         {
             wallGroup.UpdateWall(playerX, playerY);
-        }
-        foreach(Room room in GetAdjacentRooms(currentX, currentY))
-        {
-            room.HideRoom();
-        }
+        } */
         currentX = playerX;
         currentY = playerY;
-        foreach(Room room in GetAdjacentRooms(currentX,currentY))
+        foreach(int adjIndex in GetAdjacentRooms(currentX,currentY))
         {
-            room.ShowRoom();
+            rooms[adjIndex].ShowRoom();
         }
 
     }
 
-    private List<Room> GetAdjacentRooms(int indexX, int indexY, bool include = true)
+    private List<int> GetHorizontalWalls(int indexX, int indexY)
     {
-       List<Room> adjRooms = new List<Room>();
-       if (include) { adjRooms.Add(rooms[XYToRoomNumber(indexX,indexY)]); }
+        List<int> horiWallsIndices = new List<int>();
+      
+        if (indexX < levelSize) { horiWallsIndices.Add(XYToRoomNumber(indexX,indexY)); }
+        return horiWallsIndices;  
+    }
+
+    private List<int> GetVerticalWalls(int indexX, int indexY)
+    {
+        List<int> vertWallsIndices = new List<int>();
+      
+        if (indexX < levelSize) { vertWallsIndices.Add(XYToWallNumber(indexX,indexY)); }
+        return vertWallsIndices;  
+    }
+
+
+    private List<int> GetAdjacentRooms(int indexX, int indexY, bool include = true)
+    {
+       List<int> adjRoomsIndex = new List<int>();
+       if (include) { adjRoomsIndex.Add(XYToRoomNumber(indexX,indexY)); }
        //get right
-       if (indexX < levelSize) { adjRooms.Add(rooms[XYToRoomNumber(indexX+1,indexY)]); }
-       return adjRooms;
+       //if (indexX < levelSize) { adjRooms.Add(rooms[XYToRoomNumber(indexX+1,indexY)]); }
+       return adjRoomsIndex;
     }
 
     private int XYToRoomNumber(int X, int Y)
     {
         return X + Y * levelSize;
+    }
+    private int XYToWallNumber(int X, int Y)
+    {
+        return X + Y * (levelSize+1);
     }
 }

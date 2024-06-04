@@ -24,12 +24,15 @@ public class Room : MonoBehaviour
         else
         {
             gameObject.SetActive(true);
+            GetComponent<Collider2D>().enabled = true;
         }
     }
 
     public void HideRoom()
     {
+        GetComponent<Collider2D>().enabled = false;
         gameObject.SetActive(false);
+        Debug.Log($"hide room {roomNumber}");
     }
 
     private void InitializeRoom()
