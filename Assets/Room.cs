@@ -5,45 +5,48 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     //public LevelManager levelManager;
+
+    public RoomPrefabArray roomPool;
     public int roomNumber;
 
     public int positionIndexX;
     public int positionIndexY;
 
-    public bool isLoaded = false;
+    public GameObject roomContent = null;
+
+    //public bool isLoaded = false;
 
     private Character character;
     private GameObject objectCollided;
 
     void Start()
     {
-        HideRoom();
+        //HideRoom();
     }
 
     public void ShowRoom()
     {
-        if (!isLoaded)
+        if (roomContent == null) 
         {
             InitializeRoom();
         }
         else
         {
-            //gameObject.SetActive(true);
-            GetComponent<SpriteRenderer>().enabled = true;
+            roomContent.SetActive(true);
         }
     }
 
     public void HideRoom()
     {
-        GetComponent<SpriteRenderer>().enabled = false;
-        //gameObject.SetActive(false);
-        //Debug.Log($"hide room {roomNumber}");
+        if (roomContent == null) { return; }
+        roomContent.SetActive(false);
     }
+    
 
     private void InitializeRoom()
     {
-        //Debug.Log($"init room {roomNumber}");
-        GetComponent<SpriteRenderer>().enabled = true;
+        GameObject prefab = roomPool.roomPrefabs[Random.Range(0,roomPool.roomPrefabs.Length)];
+        roomContent = Instantiate(prefab, transform.position, Quaternion.identity, transform);
     }
 
     public void PlayerEnter()
