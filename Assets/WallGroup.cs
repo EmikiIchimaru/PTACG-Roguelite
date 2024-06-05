@@ -45,14 +45,14 @@ public class WallGroup : MonoBehaviour
 
     private void GenerateInnerWall()
     {
-        if (door == -1) { door = Random.Range(1, blocksPerRoom-2); }
+        if (door == -1) { door = Random.Range(3, blocksPerRoom-2); }
         Vector3 wallVector = (isHorizontal)?new Vector2(wallSize,0f): new Vector2(0f, wallSize);
         bool isWalled = (Random.Range(0f,1f) > wallChance);
         for (int i = 0; i < blocksPerRoom; i++) 
         {
             if (!isHorizontal && i == 0) { continue; }
             if (positionIndexX == 0 && i == 0) { continue; }
-            if ((i == door || i == door+1) && isWalled) { continue; }
+            if ((i == door) && isWalled) { continue; }
             GameObject wallGO = Instantiate(blockPrefab, new Vector3(transform.position.x,transform.position.y,0f) + i * wallVector, Quaternion.identity, transform);
             wallGO.transform.localScale = new Vector2(wallSize, wallSize);
             //Debug.Log("gen inner wall");

@@ -169,28 +169,68 @@ public class LevelManager : Singleton<LevelManager>
     private List<int> GetHorizontalWalls(int indexX, int indexY)
     {
         List<int> horiWallsIndices = new List<int>();
-        horiWallsIndices.Add(XYToWallNumber(indexX,indexY, true));
-        if (indexX < levelSize) { horiWallsIndices.Add(XYToWallNumber(indexX,indexY, true)); }
+    
+        if (indexY > 1) { horiWallsIndices.Add(XYToWallNumber(indexX, indexY - 1, true)); }
+        if (indexY > 0) 
+        { 
+            horiWallsIndices.Add(XYToWallNumber(indexX, indexY, true)); 
+            if (indexX < levelSize - 1) { horiWallsIndices.Add(XYToWallNumber(indexX + 1, indexY, true)); }
+            if (indexX > 0) { horiWallsIndices.Add(XYToWallNumber(indexX - 1, indexY, true)); }
+        }
+        if (indexY < levelSize - 1) 
+        { 
+            horiWallsIndices.Add(XYToWallNumber(indexX, indexY + 1, true));
+            if (indexX < levelSize - 1) { horiWallsIndices.Add(XYToWallNumber(indexX + 1, indexY + 1, true)); }
+            if (indexX > 0) { horiWallsIndices.Add(XYToWallNumber(indexX - 1, indexY + 1, true)); } 
+        }
+        if (indexY < levelSize - 2) { horiWallsIndices.Add(XYToWallNumber(indexX, indexY + 2, true)); }
+
         return horiWallsIndices;  
     }
 
     private List<int> GetVerticalWalls(int indexX, int indexY)
     {
         List<int> vertWallsIndices = new List<int>();
-        vertWallsIndices.Add(XYToWallNumber(indexX,indexY, false));
-        if (indexX < levelSize) { vertWallsIndices.Add(XYToWallNumber(indexX +1,indexY, false)); }
-        if (indexX > 0) { vertWallsIndices.Add(XYToWallNumber(indexX-1,indexY,false)); }
+    
+        if (indexX > 1) { vertWallsIndices.Add(XYToWallNumber(indexX - 1, indexY, false)); }
+        if (indexX > 0) 
+        { 
+            vertWallsIndices.Add(XYToWallNumber(indexX, indexY, false)); 
+            if (indexY < levelSize - 1) { vertWallsIndices.Add(XYToWallNumber(indexX, indexY + 1, false)); }
+            if (indexY > 0) { vertWallsIndices.Add(XYToWallNumber(indexX, indexY - 1, false)); }
+        }
+        if (indexX < levelSize - 1) 
+        { 
+            vertWallsIndices.Add(XYToWallNumber(indexX + 1, indexY, false));
+            if (indexY < levelSize - 1) { vertWallsIndices.Add(XYToWallNumber(indexX + 1, indexY + 1, false)); }
+            if (indexY > 0) { vertWallsIndices.Add(XYToWallNumber(indexX + 1, indexY - 1, false)); } 
+        }
+        if (indexX < levelSize - 2) { vertWallsIndices.Add(XYToWallNumber(indexX + 2, indexY, false)); }
+
         return vertWallsIndices;  
     }
 
 
     private List<int> GetAdjacentRooms(int indexX, int indexY, bool include = true)
     {
-       List<int> adjRoomsIndex = new List<int>();
-       if (include) { adjRoomsIndex.Add(XYToRoomNumber(indexX,indexY)); }
-       //get right
-       if (indexX < levelSize-1) { adjRoomsIndex.Add(XYToRoomNumber(indexX+1,indexY)); }
-       if (indexX > 0) { adjRoomsIndex.Add(XYToRoomNumber(indexX-1,indexY)); }
+        List<int> adjRoomsIndex = new List<int>();
+        if (include) { adjRoomsIndex.Add(XYToRoomNumber(indexX, indexY)); }
+        if (indexY < levelSize - 1) { adjRoomsIndex.Add(XYToRoomNumber(indexX, indexY + 1)); }
+        if (indexY > 0) { adjRoomsIndex.Add(XYToRoomNumber(indexX, indexY - 1)); }
+        //
+        if (indexX > 0) 
+        { 
+            adjRoomsIndex.Add(XYToRoomNumber(indexX - 1, indexY));
+            if (indexY < levelSize - 1) { adjRoomsIndex.Add(XYToRoomNumber(indexX - 1, indexY + 1)); }
+            if (indexY > 0) { adjRoomsIndex.Add(XYToRoomNumber(indexX - 1, indexY - 1)); }
+        }
+        if (indexX < levelSize - 1) 
+        { 
+            adjRoomsIndex.Add(XYToRoomNumber(indexX + 1, indexY));
+            if (indexY < levelSize - 1) { adjRoomsIndex.Add(XYToRoomNumber(indexX + 1, indexY + 1)); }
+            if (indexY > 0) { adjRoomsIndex.Add(XYToRoomNumber(indexX + 1, indexY - 1)); }
+        }
+
        return adjRoomsIndex;
     }
 

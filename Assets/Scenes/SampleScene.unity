@@ -210,9 +210,9 @@ MonoBehaviour:
   offsetY: 0
   wallPrefab: {fileID: 568332425795463292, guid: 5f9ee58536a403b4890852d89afdbb4e, type: 3}
   roomPrefab: {fileID: 3392653186384542890, guid: 31d8affe9129a764e9d4f2433a1bee08, type: 3}
-  wallSize: 5
-  roomSize: 50
-  levelSize: 5
+  wallSize: 8
+  roomSize: 64
+  levelSize: 10
   wallChance: 0.2
 --- !u!4 &409139389
 Transform:
