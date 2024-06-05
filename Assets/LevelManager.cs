@@ -31,12 +31,16 @@ public class LevelManager : Singleton<LevelManager>
         //does not spawn in corner
         offsetX = Random.Range(1, levelSize-1)-levelSize;
         offsetY = Random.Range(1, levelSize-1)-levelSize;
+        currentX = -(offsetX+1);
+        currentY = -(offsetY+1);
         blocksPerRoom = (int) (roomSize / wallSize);
         //Debug.Log($"offsetX = {offsetX}, offsetY = {offsetY}");
         GenerateBoundary();
         GenerateWalls();
         GenerateRooms(); 
         //PlayerEnteredRoom(currentX,currentY);
+
+        //ShowLevel(currentX,currentY);
     }
 
     private void GenerateBoundary()
@@ -97,7 +101,7 @@ public class LevelManager : Singleton<LevelManager>
         wallGroup.isHorizontal = isHorizontal;
         wallGroup.isBorder = isBorder;
         wallGroup.GenerateWall();
-        //wallGroup.HideWall();
+        if (!isBorder) { wallGroup.HideWall(); }
         return wallGroup;
     }
 
@@ -114,7 +118,18 @@ public class LevelManager : Singleton<LevelManager>
         rooms[tempRoomNumber] = room;
     }
 
+  
+
     public void PlayerEnteredRoom(int playerX, int playerY)
+    {
+        HideLevel(playerX,playerY);
+        currentX = playerX;
+        currentY = playerY;
+        ShowLevel(playerX,playerY);
+
+    }
+
+    private void HideLevel(int playerX, int playerY)
     {
         foreach(int adjIndex in GetAdjacentRooms(currentX, currentY))
         {
@@ -123,30 +138,32 @@ public class LevelManager : Singleton<LevelManager>
         foreach(int wallIndex in GetHorizontalWalls(currentX,currentY))
         {
             horiWalls[wallIndex].HideWall();
-            Debug.Log($"delete horizontal wall {wallIndex}");
+            //Debug.Log($"delete horizontal wall {wallIndex}");
         }
         foreach(int wallIndex2 in GetVerticalWalls(currentX,currentY))
         {
             vertWalls[wallIndex2].HideWall();
-            Debug.Log($"delete vertical wall {wallIndex2}");
+            //Debug.Log($"delete vertical wall {wallIndex2}");
         }
-        currentX = playerX;
-        currentY = playerY;
+    }
+
+    private void ShowLevel(int playerX, int playerY)
+    {
         foreach(int adjIndex1 in GetAdjacentRooms(currentX,currentY))
         {
             rooms[adjIndex1].ShowRoom();
+            Debug.Log($"creating adj rooms at: {currentX},{currentY}");
         }
         foreach(int wallIndex3 in GetHorizontalWalls(currentX,currentY))
         {
             horiWalls[wallIndex3].ShowWall();
-            Debug.Log($"create horizontal wall {wallIndex3}");
+            //Debug.Log($"create horizontal wall {wallIndex3}");
         }
         foreach(int wallIndex4 in GetVerticalWalls(currentX,currentY))
         {
             vertWalls[wallIndex4].ShowWall();
-            Debug.Log($"create vertical wall {wallIndex4}");
+            //Debug.Log($"create vertical wall {wallIndex4}");
         }
-
     }
 
     private List<int> GetHorizontalWalls(int indexX, int indexY)

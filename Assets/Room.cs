@@ -37,17 +37,18 @@ public class Room : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().enabled = false;
         //gameObject.SetActive(false);
-        Debug.Log($"hide room {roomNumber}");
+        //Debug.Log($"hide room {roomNumber}");
     }
 
     private void InitializeRoom()
     {
-        Debug.Log($"init room {roomNumber}");
+        //Debug.Log($"init room {roomNumber}");
         GetComponent<SpriteRenderer>().enabled = true;
     }
 
     public void PlayerEnter()
     {
+        //Debug.Log($"player enter {positionIndexX}, {positionIndexY}");
         LevelManager.Instance.PlayerEnteredRoom(positionIndexX, positionIndexY);
     }
 
