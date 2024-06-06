@@ -4,21 +4,29 @@ using UnityEngine;
 
 public class LevelManager : Singleton<LevelManager>
 {
-    
-    public int currentX;
-    public int currentY;
-    public WallGroup[] horiWalls;
-    public WallGroup[] vertWalls;
-    public Room[] rooms;
-    public int offsetX;
-    public int offsetY;
-
-    [SerializeField] private GameObject wallPrefab;
-    [SerializeField] private GameObject roomPrefab;
+    [Header("Generation Parameters")]
     [SerializeField] private float wallSize = 10f;
     [SerializeField] private float roomSize = 50f;
     [SerializeField] private int levelSize = 10;
     [SerializeField] private float wallChance = 0.2f;
+
+    [Header("Prefabs")]
+    [SerializeField] private GameObject wallPrefab;
+    [SerializeField] private GameObject roomPrefab;
+
+    [Header("Player Position")]
+    public int currentX;
+    public int currentY;
+
+    [Header("Misc")]
+    public WallGroup[] horiWalls;
+    public WallGroup[] vertWalls;
+    public Room[] rooms;
+
+    public GameObject wallParent;
+    public GameObject roomParent;
+    private int offsetX;
+    private int offsetY;
     private int blocksPerRoom;
 
 
@@ -88,7 +96,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         float pivotX = (0.5f + indexX + offsetX) * roomSize;
         float pivotY = (0.5f + indexY + offsetY) * roomSize;
-        GameObject wallGroupGO = Instantiate(wallPrefab, new Vector2(pivotX,pivotY), Quaternion.identity);
+        GameObject wallGroupGO = Instantiate(wallPrefab, new Vector2(pivotX,pivotY), Quaternion.identity, wallParent.transform);
         WallGroup wallGroup = wallGroupGO.GetComponent<WallGroup>();
         wallGroup.blocksPerRoom = blocksPerRoom;
         wallGroup.wallChance = wallChance;
@@ -109,7 +117,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         float pivotX = (1f + indexX + offsetX) * roomSize;
         float pivotY = (1f + indexY + offsetY) * roomSize;
-        GameObject roomGO = Instantiate(roomPrefab, new Vector2(pivotX,pivotY), Quaternion.identity);
+        GameObject roomGO = Instantiate(roomPrefab, new Vector2(pivotX,pivotY), Quaternion.identity, roomParent.transform);
         Room room = roomGO.GetComponent<Room>();
         int tempRoomNumber = XYToRoomNumber(indexX,indexY);
         room.roomNumber = tempRoomNumber;

@@ -62,6 +62,12 @@ public class Projectile : MonoBehaviour
             //fx
             DisableProjectile();
         }
+        if (other.CompareTag("Wall"))		
+        {
+			//other.gameObject.GetComponent<Health>().TakeDamage(bulletDamage);		
+            //fx
+            DisableProjectile();
+        }
     }
 
    
