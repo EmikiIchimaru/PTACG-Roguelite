@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public int level; //property
+    public int experience;
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        level = 1;
+        experience = 0;
     }
 }

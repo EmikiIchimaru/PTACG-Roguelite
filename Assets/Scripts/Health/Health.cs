@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {   
-    public static Action OnBossDead;
+    //public static Action OnBossDead;
+    public static event Action OnPlayerDeath;
  
     [Header("Health")]
     [SerializeField] private float initialHealth = 10f;
@@ -106,6 +107,11 @@ public class Health : MonoBehaviour
             character.enabled = false;
             controller.enabled = false;
         }
+
+        if (isPlayer)
+        {
+            OnPlayerDeath?.Invoke();
+        }
 /* 
         if (bossBaseShot != null)
         {
@@ -115,7 +121,7 @@ public class Health : MonoBehaviour
         if (destroyObject)
         {
             DestroyObject();
-            if (loot != null) { loot.DropLoot();}
+            if (loot != null) { loot.DropLoot(); }
         }
     }
     
