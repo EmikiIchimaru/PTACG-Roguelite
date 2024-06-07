@@ -158,6 +158,13 @@ public class Health : MonoBehaviour
         CurrentShield = Mathf.Min(CurrentShield + amount, maxShield);
         UpdateCharacterHealth();
     }
+
+    public void SetNewMaxHealth(float newMaxHealth)
+    {
+        float percent = CurrentHealth/maxHealth;
+        maxHealth = newMaxHealth;
+        if ((newMaxHealth * percent) > CurrentHealth) { CurrentHealth = (newMaxHealth * percent); }
+    }
 	
     // If destroyObject is selected, we destroy this game object
     private void DestroyObject()

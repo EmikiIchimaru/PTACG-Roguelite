@@ -12,6 +12,6 @@ public class CXPOrb : Collectables
     private void AddXP()
     {
         //Debug.Log($"{xpGain} xp gained!");
-        characterStats.experience += xpGain;
+        characterStats.AddExperience(xpGain);
     }
 }
