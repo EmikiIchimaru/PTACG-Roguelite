@@ -11,7 +11,7 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] private float healthBase;
     [SerializeField] private float healthPerLevel;
 
-    [Header(" public ReadOnly")]
+    [Header("public ReadOnly")]
     public float healthFinal;
     public int level; //property
     public int experience;
@@ -31,6 +31,7 @@ public class CharacterStats : MonoBehaviour
         level = 1;
         experience = 0;
         xpToNextLevel = requiredXPBase;
+        UIManager.Instance.UpdateExperience(experience, xpToNextLevel);
     }
 
     public void AddExperience(int xpGained)
@@ -42,6 +43,7 @@ public class CharacterStats : MonoBehaviour
             experience -= xpToNextLevel;
             LevelUp();
         }
+        UIManager.Instance.UpdateExperience(experience, xpToNextLevel);
     }
 
     private void LevelUp()

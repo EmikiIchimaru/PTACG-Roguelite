@@ -54,6 +54,11 @@ public class Health : MonoBehaviour
             isPlayer = character.CharacterType == Character.CharacterTypes.Player;
         }
          
+        
+    }
+
+    void Start()
+    {
         UpdateCharacterHealth();
     }
 
@@ -187,9 +192,9 @@ public class Health : MonoBehaviour
         }   */
       
         // Update Player health
-        /* if (character != null && bossBaseShot == null)
+        if (isPlayer)
         {
-            UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
-        } */
+            UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth);
+        }
     }   
 } 

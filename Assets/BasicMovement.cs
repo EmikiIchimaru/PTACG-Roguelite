@@ -43,5 +43,12 @@ public class BasicMovement : MonoBehaviour
             // Destroy the sprite GameObject
             Destroy(gameObject);
         }
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            // Destroy the sprite GameObject
+            Health health = other.gameObject.GetComponent<Health>();
+            if ( health != null ) { health.TakeDamage(1f); }
+            Destroy(gameObject);
+        }
     }
 }

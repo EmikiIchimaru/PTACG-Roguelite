@@ -105,10 +105,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8088e96eea75549a3bb62035ba793d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealth: 10
-  maxHealth: 10
-  initialShield: 5
-  maxShield: 5
+  initialHealth: 1
+  maxHealth: 1
+  initialShield: 0
+  maxShield: 0
   destroyObject: 1
 --- !u!114 &7142160005271725791
 MonoBehaviour:

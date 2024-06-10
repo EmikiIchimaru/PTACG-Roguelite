@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canDestroyItem: 1
-  xpGain: 20
+  xpGain: 2
 --- !u!114 &1731177778950668632
 MonoBehaviour:
   m_ObjectHideFlags: 0
