@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7265946898395078473}
   - component: {fileID: 1321662820646583696}
   - component: {fileID: -6629255247942862191}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Room
   m_TagString: Room
   m_Icon: {fileID: 0}
@@ -50,7 +50,6 @@ MonoBehaviour:
   positionIndexX: 0
   positionIndexY: 0
   roomContent: {fileID: 0}
-  isLoaded: 0
 --- !u!61 &-6629255247942862191
 BoxCollider2D:
   m_ObjectHideFlags: 0

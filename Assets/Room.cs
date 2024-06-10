@@ -47,6 +47,15 @@ public class Room : MonoBehaviour
     {
         GameObject prefab = roomPool.roomPrefabs[Random.Range(0,roomPool.roomPrefabs.Length)];
         roomContent = Instantiate(prefab, transform.position, Quaternion.identity, transform);
+        foreach (Transform child in roomContent.transform)
+        {
+            BasicSpawner enemy = child.GetComponent<BasicSpawner>();
+            if (enemy != null)
+            {
+                enemy.positionIndexX = positionIndexX;
+                enemy.positionIndexY = positionIndexY;
+            }
+        }
     }
 
     public void PlayerEnter()
