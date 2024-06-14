@@ -2435,10 +2435,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: XP Orb
       objectReference: {fileID: 0}
-    - target: {fileID: 2446907406981737080, guid: c335cc03c17aab44fb572de13e263fe6, type: 3}
-      propertyPath: xpGain
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4195579411577991456, guid: c335cc03c17aab44fb572de13e263fe6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5

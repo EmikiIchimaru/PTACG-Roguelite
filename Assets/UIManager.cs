@@ -24,7 +24,6 @@ public class UIManager : Singleton<UIManager>
 
     void Update()
     {
-             
         healthBar.value = Mathf.Lerp(healthBar.value, playerCurrentHealth / playerMaxHealth, 5f * Time.deltaTime);
         currentHealthText.text = Mathf.Round(playerCurrentHealth).ToString() + "/" + Mathf.Round(playerMaxHealth).ToString(); 
 

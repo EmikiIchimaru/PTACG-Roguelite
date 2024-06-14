@@ -28,7 +28,8 @@ public class CharacterStats : MonoBehaviour
 
     void Start()
     {
-        level = 1;
+        level = 0;
+        LevelUp();
         experience = 0;
         xpToNextLevel = requiredXPBase;
         UIManager.Instance.UpdateExperience(experience, xpToNextLevel);
@@ -58,6 +59,7 @@ public class CharacterStats : MonoBehaviour
     {
         healthFinal = CalculateFinalStat(healthBase, healthPerLevel);
         health.SetNewMaxHealth(healthFinal);
+        
     }
 
     private float CalculateFinalStat(float baseStat, float perlevelStat, float baseBonus = 0f, float percentBonus = 0f)

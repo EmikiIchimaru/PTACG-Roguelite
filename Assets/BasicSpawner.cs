@@ -11,6 +11,8 @@ public class BasicSpawner : MonoBehaviour
     //public Transform spawnLocation; // Location where the prefab will be spawned
     public float spawnInterval = 0.5f; // Time interval between spawns
 
+    public int maxChildren = 5;
+
     void Start()
     {
         // Start the periodic spawning
@@ -19,7 +21,8 @@ public class BasicSpawner : MonoBehaviour
 
     void SpawnPrefab()
     {
-        if (positionIndexX != LevelManager.Instance.currentX || positionIndexY != LevelManager.Instance.currentY) { return; }// Instantiate the prefab at the specified location with the default rotation
-        Instantiate(prefab, transform.position, Quaternion.identity);
+        if (positionIndexX != LevelManager.Instance.currentX || positionIndexY != LevelManager.Instance.currentY) { return; } // Instantiate the prefab at the specified location with the default rotation
+        if (transform.childCount > maxChildren) { return; } 
+        Instantiate(prefab, transform.position, Quaternion.identity, transform);
     }
 }

@@ -108,7 +108,6 @@ public class Health : MonoBehaviour
         {
             collider2D.enabled = false;
             spriteRenderer.enabled = false;
-
             character.enabled = false;
             controller.enabled = false;
         }
@@ -169,12 +168,14 @@ public class Health : MonoBehaviour
         float percent = CurrentHealth/maxHealth;
         maxHealth = newMaxHealth;
         if ((newMaxHealth * percent) > CurrentHealth) { CurrentHealth = (newMaxHealth * percent); }
+        UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth);
     }
 	
     // If destroyObject is selected, we destroy this game object
     private void DestroyObject()
     {
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
     private void UpdateCharacterHealth()
