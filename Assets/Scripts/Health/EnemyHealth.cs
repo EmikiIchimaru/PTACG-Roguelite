@@ -29,6 +29,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        Debug.Log($"damage taken: {damage}");
         health.TakeDamage(damage);
         if (enemyBar == null)
         {

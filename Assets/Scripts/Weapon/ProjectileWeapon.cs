@@ -35,9 +35,12 @@ public class ProjectileWeapon : Weapon
         foreach (Transform child in transform)
         {
             //EvaluateProjectileSpawnPosition();
-            if (child.gameObject.activeInHierarchy) {SpawnProjectile(child.position, child.localRotation.z);}
+            if (child.gameObject.activeInHierarchy) 
+            {
+                SpawnProjectile(child.position, child.localRotation.z);
+            }
         }
-        internalCooldown = attackCooltime;
+        internalCooldown = finalAttackCooltime;
     }
 
     // Spawns a projectile from the pool, setting it's new direction based on the character's direction (WeaponOwner)
@@ -52,6 +55,7 @@ public class ProjectileWeapon : Weapon
         Projectile projectile = projectilePooled.GetComponent<Projectile>();
         projectile.EnableProjectile();
 		projectile.ProjectileOwner = WeaponOwner;
+        projectile.damageX = damageX;
 /* 
         // Spread
         randomProjectileSpread.z = Random.Range(-projectileSpread.z, projectileSpread.z);

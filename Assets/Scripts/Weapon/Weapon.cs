@@ -9,7 +9,10 @@ public class Weapon : MonoBehaviour
     [SerializeField] private string weaponName = "";
   
     [Header("Settings")] 
-    [SerializeField] protected float attackCooltime = 0.5f;
+    [SerializeField] protected float baseAttackCooltime;
+
+    public float finalAttackCooltime { protected get; set; }
+    public float damageX { get { return GetDamageX(); } }
 
 /*     [Header("Weapon")] 
     [SerializeField] private bool useMagazine = true;
@@ -28,6 +31,8 @@ public class Weapon : MonoBehaviour
 
     // Reference of the Character that controls this Weapon
     public Character WeaponOwner { get; set; }
+
+    public CharacterStats stats { get; set; }
     public CharacterLook WeaponOwnerLook { get; set; }
     protected Vector2 weaponFacing { get { return GetWeaponFacing(); } }
 
@@ -42,7 +47,9 @@ public class Weapon : MonoBehaviour
     protected virtual void Awake()
     {     
         //animator = GetComponent<Animator>();
+        finalAttackCooltime = baseAttackCooltime;
     }
+
 
     protected virtual void Update()
     {
@@ -83,7 +90,8 @@ public class Weapon : MonoBehaviour
     public void SetOwner(Character owner)
     {
         WeaponOwner = owner; 
-        WeaponOwnerLook = owner.GetComponent<CharacterLook>();
+        WeaponOwnerLook = owner?.GetComponent<CharacterLook>();
+        stats = owner.GetComponent<CharacterStats>();
         //controller = WeaponOwner.GetComponent<PCController>();
     }
 
@@ -91,6 +99,12 @@ public class Weapon : MonoBehaviour
     {
         if ( WeaponOwnerLook == null ) { return Vector3.zero; }
         return WeaponOwnerLook.direction;
+    }
+
+    private float GetDamageX()
+    {
+        float tempDamageX = (stats != null)?stats.damageXFinal:1f;
+        return tempDamageX;
     }
  
 }

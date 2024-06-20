@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: default weapon
-  attackCooltime: 0.5
+  baseAttackCooltime: 0.5
   projectileSpawnPosition: {x: 0, y: 0, z: 0}
   projectileSpread: {x: 0, y: 0, z: 0}
 --- !u!114 &7184854162324236936

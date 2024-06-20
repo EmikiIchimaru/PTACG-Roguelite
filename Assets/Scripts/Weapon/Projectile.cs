@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float bulletDamage;
+    [SerializeField] protected float baseDamage;
+    public float damageX;
     [SerializeField] private float speed = 100f;
     [SerializeField] private float acceleration = 0f;
 
@@ -16,7 +17,7 @@ public class Projectile : MonoBehaviour
     //public bool FacingRight { get; set; }
 
     // Returns the speed of the projectile    
-    public float  Speed { get; set; }
+    public float Speed { get; set; }
 
     public Character ProjectileOwner { get; set; }
     
@@ -58,7 +59,7 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))		
         {
-			other.gameObject.GetComponent<EnemyHealth>().TakeDamage(bulletDamage);		
+			other.gameObject.GetComponent<EnemyHealth>().TakeDamage(baseDamage * damageX);		
             //fx
             DisableProjectile();
         }

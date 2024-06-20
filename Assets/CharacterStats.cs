@@ -11,12 +11,17 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] private float healthBase;
     [SerializeField] private float healthPerLevel;
 
+    [SerializeField] private float damageXBase;
+    [SerializeField] private float damageXPerLevel;
+
+
     [Header("public ReadOnly")]
     public float healthFinal;
+    public float damageXFinal;
     public int level; //property
     public int experience;
     private int xpToNextLevel;
-    private int maxLevel = 10;
+    private int maxLevel = 40;
 
     [Header("Components")]
     private Health health;
@@ -35,13 +40,20 @@ public class CharacterStats : MonoBehaviour
         UIManager.Instance.UpdateExperience(experience, xpToNextLevel);
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            LevelUp();
+        }
+    }
+
     public void AddExperience(int xpGained)
     {
 
         experience += xpGained;
         if (experience >= xpToNextLevel && level < maxLevel)
         {
-            experience -= xpToNextLevel;
             LevelUp();
         }
         UIManager.Instance.UpdateExperience(experience, xpToNextLevel);
@@ -49,6 +61,7 @@ public class CharacterStats : MonoBehaviour
 
     private void LevelUp()
     {
+        experience -= xpToNextLevel;
         level++;
         xpToNextLevel += level * requiredXPLevelMultiplier;
         RecalculateStats();
@@ -59,7 +72,7 @@ public class CharacterStats : MonoBehaviour
     {
         healthFinal = CalculateFinalStat(healthBase, healthPerLevel);
         health.SetNewMaxHealth(healthFinal);
-        
+        damageXFinal = CalculateFinalStat(damageXBase, damageXPerLevel);
     }
 
     private float CalculateFinalStat(float baseStat, float perlevelStat, float baseBonus = 0f, float percentBonus = 0f)

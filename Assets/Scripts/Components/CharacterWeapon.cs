@@ -15,7 +15,7 @@ public class CharacterWeapon : CharacterComponents
     public Weapon CurrentWeapon  { get; set; }
 
     // Store the reference to the second weapon
-    public Weapon SecondaryWeapon { get; set; }
+    //public Weapon SecondaryWeapon { get; set; }
 
     protected override void Start()
     {
