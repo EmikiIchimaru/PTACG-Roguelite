@@ -181,10 +181,10 @@ public class Health : MonoBehaviour
     private void UpdateCharacterHealth()
     {
         // Update Enemy health
-       /*  if (enemyHealth != null && bossBaseShot == null)
+        if (enemyHealth != null)
         {
             enemyHealth.UpdateEnemyHealth(CurrentHealth, maxHealth);
-        } */
+        } 
 
         // Update Boss health
         /* if (bossBaseShot != null)

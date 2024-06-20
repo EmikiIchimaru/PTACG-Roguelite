@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 460ab61ccbb45544e9c3230a57ce86c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBarPrefab: {fileID: 0}
+  healthBarPrefab: {fileID: 6247972103376105306, guid: 140f6aeb18e0dfb4b86de7cbdc08ffac, type: 3}
   offSet: {x: 0, y: 1, z: 0}
 --- !u!114 &9027088948601331732
 MonoBehaviour:
@@ -262,5 +262,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ffe3c75ca570f4408c8304edda01d81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positionIndexX: 0
+  positionIndexY: 0
   prefab: {fileID: 82926272725612347, guid: 84b651b1ead53df48b59433c570529eb, type: 3}
   spawnInterval: 0.5
+  maxChildren: 5

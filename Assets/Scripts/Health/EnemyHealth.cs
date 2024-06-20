@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private GameObject healthBarPrefab;
-    [SerializeField] private Vector3 offSet = new Vector3(0f, 1f, 0f);
+    [SerializeField] private Vector3 offSet = new Vector3(0f, 0.75f, 0f);
     //[SerializeField] private int damageToApply = 1;
     
     private Health health;
@@ -22,9 +22,9 @@ public class EnemyHealth : MonoBehaviour
         health = GetComponent<Health>();
         if (healthBarPrefab != null)
         {
-            enemyBar = Instantiate(healthBarPrefab, transform.position + offSet, Quaternion.identity);
-            enemyBar.transform.parent = transform;
-            healthBar = enemyBar.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>();
+            enemyBar = Instantiate(healthBarPrefab, offSet, Quaternion.identity);
+            enemyBar.transform.SetParent(transform, false);
+            healthBar = enemyBar.transform.GetChild(0).GetComponent<Image>();
         }
     }
 

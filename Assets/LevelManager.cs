@@ -160,7 +160,7 @@ public class LevelManager : Singleton<LevelManager>
         foreach(int adjIndex1 in GetAdjacentRooms(currentX,currentY))
         {
             rooms[adjIndex1].ShowRoom();
-            Debug.Log($"creating adj rooms at: {currentX},{currentY}");
+            //Debug.Log($"creating adj rooms at: {currentX},{currentY}");
         }
         foreach(int wallIndex3 in GetHorizontalWalls(currentX,currentY))
         {
