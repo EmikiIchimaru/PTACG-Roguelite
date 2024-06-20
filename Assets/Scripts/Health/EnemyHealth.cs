@@ -20,12 +20,6 @@ public class EnemyHealth : MonoBehaviour
     private void Start()
     {
         health = GetComponent<Health>();
-        if (healthBarPrefab != null)
-        {
-            enemyBar = Instantiate(healthBarPrefab, offSet, Quaternion.identity);
-            enemyBar.transform.SetParent(transform, false);
-            healthBar = enemyBar.transform.GetChild(0).GetComponent<Image>();
-        }
     }
 
     private void Update()
@@ -36,6 +30,15 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health.TakeDamage(damage);
+        if (enemyBar == null)
+        {
+            if (healthBarPrefab != null)
+            {
+                enemyBar = Instantiate(healthBarPrefab, offSet, Quaternion.identity);
+                enemyBar.transform.SetParent(transform, false);
+                healthBar = enemyBar.transform.GetChild(0).GetComponent<Image>();
+            }
+        }
     }
 
     private void UpdateHealth()
@@ -43,6 +46,9 @@ public class EnemyHealth : MonoBehaviour
         if (healthBar != null)
         {
             healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, enemyCurrentHealth / enemyMaxHealth, 10f * Time.deltaTime);
+            float hue = 120f/255f * healthBar.fillAmount;
+            Color newColor = Color.HSVToRGB(hue, 1f, 1f);
+            healthBar.color = newColor;
         }
     }
     
