@@ -8,7 +8,7 @@ public class BasicMovement : MonoBehaviour
     public float moveSpeed = 5f;
 
     // Private variable to store the movement direction
-    private Vector3 moveDirection;
+    private Vector2 moveDirection;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +18,7 @@ public class BasicMovement : MonoBehaviour
         float moveY = Random.Range(-1f, 1f);
 
         // Create a Vector3 for movement direction
-        moveDirection = new Vector3(moveX, moveY, 0);
+        moveDirection = new Vector2(moveX, moveY);
 
         // Normalize the direction vector to ensure consistent movement speed
         if (moveDirection.magnitude > 1)
@@ -38,11 +38,11 @@ public class BasicMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         // Check if the collided object is on the "Environment" layer
-        if (other.gameObject.layer == LayerMask.NameToLayer("Environment"))
+        /* if (other.gameObject.layer == LayerMask.NameToLayer("Environment"))
         {
             // Destroy the sprite GameObject
             Destroy(gameObject);
-        }
+        } */
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             // Destroy the sprite GameObject
@@ -50,5 +50,18 @@ public class BasicMovement : MonoBehaviour
             if ( health != null ) { health.TakeDamage(1f); }
             Destroy(gameObject);
         }
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Environment"))
+        {
+            // Get the contact point and normal
+            ContactPoint2D contact = collision.contacts[0];
+            Vector2 normal = contact.normal;
+
+            // Reflect the direction based on the collision normal
+            moveDirection = Vector2.Reflect(moveDirection, normal);
+        }
+        
     }
 }

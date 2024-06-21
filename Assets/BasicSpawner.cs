@@ -11,6 +11,7 @@ public class BasicSpawner : MonoBehaviour
     //public Transform spawnLocation; // Location where the prefab will be spawned
     public float spawnInterval = 0.5f; // Time interval between spawns
 
+    private List<GameObject> spawns = new List<GameObject>();
     public int maxChildren = 5;
 
     void Start()
@@ -22,7 +23,14 @@ public class BasicSpawner : MonoBehaviour
     void SpawnPrefab()
     {
         if (positionIndexX != LevelManager.Instance.currentX || positionIndexY != LevelManager.Instance.currentY) { return; } // Instantiate the prefab at the specified location with the default rotation
-        if (transform.childCount > maxChildren) { return; } 
-        Instantiate(prefab, transform.position, Quaternion.identity, transform);
+        if (spawns.Count > maxChildren) { return; } 
+        GameObject childGO = Instantiate(prefab, transform.position, Quaternion.identity, transform.parent);
+        childGO.GetComponent<SpawnedEnemy>().basicSpawner = this;
+        spawns.Add(childGO);
+    }
+
+    public void RemoveFromList(GameObject gameObject)
+    {
+        spawns.Remove(gameObject);
     }
 }
