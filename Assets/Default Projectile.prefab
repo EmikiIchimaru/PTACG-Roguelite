@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 1
   damageX: 0
-  speed: 75
+  speed: 100
   acceleration: 0
 --- !u!50 &9141853090530105361
 Rigidbody2D:

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2446907406981737080}
   - component: {fileID: 1731177778950668632}
   - component: {fileID: 940134166421845827}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: XP Orb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canDestroyItem: 1
-  xpGain: 1
+  xpGranted: 1
 --- !u!114 &1731177778950668632
 MonoBehaviour:
   m_ObjectHideFlags: 0

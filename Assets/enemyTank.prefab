@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 8984668259086591353}
   - component: {fileID: 71886856546616398}
   - component: {fileID: 8203643418636656185}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: enemyTank
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -194,7 +194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b469465720cf544fbe37b85d9d302ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xp: {fileID: 712893119121178463, guid: c335cc03c17aab44fb572de13e263fe6, type: 3}
+  xpPrefab: {fileID: 712893119121178463, guid: c335cc03c17aab44fb572de13e263fe6, type: 3}
+  xpGranted: 100
 --- !u!50 &71886856546616398
 Rigidbody2D:
   serializedVersion: 4
@@ -277,7 +278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1360908122999417544}
   - component: {fileID: 3241165825860517236}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -361,7 +362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 727087237809251795}
   - component: {fileID: 6526897718632316353}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,7 +446,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8136263167945183045}
   - component: {fileID: 2003245911708419972}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -529,7 +530,7 @@ GameObject:
   m_Component:
   - component: {fileID: 526986686626374291}
   - component: {fileID: 2288081332836196967}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

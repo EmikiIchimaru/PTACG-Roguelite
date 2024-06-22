@@ -38,7 +38,7 @@ public class BasicAnimation : MonoBehaviour
             }
 
             // Convert hue to a color and apply it to the sprite renderer
-            Color newColor = Color.HSVToRGB(hue, 1f, 1f);
+            Color newColor = Color.HSVToRGB(hue, 0.75f, 1f);
             spriteRenderer.color = newColor;
         }
         //transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);

@@ -54,6 +54,7 @@ public class CharacterStats : MonoBehaviour
         experience += xpGained;
         if (experience >= xpToNextLevel && level < maxLevel)
         {
+            experience -= xpToNextLevel;
             LevelUp();
         }
         UIManager.Instance.UpdateExperience(experience, xpToNextLevel);
@@ -61,11 +62,11 @@ public class CharacterStats : MonoBehaviour
 
     private void LevelUp()
     {
-        experience -= xpToNextLevel;
         level++;
         xpToNextLevel += level * requiredXPLevelMultiplier;
         RecalculateStats();
         Debug.Log("level up!");
+        if (level > 1) { UpgradeManager.Instance.ShowCanvas(); }
     }
 
     public void RecalculateStats()

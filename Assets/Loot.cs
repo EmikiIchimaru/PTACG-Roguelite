@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Loot : MonoBehaviour
 {
-    [SerializeField] private GameObject xp;
+    [SerializeField] private GameObject xpPrefab;
+    [SerializeField] private int xpGranted;
     
     public void DropLoot()
     {
-        if (xp != null) { Instantiate(xp, transform.position, Quaternion.identity); }
+        if (xpPrefab != null) 
+        { 
+            GameObject xpGO = Instantiate(xpPrefab, transform.position, Quaternion.identity); 
+            xpGO.GetComponent<CXPOrb>().xpGranted = xpGranted;
+        }
     }
 }

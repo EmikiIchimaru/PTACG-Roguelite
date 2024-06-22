@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 1725400300799515623}
   - component: {fileID: 532443597376214929}
   - component: {fileID: 1884573692353707410}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: crossSpawner
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -234,7 +234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b469465720cf544fbe37b85d9d302ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xp: {fileID: 712893119121178463, guid: c335cc03c17aab44fb572de13e263fe6, type: 3}
+  xpPrefab: {fileID: 712893119121178463, guid: c335cc03c17aab44fb572de13e263fe6, type: 3}
+  xpGranted: 5
 --- !u!114 &532443597376214929
 MonoBehaviour:
   m_ObjectHideFlags: 0
