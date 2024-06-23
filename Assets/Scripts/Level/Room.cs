@@ -6,7 +6,7 @@ public class Room : MonoBehaviour
 {
     //public LevelManager levelManager;
 
-    public RoomPrefabArray roomPool;
+    public RoomPrefabSO roomPool;
     public int roomNumber;
 
     public int positionIndexX;
