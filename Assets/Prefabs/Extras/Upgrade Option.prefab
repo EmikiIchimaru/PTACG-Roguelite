@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8646569355503324507}
   - component: {fileID: 2186267499400020408}
   - component: {fileID: 4006910374752511105}
+  - component: {fileID: 2983443232190462603}
   m_Layer: 5
   m_Name: Upgrade Option
   m_TagString: Untagged
@@ -36,9 +37,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -100}
+  m_AnchoredPosition: {x: 440, y: -100}
   m_SizeDelta: {x: 480, y: -400}
-  m_Pivot: {x: 0, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8646569355503324507
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -121,6 +122,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2983443232190462603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5206151886878814911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c7b8a04e5f1f1b4786c44052854c5f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7764104901850626817
 GameObject:
   m_ObjectHideFlags: 0

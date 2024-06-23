@@ -7,18 +7,23 @@ public class UpgradeManager : Singleton<UpgradeManager>
     [SerializeField] private GameObject upgradeCanvas;
     [SerializeField] private CharacterWeapon characterWeapon;
 
+    [SerializeField] private UpgradeButton button0;
+    [SerializeField] private UpgradeButton button1;
+    [SerializeField] private UpgradeButton button2;
+
     [SerializeField] private List<UpgradeSO> upgrades = new List<UpgradeSO>();
 
+    private UpgradeSO upgrade0;
     private UpgradeSO upgrade1;
     private UpgradeSO upgrade2;
-    private UpgradeSO upgrade3;
 
     public void ShowCanvas()
     {
         upgradeCanvas.SetActive(true);
+        upgradeCanvas.GetComponent<Animator>().SetTrigger("StartLoad");
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         SetupThreeUpgrades();
     }
 
@@ -27,12 +32,15 @@ public class UpgradeManager : Singleton<UpgradeManager>
         upgradeCanvas.SetActive(false);
         Cursor.visible = false;
         //Cursor.lockState = CursorLockMode.Locked;
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
     }
 
     private void SetupThreeUpgrades()
     {
-        upgrade1 = upgrades[0];
+        UpgradeSO[] upgradesArray = upgrades.ToArray();
+        upgrade0 = upgrades[0];
+        upgrade1 = upgrades[1];
+        upgrade2 = upgrades[2];
     }
 
     private void ApplyUpgrade(UpgradeSO upgrade)
@@ -48,6 +56,13 @@ public class UpgradeManager : Singleton<UpgradeManager>
         }
     }
 
+    public void SelectUpgrade0()
+    {
+        Debug.Log("upgrade 0");
+        ApplyUpgrade(upgrade0);
+        HideCanvas();
+    }
+    
     public void SelectUpgrade1()
     {
         Debug.Log("upgrade 1");
@@ -59,13 +74,6 @@ public class UpgradeManager : Singleton<UpgradeManager>
     {
         Debug.Log("upgrade 2");
         ApplyUpgrade(upgrade2);
-        HideCanvas();
-    }
-    
-    public void SelectUpgrade3()
-    {
-        Debug.Log("upgrade 3");
-        ApplyUpgrade(upgrade3);
         HideCanvas();
     }
     
