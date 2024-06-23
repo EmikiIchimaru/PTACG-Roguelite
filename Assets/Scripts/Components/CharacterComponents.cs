@@ -6,9 +6,11 @@ public class CharacterComponents : MonoBehaviour
 {
     protected float horizontalInput;
     protected float verticalInput;
+    protected bool bAbilityInput;
 
     protected CharController controller;
 	protected CharacterMovement characterMovement;
+    protected CharacterStats stats;
 	//protected CharacterWeapon characterWeapon;
     protected Animator animator;
     protected Character character;
@@ -17,6 +19,7 @@ public class CharacterComponents : MonoBehaviour
     {
         controller = GetComponent<CharController>();
         character = GetComponent<Character>();
+        stats = GetComponent<CharacterStats>();
         //characterWeapon = GetComponent<CharacterWeapon>();
         characterMovement = GetComponent<CharacterMovement>();
         animator = GetComponent<Animator>();        
@@ -47,6 +50,7 @@ public class CharacterComponents : MonoBehaviour
         {
             horizontalInput = Input.GetAxisRaw("Horizontal");
             verticalInput = Input.GetAxisRaw("Vertical");
+            bAbilityInput = Input.GetKeyDown("space");
         }
     }
 }

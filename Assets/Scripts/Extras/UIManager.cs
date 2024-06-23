@@ -7,6 +7,7 @@ public class UIManager : Singleton<UIManager>
 {
     [SerializeField] private Slider healthBar;
     [SerializeField] private Slider experienceBar;
+    [SerializeField] private Slider abilityBar;
     [SerializeField] private GameObject defeatScreen;
     [SerializeField] private Text currentHealthText;
     [SerializeField] private Text currentExperienceText;
@@ -16,6 +17,7 @@ public class UIManager : Singleton<UIManager>
 
     private float playerCurrentExperience;
     private float playerMaxExperience;
+    private float playerAbilityCooltimePercent;
     //private bool isPlayer;
     void Start()
     {
@@ -29,6 +31,8 @@ public class UIManager : Singleton<UIManager>
 
         experienceBar.value = Mathf.Lerp(experienceBar.value, playerCurrentExperience / playerMaxExperience, 5f * Time.deltaTime);
         currentExperienceText.text = Mathf.Round(playerCurrentExperience).ToString() + "/" + playerMaxExperience.ToString();
+
+        abilityBar.value = playerAbilityCooltimePercent;
     }
 
     public void UpdateHealth(float currentHealth, float maxHealth)//, bool isThisMyPlayer)//, bool isThisMyPlayer)
@@ -43,6 +47,12 @@ public class UIManager : Singleton<UIManager>
         playerCurrentExperience = currentExperience;
         playerMaxExperience = maxExperience;      
     }
+
+    public void UpdateAbilityCooltime(float newCooltime)
+    {
+        playerAbilityCooltimePercent = newCooltime;   
+    }
+
     void HandleOnPlayerDeath()
     {
         ShowDefeatScreen();

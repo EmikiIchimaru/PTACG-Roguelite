@@ -53,7 +53,7 @@ public class Weapon : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (internalCooldown > 0f) { internalCooldown -= Time.deltaTime; }
+        if (internalCooldown > 0f) { internalCooldown -= (Time.deltaTime * stats.attackSpeedFinal); }
     }
 
     // Trigger our Weapon in order to use it

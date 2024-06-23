@@ -17,12 +17,16 @@ public class UpgradeManager : Singleton<UpgradeManager>
     private UpgradeSO upgrade1;
     private UpgradeSO upgrade2;
 
+    private bool isUpgrading;
+
     public void ShowCanvas()
     {
         upgradeCanvas.SetActive(true);
+        isUpgrading = true;
+        Invoke("UpgradePause",1f);
         upgradeCanvas.GetComponent<Animator>().SetTrigger("StartLoad");
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
+        //Cursor.visible = true;
+        
         //Time.timeScale = 0f;
         SetupThreeUpgrades();
     }
@@ -30,9 +34,10 @@ public class UpgradeManager : Singleton<UpgradeManager>
     public void HideCanvas()
     {
         upgradeCanvas.SetActive(false);
-        Cursor.visible = false;
+        isUpgrading = false;
+        //Cursor.visible = false;
         //Cursor.lockState = CursorLockMode.Locked;
-        //Time.timeScale = 1f;
+        Time.timeScale = 1f;
     }
 
     private void SetupThreeUpgrades()
@@ -77,5 +82,9 @@ public class UpgradeManager : Singleton<UpgradeManager>
         HideCanvas();
     }
     
+    private void UpgradePause()
+    {
+        if (isUpgrading) {Time.timeScale = 0f;}
+    }
 
 }

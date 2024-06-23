@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1126527655670534055}
   m_Layer: 6
   m_Name: WallBlockInner(Clone) (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 7277493043000594070}
   m_Layer: 6
   m_Name: WallBlockInner(Clone)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
