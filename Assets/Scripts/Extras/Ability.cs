@@ -4,18 +4,21 @@ using UnityEngine;
 
 public static class Ability
 {
-    public static void CirclePulse(Vector3 position, GameObject bulletPrefab, int bulletCount)
+    public static void CirclePulse(Character character, Vector3 position, GameObject bulletPrefab, float damageX, int bulletCount)
     {
         for (int i = 0; i < bulletCount; i++)
         {
             GameObject bulletGO = Object.Instantiate(bulletPrefab, position, Quaternion.identity);
-            Projectile projectile = bulletGO.GetComponent<Projectile>();
-            projectile.EnableProjectile();
-            //projectile.ProjectileOwner = WeaponOwner;
-            //projectile.damageX = damageX;
-            Vector2 rotatedVector = Utility.RotateVector(new Vector2(0f,0f), (i * 360f) / bulletCount);
+            SpellProjectile projectile = bulletGO.GetComponent<SpellProjectile>();
+            //projectile.EnableProjectile();
+            projectile.ProjectileOwner = character;
+            projectile.damageX = damageX;
+            //Vector2 rotatedVector = Utility.RotateVector(new Vector2(0f,1f), (i/bulletCount) * 360f);
             //Debug.Log($"{Quaternion.Euler(rotatedVector)}");
-            projectile.SetDirection(rotatedVector.normalized);
+            //projectile.SetDirection(rotatedVector.normalized);
+            float angle = i*360f/bulletCount;
+            Debug.Log(angle.ToString());
+            projectile.SetAngle(angle);
         }
     }
 }

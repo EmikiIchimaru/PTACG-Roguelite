@@ -102,8 +102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 1
   damageX: 0
-  speed: 200
+  speed: 20
   acceleration: 0
+  hasTimedLife: 0
 --- !u!50 &9141853090530105361
 Rigidbody2D:
   serializedVersion: 4

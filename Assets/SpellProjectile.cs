@@ -1,9 +1,8 @@
-﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class SpellProjectile : MonoBehaviour
 {
     [SerializeField] protected float baseDamage;
     public float damageX;
@@ -18,17 +17,13 @@ public class Projectile : MonoBehaviour
 
     // Returns the speed of the projectile    
     public float Speed { get; set; }
-
     public Character ProjectileOwner { get; set; }
 
     public bool hasTimedLife;
-
     private float bulletDuration = 0.5f;
     
     // Internal
     private Rigidbody2D myRigidbody2D;
-    private new Collider2D collider2D;
-    private SpriteRenderer spriteRenderer;
 	private Vector2 movement;
 	private bool canMove;
     private float internalTimer;
@@ -37,10 +32,9 @@ public class Projectile : MonoBehaviour
     {
         Speed = speed;
         canMove = true;
-		                
+		internalTimer = bulletDuration;                
         myRigidbody2D = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        collider2D = GetComponent<Collider2D>();
+
     }
 
     void Update()
@@ -48,7 +42,7 @@ public class Projectile : MonoBehaviour
         if (hasTimedLife && canMove)
         {
             internalTimer -= Time.deltaTime;
-            if (internalTimer < 0) { DisableProjectile(); }
+            if (internalTimer < 0) { DestroyProjectile(); }
         }
     }
 
@@ -75,27 +69,17 @@ public class Projectile : MonoBehaviour
         {
 			other.gameObject.GetComponent<EnemyHealth>().TakeDamage(baseDamage * damageX);		
             //fx
-            DisableProjectile();
+            DestroyProjectile();
         }
         if (other.CompareTag("Wall"))		
         {
 			//other.gameObject.GetComponent<Health>().TakeDamage(bulletDamage);		
             //fx
-            DisableProjectile();
+            DestroyProjectile();
         }
     }
-
-   
-    // Flips this projectile   
-    /* public void FlipProjectile()
-    {   
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.flipX = !spriteRenderer.flipX;
-        }
-    } */
   
-    // Set the direction and rotation in order to move  
+/*     // Set the direction and rotation in order to move  
     public void SetDirection(Vector2 newDirection) //, bool isFacingRight = true)
     {
         Direction = newDirection.normalized;
@@ -104,20 +88,26 @@ public class Projectile : MonoBehaviour
 
         // Set the rotation of the transform
         transform.rotation = Quaternion.Euler(0, 0, angle);
+    } */
+
+    public void SetAngle(float angle) // Angle in degrees
+    {
+        // Convert the angle from degrees to radians
+        float angleRad = angle * Mathf.Deg2Rad;
+
+        // Calculate the direction vector using cosine and sine
+        Vector2 direction = new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
+
+        // Normalize the direction vector
+        Direction = direction.normalized;
+
+        // Set the rotation of the transform
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
-    public void DisableProjectile()
+    private void DestroyProjectile()
     {
-        canMove = false;
-        spriteRenderer.enabled = false;
-        collider2D.enabled = false;
+        Destroy(gameObject);
     }
 
-    public void EnableProjectile()
-    {
-        canMove = true;
-        spriteRenderer.enabled = true;
-        collider2D.enabled = true;
-        if (hasTimedLife) { internalTimer = bulletDuration; }
-    }
 }

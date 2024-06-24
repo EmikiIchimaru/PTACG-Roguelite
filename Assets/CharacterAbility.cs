@@ -52,7 +52,7 @@ public class CharacterAbility : CharacterComponents
         if (internalCooldown > 0f) { return; }
         GetMousePosition();
         Debug.Log("cast ability");
-        Ability.CirclePulse(transform.position, bulletPrefab, 24);
+        Ability.CirclePulse(character, transform.position, bulletPrefab, stats.damageXFinal, 24);
         internalCooldown = abilityCooltime;
     }
 

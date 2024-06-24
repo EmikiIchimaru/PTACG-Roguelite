@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 1
   damageX: 0
-  speed: 150
+  speed: 15
   acceleration: 0
   hasTimedLife: 1
 --- !u!50 &9141853090530105361

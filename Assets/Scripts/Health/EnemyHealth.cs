@@ -47,8 +47,8 @@ public class EnemyHealth : MonoBehaviour
         if (healthBar != null)
         {
             healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, enemyCurrentHealth / enemyMaxHealth, 10f * Time.deltaTime);
-            float hue = 120f/255f * healthBar.fillAmount;
-            Color newColor = Color.HSVToRGB(hue, 1f, 1f);
+            float hue = 120f/360f * healthBar.fillAmount;
+            Color newColor = Color.HSVToRGB(hue, 0.8f, 1f);
             healthBar.color = newColor;
         }
     }

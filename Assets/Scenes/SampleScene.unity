@@ -2886,7 +2886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityCooltime: 10
-  bulletPrefab: {fileID: 138594487432681173, guid: a097551e80e3a7a4baaf06b5fa63d1d1, type: 3}
+  bulletPrefab: {fileID: 138594487432681173, guid: 5d6be8bdc14935f44b5a28e027802846, type: 3}
 --- !u!1 &1948966918
 GameObject:
   m_ObjectHideFlags: 0
