@@ -22,6 +22,8 @@ public class Health : MonoBehaviour
     private Character character;
     private CharController controller;
     private new Collider2D collider2D;
+    private CharacterWeapon weapon;
+    private CharacterAbility ability;
     private SpriteRenderer spriteRenderer;
     private EnemyHealth enemyHealth;
     private Loot loot;
@@ -40,6 +42,9 @@ public class Health : MonoBehaviour
         character = GetComponent<Character>();
         controller = GetComponent<CharController>();
         collider2D = GetComponent<Collider2D>();      
+        weapon = GetComponent<CharacterWeapon>();
+        ability = GetComponent<CharacterAbility>();
+
         enemyHealth = GetComponent<EnemyHealth>();  
         loot = GetComponent<Loot>();
         //bossBaseShot = GetComponent<BossBaseShot>();
@@ -66,7 +71,7 @@ public class Health : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            TakeDamage(1);
+            if (isPlayer){ TakeDamage(1); }
         }
     }
 
@@ -104,18 +109,25 @@ public class Health : MonoBehaviour
     // Kills the game object
     private void Die()
     {
+        
+        if (isPlayer)
+        {
+            //weapon.enabled = false;
+            //ability.enabled = false;
+            OnPlayerDeath?.Invoke();
+            gameObject.SetActive(false);
+            return;
+        }
+
         if (character != null)
         {
             collider2D.enabled = false;
             spriteRenderer.enabled = false;
             character.enabled = false;
             controller.enabled = false;
+            
         }
 
-        if (isPlayer)
-        {
-            OnPlayerDeath?.Invoke();
-        }
 /* 
         if (bossBaseShot != null)
         {
@@ -139,6 +151,8 @@ public class Health : MonoBehaviour
 
             character.enabled = true;
             controller.enabled = true;
+            weapon.enabled = true;
+            ability.enabled = true;
         }
 
         gameObject.SetActive(true);

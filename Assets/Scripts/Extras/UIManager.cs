@@ -19,10 +19,6 @@ public class UIManager : Singleton<UIManager>
     private float playerMaxExperience;
     private float playerAbilityCooltimePercent;
     //private bool isPlayer;
-    void Start()
-    {
-        Health.OnPlayerDeath += HandleOnPlayerDeath;
-    }
 
     void Update()
     {
@@ -52,14 +48,12 @@ public class UIManager : Singleton<UIManager>
     {
         playerAbilityCooltimePercent = newCooltime;   
     }
-
-    void HandleOnPlayerDeath()
+    public void ShowDefeatScreen()
     {
-        ShowDefeatScreen();
-    }
-
-    void ShowDefeatScreen()
-    {
-        defeatScreen.SetActive(true);
+        if (defeatScreen != null)
+        {
+            defeatScreen.SetActive(true);
+            //Debug.LogWarning("got defeat screen");
+        }
     }
 }

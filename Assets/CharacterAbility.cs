@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterAbility : CharacterComponents
 {
     [SerializeField] protected float abilityCooltime;
+    [SerializeField] private GameObject bulletPrefab; 
     private Vector3 currentAimAngle;
     private Vector3 direction;
     private Camera mainCamera;
@@ -51,6 +52,7 @@ public class CharacterAbility : CharacterComponents
         if (internalCooldown > 0f) { return; }
         GetMousePosition();
         Debug.Log("cast ability");
+        Ability.CirclePulse(transform.position, bulletPrefab, 24);
         internalCooldown = abilityCooltime;
     }
 

@@ -58,6 +58,7 @@ public class Camera2D : Singleton<Camera2D>
 
     private void FollowTarget()
     {
+        if (Target == null) { return; }
         Vector3 desiredPosition = new Vector3(Target.position.x + Offset.x, Target.position.y + Offset.y, transform.position.z);
         Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothTime);
         transform.position = smoothedPosition;
