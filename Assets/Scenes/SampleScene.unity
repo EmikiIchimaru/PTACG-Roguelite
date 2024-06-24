@@ -2844,18 +2844,31 @@ MonoBehaviour:
   requiredXPLevelMultiplier: 10
   healthBase: 10
   healthPerLevel: 5
-  damageXBase: 1
-  damageXPerLevel: 1
+  attackDamageBase: 2
+  attackDamagePerLevel: 0
   attackSpeedBase: 1
   attackSpeedPerLevel: 0.1
   abilityHasteBase: 1
   abilityHastePerLevel: 0.1
+  abilityPowerBase: 1
+  abilityPowerPerLevel: 0.1
   healthFinal: 0
-  damageXFinal: 0
+  attackDamageFinal: 0
   attackSpeedFinal: 0
   abilityHasteFinal: 0
+  abilityPowerFinal: 0
   level: 0
   experience: 0
+  healthBaseBonus: 0
+  healthPercentBonus: 0
+  attackDamageBaseBonus: 0
+  attackDamagePercentBonus: 0
+  attackSpeedBaseBonus: 0
+  attackSpeedPercentBonus: 0
+  abilityHasteBaseBonus: 0
+  abilityHastePercentBonus: 0
+  abilityPowerBaseBonus: 0
+  abilityPowerPercentBonus: 0
 --- !u!114 &1940298621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2917,17 +2930,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeCanvas: {fileID: 685197940}
-  characterWeapon: {fileID: 1940298616}
+  character: {fileID: 1940298613}
   button0: {fileID: 5918570586318235602}
   button1: {fileID: 1546905841}
   button2: {fileID: 1537916806}
-  upgrades:
+  upgradesWeapon1:
   - {fileID: 11400000, guid: 035b826491257564cb8bded06e5da443, type: 2}
   - {fileID: 11400000, guid: 413739a9465564745ab26fb6dfc7f3f7, type: 2}
   - {fileID: 11400000, guid: ccbdee4a24eeb7f49bea08805ca69ed2, type: 2}
+  - {fileID: 11400000, guid: 2ff5acea37697f74d96decf5f8aa62bf, type: 2}
   - {fileID: 11400000, guid: b59e5bdf5004c6344a3cd208864e2ed7, type: 2}
-  - {fileID: 11400000, guid: 6a44e3d9ae40e0e49b0629d0bfab3722, type: 2}
-  - {fileID: 11400000, guid: d2a8d74936458b84ea986f2374856dac, type: 2}
+  upgradesStats1:
+  - {fileID: 11400000, guid: 045dc01378298864f8660e5a8765eb93, type: 2}
+  - {fileID: 11400000, guid: 9ea81f9972af6f64e86717b80fdc643e, type: 2}
+  - {fileID: 11400000, guid: 2833709ae1d9f0443adce72ca90a0635, type: 2}
 --- !u!4 &1948966920
 Transform:
   m_ObjectHideFlags: 0

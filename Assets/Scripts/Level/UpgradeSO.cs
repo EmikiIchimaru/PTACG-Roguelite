@@ -9,6 +9,7 @@ public class UpgradeSO : ScriptableObject
     public string upgradeName;
     public string upgradeDescript;
     public Weapon newWeapon;
+    public StatsSO newStats;
 
 
 }

@@ -1,1 +1,1 @@
-public enum UpgradeType { Weapon }
+public enum UpgradeType { Weapon, Stats }

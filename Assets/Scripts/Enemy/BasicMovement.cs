@@ -30,6 +30,7 @@ public class BasicMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if (positionIndexX != LevelManager.Instance.currentX || positionIndexY != LevelManager.Instance.currentY) { return; }
         // Move the sprite by translating its position
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
     }

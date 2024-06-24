@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 6837762464446262154}
   - component: {fileID: 4569557446492238516}
-  - component: {fileID: -6039187519132968715}
+  - component: {fileID: 4197643126458667202}
   - component: {fileID: 9141853090530105361}
   - component: {fileID: 3328385462305351343}
-  - component: {fileID: 1274406624243310316}
+  - component: {fileID: 1216820090565386373}
+  - component: {fileID: 2520048575983563127}
   m_Layer: 0
-  m_Name: Spell Projectile
+  m_Name: Sniper 1 Projectile
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -88,7 +89,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-6039187519132968715
+--- !u!114 &4197643126458667202
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,12 +98,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 138594487432681173}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05e06a401ecb13740b64da6a73435e0a, type: 3}
+  m_Script: {fileID: 11500000, guid: 369bd41894b76434289bb7baa43809a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 2
+  baseDamage: 4
   damageX: 0
-  speed: 10
+  speed: 50
   acceleration: 0
   hasTimedLife: 0
 --- !u!50 &9141853090530105361
@@ -167,7 +168,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &1274406624243310316
+--- !u!114 &1216820090565386373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138594487432681173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3e82b9db670ab9419a2608f870b304c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectMask:
+    serializedVersion: 2
+    m_Bits: 0
+  lifeTime: 5
+--- !u!114 &2520048575983563127
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

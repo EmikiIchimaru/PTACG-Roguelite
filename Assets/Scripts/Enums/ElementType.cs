@@ -1,2 +1,2 @@
 
-public enum ElementType { None, Grass, Fire, Water, Electric }
+public enum ElementType { None, Red, Yellow, Green, Blue, Pink }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Projectile : MonoBehaviour
 {
     [SerializeField] protected float baseDamage;
@@ -29,6 +30,7 @@ public class Projectile : MonoBehaviour
     private Rigidbody2D myRigidbody2D;
     private new Collider2D collider2D;
     private SpriteRenderer spriteRenderer;
+    private UnityEngine.Rendering.Universal.Light2D light2D;
 	private Vector2 movement;
 	private bool canMove;
     private float internalTimer;
@@ -41,6 +43,7 @@ public class Projectile : MonoBehaviour
         myRigidbody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         collider2D = GetComponent<Collider2D>();
+        light2D = GetComponent<UnityEngine.Rendering.Universal.Light2D>();
     }
 
     void Update()
@@ -111,6 +114,7 @@ public class Projectile : MonoBehaviour
         canMove = false;
         spriteRenderer.enabled = false;
         collider2D.enabled = false;
+        light2D.enabled = false;
     }
 
     public void EnableProjectile()
@@ -118,6 +122,7 @@ public class Projectile : MonoBehaviour
         canMove = true;
         spriteRenderer.enabled = true;
         collider2D.enabled = true;
+        light2D.enabled = true;
         if (hasTimedLife) { internalTimer = bulletDuration; }
     }
 }

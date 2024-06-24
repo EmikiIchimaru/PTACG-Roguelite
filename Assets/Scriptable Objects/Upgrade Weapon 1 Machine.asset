@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3745ad6372b50f24cb4718d66f27dff6, type: 3}
-  m_Name: Upgrade Weapon 3 Spray
+  m_Name: Upgrade Weapon 1 Machine
   m_EditorClassIdentifier: 
-  upgradeLevel: 3
-  elementType: 1
+  upgradeLevel: 1
+  elementType: 2
   upgradeType: 0
-  upgradeName: Spray 3
+  upgradeName: Machine Gun
   upgradeDescript: 
-  newWeapon: {fileID: 7890344321430585536, guid: 7e4001f19b4d69b4287e9c82d5318f5d, type: 3}
+  newWeapon: {fileID: 7890344321430585536, guid: 133aedbe150ca9747a150289e5a966b9, type: 3}

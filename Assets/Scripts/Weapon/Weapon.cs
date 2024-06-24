@@ -103,7 +103,7 @@ public class Weapon : MonoBehaviour
 
     private float GetDamageX()
     {
-        float tempDamageX = (stats != null)?stats.damageXFinal:1f;
+        float tempDamageX = (stats != null)?stats.attackDamageFinal:1f;
         return tempDamageX;
     }
  

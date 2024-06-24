@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3745ad6372b50f24cb4718d66f27dff6, type: 3}
-  m_Name: Parallel Gun 1
+  m_Name: Upgrade Weapon 1 Sniper
   m_EditorClassIdentifier: 
-  upgradeLevel: 0
-  elementType: 0
+  upgradeLevel: 1
+  elementType: 5
   upgradeType: 0
-  upgradeName: Parallel Gun
+  upgradeName: Sniper 1
   upgradeDescript: 
-  newWeapon: {fileID: 7890344321430585536, guid: a128e7290aab8a342833a0021941c315, type: 3}
+  newWeapon: {fileID: 7890344321430585536, guid: 4ec6e134776772141aac64a0706825b6, type: 3}

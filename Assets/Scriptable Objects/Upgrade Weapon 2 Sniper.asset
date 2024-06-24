@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Upgrade Weapon 2 Sniper
   m_EditorClassIdentifier: 
   upgradeLevel: 2
-  elementType: 0
+  elementType: 5
   upgradeType: 0
   upgradeName: Sniper
   upgradeDescript: 

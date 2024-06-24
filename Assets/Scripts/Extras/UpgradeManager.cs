@@ -5,19 +5,31 @@ using UnityEngine;
 public class UpgradeManager : Singleton<UpgradeManager>
 {
     [SerializeField] private GameObject upgradeCanvas;
-    [SerializeField] private CharacterWeapon characterWeapon;
 
+    [SerializeField] private Character character;
+    
     [SerializeField] private UpgradeButton button0;
     [SerializeField] private UpgradeButton button1;
     [SerializeField] private UpgradeButton button2;
 
-    [SerializeField] private List<UpgradeSO> upgrades = new List<UpgradeSO>();
+    [SerializeField] private List<UpgradeSO> upgradesWeapon1 = new List<UpgradeSO>();
+    [SerializeField] private List<UpgradeSO> upgradesStats1 = new List<UpgradeSO>();
+
+    private CharacterWeapon characterWeapon;
+    private CharacterStats characterStats;
 
     private UpgradeSO upgrade0;
     private UpgradeSO upgrade1;
     private UpgradeSO upgrade2;
 
     private bool isUpgrading;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        characterWeapon = character.GetComponent<CharacterWeapon>();
+        characterStats = character.GetComponent<CharacterStats>();
+    }
 
     public void ShowCanvas()
     {
@@ -28,7 +40,7 @@ public class UpgradeManager : Singleton<UpgradeManager>
         //Cursor.visible = true;
         
         //Time.timeScale = 0f;
-        SetupThreeUpgrades();
+        SetupThreeUpgrades(upgradesStats1);
     }
 
     public void HideCanvas()
@@ -40,7 +52,7 @@ public class UpgradeManager : Singleton<UpgradeManager>
         Time.timeScale = 1f;
     }
 
-    private void SetupThreeUpgrades()
+    private void SetupThreeUpgrades(List<UpgradeSO> upgrades)
     {
         List<UpgradeSO> tempUpgrades = Utility.ShuffleUpgradeList(upgrades);
         upgrade0 = tempUpgrades[0];
@@ -59,6 +71,12 @@ public class UpgradeManager : Singleton<UpgradeManager>
             {
                 characterWeapon.EquipWeapon(upgrade.newWeapon);
                 Debug.Log("new weapon equipped");
+                break;
+            }
+            case UpgradeType.Stats:
+            {
+                characterStats.AddStats(upgrade.newStats);
+                Debug.Log("new stats equipped");
                 break;
             }
         }
