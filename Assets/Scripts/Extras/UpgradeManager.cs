@@ -42,10 +42,13 @@ public class UpgradeManager : Singleton<UpgradeManager>
 
     private void SetupThreeUpgrades()
     {
-        UpgradeSO[] upgradesArray = upgrades.ToArray();
-        upgrade0 = upgrades[0];
-        upgrade1 = upgrades[1];
-        upgrade2 = upgrades[2];
+        List<UpgradeSO> tempUpgrades = Utility.ShuffleUpgradeList(upgrades);
+        upgrade0 = tempUpgrades[0];
+        upgrade1 = tempUpgrades[1];
+        upgrade2 = tempUpgrades[2];
+        button0.LoadUpgradeInformation(tempUpgrades[0]);
+        button1.LoadUpgradeInformation(tempUpgrades[1]);
+        button2.LoadUpgradeInformation(tempUpgrades[2]);
     }
 
     private void ApplyUpgrade(UpgradeSO upgrade)

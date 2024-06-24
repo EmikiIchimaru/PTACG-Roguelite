@@ -14,12 +14,15 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] private float damageXPerLevel;
     [SerializeField] private float attackSpeedBase;
     [SerializeField] private float attackSpeedPerLevel;
-
     [SerializeField] private float abilityHasteBase;
     [SerializeField] private float abilityHastePerLevel;
 
+    private float scaleBase = 1f;
+    private float scalePerLevel = 0.1f;
+
 
     [Header("public ReadOnly")]
+
     public float healthFinal;
     public float damageXFinal;
     public float attackSpeedFinal;
@@ -28,6 +31,7 @@ public class CharacterStats : MonoBehaviour
     public int experience;
     private int xpToNextLevel;
     private int maxLevel = 40;
+    private float scaleFinal;
 
     [Header("Components")]
     private Health health;
@@ -72,11 +76,14 @@ public class CharacterStats : MonoBehaviour
         xpToNextLevel += level * requiredXPLevelMultiplier;
         RecalculateStats();
         Debug.Log("level up!");
+        
         if (level > 1) { UpgradeManager.Instance.ShowCanvas(); }
     }
 
     public void RecalculateStats()
     {
+        scaleFinal = CalculateFinalStat(scaleBase, scalePerLevel);
+        transform.localScale = new Vector3(scaleFinal, scaleFinal, 1f);
         healthFinal = CalculateFinalStat(healthBase, healthPerLevel);
         health.SetNewMaxHealth(healthFinal);
         damageXFinal = CalculateFinalStat(damageXBase, damageXPerLevel);

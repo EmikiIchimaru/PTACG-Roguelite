@@ -20,6 +20,10 @@ public class Projectile : MonoBehaviour
     public float Speed { get; set; }
 
     public Character ProjectileOwner { get; set; }
+
+    public bool hasTimedLife;
+
+    private float bulletDuration = 0.5f;
     
     // Internal
     private Rigidbody2D myRigidbody2D;
@@ -27,6 +31,7 @@ public class Projectile : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 	private Vector2 movement;
 	private bool canMove;
+    private float internalTimer;
     
     private void Awake()
     {
@@ -36,6 +41,15 @@ public class Projectile : MonoBehaviour
         myRigidbody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         collider2D = GetComponent<Collider2D>();
+    }
+
+    void Update()
+    {
+        if (hasTimedLife && canMove)
+        {
+            internalTimer -= Time.deltaTime;
+            if (internalTimer < 0) { DisableProjectile(); }
+        }
     }
 
     private void FixedUpdate()
@@ -104,5 +118,6 @@ public class Projectile : MonoBehaviour
         canMove = true;
         spriteRenderer.enabled = true;
         collider2D.enabled = true;
+        if (hasTimedLife) { internalTimer = bulletDuration; }
     }
 }

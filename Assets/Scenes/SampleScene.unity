@@ -2846,9 +2846,9 @@ MonoBehaviour:
   damageXBase: 1
   damageXPerLevel: 1
   attackSpeedBase: 1
-  attackSpeedPerLevel: 0.5
+  attackSpeedPerLevel: 0.1
   abilityHasteBase: 1
-  abilityHastePerLevel: 0.5
+  abilityHastePerLevel: 0.1
   healthFinal: 0
   damageXFinal: 0
   attackSpeedFinal: 0
@@ -2923,6 +2923,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 035b826491257564cb8bded06e5da443, type: 2}
   - {fileID: 11400000, guid: 413739a9465564745ab26fb6dfc7f3f7, type: 2}
   - {fileID: 11400000, guid: ccbdee4a24eeb7f49bea08805ca69ed2, type: 2}
+  - {fileID: 11400000, guid: b59e5bdf5004c6344a3cd208864e2ed7, type: 2}
+  - {fileID: 11400000, guid: 6a44e3d9ae40e0e49b0629d0bfab3722, type: 2}
+  - {fileID: 11400000, guid: d2a8d74936458b84ea986f2374856dac, type: 2}
 --- !u!4 &1948966920
 Transform:
   m_ObjectHideFlags: 0
