@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
     public float damage;
     [SerializeField] private float speed = 100f;
     [SerializeField] private float acceleration = 0f;
+    private float bulletDuration = 0.4f;
 
     // Returns the direction of this projectile    
     public Vector2 Direction { get; set; }
@@ -22,7 +23,7 @@ public class Projectile : MonoBehaviour
     public Character ProjectileOwner { get; set; }
 
     public bool hasTimedLife;
-    private float bulletDuration = 0.5f;
+    
     
     // Internal
     private Rigidbody2D myRigidbody2D;
@@ -104,7 +105,7 @@ public class Projectile : MonoBehaviour
         float angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg;
 
         // Set the rotation of the transform
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        transform.rotation = Quaternion.Euler(0, 0, angle-90f);
     }
 
     public void DisableProjectile()

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3745ad6372b50f24cb4718d66f27dff6, type: 3}
-  m_Name: Upgrade Weapon 2 Sniper
+  m_Name: Upgrade Weapon 2 Machine
   m_EditorClassIdentifier: 
   upgradeLevel: 2
-  elementType: 5
+  elementType: 2
   upgradeType: 0
-  upgradeName: Sniper 2
+  upgradeName: Machine 2
   upgradeDescript: 
-  newWeapon: {fileID: 7890344321430585536, guid: 58348d1cdcf6681439405acd2c2ddd0b, type: 3}
+  newWeapon: {fileID: 7890344321430585536, guid: 663774d2e9185064aaa916d927622ffb, type: 3}
   newStats: {fileID: 0}

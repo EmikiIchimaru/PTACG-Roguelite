@@ -56,8 +56,8 @@ public class UpgradeManager : Singleton<UpgradeManager>
         //Cursor.visible = true;
         
         //Time.timeScale = 0f;
-        playerUpgradeTierIndex = characterStats.level -2;
-        SetupThreeUpgrades(upgradesMegaList[playerUpgradeTierIndex]);
+        //playerUpgradeTierIndex = ;
+        SetupThreeUpgrades(upgradesMegaList[characterStats.level-2]);
     }
 
     public void HideCanvas()
@@ -67,7 +67,7 @@ public class UpgradeManager : Singleton<UpgradeManager>
         //Cursor.visible = false;
         //Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1f;
-        if (playerUpgradeTierIndex >= upgradesMegaList.Count)
+        if (characterStats.level-1 >= upgradesMegaList.Count)
         {
             ExpandUpgradeList();
         }
@@ -110,12 +110,15 @@ public class UpgradeManager : Singleton<UpgradeManager>
         {
             case 1:
                 InitializeUpgradeList1();
+                Debug.Log("expand 1");
                 break;
             case 2:
                 InitializeUpgradeList2();
+                Debug.Log("expand 2");
                 break;
             case 3:
                 InitializeUpgradeList3();
+                Debug.Log("expand 3");
                 break;
         }
     }
@@ -153,21 +156,21 @@ public class UpgradeManager : Singleton<UpgradeManager>
 
     public void SelectUpgrade0()
     {
-        Debug.Log("upgrade 0");
+        //Debug.Log("upgrade 0");
         ApplyUpgrade(upgrade0);
         HideCanvas();
     }
     
     public void SelectUpgrade1()
     {
-        Debug.Log("upgrade 1");
+        //Debug.Log("upgrade 1");
         ApplyUpgrade(upgrade1);
         HideCanvas();
     }
     
     public void SelectUpgrade2()
     {
-        Debug.Log("upgrade 2");
+        //Debug.Log("upgrade 2");
         ApplyUpgrade(upgrade2);
         HideCanvas();
     }

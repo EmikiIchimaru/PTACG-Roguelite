@@ -18,8 +18,8 @@ public class SpellProjectile : MonoBehaviour
     public float Speed { get; set; }
     public Character ProjectileOwner { get; set; }
 
-    public bool hasTimedLife;
-    private float bulletDuration = 0.5f;
+    //public bool hasTimedLife;
+    private float bulletDuration = 5f;
     
     // Internal
     private Rigidbody2D myRigidbody2D;
@@ -38,7 +38,7 @@ public class SpellProjectile : MonoBehaviour
 
     void Update()
     {
-        if (hasTimedLife && canMove)
+        if (canMove)
         {
             internalTimer -= Time.deltaTime;
             if (internalTimer < 0) { DestroyProjectile(); }
@@ -70,12 +70,12 @@ public class SpellProjectile : MonoBehaviour
             //fx
             DestroyProjectile();
         }
-        if (other.CompareTag("Wall"))		
+        /* if (other.CompareTag("Wall"))		
         {
 			//other.gameObject.GetComponent<Health>().TakeDamage(bulletDamage);		
             //fx
             DestroyProjectile();
-        }
+        } */
     }
   
 /*     // Set the direction and rotation in order to move  
