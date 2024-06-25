@@ -4,9 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    public Texture2D cursorTexture;
+
+    [SerializeField] private Texture2D cursorTexture;
 
     public bool isPlayerAlive;
+
     protected override void Awake()
     {
         base.Awake();
@@ -16,6 +18,7 @@ public class GameManager : Singleton<GameManager>
     {
         Health.OnPlayerDeath += HandleOnPlayerDeath;
         isPlayerAlive = true;
+        
     }
 
     public void RestartGame()

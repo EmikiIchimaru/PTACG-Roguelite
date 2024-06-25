@@ -13,6 +13,7 @@ public class LevelManager : Singleton<LevelManager>
     [Header("Prefabs")]
     [SerializeField] private GameObject wallPrefab;
     [SerializeField] private GameObject roomPrefab;
+    [SerializeField] private GameObject bossRoom;
 
     [Header("Player Position")]
     public int currentX;
@@ -28,11 +29,12 @@ public class LevelManager : Singleton<LevelManager>
     private int offsetX;
     private int offsetY;
     private int blocksPerRoom;
-
+    private int bossCountdown;
 
     // Start is called before the first frame update
     void Start()
     {
+        bossCountdown = Random.Range(2,5);
         horiWalls = new WallGroup[levelSize*(levelSize-1)];
         vertWalls = new WallGroup[levelSize*(levelSize-1)];
         rooms = new Room[levelSize*levelSize];
@@ -134,7 +136,15 @@ public class LevelManager : Singleton<LevelManager>
         currentX = playerX;
         currentY = playerY;
         ShowLevel(playerX,playerY);
+        bossCountdown--;
+        if (bossCountdown == 0) { InitializeBoss(); }
+    }
 
+    private void InitializeBoss()
+    {
+        Room room = rooms[XYToRoomNumber(currentX, currentY)];
+        room.HideRoom();
+        Instantiate(bossRoom, room.transform.position, Quaternion.identity);
     }
 
     private void HideLevel(int playerX, int playerY)

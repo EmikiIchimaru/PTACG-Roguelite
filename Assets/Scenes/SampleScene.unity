@@ -497,6 +497,7 @@ MonoBehaviour:
   wallChance: 0.2
   wallPrefab: {fileID: 568332425795463292, guid: 5f9ee58536a403b4890852d89afdbb4e, type: 3}
   roomPrefab: {fileID: 3392653186384542890, guid: 31d8affe9129a764e9d4f2433a1bee08, type: 3}
+  bossRoom: {fileID: 6792578708735493937, guid: 436c08d6b6da30c4fa1822c62b537cf6, type: 3}
   currentX: 0
   currentY: 0
   horiWalls: []
@@ -1030,7 +1031,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3ed2f2418af9a9749b80739492f913f2, type: 3}
+    m_Font: {fileID: 12800000, guid: b9b91f76ff94caa48aadb05acfdac28c, type: 3}
     m_FontSize: 100
     m_FontStyle: 2
     m_BestFit: 0

@@ -19,11 +19,6 @@ public class Room : MonoBehaviour
     private Character character;
     private GameObject objectCollided;
 
-    void Start()
-    {
-        //HideRoom();
-    }
-
     public void ShowRoom()
     {
         if (roomContent == null) 

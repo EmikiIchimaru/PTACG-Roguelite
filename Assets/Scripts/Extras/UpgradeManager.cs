@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+//using UnityEngine.UI;
 
 public class UpgradeManager : Singleton<UpgradeManager>
 {
     [SerializeField] private GameObject upgradeCanvas;
 
     [SerializeField] private Character character;
+    //[SerializeField] private Text upgradeTooltip;
     
     [SerializeField] private UpgradeButton button0;
     [SerializeField] private UpgradeButton button1;
