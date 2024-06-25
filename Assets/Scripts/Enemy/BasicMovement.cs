@@ -35,26 +35,6 @@ public class BasicMovement : MonoBehaviour
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
     }
 
-    // This method is called when the collider enters a trigger collider
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        // Check if the collided object is on the "Environment" layer
-        /* if (other.gameObject.layer == LayerMask.NameToLayer("Environment"))
-        {
-            // Destroy the sprite GameObject
-            Destroy(gameObject);
-        } */
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            // Destroy the sprite GameObject
-            Health health = other.gameObject.GetComponent<Health>();
-            if ( health != null ) 
-            { 
-                health.TakeDamage(1f); 
-            }
-            Destroy(gameObject);
-        }
-    }
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Environment"))
