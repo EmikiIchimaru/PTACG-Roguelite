@@ -35,9 +35,9 @@ public class ProjectileWeapon : Weapon
         foreach (Transform child in transform)
         {
             //EvaluateProjectileSpawnPosition();
-            if (child.gameObject.activeInHierarchy) 
+            if (child.gameObject.activeInHierarchy && (child.gameObject.tag == "WeaponPart"))
             {
-                SpawnProjectile(child.position, child.localRotation.z);
+                SpawnProjectile(child.position, child.localEulerAngles.z);
             }
         }
         internalCooldown = finalAttackCooltime;
@@ -55,15 +55,16 @@ public class ProjectileWeapon : Weapon
         Projectile projectile = projectilePooled.GetComponent<Projectile>();
         projectile.EnableProjectile();
 		projectile.ProjectileOwner = WeaponOwner;
-        projectile.damageX = damageX;
+        projectile.damage = baseDamage * damageX;
 /* 
         // Spread
         randomProjectileSpread.z = Random.Range(-projectileSpread.z, projectileSpread.z);
         Quaternion spread = Quaternion.Euler(randomProjectileSpread); */
-        //Debug.Log($"{weaponFacing}, {angle}");
-        Vector2 rotatedVector = Utility.RotateVector(weaponFacing.normalized, angle);
+        Debug.Log($"{angle}");
         //Debug.Log($"{Quaternion.Euler(rotatedVector)}");
+        Vector2 rotatedVector = Utility.RotateVector(weaponFacing.normalized, angle);
         projectile.SetDirection(rotatedVector.normalized);
+        
 
     }
 

@@ -19,7 +19,7 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] private float abilityPowerBase;
     [SerializeField] private float abilityPowerPerLevel;
 
-    private float scaleBase = 1f;
+    private float scaleBase = 1.4f;
     private float scalePerLevel = 0.1f;
 
 
@@ -58,7 +58,7 @@ public class CharacterStats : MonoBehaviour
 
     void Start()
     {
-        level = 0;
+        //level = 0;
         LevelUp();
         experience = 0;
         ResetBonusStats();
@@ -93,7 +93,7 @@ public class CharacterStats : MonoBehaviour
         RecalculateStats();
         Debug.Log("level up!");
         
-        if (level > 1) { UpgradeManager.Instance.ShowCanvas(); }
+        if (level > 10) { UpgradeManager.Instance.ShowCanvas(); }
     }
 
     private void RecalculateStats()

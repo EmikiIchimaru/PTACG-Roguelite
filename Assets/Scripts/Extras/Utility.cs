@@ -6,7 +6,7 @@ public static class Utility
 {
     public static Vector2 RotateVector(Vector2 vector, float angle)
     {
-        float radian = angle; // * Mathf.Deg2Rad;
+        float radian = angle * Mathf.Deg2Rad;
         float cos = Mathf.Cos(radian);
         float sin = Mathf.Sin(radian);
 

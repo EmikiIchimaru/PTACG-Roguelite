@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class Ability
 {
-    public static void CirclePulse(Character character, Vector3 position, GameObject bulletPrefab, float damageX, int bulletCount)
+    public static void CirclePulse(Character character, Vector3 position, GameObject bulletPrefab, float damage, int bulletCount)
     {
         for (int i = 0; i < bulletCount; i++)
         {
@@ -12,7 +12,7 @@ public static class Ability
             SpellProjectile projectile = bulletGO.GetComponent<SpellProjectile>();
             //projectile.EnableProjectile();
             projectile.ProjectileOwner = character;
-            projectile.damageX = damageX;
+            projectile.damage = damage;
             //Vector2 rotatedVector = Utility.RotateVector(new Vector2(0f,1f), (i/bulletCount) * 360f);
             //Debug.Log($"{Quaternion.Euler(rotatedVector)}");
             //projectile.SetDirection(rotatedVector.normalized);

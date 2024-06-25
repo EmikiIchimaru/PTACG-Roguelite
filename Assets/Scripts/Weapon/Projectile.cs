@@ -6,8 +6,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] protected float baseDamage;
-    public float damageX;
+    public float damage;
     [SerializeField] private float speed = 100f;
     [SerializeField] private float acceleration = 0f;
 
@@ -23,7 +22,6 @@ public class Projectile : MonoBehaviour
     public Character ProjectileOwner { get; set; }
 
     public bool hasTimedLife;
-
     private float bulletDuration = 0.5f;
     
     // Internal
@@ -76,7 +74,7 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))		
         {
-			other.gameObject.GetComponent<EnemyHealth>().TakeDamage(baseDamage * damageX);		
+			other.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);		
             //fx
             DisableProjectile();
         }

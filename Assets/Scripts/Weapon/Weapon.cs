@@ -9,9 +9,12 @@ public class Weapon : MonoBehaviour
     [SerializeField] private string weaponName = "";
   
     [Header("Settings")] 
+
+    [SerializeField] protected float baseDamage;
     [SerializeField] protected float baseAttackCooltime;
 
     public float finalAttackCooltime { protected get; set; }
+
     public float damageX { get { return GetDamageX(); } }
 
 /*     [Header("Weapon")] 
@@ -53,7 +56,7 @@ public class Weapon : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (internalCooldown > 0f) { internalCooldown -= (Time.deltaTime * stats.attackSpeedFinal); }
+        if (internalCooldown > 0f) { internalCooldown -= (Time.deltaTime * 0.01f * stats.attackSpeedFinal); }
     }
 
     // Trigger our Weapon in order to use it

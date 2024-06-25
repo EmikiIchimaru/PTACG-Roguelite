@@ -2766,7 +2766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d30ad2aeb0588458e9d24c6d91039a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponToUse: {fileID: 7890344321430585536, guid: 4acf45dc13a4ef04bad56aa7425de0ce, type: 3}
+  weaponToUse: {fileID: 7890344321430585536, guid: e97791ddf1d08b04c96f244798b193fd, type: 3}
 --- !u!114 &1940298617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2846,10 +2846,10 @@ MonoBehaviour:
   healthPerLevel: 5
   attackDamageBase: 2
   attackDamagePerLevel: 0
-  attackSpeedBase: 1
-  attackSpeedPerLevel: 0.1
-  abilityHasteBase: 1
-  abilityHastePerLevel: 0.1
+  attackSpeedBase: 100
+  attackSpeedPerLevel: 3
+  abilityHasteBase: 100
+  abilityHastePerLevel: 5
   abilityPowerBase: 1
   abilityPowerPerLevel: 0.1
   healthFinal: 0
@@ -2940,10 +2940,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ccbdee4a24eeb7f49bea08805ca69ed2, type: 2}
   - {fileID: 11400000, guid: 2ff5acea37697f74d96decf5f8aa62bf, type: 2}
   - {fileID: 11400000, guid: b59e5bdf5004c6344a3cd208864e2ed7, type: 2}
+  upgradesWeapon2: []
+  upgradesWeapon3: []
   upgradesStats1:
   - {fileID: 11400000, guid: 045dc01378298864f8660e5a8765eb93, type: 2}
   - {fileID: 11400000, guid: 9ea81f9972af6f64e86717b80fdc643e, type: 2}
   - {fileID: 11400000, guid: 2833709ae1d9f0443adce72ca90a0635, type: 2}
+  - {fileID: 11400000, guid: ae6e21cab469a824d81c980288b40930, type: 2}
+  - {fileID: 11400000, guid: 800662b057e42944db412b6bc95e5723, type: 2}
+  upgradesStats2: []
 --- !u!4 &1948966920
 Transform:
   m_ObjectHideFlags: 0

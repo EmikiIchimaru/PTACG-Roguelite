@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 9141853090530105361}
   - component: {fileID: 3328385462305351343}
   - component: {fileID: 1216820090565386373}
-  - component: {fileID: -6236972788528559352}
+  - component: {fileID: 2520048575983563127}
   m_Layer: 0
-  m_Name: Sniper 2 Projectile
+  m_Name: Cannon Projectile
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -101,9 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 369bd41894b76434289bb7baa43809a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 8
-  damageX: 0
-  speed: 50
+  damage: 1
+  speed: 10
   acceleration: 0
   hasTimedLife: 0
 --- !u!50 &9141853090530105361
@@ -184,7 +183,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   lifeTime: 5
---- !u!114 &-6236972788528559352
+--- !u!114 &2520048575983563127
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

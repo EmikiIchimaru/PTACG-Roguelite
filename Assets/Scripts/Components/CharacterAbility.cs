@@ -23,7 +23,7 @@ public class CharacterAbility : CharacterComponents
     protected override void HandleAbility()
     {
         base.HandleAbility();
-        if (internalCooldown > 0f) { internalCooldown -= (Time.deltaTime * stats.abilityHasteFinal); }
+        if (internalCooldown > 0f) { internalCooldown -= (Time.deltaTime * 0.01f * stats.abilityHasteFinal); }
         UIManager.Instance.UpdateAbilityCooltime(percentageCooltime);
         if (bAbilityInput) { RequestAbilityCast(); }
         //UpdateAnimations();	       

@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 9141853090530105361}
   - component: {fileID: 3328385462305351343}
   - component: {fileID: 1216820090565386373}
-  - component: {fileID: 7819333000884693843}
+  - component: {fileID: 2520048575983563127}
   m_Layer: 0
-  m_Name: Short Projectile
+  m_Name: Sniper Projectile
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,9 +102,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  speed: 15
+  speed: 40
   acceleration: 0
-  hasTimedLife: 1
+  hasTimedLife: 0
 --- !u!50 &9141853090530105361
 Rigidbody2D:
   serializedVersion: 4
@@ -183,7 +183,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   lifeTime: 5
---- !u!114 &7819333000884693843
+--- !u!114 &2520048575983563127
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class SpellProjectile : MonoBehaviour
 {
-    [SerializeField] protected float baseDamage;
-    public float damageX;
+    public float damage;
     [SerializeField] private float speed = 100f;
     [SerializeField] private float acceleration = 0f;
 
@@ -67,7 +66,7 @@ public class SpellProjectile : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))		
         {
-			other.gameObject.GetComponent<EnemyHealth>().TakeDamage(baseDamage * damageX);		
+			other.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);		
             //fx
             DestroyProjectile();
         }
