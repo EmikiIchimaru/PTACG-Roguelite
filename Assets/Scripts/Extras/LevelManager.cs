@@ -30,10 +30,12 @@ public class LevelManager : Singleton<LevelManager>
     private int offsetY;
     private int blocksPerRoom;
     private int bossCountdown;
+    private bool isBossFight;
 
     // Start is called before the first frame update
     void Start()
     {
+        isBossFight = false;
         bossCountdown = Random.Range(2,5);
         horiWalls = new WallGroup[levelSize*(levelSize-1)];
         vertWalls = new WallGroup[levelSize*(levelSize-1)];
@@ -132,6 +134,7 @@ public class LevelManager : Singleton<LevelManager>
 
     public void PlayerEnteredRoom(int playerX, int playerY)
     {
+        if (isBossFight) { return; }
         HideLevel(playerX,playerY);
         currentX = playerX;
         currentY = playerY;
@@ -143,6 +146,7 @@ public class LevelManager : Singleton<LevelManager>
 
     private void InitializeBoss()
     {
+        isBossFight = true;
         Room room = rooms[XYToRoomNumber(currentX, currentY)];
         room.HideRoom();
         GameObject bossRoomGO = Instantiate(bossRoomPrefab, room.transform.position, Quaternion.identity);
