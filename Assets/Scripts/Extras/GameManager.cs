@@ -8,6 +8,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private Texture2D cursorTexture;
 
     public bool isPlayerAlive;
+    public bool isBossAlive;
 
     protected override void Awake()
     {
@@ -17,7 +18,9 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         Health.OnPlayerDeath += HandleOnPlayerDeath;
+        Health.OnBossDeath += HandleOnBossDeath;
         isPlayerAlive = true;
+        isBossAlive = true;
         
     }
 
@@ -33,6 +36,15 @@ public class GameManager : Singleton<GameManager>
         { 
             isPlayerAlive = false;
             UIManager.Instance.ShowDefeatScreen();
+        }
+        
+    }
+    private void HandleOnBossDeath()
+    {
+        if (isBossAlive) 
+        { 
+            isBossAlive = false;
+            UIManager.Instance.ShowVictoryScreen();
         }
         
     }

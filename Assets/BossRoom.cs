@@ -10,7 +10,11 @@ public class BossRoom : MonoBehaviour
     public void StartBossFight()
     {
         Instantiate(bossPrefab, transform.position + new Vector3(0f, 20f, 0f), Quaternion.identity, transform);
+        UIManager.Instance.ShowBossHUD();
+        //Health bossHealth = bossPrefab.GetComponent<Health>();
+        //bossHealth.CurrentHealth = bossHealth.MaxHealth;
         StartCoroutine(ZoomOutCoroutine());
+
     }
 
     IEnumerator ZoomOutCoroutine()

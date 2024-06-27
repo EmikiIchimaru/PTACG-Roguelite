@@ -7,7 +7,8 @@ public class Character : MonoBehaviour
     public enum CharacterTypes
     {
         Player,
-        AI
+        AI, 
+        Boss
     }
     
     [SerializeField] private CharacterTypes characterType;

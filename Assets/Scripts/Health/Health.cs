@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {   
-    //public static Action OnBossDead;
+    public static event Action OnBossDeath;
     public static event Action OnPlayerDeath;
  
     [Header("Health")]
@@ -30,6 +30,8 @@ public class Health : MonoBehaviour
     //private BossBaseShot bossBaseShot;
 
     private bool isPlayer;
+
+    private bool isBoss;
     private bool shieldBroken;
     // Controls the current health of the object    
     public float CurrentHealth { get; set; }
@@ -57,6 +59,7 @@ public class Health : MonoBehaviour
         if (character != null)
         {
             isPlayer = character.CharacterType == Character.CharacterTypes.Player;
+            isBoss = character.CharacterType == Character.CharacterTypes.Boss;
         }
          
         
@@ -128,12 +131,11 @@ public class Health : MonoBehaviour
             
         }
 
-/* 
-        if (bossBaseShot != null)
+        if (isBoss)
         {
-            OnBossDead?.Invoke();
+            OnBossDeath?.Invoke();
         }
- */
+
         if (destroyObject)
         {
             DestroyObject();
@@ -201,10 +203,10 @@ public class Health : MonoBehaviour
         } 
 
         // Update Boss health
-        /* if (bossBaseShot != null)
+        if (isBoss)
         {
             UIManager.Instance.UpdateBossHealth(CurrentHealth, maxHealth);
-        }   */
+        }  
       
         // Update Player health
         if (isPlayer)

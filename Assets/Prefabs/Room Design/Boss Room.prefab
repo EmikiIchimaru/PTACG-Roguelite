@@ -120,7 +120,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.5
 --- !u!114 &6759633863654122688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,7 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692dbcfdd2bbcdf448d1920a01576730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossRoom: {fileID: 0}
 --- !u!1 &6792578708735493937
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,5 +180,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockPrefab: {fileID: 6744666814527503897, guid: 7bcb54d86be20af48acb922d773471bd, type: 3}
   bossPrefab: {fileID: 4329386225776292504, guid: dc03404dc23a91046b1a7529fc597559, type: 3}
-  blocksPerRoom: 0
-  blockSize: 0

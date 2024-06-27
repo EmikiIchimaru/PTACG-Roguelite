@@ -8,17 +8,29 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private Slider healthBar;
     [SerializeField] private Slider experienceBar;
     [SerializeField] private Slider abilityBar;
-    [SerializeField] private GameObject defeatScreen;
     [SerializeField] private Text currentHealthText;
     [SerializeField] private Text currentExperienceText;
+    [SerializeField] private Slider bossHealthBar;
+    [SerializeField] private GameObject victoryScreen;
+    [SerializeField] private GameObject defeatScreen;
+    [SerializeField] private GameObject defaultHUD;
+    [SerializeField] private GameObject bossHUD;
+
 
     private float playerCurrentHealth;
     private float playerMaxHealth;
-
     private float playerCurrentExperience;
     private float playerMaxExperience;
     private float playerAbilityCooltimePercent;
+    private float bossCurrentHealth;
+    private float bossMaxHealth;
+    private bool isBossHUDActive;
     //private bool isPlayer;
+
+    void Start()
+    {
+        isBossHUDActive = false;
+    }
 
     void Update()
     {
@@ -29,9 +41,14 @@ public class UIManager : Singleton<UIManager>
         currentExperienceText.text = Mathf.Round(playerCurrentExperience).ToString() + "/" + playerMaxExperience.ToString();
 
         abilityBar.value = playerAbilityCooltimePercent;
+
+        if (isBossHUDActive)
+        {
+            bossHealthBar.value = Mathf.Lerp(bossHealthBar.value, bossCurrentHealth / bossMaxHealth, 5f * Time.deltaTime);
+        }
     }
 
-    public void UpdateHealth(float currentHealth, float maxHealth)//, bool isThisMyPlayer)//, bool isThisMyPlayer)
+    public void UpdateHealth(float currentHealth, float maxHealth)//, bool isThisMyPlayer)
     { 
         playerCurrentHealth = currentHealth;
         playerMaxHealth = maxHealth;
@@ -48,12 +65,43 @@ public class UIManager : Singleton<UIManager>
     {
         playerAbilityCooltimePercent = newCooltime;   
     }
+
+    public void ShowBossHUD()
+    {
+        isBossHUDActive = true;
+        bossHUD.SetActive(true);
+    }
+
+    public void UpdateBossHealth(float currentHealth, float maxHealth)
+    { 
+        bossCurrentHealth = currentHealth;
+        bossMaxHealth = maxHealth;
+    }
+
+    public void ShowVictoryScreen()
+    {
+        if (victoryScreen != null)
+        {
+            HideHUD();
+            victoryScreen.SetActive(true);
+            Debug.LogWarning("victory");
+        }
+    }
+
     public void ShowDefeatScreen()
     {
         if (defeatScreen != null)
         {
+            HideHUD();
             defeatScreen.SetActive(true);
-            //Debug.LogWarning("got defeat screen");
+            Debug.LogWarning("defeat");
         }
+    }
+
+    public void HideHUD()
+    {
+        defaultHUD.SetActive(false);
+        isBossHUDActive = false;
+        bossHUD.SetActive(false);
     }
 }
