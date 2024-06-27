@@ -5,8 +5,9 @@ using UnityEngine;
 public class BasicSpawner : MonoBehaviour
 {
 
-    public int positionIndexX;
-    public int positionIndexY;
+
+
+    private RoomEntity roomEntity;
     public GameObject prefab; // Reference to the prefab to be spawned
     //public Transform spawnLocation; // Location where the prefab will be spawned
     public float spawnInterval = 0.5f; // Time interval between spawns
@@ -16,13 +17,14 @@ public class BasicSpawner : MonoBehaviour
 
     void Start()
     {
+        roomEntity = GetComponent<RoomEntity>();
         // Start the periodic spawning
         InvokeRepeating("SpawnPrefab", 0f, spawnInterval);
     }
 
     void SpawnPrefab()
     {
-        if (positionIndexX != LevelManager.Instance.currentX || positionIndexY != LevelManager.Instance.currentY) { return; } // Instantiate the prefab at the specified location with the default rotation
+        if (!roomEntity.isPlayerInSameRoom) { return; } // Instantiate the prefab at the specified location with the default rotation
         if (spawns.Count > maxChildren) { return; } 
         GameObject childGO = Instantiate(prefab, transform.position, Quaternion.identity, transform.parent);
         childGO.GetComponent<SpawnedEnemy>().basicSpawner = this;

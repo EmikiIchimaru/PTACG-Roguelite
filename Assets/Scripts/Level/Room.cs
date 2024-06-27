@@ -13,6 +13,7 @@ public class Room : MonoBehaviour
     public int positionIndexY;
 
     public GameObject roomContent = null;
+    private int roomContentIndex;
 
     //public bool isLoaded = false;
 
@@ -40,15 +41,16 @@ public class Room : MonoBehaviour
 
     private void InitializeRoom()
     {
-        GameObject prefab = roomPool.roomPrefabs[Random.Range(0,roomPool.roomPrefabs.Length)];
+        roomContentIndex = GetRoomContentIndex();
+        GameObject prefab = roomPool.roomPrefabs[roomContentIndex];
         roomContent = Instantiate(prefab, transform.position, Quaternion.identity, transform);
         foreach (Transform child in roomContent.transform)
         {
-            BasicSpawner enemy = child.GetComponent<BasicSpawner>();
-            if (enemy != null)
+            RoomEntity entity = child.GetComponent<RoomEntity>();
+            if (entity != null)
             {
-                enemy.positionIndexX = positionIndexX;
-                enemy.positionIndexY = positionIndexY;
+                entity.positionIndexX = positionIndexX;
+                entity.positionIndexY = positionIndexY;
             }
         }
     }
@@ -57,6 +59,19 @@ public class Room : MonoBehaviour
     {
         //Debug.Log($"player enter {positionIndexX}, {positionIndexY}");
         LevelManager.Instance.PlayerEnteredRoom(positionIndexX, positionIndexY);
+    }
+
+    private int GetRoomContentIndex()
+    {
+        if (positionIndexX == LevelManager.Instance.currentX && positionIndexY == LevelManager.Instance.currentY)
+        {
+            return 0;
+        }
+        else
+        {
+            return Random.Range(0,roomPool.roomPrefabs.Length);
+        }
+        
     }
 
 /*     private bool IsPlayer()

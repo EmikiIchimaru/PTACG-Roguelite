@@ -135,6 +135,7 @@ public class LevelManager : Singleton<LevelManager>
     public void PlayerEnteredRoom(int playerX, int playerY)
     {
         if (isBossFight) { return; }
+        //if (currentX == playerX && currentY == playerY) { return; }
         HideLevel(playerX,playerY);
         currentX = playerX;
         currentY = playerY;

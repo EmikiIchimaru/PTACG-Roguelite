@@ -5,7 +5,9 @@ using UnityEngine;
 public class BasicMovement : MonoBehaviour
 {
  // Public variable to control movement speed
-    public float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float reflectVariance = 0.2f;
+    [SerializeField] private float speedVariance = 0.1f;
 
     // Private variable to store the movement direction
     private Vector2 moveDirection;
@@ -45,6 +47,10 @@ public class BasicMovement : MonoBehaviour
 
             // Reflect the direction based on the collision normal
             moveDirection = Vector2.Reflect(moveDirection, normal);
+
+            //Add randomness
+            moveDirection += new Vector2(Random.Range(-reflectVariance, reflectVariance), Random.Range(-reflectVariance, reflectVariance));
+            moveSpeed *= Random.Range(1-speedVariance, 1+speedVariance);
         }
         
     }

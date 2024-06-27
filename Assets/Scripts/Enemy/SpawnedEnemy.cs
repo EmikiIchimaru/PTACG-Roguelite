@@ -12,4 +12,9 @@ public class SpawnedEnemy : MonoBehaviour
             basicSpawner.RemoveFromList(gameObject);
         }
     }
+
+    void OnDisable()
+    {
+        Destroy(gameObject);
+    }
 }

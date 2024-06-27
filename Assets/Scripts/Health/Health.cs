@@ -122,14 +122,7 @@ public class Health : MonoBehaviour
             return;
         }
 
-        if (character != null)
-        {
-            collider2D.enabled = false;
-            spriteRenderer.enabled = false;
-            character.enabled = false;
-            controller.enabled = false;
-            
-        }
+        
 
         if (isBoss)
         {
@@ -140,6 +133,19 @@ public class Health : MonoBehaviour
         {
             DestroyObject();
             if (loot != null) { loot.DropLoot(); }
+        }
+        else
+        {
+            if (character != null)
+            {
+                gameObject.SetActive(false);
+                //collider2D.enabled = false;
+                //spriteRenderer?.enabled = false;
+                //character.enabled = false;
+                //controller.enabled = false;
+                //GetComponent<BasicMovement>() = false;
+                
+            }
         }
     }
     

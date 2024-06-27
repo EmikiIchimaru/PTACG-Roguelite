@@ -17,7 +17,7 @@ public static class Ability
             //Debug.Log($"{Quaternion.Euler(rotatedVector)}");
             //projectile.SetDirection(rotatedVector.normalized);
             float angle = i*360f/bulletCount;
-            Debug.Log(angle.ToString());
+            //Debug.Log(angle.ToString());
             projectile.SetAngle(angle);
         }
     }

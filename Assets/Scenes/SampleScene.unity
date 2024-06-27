@@ -2560,6 +2560,7 @@ MonoBehaviour:
   currentHealthText: {fileID: 1307282953}
   currentExperienceText: {fileID: 938097273}
   bossHealthBar: {fileID: 1383684597}
+  bossHealthFillBar: {fileID: 481894753}
   victoryScreen: {fileID: 1817894353}
   defeatScreen: {fileID: 1443521290}
   defaultHUD: {fileID: 117308556}
