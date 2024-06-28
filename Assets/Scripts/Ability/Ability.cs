@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ability : MonoBehaviour
+public abstract class Ability : MonoBehaviour
 {
     [SerializeField] protected float abilityCooltime;
     //[SerializeField] protected GameObject bulletPrefab; 

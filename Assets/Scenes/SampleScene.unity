@@ -1237,7 +1237,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 0000000037cc8cfb
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -2974,6 +2974,7 @@ GameObject:
   - component: {fileID: 1940298620}
   - component: {fileID: 1940298616}
   - component: {fileID: 1940298622}
+  - component: {fileID: 1940298623}
   - component: {fileID: 1940298621}
   - component: {fileID: 1940298619}
   - component: {fileID: 1940298614}
@@ -3262,7 +3263,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c95cd77a19309c74da2f4c294a92e93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityToUse: {fileID: -1873994192090698365, guid: af5c33ab276b7e14998f2d53ac5113cc, type: 3}
+  abilityToUse: {fileID: -4020530936608858386, guid: ce02432c47688c0449ae96b2602da088, type: 3}
+--- !u!114 &1940298623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940298609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306f267f50200c24d884b37b1edb0892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buffLibrary: {fileID: 11400000, guid: f7d68ef2a6d0e5043a240d0f86b0952b, type: 2}
+  playerBuffType: 3
+  duration: 0
+  speedMultiplier: 0
+  damagePerSecond: 0
 --- !u!1 &1948966918
 GameObject:
   m_ObjectHideFlags: 0

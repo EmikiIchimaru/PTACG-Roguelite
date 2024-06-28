@@ -6,16 +6,16 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] private GameObject healthBarPrefab;
-    [SerializeField] private Vector3 offSet = new Vector3(0f, 0.75f, 0f);
+    public Buff currentBuff;
     //[SerializeField] private int damageToApply = 1;
-    
     private Health health;
     private Image healthBar;
     private GameObject enemyBar;
     
     private float enemyCurrentHealth;
     private float enemyMaxHealth;
+    [SerializeField] private GameObject healthBarPrefab;
+    [SerializeField] private Vector3 offSet = new Vector3(0f, 0.75f, 0f);
 
     private void Start()
     {

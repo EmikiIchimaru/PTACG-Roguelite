@@ -55,6 +55,7 @@ public class ProjectileWeapon : Weapon
         Projectile projectile = projectilePooled.GetComponent<Projectile>();
         projectile.EnableProjectile();
 		projectile.ProjectileOwner = WeaponOwner;
+        projectile.buffDealer = buffDealer;
         projectile.damage = baseDamage * damageX;
 /* 
         // Spread

@@ -22,6 +22,7 @@ public class Projectile : MonoBehaviour
     public float Speed { get; set; }
 
     public Character ProjectileOwner { get; set; }
+    public BuffDealer buffDealer { get; set; }
 
     public bool hasTimedLife;
     
@@ -76,7 +77,18 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))		
         {
-			other.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);		
+            EnemyHealth enemy = other.gameObject.GetComponent<EnemyHealth>();
+			
+            if (buffDealer != null)	
+            {
+                if (buffDealer.playerBuffType != BuffType.None)
+                {
+                    buffDealer.DealBuff(enemy);
+                    Debug.Log("applying debuff!");
+                }
+            }
+
+            enemy.TakeDamage(damage);	
             //fx
             if (!canPierce) { DisableProjectile(); }
         }
@@ -87,6 +99,7 @@ public class Projectile : MonoBehaviour
             DisableProjectile();
         }
     }
+
 
    
     // Flips this projectile   

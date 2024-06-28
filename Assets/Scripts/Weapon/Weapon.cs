@@ -36,6 +36,7 @@ public class Weapon : MonoBehaviour
     public Character WeaponOwner { get; set; }
 
     public CharacterStats stats { get; set; }
+    public BuffDealer buffDealer { get; set; }
     public CharacterLook WeaponOwnerLook { get; set; }
     protected Vector2 weaponFacing { get { return GetWeaponFacing(); } }
 
@@ -94,7 +95,8 @@ public class Weapon : MonoBehaviour
     {
         WeaponOwner = owner; 
         WeaponOwnerLook = owner?.GetComponent<CharacterLook>();
-        stats = owner.GetComponent<CharacterStats>();
+        stats = owner?.GetComponent<CharacterStats>();
+        buffDealer = owner?.GetComponent<BuffDealer>();
         //controller = WeaponOwner.GetComponent<PCController>();
     }
 

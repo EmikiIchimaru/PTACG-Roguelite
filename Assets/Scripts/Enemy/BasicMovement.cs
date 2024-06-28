@@ -5,6 +5,7 @@ using UnityEngine;
 public class BasicMovement : MonoBehaviour
 {
  // Public variable to control movement speed
+    public Buff currentBuff { get; set; }
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float reflectVariance = 0.2f;
     [SerializeField] private float speedVariance = 0.1f;
@@ -34,7 +35,12 @@ public class BasicMovement : MonoBehaviour
     {
         //if (positionIndexX != LevelManager.Instance.currentX || positionIndexY != LevelManager.Instance.currentY) { return; }
         // Move the sprite by translating its position
-        transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+        float buffMultiplier = 1f;
+        if (currentBuff != null)
+        {
+            buffMultiplier = currentBuff.speedMultiplier;
+        }
+        transform.Translate(moveDirection * moveSpeed * buffMultiplier * Time.deltaTime);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
