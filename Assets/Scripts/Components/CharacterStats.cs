@@ -93,7 +93,7 @@ public class CharacterStats : MonoBehaviour
         RecalculateStats();
         Debug.Log("level up!");
         
-        if (level > 1 && level <= 10) { UpgradeManager.Instance.ShowCanvas(); }
+        if (level > 1 && UpgradeManager.Instance.upgradesRemaining >= 0) { UpgradeManager.Instance.ShowCanvas(); }
     }
 
     private void RecalculateStats()

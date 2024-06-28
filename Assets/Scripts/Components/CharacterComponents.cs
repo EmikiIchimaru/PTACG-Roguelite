@@ -40,12 +40,12 @@ public class CharacterComponents : MonoBehaviour
     // Here we get the necessary input we need to perform our actions    
     protected virtual void HandleInput()
     {
-        
     }
     
     // Here get the main input we need to control our character
     protected virtual void InternalInput()
-    {        
+    {
+        if (!GameManager.isPlayerEnabled) { return; }        
         if (character.CharacterType == Character.CharacterTypes.Player)
         {
             horizontalInput = Input.GetAxisRaw("Horizontal");

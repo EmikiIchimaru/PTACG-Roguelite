@@ -69,7 +69,7 @@ public class Room : MonoBehaviour
         }
         else
         {
-            return Random.Range(0,roomPool.roomPrefabs.Length);
+            return Random.Range(1,roomPool.roomPrefabs.Length);
         }
         
     }

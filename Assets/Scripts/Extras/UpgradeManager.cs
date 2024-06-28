@@ -6,14 +6,13 @@ using UnityEngine;
 
 public class UpgradeManager : Singleton<UpgradeManager>
 {
+    public int upgradesRemaining { get { return GetUpgradesRemaining(); } }
     [SerializeField] private GameObject upgradeCanvas;
-
     [SerializeField] private Character character;
     //[SerializeField] private Text upgradeTooltip;
-    
     [SerializeField] private UpgradeButton button0;
     [SerializeField] private UpgradeButton button1;
-    [SerializeField] private UpgradeButton button2;
+    //[SerializeField] private UpgradeButton button2;
 
     [SerializeField] private List<UpgradeSO> upgradesWeapon1 = new List<UpgradeSO>();
     [SerializeField] private List<UpgradeSO> upgradesWeapon2 = new List<UpgradeSO>();
@@ -26,12 +25,13 @@ public class UpgradeManager : Singleton<UpgradeManager>
 
     private List<List<UpgradeSO>> upgradesMegaList = new List<List<UpgradeSO>>();
     private List<ElementType> elementsPlayer = new List<ElementType>();
+    private List<ElementType> elementsRunPool = new List<ElementType>();
 
     private int playerUpgradeTierIndex;
 
     private UpgradeSO upgrade0;
     private UpgradeSO upgrade1;
-    private UpgradeSO upgrade2;
+    //private UpgradeSO upgrade2;
 
     private bool isUpgrading;
 
@@ -44,16 +44,17 @@ public class UpgradeManager : Singleton<UpgradeManager>
 
     void Start()
     {
+        SetupElementsRunPool();
         playerUpgradeTierIndex = 1;
-        elementsPlayer.Add(ElementType.None);
         ExpandUpgradeList();
     }
 
     public void ShowCanvas()
     {
         upgradeCanvas.SetActive(true);
-        isUpgrading = true;
-        Invoke("UpgradePause",1f);
+        
+        GameManager.isPlayerEnabled = false;
+        Invoke("SetIsUpgrading",1f);
         upgradeCanvas.GetComponent<Animator>().SetTrigger("StartLoad");
         //Cursor.visible = true;
         
@@ -66,10 +67,11 @@ public class UpgradeManager : Singleton<UpgradeManager>
     {
         upgradeCanvas.SetActive(false);
         isUpgrading = false;
+        GameManager.isPlayerEnabled = true;
         //Cursor.visible = false;
         //Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1f;
-        if (characterStats.level-1 >= upgradesMegaList.Count)
+        if (upgradesRemaining <= 0)
         {
             ExpandUpgradeList();
         }
@@ -80,10 +82,10 @@ public class UpgradeManager : Singleton<UpgradeManager>
         List<UpgradeSO> tempUpgrades = Utility.ShuffleUpgradeList(upgrades);
         upgrade0 = tempUpgrades[0];
         upgrade1 = tempUpgrades[1];
-        upgrade2 = tempUpgrades[2];
+        //upgrade2 = tempUpgrades[2];
         button0.LoadUpgradeInformation(tempUpgrades[0]);
         button1.LoadUpgradeInformation(tempUpgrades[1]);
-        button2.LoadUpgradeInformation(tempUpgrades[2]);
+        //button2.LoadUpgradeInformation(tempUpgrades[2]);
     }
 
     private void ApplyUpgrade(UpgradeSO upgrade)
@@ -135,7 +137,7 @@ public class UpgradeManager : Singleton<UpgradeManager>
 
     private void InitializeUpgradeList2()
     {
-        if (elementsPlayer.Count > 1) { elementsPlayer.Remove(ElementType.None); }
+        //if (elementsPlayer.Count > 1) { elementsPlayer.Remove(ElementType.None); }
         upgradesWeapon2 = upgradesWeapon2.Where(upgrade => elementsPlayer.Contains(upgrade.elementType)).ToList();
         upgradesMegaList.Add(upgradesWeapon2);
         upgradesMegaList.Add(upgradesStats2);
@@ -146,6 +148,14 @@ public class UpgradeManager : Singleton<UpgradeManager>
     {
         upgradesWeapon3 = upgradesWeapon3.Where(upgrade => elementsPlayer.Contains(upgrade.elementType)).ToList();
         upgradesMegaList.Add(upgradesWeapon3);
+        playerUpgradeTierIndex++;
+    }
+
+    private void SetupElementsRunPool()
+    {
+        elementsRunPool = new List<ElementType>{ ElementType.Red, ElementType.Yellow, ElementType.Green, ElementType.Blue, ElementType.Pink};
+        int randomBan = Random.Range(0, elementsRunPool.Count);
+        elementsRunPool.RemoveAt(randomBan);
     }
 
     private void AddElement(ElementType elementType)
@@ -159,6 +169,7 @@ public class UpgradeManager : Singleton<UpgradeManager>
     public void SelectUpgrade0()
     {
         //Debug.Log("upgrade 0");
+        if (!isUpgrading) { return; }
         ApplyUpgrade(upgrade0);
         HideCanvas();
     }
@@ -166,20 +177,31 @@ public class UpgradeManager : Singleton<UpgradeManager>
     public void SelectUpgrade1()
     {
         //Debug.Log("upgrade 1");
+        if (!isUpgrading) { return; }
         ApplyUpgrade(upgrade1);
         HideCanvas();
     }
     
-    public void SelectUpgrade2()
+    /* public void SelectUpgrade2()
     {
         //Debug.Log("upgrade 2");
         ApplyUpgrade(upgrade2);
         HideCanvas();
+    } */
+
+    private int GetUpgradesRemaining()
+    {
+        Debug.Log("upgrades remaining: " + (upgradesMegaList.Count - characterStats.level + 1).ToString());
+        return upgradesMegaList.Count - characterStats.level + 1;
     }
     
-    private void UpgradePause()
+    private void SetIsUpgrading()
     {
-        if (isUpgrading) {Time.timeScale = 0f;}
+        if (!isUpgrading) 
+        {
+            isUpgrading = true;
+            Time.timeScale = 0f;
+        }
     }
 
 }

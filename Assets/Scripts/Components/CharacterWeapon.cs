@@ -25,6 +25,7 @@ public class CharacterWeapon : CharacterComponents
 
     protected override void HandleInput()
     {
+        if (!GameManager.isPlayerEnabled) { return; }
         if (character.CharacterType == Character.CharacterTypes.Player)
         {
             if (Input.GetMouseButton(0))

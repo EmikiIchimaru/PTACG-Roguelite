@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-
+    public static bool isPlayerEnabled;
     [SerializeField] private Texture2D cursorTexture;
 
     public bool isPlayerAlive;
@@ -19,9 +19,9 @@ public class GameManager : Singleton<GameManager>
     {
         Health.OnPlayerDeath += HandleOnPlayerDeath;
         Health.OnBossDeath += HandleOnBossDeath;
+        isPlayerEnabled = true;
         isPlayerAlive = true;
         isBossAlive = true;
-        
     }
 
     public void RestartGame()
