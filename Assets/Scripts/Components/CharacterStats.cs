@@ -34,8 +34,8 @@ public class CharacterStats : MonoBehaviour
     public int experience;
     private int xpToNextLevel;
     private int maxLevel = 10;
-    private float scaleFinal;
-
+    
+    public float scaleFinal;
     public float healthBaseBonus;
     public float healthPercentBonus;
     public float attackDamageBaseBonus;

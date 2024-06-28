@@ -1,2 +1,2 @@
 
-    public enum BuffType { None, Slow, Fast, Fire, Freeze }
+    public enum BuffType { None, Fire, Shock, Toxic, Frost, Psychic }

@@ -573,6 +573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorTexture: {fileID: 2800000, guid: 8c2c34e9646c37f4d90a23cfec96c880, type: 3}
+  playerCharacter: {fileID: 1940298613}
   stats: {fileID: 1940298620}
   isPlayerAlive: 0
   isBossAlive: 0
@@ -3213,10 +3214,10 @@ MonoBehaviour:
   attackDamagePerLevel: 0
   attackSpeedBase: 100
   attackSpeedPerLevel: 3
-  abilityHasteBase: 100
+  abilityHasteBase: 0
   abilityHastePerLevel: 5
-  abilityPowerBase: 1
-  abilityPowerPerLevel: 0.1
+  abilityPowerBase: 0
+  abilityPowerPerLevel: 5
   healthFinal: 0
   attackDamageFinal: 0
   attackSpeedFinal: 0
@@ -3224,6 +3225,7 @@ MonoBehaviour:
   abilityPowerFinal: 0
   level: 0
   experience: 0
+  scaleFinal: 0
   healthBaseBonus: 0
   healthPercentBonus: 0
   attackDamageBaseBonus: 0
@@ -3263,7 +3265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c95cd77a19309c74da2f4c294a92e93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityToUse: {fileID: -4020530936608858386, guid: ce02432c47688c0449ae96b2602da088, type: 3}
+  abilityToUse: {fileID: 5131192218468392456, guid: 475ba41bd754b4b40ab7fc8df25b0797, type: 3}
 --- !u!114 &1940298623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3277,10 +3279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffLibrary: {fileID: 11400000, guid: f7d68ef2a6d0e5043a240d0f86b0952b, type: 2}
-  playerBuffType: 3
-  duration: 0
-  speedMultiplier: 0
-  damagePerSecond: 0
+  playerBuffType: 5
 --- !u!1 &1948966918
 GameObject:
   m_ObjectHideFlags: 0

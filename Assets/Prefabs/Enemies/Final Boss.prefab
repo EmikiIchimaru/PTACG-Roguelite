@@ -484,8 +484,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 460ab61ccbb45544e9c3230a57ce86c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentBuff: {fileID: 0}
   healthBarPrefab: {fileID: 0}
-  offSet: {x: 0, y: 1, z: 0}
+  offSetScale: 1
 --- !u!114 &962195383380959021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,6 +513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85002fdcb28a70f4eb048bb71ca9fdc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shouldChasePlayer: 0
   moveSpeed: 4
   reflectVariance: 0.2
   speedVariance: 0.1
@@ -569,7 +571,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.5
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}

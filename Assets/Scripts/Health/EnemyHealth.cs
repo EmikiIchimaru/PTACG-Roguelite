@@ -15,7 +15,7 @@ public class EnemyHealth : MonoBehaviour
     private float enemyCurrentHealth;
     private float enemyMaxHealth;
     [SerializeField] private GameObject healthBarPrefab;
-    [SerializeField] private Vector3 offSet = new Vector3(0f, 0.75f, 0f);
+    [SerializeField] private float offSetScale = 1f;
 
     private void Start()
     {
@@ -35,7 +35,9 @@ public class EnemyHealth : MonoBehaviour
         {
             if (healthBarPrefab != null)
             {
-                enemyBar = Instantiate(healthBarPrefab, offSet, Quaternion.identity);
+                enemyBar = Instantiate(healthBarPrefab, new Vector2(0f, offSetScale), Quaternion.identity);
+                enemyBar.transform.localScale *= offSetScale;
+                //enemyBar.transform.localScale = new Vector2(offSetScale, offSetScale);
                 enemyBar.transform.SetParent(transform, false);
                 healthBar = enemyBar.transform.GetChild(0).GetComponent<Image>();
             }

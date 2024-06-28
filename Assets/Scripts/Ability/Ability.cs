@@ -16,7 +16,7 @@ public abstract class Ability : MonoBehaviour
 
     void Update()
     {
-        if (internalCooldown > 0f) { internalCooldown -= (Time.deltaTime * 0.01f * stats.abilityHasteFinal); }
+        if (internalCooldown > 0f) { internalCooldown -= (Time.deltaTime * (1f + 0.01f * stats.abilityHasteFinal)); }
         UIManager.Instance.UpdateAbilityCooltime(percentageCooltime);
     }
 

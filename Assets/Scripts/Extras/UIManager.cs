@@ -87,7 +87,7 @@ public class UIManager : Singleton<UIManager>
         if (victoryScreen != null)
         {
             HideHUD();
-            GameManager.isPlayerEnabled = false;
+            GameManager.isPlayerControlEnabled = false;
             victoryScreen.SetActive(true);
             Debug.Log("victory");
         }
@@ -98,7 +98,7 @@ public class UIManager : Singleton<UIManager>
         if (defeatScreen != null)
         {
             HideHUD();
-            GameManager.isPlayerEnabled = false;
+            GameManager.isPlayerControlEnabled = false;
             defeatScreen.SetActive(true);
             Debug.Log("defeat");
         }

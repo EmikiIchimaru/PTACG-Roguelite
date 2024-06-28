@@ -38,6 +38,7 @@ public class CharController : MonoBehaviour
     private void MoveCharacter()
     {    
         //Vector2 currentMovePosition = myRigidbody2D.position + CurrentMovement * Time.fixedDeltaTime;
+        if(!GameManager.isPlayerMovementEnabled) { return; }
         myRigidbody2D.AddForce(CurrentMovement * Time.fixedDeltaTime);
 	}
 

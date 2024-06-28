@@ -12,10 +12,14 @@ public class AbilitySpinSpray : Ability
     {
         StopCoroutine("SpinSpray");
         StartCoroutine(SpinSpray(stats.attackSpeedFinal));
+        
     }
 
     private IEnumerator SpinSpray(float aspd)
     {
+        //GameManager.isPlayerControlEnabled = false;
+        //GameManager.isPlayerMovementEnabled = false;
+
         float interval = 5f / aspd;
 
         for (int i = 0; i < bulletCount; i++)
@@ -26,6 +30,7 @@ public class AbilitySpinSpray : Ability
             AbilityCreator.ShootSP(AbilityOwner, transform.position, baseDamage * stats.abilityPowerFinal, angle+180f, bulletPrefab);
             yield return new WaitForSeconds(interval);
         }
-        
+        //GameManager.isPlayerControlEnabled = true;
+        //GameManager.isPlayerMovementEnabled = true;
     }
 }

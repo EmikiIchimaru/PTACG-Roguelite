@@ -4,9 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    public static bool isPlayerEnabled;
+    public static bool isPlayerControlEnabled;
+    public static bool isPlayerMovementEnabled;
     [SerializeField] private Texture2D cursorTexture;
 
+    public Character playerCharacter;
     public CharacterStats stats;
 
     public bool isPlayerAlive;
@@ -22,7 +24,8 @@ public class GameManager : Singleton<GameManager>
     {
         Health.OnPlayerDeath += HandleOnPlayerDeath;
         Health.OnBossDeath += HandleOnBossDeath;
-        isPlayerEnabled = true;
+        isPlayerControlEnabled = true;
+        isPlayerMovementEnabled = true;
         isPlayerAlive = true;
         isBossAlive = true;
         bossCountdown = Random.Range(6,9);

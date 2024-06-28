@@ -8,6 +8,6 @@ public class AbilityAreaDamage : Ability
     [SerializeField] private float radius;
     protected override void CastAbility()
     {
-        AbilityCreator.AreaDamage(AbilityOwner, transform.position, baseDamage * stats.abilityPowerFinal, radius);
+        AbilityCreator.AreaDamage(AbilityOwner, transform.position, baseDamage * (1f + 0.03f * stats.abilityPowerFinal), radius);
     }
 }

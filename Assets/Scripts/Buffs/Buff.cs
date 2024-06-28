@@ -5,7 +5,8 @@ public class Buff : MonoBehaviour
     public BuffType type;
     public float duration;
     public float speedMultiplier;
-    public float damagePerSecond;
+    public float damagePerTick;
+    public float damageInterval;
     
     private EnemyHealth enemy;
     private BasicMovement enemyMovement;
@@ -25,17 +26,16 @@ public class Buff : MonoBehaviour
         enemy = newEnemy;
         enemyMovement = newEnemy.GetComponent<BasicMovement>();
         if (enemyMovement != null) { enemyMovement.currentBuff = this; }
-        InvokeRepeating("BuffDealDamage", 0f, 0.5f);
+        InvokeRepeating("BuffDealDamage", damageInterval, damageInterval);
     }
 
     private void BuffDealDamage()
     {
-        enemy.TakeDamage(0.5f * damagePerSecond);
+        enemy.TakeDamage(damagePerTick);
     }
 
     public void RemoveBuff()
     {
-       
         enemy.currentBuff = null;
         Destroy(gameObject);
     }

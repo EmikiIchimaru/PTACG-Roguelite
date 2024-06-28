@@ -6,46 +6,72 @@ public class BasicMovement : MonoBehaviour
 {
  // Public variable to control movement speed
     public Buff currentBuff { get; set; }
+    [SerializeField] private bool shouldChasePlayer;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float reflectVariance = 0.2f;
     [SerializeField] private float speedVariance = 0.1f;
 
+    private Rigidbody2D rb;
+    private DetectPlayer detectPlayer;
     // Private variable to store the movement direction
     private Vector2 moveDirection;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Generate a random direction
-        float moveX = Random.Range(-1f, 1f);
-        float moveY = Random.Range(-1f, 1f);
+        rb = GetComponent<Rigidbody2D>();
 
-        // Create a Vector3 for movement direction
-        moveDirection = new Vector2(moveX, moveY);
-
-        // Normalize the direction vector to ensure consistent movement speed
-        if (moveDirection.magnitude > 1)
+        if (shouldChasePlayer)
         {
-            moveDirection.Normalize();
+            detectPlayer = GetComponent<DetectPlayer>();
         }
+        else
+        {
+            float moveX = Random.Range(-1f, 1f);
+            float moveY = Random.Range(-1f, 1f);
+
+            // Create a Vector3 for movement direction
+            moveDirection = new Vector2(moveX, moveY);
+
+            // Normalize the direction vector to ensure consistent movement speed
+            if (moveDirection.magnitude > 1)
+            {
+                moveDirection.Normalize();
+            }
+        }      
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //if (positionIndexX != LevelManager.Instance.currentX || positionIndexY != LevelManager.Instance.currentY) { return; }
         // Move the sprite by translating its position
+        if (shouldChasePlayer) 
+        { 
+            if (detectPlayer.isPlayerInRange)
+            {
+                moveDirection = GameManager.Instance.playerCharacter.transform.position - transform.position;
+
+                // Normalize the direction vector to ensure consistent movement speed
+                if (moveDirection.magnitude > 1)
+                {
+                    moveDirection.Normalize();
+                }
+            }
+        }
         float buffMultiplier = 1f;
         if (currentBuff != null)
         {
             buffMultiplier = currentBuff.speedMultiplier;
         }
-        transform.Translate(moveDirection * moveSpeed * buffMultiplier * Time.deltaTime);
+        rb.AddForce(100f * moveDirection * moveSpeed * buffMultiplier * Time.fixedDeltaTime);
+        //transform.Translate(moveDirection * moveSpeed * buffMultiplier * Time.deltaTime);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Environment"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Environment") || 
+            collision.gameObject.layer == LayerMask.NameToLayer("Invisible") )
         {
             // Get the contact point and normal
             ContactPoint2D contact = collision.contacts[0];

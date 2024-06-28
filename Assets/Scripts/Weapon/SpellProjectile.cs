@@ -6,7 +6,8 @@ public class SpellProjectile : MonoBehaviour
 {
     public float damage;
     [SerializeField] private float speed = 100f;
-    [SerializeField] private float acceleration = 0f;
+    //[SerializeField] private float acceleration = 0f;
+    [SerializeField] private bool canPierce = false;
 
     // Returns the direction of this projectile    
     public Vector2 Direction { get; set; }
@@ -17,6 +18,7 @@ public class SpellProjectile : MonoBehaviour
     // Returns the speed of the projectile    
     public float Speed { get; set; }
     public Character ProjectileOwner { get; set; }
+    public BuffDealer buffDealer { get; set; }
 
     //public bool hasTimedLife;
     private float bulletDuration = 5f;
@@ -59,23 +61,28 @@ public class SpellProjectile : MonoBehaviour
         movement = Direction * Speed * Time.fixedDeltaTime;
         myRigidbody2D.MovePosition(myRigidbody2D.position + movement);
 
-        Speed += acceleration * Time.deltaTime;
+        //Speed += acceleration * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))		
         {
-			other.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);		
+            EnemyHealth enemy = other.gameObject.GetComponent<EnemyHealth>();
+			
+            if (buffDealer != null)	
+            {
+                if (buffDealer.playerBuffType != BuffType.None)
+                {
+                    buffDealer.DealBuff(enemy);
+                    Debug.Log("applying debuff!");
+                }
+            }
+
+            enemy.TakeDamage(damage);	
             //fx
-            DestroyProjectile();
+            if (!canPierce) { DestroyProjectile(); }
         }
-        /* if (other.CompareTag("Wall"))		
-        {
-			//other.gameObject.GetComponent<Health>().TakeDamage(bulletDamage);		
-            //fx
-            DestroyProjectile();
-        } */
     }
   
 /*     // Set the direction and rotation in order to move  

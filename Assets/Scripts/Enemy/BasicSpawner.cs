@@ -28,6 +28,9 @@ public class BasicSpawner : MonoBehaviour
         if (spawns.Count > maxChildren) { return; } 
         GameObject childGO = Instantiate(prefab, transform.position, Quaternion.identity, transform.parent);
         childGO.GetComponent<SpawnedEnemy>().basicSpawner = this;
+        RoomEntity childRoomEntity = childGO.GetComponent<RoomEntity>();
+        childRoomEntity.positionIndexX = roomEntity.positionIndexX;
+        childRoomEntity.positionIndexY = roomEntity.positionIndexY;
         spawns.Add(childGO);
     }
 

@@ -45,7 +45,7 @@ public class CharacterComponents : MonoBehaviour
     // Here get the main input we need to control our character
     protected virtual void InternalInput()
     {
-        if (!GameManager.isPlayerEnabled) { return; }        
+        if (!GameManager.isPlayerControlEnabled) { return; }        
         if (character.CharacterType == Character.CharacterTypes.Player)
         {
             horizontalInput = Input.GetAxisRaw("Horizontal");

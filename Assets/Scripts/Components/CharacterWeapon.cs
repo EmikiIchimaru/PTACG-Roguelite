@@ -25,7 +25,7 @@ public class CharacterWeapon : CharacterComponents
 
     protected override void HandleInput()
     {
-        if (!GameManager.isPlayerEnabled) { return; }
+        if (!GameManager.isPlayerControlEnabled) { return; }
         if (character.CharacterType == Character.CharacterTypes.Player)
         {
             if (Input.GetMouseButton(0))
@@ -90,6 +90,7 @@ public class CharacterWeapon : CharacterComponents
         }
 
         CurrentWeapon = Instantiate(weapon, transform.position, transform.rotation);
+        CurrentWeapon.transform.localScale = new Vector3(stats.scaleFinal,stats.scaleFinal,1f);
         CurrentWeapon.transform.parent = transform;
         CurrentWeapon.SetOwner(character);     
 

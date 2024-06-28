@@ -9,6 +9,7 @@ public static class AbilityCreator
         GameObject bulletGO = Object.Instantiate(bulletPrefab, position, Quaternion.identity);
         SpellProjectile projectile = bulletGO.GetComponent<SpellProjectile>();
         projectile.ProjectileOwner = character;
+        projectile.buffDealer = character.GetComponent<BuffDealer>();
         projectile.damage = damage;
         projectile.SetAngle(angle);
     }
@@ -24,6 +25,15 @@ public static class AbilityCreator
             {
                 // Get the enemy script attached to the collider
                 EnemyHealth enemyHealth = hitCollider.GetComponent<EnemyHealth>();
+                BuffDealer buffDealer = character.GetComponent<BuffDealer>();
+                if (buffDealer != null)	
+                {
+                    if (buffDealer.playerBuffType != BuffType.None)
+                    {
+                        buffDealer.DealBuff(enemyHealth);
+                        Debug.Log("applying debuff!");
+                    }
+                }
                 enemyHealth?.TakeDamage(damage);
                 
             }
@@ -34,12 +44,8 @@ public static class AbilityCreator
     {
         for (int i = 0; i < bulletCount; i++)
         {
-            GameObject bulletGO = Object.Instantiate(bulletPrefab, position, Quaternion.identity);
-            SpellProjectile projectile = bulletGO.GetComponent<SpellProjectile>();
-            projectile.ProjectileOwner = character;
-            projectile.damage = damage;
             float angle = i*360f/bulletCount;
-            projectile.SetAngle(angle);
+            ShootSP(character, position, damage, angle, bulletPrefab);
         }
     }
 }

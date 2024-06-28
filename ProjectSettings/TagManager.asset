@@ -19,8 +19,8 @@ TagManager:
   - Environment
   - Enemy
   - Collectable
-  - 
-  - 
+  - Boundary
+  - Invisible
   - 
   - 
   - 

@@ -53,7 +53,7 @@ public class UpgradeManager : Singleton<UpgradeManager>
     {
         upgradeCanvas.SetActive(true);
         
-        GameManager.isPlayerEnabled = false;
+        GameManager.isPlayerControlEnabled = false;
         Invoke("SetIsUpgrading",1f);
         upgradeCanvas.GetComponent<Animator>().SetTrigger("StartLoad");
         //Cursor.visible = true;
@@ -67,7 +67,7 @@ public class UpgradeManager : Singleton<UpgradeManager>
     {
         upgradeCanvas.SetActive(false);
         isUpgrading = false;
-        GameManager.isPlayerEnabled = true;
+        GameManager.isPlayerControlEnabled = true;
         //Cursor.visible = false;
         //Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1f;

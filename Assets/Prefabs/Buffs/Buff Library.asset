@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffs:
   - {fileID: -6877805532216020090, guid: d32c25f49ec0c9d4582ddc5390cff433, type: 3}
+  - {fileID: -6877805532216020090, guid: 15bc84e8e63196c4f8907a41a8c33a67, type: 3}
+  - {fileID: -6877805532216020090, guid: 276c6b4b508fdc5408b335bbbeb56559, type: 3}
+  - {fileID: -6877805532216020090, guid: 24f9104bfb5bad24ba51cdf155c50e30, type: 3}
+  - {fileID: -6877805532216020090, guid: 0cf6dfd301b4deb46be4c8bceb1ed616, type: 3}

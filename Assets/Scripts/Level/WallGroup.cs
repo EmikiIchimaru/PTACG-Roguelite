@@ -6,6 +6,7 @@ public class WallGroup : MonoBehaviour
 {
     
     [SerializeField] private GameObject blockPrefab;
+    [SerializeField] private GameObject invisPrefab;
     [SerializeField] private GameObject borderPrefab;
 
     public bool isBorder;
@@ -45,12 +46,14 @@ public class WallGroup : MonoBehaviour
         if (door == -1) { door = Random.Range(3, blocksPerRoom-2); }
         Vector3 wallVector = (isHorizontal)?new Vector2(blockSize,0f): new Vector2(0f, blockSize);
         bool isWalled = (Random.Range(0f,1f) > wallChance);
+        
         for (int i = 0; i < blocksPerRoom; i++) 
         {
+            GameObject buildingBlock = blockPrefab;
             if (!isHorizontal && i == 0) { continue; }
             if (positionIndexX == 0 && i == 0) { continue; }
-            if ((i == door) && isWalled) { continue; }
-            GameObject wallGO = Instantiate(blockPrefab, new Vector3(transform.position.x,transform.position.y,0f) + i * wallVector, Quaternion.identity, transform);
+            if ((i == door) && isWalled) { buildingBlock = invisPrefab; }
+            GameObject wallGO = Instantiate(buildingBlock, new Vector3(transform.position.x,transform.position.y,0f) + i * wallVector, Quaternion.identity, transform);
             wallGO.transform.localScale = new Vector2(blockSize, blockSize);
             //Debug.Log("gen inner wall");
             //wallGO.GetComponent<WallBlock>().SetupBlock(isEdge);

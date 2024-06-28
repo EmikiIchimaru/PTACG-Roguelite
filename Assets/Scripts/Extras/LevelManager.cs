@@ -222,7 +222,12 @@ public class LevelManager : Singleton<LevelManager>
     {
         List<int> horiWallsIndices = new List<int>();
     
-        if (indexY > 1) { horiWallsIndices.Add(XYToWallNumber(indexX, indexY - 1, true)); }
+        if (indexY > 1)
+        { 
+            horiWallsIndices.Add(XYToWallNumber(indexX, indexY - 1, true)); 
+            if (indexX < levelSize - 1) { horiWallsIndices.Add(XYToWallNumber(indexX + 1, indexY - 1, true)); }
+            if (indexX > 0) { horiWallsIndices.Add(XYToWallNumber(indexX - 1, indexY - 1, true)); }
+        }
         if (indexY > 0) 
         { 
             horiWallsIndices.Add(XYToWallNumber(indexX, indexY, true)); 
@@ -235,7 +240,12 @@ public class LevelManager : Singleton<LevelManager>
             if (indexX < levelSize - 1) { horiWallsIndices.Add(XYToWallNumber(indexX + 1, indexY + 1, true)); }
             if (indexX > 0) { horiWallsIndices.Add(XYToWallNumber(indexX - 1, indexY + 1, true)); } 
         }
-        if (indexY < levelSize - 2) { horiWallsIndices.Add(XYToWallNumber(indexX, indexY + 2, true)); }
+        if (indexY < levelSize - 2) 
+        { 
+            horiWallsIndices.Add(XYToWallNumber(indexX, indexY + 2, true));
+            if (indexX < levelSize - 1) { horiWallsIndices.Add(XYToWallNumber(indexX + 1, indexY + 2, true)); }
+            if (indexX > 0) { horiWallsIndices.Add(XYToWallNumber(indexX - 1, indexY + 2, true)); }
+        }
 
         return horiWallsIndices;  
     }
@@ -244,7 +254,12 @@ public class LevelManager : Singleton<LevelManager>
     {
         List<int> vertWallsIndices = new List<int>();
     
-        if (indexX > 1) { vertWallsIndices.Add(XYToWallNumber(indexX - 1, indexY, false)); }
+        if (indexX > 1) 
+        { 
+            vertWallsIndices.Add(XYToWallNumber(indexX - 1, indexY, false)); 
+            if (indexY < levelSize - 1) { vertWallsIndices.Add(XYToWallNumber(indexX - 1, indexY + 1, false)); }
+            if (indexY > 0) { vertWallsIndices.Add(XYToWallNumber(indexX - 1, indexY - 1, false)); }
+        }
         if (indexX > 0) 
         { 
             vertWallsIndices.Add(XYToWallNumber(indexX, indexY, false)); 
@@ -257,7 +272,12 @@ public class LevelManager : Singleton<LevelManager>
             if (indexY < levelSize - 1) { vertWallsIndices.Add(XYToWallNumber(indexX + 1, indexY + 1, false)); }
             if (indexY > 0) { vertWallsIndices.Add(XYToWallNumber(indexX + 1, indexY - 1, false)); } 
         }
-        if (indexX < levelSize - 2) { vertWallsIndices.Add(XYToWallNumber(indexX + 2, indexY, false)); }
+        if (indexX < levelSize - 2) 
+        { 
+            vertWallsIndices.Add(XYToWallNumber(indexX + 2, indexY, false)); 
+            if (indexY < levelSize - 1) { vertWallsIndices.Add(XYToWallNumber(indexX + 2, indexY + 1, false)); }
+            if (indexY > 0) { vertWallsIndices.Add(XYToWallNumber(indexX + 2, indexY - 1, false)); }
+        }
 
         return vertWallsIndices;  
     }
