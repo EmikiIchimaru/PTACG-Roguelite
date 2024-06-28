@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterMovement : CharacterComponents
 {
-    [SerializeField] private float walkSpeed;
+    [SerializeField] private float baseMoveSpeed;
 
     // A property is a method to store / return a value. In this case, its to controls our current move speed
     public float MoveSpeed { get; set; }
@@ -15,7 +15,7 @@ public class CharacterMovement : CharacterComponents
     protected override void Start()
     {
         base.Start(); 
-        MoveSpeed = walkSpeed;		       
+        MoveSpeed = 100f * baseMoveSpeed;		       
     } 
 
     protected override void HandleAbility()
@@ -57,7 +57,7 @@ public class CharacterMovement : CharacterComponents
     // Resets our speed from the run speed to the walk speed
     public void ResetSpeed()
     {
-        MoveSpeed = walkSpeed;
+        MoveSpeed = baseMoveSpeed;
     }
 	
 	public void SetHorizontal(float value)

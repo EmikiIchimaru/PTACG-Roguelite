@@ -7,8 +7,9 @@ public class Room : MonoBehaviour
     //public LevelManager levelManager;
 
     public RoomPrefabSO roomPool;
+    [SerializeField] private GameObject bossRoomPrefab;
+    
     public int roomNumber;
-
     public int positionIndexX;
     public int positionIndexY;
 
@@ -37,7 +38,12 @@ public class Room : MonoBehaviour
         if (roomContent == null) { return; }
         roomContent.SetActive(false);
     }
-    
+
+    public void ReplaceWithBossRoom()
+    {
+        Destroy(roomContent);
+        roomContent = Instantiate(bossRoomPrefab, transform.position, Quaternion.identity, transform);
+    }
 
     private void InitializeRoom()
     {

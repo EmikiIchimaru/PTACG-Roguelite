@@ -10,16 +10,13 @@ public class WallGroup : MonoBehaviour
 
     public bool isBorder;
     public bool isHorizontal;
-
     public int positionIndexX;
     public int positionIndexY;
 
-    public int blocksPerRoom;
-    public float wallChance;
-    public float wallSize;
-
-    public float levelSize;
-    
+    [HideInInspector] public int blocksPerRoom;
+    [HideInInspector] public float wallChance;
+    [HideInInspector] public float blockSize;
+    [HideInInspector] public float levelSize;
 
     private int door = -1;
 
@@ -27,7 +24,7 @@ public class WallGroup : MonoBehaviour
     {
         blocksPerRoom = LevelManager.Instance.blocksPerRoom;
         wallChance = LevelManager.Instance.wallChance;
-        wallSize = LevelManager.Instance.wallSize;
+        blockSize = LevelManager.Instance.blockSize;
     } */
 
     public void GenerateWall()
@@ -46,7 +43,7 @@ public class WallGroup : MonoBehaviour
     private void GenerateInnerWall()
     {
         if (door == -1) { door = Random.Range(3, blocksPerRoom-2); }
-        Vector3 wallVector = (isHorizontal)?new Vector2(wallSize,0f): new Vector2(0f, wallSize);
+        Vector3 wallVector = (isHorizontal)?new Vector2(blockSize,0f): new Vector2(0f, blockSize);
         bool isWalled = (Random.Range(0f,1f) > wallChance);
         for (int i = 0; i < blocksPerRoom; i++) 
         {
@@ -54,7 +51,7 @@ public class WallGroup : MonoBehaviour
             if (positionIndexX == 0 && i == 0) { continue; }
             if ((i == door) && isWalled) { continue; }
             GameObject wallGO = Instantiate(blockPrefab, new Vector3(transform.position.x,transform.position.y,0f) + i * wallVector, Quaternion.identity, transform);
-            wallGO.transform.localScale = new Vector2(wallSize, wallSize);
+            wallGO.transform.localScale = new Vector2(blockSize, blockSize);
             //Debug.Log("gen inner wall");
             //wallGO.GetComponent<WallBlock>().SetupBlock(isEdge);
         }
@@ -62,13 +59,13 @@ public class WallGroup : MonoBehaviour
 
     private void GenerateOuterWall()
     {
-        Vector3 wallVector = (isHorizontal)?new Vector2(wallSize,0f): new Vector2(0f, wallSize);
+        Vector3 wallVector = (isHorizontal)?new Vector2(blockSize,0f): new Vector2(0f, blockSize);
         int extend = GetExtend();
         for (int i = 0; i < blocksPerRoom + extend; i++) 
         {
             if (!isHorizontal && i == 0) { continue; }
             GameObject wallGO = Instantiate(borderPrefab, new Vector3(transform.position.x,transform.position.y,0f) + i * wallVector, Quaternion.identity, transform);
-            wallGO.transform.localScale = new Vector2(wallSize, wallSize);
+            wallGO.transform.localScale = new Vector2(blockSize, blockSize);
             //Debug.Log("gen outer wall");
             //wallGO.GetComponent<WallBlock>().SetupBlock(isEdge);
         }

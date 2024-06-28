@@ -4,61 +4,37 @@ using UnityEngine;
 
 public class CharacterAbility : CharacterComponents
 {
-    [SerializeField] protected float abilityCooltime;
-    [SerializeField] private GameObject bulletPrefab; 
-    private Vector3 currentAimAngle;
-    private Vector3 direction;
+    
+    public Ability currentAbility { get; set; }
     private Camera mainCamera;
-    private Vector3 mousePosition;
-    private float internalCooldown = 0f;
-
-    public float percentageCooltime { get { return GetPercentageCooltime(); } }
+    [SerializeField] private Ability abilityToUse;
 
     protected override void Start()
     {
         base.Start(); 	  
-        mainCamera = Camera.main;       
+        mainCamera = Camera.main; 
+        EquipAbility(abilityToUse);      
     } 
 
     protected override void HandleAbility()
     {
         base.HandleAbility();
-        if (internalCooldown > 0f) { internalCooldown -= (Time.deltaTime * 0.01f * stats.abilityHasteFinal); }
-        UIManager.Instance.UpdateAbilityCooltime(percentageCooltime);
-        if (bAbilityInput) { RequestAbilityCast(); }
+
+        if (bAbilityInput) 
+        { 
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0;
+            currentAbility.RequestAbilityCast(mousePosition); 
+        }
         //UpdateAnimations();	       
     } 
 
-    private void GetMousePosition()
+    public void EquipAbility(Ability ability)
     {
-        // Get the mouse position in world coordinates
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        currentAbility = Instantiate(ability, transform.position, transform.rotation);
+        currentAbility.transform.parent = transform;
+        currentAbility.SetOwner(character);     
 
-        // Ensure the z coordinate is zero (since we're in 2D)
-        mousePosition.z = 0;
-
-        // Calculate the direction from the character to the mouse
-        direction = mousePosition - transform.position;
-
-        // Calculate the angle in degrees
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-        // Apply the rotation to the character
-        currentAimAngle = new Vector3(0, 0, angle-90f);
-    }
-
-    private void RequestAbilityCast()
-    {
-        if (internalCooldown > 0f) { return; }
-        GetMousePosition();
-        Debug.Log("cast ability");
-        Ability.CirclePulse(character, transform.position, bulletPrefab, stats.abilityPowerFinal, 24);
-        internalCooldown = abilityCooltime;
-    }
-
-    private float GetPercentageCooltime()
-    {
-        return (1f - (internalCooldown/abilityCooltime));
-    }
+    } 
 
 }

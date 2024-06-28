@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomPool: {fileID: 11400000, guid: 0d858d564658e6d4998dc3bed49b03d6, type: 2}
+  bossRoomPrefab: {fileID: 6792578708735493937, guid: 436c08d6b6da30c4fa1822c62b537cf6, type: 3}
   roomNumber: 0
   positionIndexX: 0
   positionIndexY: 0
@@ -93,5 +94,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 44, y: 44}
+  m_Size: {x: 50, y: 50}
   m_EdgeRadius: 0

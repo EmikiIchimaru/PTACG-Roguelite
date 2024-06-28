@@ -37,8 +37,8 @@ public class CharController : MonoBehaviour
 	
     private void MoveCharacter()
     {    
-        Vector2 currentMovePosition = myRigidbody2D.position + CurrentMovement * Time.fixedDeltaTime;
-        myRigidbody2D.MovePosition(currentMovePosition);
+        //Vector2 currentMovePosition = myRigidbody2D.position + CurrentMovement * Time.fixedDeltaTime;
+        myRigidbody2D.AddForce(CurrentMovement * Time.fixedDeltaTime);
 	}
 
     private void RotateCharacter()

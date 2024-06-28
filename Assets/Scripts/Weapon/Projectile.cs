@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
     public float damage;
     [SerializeField] private float speed = 100f;
     [SerializeField] private float acceleration = 0f;
+    [SerializeField] private bool canPierce = false;
     private float bulletDuration = 0.4f;
 
     // Returns the direction of this projectile    
@@ -77,7 +78,7 @@ public class Projectile : MonoBehaviour
         {
 			other.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);		
             //fx
-            DisableProjectile();
+            if (!canPierce) { DisableProjectile(); }
         }
         if (other.CompareTag("Wall"))		
         {

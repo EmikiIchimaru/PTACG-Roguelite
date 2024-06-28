@@ -7,8 +7,11 @@ public class GameManager : Singleton<GameManager>
     public static bool isPlayerEnabled;
     [SerializeField] private Texture2D cursorTexture;
 
+    public CharacterStats stats;
+
     public bool isPlayerAlive;
     public bool isBossAlive;
+    private int bossCountdown;
 
     protected override void Awake()
     {
@@ -22,6 +25,14 @@ public class GameManager : Singleton<GameManager>
         isPlayerEnabled = true;
         isPlayerAlive = true;
         isBossAlive = true;
+        bossCountdown = Random.Range(6,9);
+    }
+
+    public void BossCountDown()
+    {
+        if (stats.level >= 10) { bossCountdown--; }
+        Debug.Log(bossCountdown.ToString());
+        if (bossCountdown == 0) { LevelManager.Instance.InitializeBossRoom(); }
     }
 
     public void RestartGame()

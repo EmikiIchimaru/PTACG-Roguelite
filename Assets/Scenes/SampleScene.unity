@@ -573,6 +573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorTexture: {fileID: 2800000, guid: 8c2c34e9646c37f4d90a23cfec96c880, type: 3}
+  stats: {fileID: 1940298620}
   isPlayerAlive: 0
   isBossAlive: 0
 --- !u!4 &174809083
@@ -650,13 +651,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c445d1e511c0c4c918150e11903d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallSize: 8
+  blockSize: 8
   roomSize: 64
-  levelSize: 5
+  levelSize: 10
   wallChance: 0.2
   wallPrefab: {fileID: 568332425795463292, guid: 5f9ee58536a403b4890852d89afdbb4e, type: 3}
   roomPrefab: {fileID: 3392653186384542890, guid: 31d8affe9129a764e9d4f2433a1bee08, type: 3}
-  bossRoomPrefab: {fileID: 6792578708735493937, guid: 436c08d6b6da30c4fa1822c62b537cf6, type: 3}
   currentX: 0
   currentY: 0
   horiWalls: []
@@ -2967,14 +2967,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1940298611}
   - component: {fileID: 1940298610}
-  - component: {fileID: 1940298620}
-  - component: {fileID: 1940298621}
   - component: {fileID: 1940298613}
   - component: {fileID: 1940298612}
   - component: {fileID: 1940298615}
-  - component: {fileID: 1940298616}
   - component: {fileID: 1940298617}
+  - component: {fileID: 1940298620}
+  - component: {fileID: 1940298616}
   - component: {fileID: 1940298622}
+  - component: {fileID: 1940298621}
   - component: {fileID: 1940298619}
   - component: {fileID: 1940298614}
   - component: {fileID: 1940298618}
@@ -3025,7 +3025,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: cf85e008bb26c4e47a424de4871ea831, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3091,7 +3091,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -3117,7 +3117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3b2ad0397db13e4ba9a91a1fddcc0d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 15
+  baseMoveSpeed: 40
 --- !u!114 &1940298616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3262,8 +3262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c95cd77a19309c74da2f4c294a92e93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityCooltime: 10
-  bulletPrefab: {fileID: 138594487432681173, guid: 5d6be8bdc14935f44b5a28e027802846, type: 3}
+  abilityToUse: {fileID: -1873994192090698365, guid: af5c33ab276b7e14998f2d53ac5113cc, type: 3}
 --- !u!1 &1948966918
 GameObject:
   m_ObjectHideFlags: 0

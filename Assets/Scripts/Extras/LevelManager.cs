@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelManager : Singleton<LevelManager>
 {
     [Header("Generation Parameters")]
-    [SerializeField] private float wallSize = 10f;
+    [SerializeField] private float blockSize = 10f;
     [SerializeField] private float roomSize = 50f;
     [SerializeField] private int levelSize = 10;
     [SerializeField] private float wallChance = 0.2f;
@@ -13,7 +13,7 @@ public class LevelManager : Singleton<LevelManager>
     [Header("Prefabs")]
     [SerializeField] private GameObject wallPrefab;
     [SerializeField] private GameObject roomPrefab;
-    [SerializeField] private GameObject bossRoomPrefab;
+
 
     [Header("Player Position")]
     public int currentX;
@@ -29,14 +29,14 @@ public class LevelManager : Singleton<LevelManager>
     private int offsetX;
     private int offsetY;
     private int blocksPerRoom;
-    private int bossCountdown;
-    private bool isBossFight;
+    
+    //private bool isBossFight;
 
     // Start is called before the first frame update
     void Start()
     {
-        isBossFight = false;
-        bossCountdown = Random.Range(2,5);
+        //isBossFight = false;
+        
         horiWalls = new WallGroup[levelSize*(levelSize-1)];
         vertWalls = new WallGroup[levelSize*(levelSize-1)];
         rooms = new Room[levelSize*levelSize];
@@ -45,14 +45,14 @@ public class LevelManager : Singleton<LevelManager>
         offsetY = Random.Range(1, levelSize-1)-levelSize;
         currentX = -(offsetX+1);
         currentY = -(offsetY+1);
-        blocksPerRoom = (int) (roomSize / wallSize);
+        blocksPerRoom = (int) (roomSize / blockSize);
         //Debug.Log($"offsetX = {offsetX}, offsetY = {offsetY}");
         GenerateBoundary();
         GenerateWalls();
         GenerateRooms(); 
         //PlayerEnteredRoom(currentX,currentY);
-
-        //ShowLevel(currentX,currentY);
+        
+        ShowLevel(currentX,currentY);
     }
 
     private void GenerateBoundary()
@@ -104,7 +104,7 @@ public class LevelManager : Singleton<LevelManager>
         WallGroup wallGroup = wallGroupGO.GetComponent<WallGroup>();
         wallGroup.blocksPerRoom = blocksPerRoom;
         wallGroup.wallChance = wallChance;
-        wallGroup.wallSize = wallSize;
+        wallGroup.blockSize = blockSize;
         wallGroup.levelSize = levelSize;
         wallGroup.positionIndexX = indexX;
         wallGroup.positionIndexY = indexY;
@@ -134,25 +134,51 @@ public class LevelManager : Singleton<LevelManager>
 
     public void PlayerEnteredRoom(int playerX, int playerY)
     {
-        if (isBossFight) { return; }
-        //if (currentX == playerX && currentY == playerY) { return; }
+        //if (isBossFight) { return; }
+        if (currentX == playerX && currentY == playerY) { return; }
         HideLevel(playerX,playerY);
         currentX = playerX;
         currentY = playerY;
         ShowLevel(playerX,playerY);
-        bossCountdown--;
-        Debug.Log(bossCountdown.ToString());
-        if (bossCountdown == 0) { InitializeBoss(); }
+        GameManager.Instance.BossCountDown();
     }
 
-    private void InitializeBoss()
+    public void InitializeBossRoom()
     {
-        isBossFight = true;
+        //isBossFight = true;
         Room room = rooms[XYToRoomNumber(currentX, currentY)];
-        room.HideRoom();
-        GameObject bossRoomGO = Instantiate(bossRoomPrefab, room.transform.position, Quaternion.identity);
-        BossRoom bossRoom = bossRoomGO.GetComponent<BossRoom>();
-        bossRoom.GenerateWalls(blocksPerRoom, wallSize);
+        room.ReplaceWithBossRoom();
+        //GameObject bossRoomGO = Instantiate(bossRoomPrefab, room.transform.position, Quaternion.identity);
+        //BossRoom bossRoom = bossRoomGO.GetComponent<BossRoom>();
+        //bossRoom.GenerateWalls(blocksPerRoom, blockSize);
+    }
+    public void GenerateBossWalls(Vector3 bossRoomPosition, GameObject blockPrefab)
+    {
+        Debug.Log("generate walls");
+        Vector3 topLeftCorner = new Vector3(
+                bossRoomPosition.x - (0.5f * blocksPerRoom - 0.5f) * blockSize, 
+                bossRoomPosition.y + (0.5f * blocksPerRoom - 0.5f) * blockSize, 0f);
+        Vector3 botLeftCorner = new Vector3(
+                bossRoomPosition.x - (0.5f * blocksPerRoom - 0.5f) * blockSize, 
+                bossRoomPosition.y - (0.5f * blocksPerRoom - 0.5f) * blockSize, 0f);
+        Vector3 botRightCorner = new Vector3(
+                bossRoomPosition.x + (0.5f * blocksPerRoom - 0.5f) * blockSize, 
+                bossRoomPosition.y - (0.5f * blocksPerRoom - 0.5f) * blockSize, 0f);
+        
+        for (int i = 0; i < blocksPerRoom; i++) 
+        {
+            GameObject wallGO1 = Instantiate(blockPrefab, topLeftCorner + new Vector3(i * blockSize, 0f, 0f), Quaternion.identity, transform);
+            wallGO1.transform.localScale = new Vector2(blockSize, blockSize);
+            GameObject wallGO2 = Instantiate(blockPrefab, botLeftCorner + new Vector3(i * blockSize, 0f, 0f), Quaternion.identity, transform);
+            wallGO2.transform.localScale = new Vector2(blockSize, blockSize);
+        }
+        for (int j = 1; j < blocksPerRoom-1; j++) 
+        {
+            GameObject wallGO3 = Instantiate(blockPrefab, botLeftCorner + new Vector3(0f, j * blockSize, 0f), Quaternion.identity, transform);
+            wallGO3.transform.localScale = new Vector2(blockSize, blockSize);
+            GameObject wallGO4 = Instantiate(blockPrefab, botRightCorner + new Vector3(0f, j * blockSize, 0f), Quaternion.identity, transform);
+            wallGO4.transform.localScale = new Vector2(blockSize, blockSize);
+        }
     }
 
     private void HideLevel(int playerX, int playerY)
