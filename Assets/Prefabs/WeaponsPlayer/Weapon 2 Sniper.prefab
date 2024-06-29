@@ -199,9 +199,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6152438657128657902}
   - {fileID: 8148716253841550242}
   - {fileID: 7061766915833835780}
-  - {fileID: 6152438657128657902}
   - {fileID: 4206239307958458928}
   - {fileID: 8774420616642832866}
   - {fileID: 692460507310599191}
@@ -250,8 +250,8 @@ GameObject:
   - component: {fileID: 8148716253841550242}
   - component: {fileID: 4378924828821875463}
   m_Layer: 0
-  m_Name: Weapon Transform
-  m_TagString: WeaponPart
+  m_Name: sprite
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -334,8 +334,8 @@ GameObject:
   - component: {fileID: 6152438657128657902}
   - component: {fileID: 4229034460919166138}
   m_Layer: 0
-  m_Name: Sprite Detail (3)
-  m_TagString: Untagged
+  m_Name: weapon
+  m_TagString: WeaponPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

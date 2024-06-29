@@ -41,7 +41,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -184,6 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acquisitionRange: 40
   isPlayerInRange: 0
+  direction: {x: 0, y: 0, z: 0}
 --- !u!114 &1191032378767783313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,10 +197,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85002fdcb28a70f4eb048bb71ca9fdc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHostile: 1
   shouldChasePlayer: 1
   moveSpeed: 40
   reflectVariance: 0.2
   speedVariance: 0.1
+  rotatePart: {fileID: 0}
 --- !u!114 &6516078609819919413
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1238,7 +1238,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 0000000037cc8cfb
+  m_ApplyToSortingLayers: 0000000037cc8cfb41b1e7c76976fefc
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -2052,8 +2052,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -50432407
+  m_SortingLayer: -2
   m_SortingOrder: -2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -3132,7 +3132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d30ad2aeb0588458e9d24c6d91039a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponToUse: {fileID: 7890344321430585536, guid: 4acf45dc13a4ef04bad56aa7425de0ce, type: 3}
+  weaponToUse: {fileID: 7890344321430585536, guid: 52f89733fb460de4f94bc069cd6da8ec, type: 3}
 --- !u!114 &1940298617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3225,7 +3225,7 @@ MonoBehaviour:
   abilityPowerFinal: 0
   level: 0
   experience: 0
-  scaleFinal: 0
+  scaleFinal: 1
   healthBaseBonus: 0
   healthPercentBonus: 0
   attackDamageBaseBonus: 0
@@ -3279,7 +3279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffLibrary: {fileID: 11400000, guid: f7d68ef2a6d0e5043a240d0f86b0952b, type: 2}
-  playerBuffType: 4
+  playerBuffType: 3
 --- !u!1 &1948966918
 GameObject:
   m_ObjectHideFlags: 0
