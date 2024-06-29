@@ -6,10 +6,12 @@ public class BasicMovement : MonoBehaviour
 {
  // Public variable to control movement speed
     public Buff currentBuff { get; set; }
-    [SerializeField] private bool shouldChasePlayer;
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private bool isHostile = true;
+    [SerializeField] private bool shouldChasePlayer = false;
+    [SerializeField] private float moveSpeed = 30f;
     [SerializeField] private float reflectVariance = 0.2f;
     [SerializeField] private float speedVariance = 0.1f;
+    [SerializeField] private Transform rotatePart;
 
     private Rigidbody2D rb;
     private DetectPlayer detectPlayer;
@@ -21,11 +23,12 @@ public class BasicMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        if (shouldChasePlayer)
+        if (isHostile)
         {
             detectPlayer = GetComponent<DetectPlayer>();
         }
-        else
+
+        if (!shouldChasePlayer)
         {
             float moveX = Random.Range(-1f, 1f);
             float moveY = Random.Range(-1f, 1f);
@@ -43,6 +46,12 @@ public class BasicMovement : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
+    {
+        MoveUnit();
+        if (rotatePart != null) { MakeUnitFacePlayer(); }
+    }
+
+    private void MoveUnit()
     {
         //if (positionIndexX != LevelManager.Instance.currentX || positionIndexY != LevelManager.Instance.currentY) { return; }
         // Move the sprite by translating its position
@@ -68,6 +77,19 @@ public class BasicMovement : MonoBehaviour
         //transform.Translate(moveDirection * moveSpeed * buffMultiplier * Time.deltaTime);
     }
 
+    private void MakeUnitFacePlayer()
+    {
+        if (isHostile) 
+        {
+            Vector3 direction = GameManager.Instance.playerCharacter.transform.position - rotatePart.position;
+            // Calculate the angle in degrees
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+            rotatePart.rotation = Quaternion.Euler(new Vector3(0, 0, angle+90f));
+            
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Environment") || 
@@ -83,6 +105,7 @@ public class BasicMovement : MonoBehaviour
             //Add randomness
             moveDirection += new Vector2(Random.Range(-reflectVariance, reflectVariance), Random.Range(-reflectVariance, reflectVariance));
             moveSpeed *= Random.Range(1-speedVariance, 1+speedVariance);
+            rb.AddForce(moveDirection * moveSpeed, ForceMode2D.Impulse);
         }
         
     }

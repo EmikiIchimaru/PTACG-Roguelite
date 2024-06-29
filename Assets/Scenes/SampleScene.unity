@@ -3279,7 +3279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffLibrary: {fileID: 11400000, guid: f7d68ef2a6d0e5043a240d0f86b0952b, type: 2}
-  playerBuffType: 5
+  playerBuffType: 4
 --- !u!1 &1948966918
 GameObject:
   m_ObjectHideFlags: 0
