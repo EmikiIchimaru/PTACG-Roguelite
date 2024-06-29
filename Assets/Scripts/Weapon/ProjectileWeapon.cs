@@ -61,11 +61,11 @@ public class ProjectileWeapon : Weapon
         // Spread
         randomProjectileSpread.z = Random.Range(-projectileSpread.z, projectileSpread.z);
         Quaternion spread = Quaternion.Euler(randomProjectileSpread); */
-        //Debug.Log($"{angle}");
+        
         //Debug.Log($"{Quaternion.Euler(rotatedVector)}");
         Vector2 rotatedVector = Utility.RotateVector(weaponFacing.normalized, angle);
         projectile.SetDirection(rotatedVector.normalized);
-        
+        Debug.Log($"{angle}");
 
     }
 

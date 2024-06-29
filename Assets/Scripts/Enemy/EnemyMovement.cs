@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
  // Public variable to control movement speed
     public Buff currentBuff { get; set; }
@@ -11,13 +11,13 @@ public class BasicMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 30f;
     [SerializeField] private float reflectVariance = 0.2f;
     [SerializeField] private float speedVariance = 0.1f;
-    [SerializeField] private Transform rotatePart;
+    public Transform rotatePart;
 
     private Rigidbody2D rb;
     private DetectPlayer detectPlayer;
     // Private variable to store the movement direction
     private Vector2 moveDirection;
-
+    private float internalBumpTimer = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,11 +44,16 @@ public class BasicMovement : MonoBehaviour
         }      
     }
 
+    void Update()
+    {
+        if (internalBumpTimer > 0) { internalBumpTimer -= Time.deltaTime; }
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
         MoveUnit();
-        if (rotatePart != null) { MakeUnitFacePlayer(); }
+        if (detectPlayer != null && rotatePart != null) { MakeUnitFacePlayer(); }
     }
 
     private void MoveUnit()
@@ -81,19 +86,15 @@ public class BasicMovement : MonoBehaviour
     {
         if (isHostile) 
         {
-            Vector3 direction = GameManager.Instance.playerCharacter.transform.position - rotatePart.position;
-            // Calculate the angle in degrees
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-            rotatePart.rotation = Quaternion.Euler(new Vector3(0, 0, angle+90f));
-            
+            rotatePart.rotation = Quaternion.Euler(new Vector3(0, 0, detectPlayer.angle+90f));
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Environment") || 
-            collision.gameObject.layer == LayerMask.NameToLayer("Invisible") )
+            collision.gameObject.layer == LayerMask.NameToLayer("Invisible") || 
+            collision.gameObject.layer == LayerMask.NameToLayer("Boundary") )
         {
             // Get the contact point and normal
             ContactPoint2D contact = collision.contacts[0];
@@ -105,7 +106,12 @@ public class BasicMovement : MonoBehaviour
             //Add randomness
             moveDirection += new Vector2(Random.Range(-reflectVariance, reflectVariance), Random.Range(-reflectVariance, reflectVariance));
             moveSpeed *= Random.Range(1-speedVariance, 1+speedVariance);
-            rb.AddForce(moveDirection * moveSpeed, ForceMode2D.Impulse);
+            
+            if (internalBumpTimer <= 0f) 
+            { 
+                rb.AddForce(moveDirection * moveSpeed, ForceMode2D.Impulse);
+                internalBumpTimer = 1f;
+            }
         }
         
     }

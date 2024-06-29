@@ -75,7 +75,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))		
+        if (other.CompareTag("Enemy") && ProjectileOwner.CharacterType == Character.CharacterTypes.Player)		
         {
             EnemyHealth enemy = other.gameObject.GetComponent<EnemyHealth>();
 			
@@ -89,6 +89,16 @@ public class Projectile : MonoBehaviour
             }
 
             enemy.TakeDamage(damage);	
+            //fx
+            if (!canPierce) { DisableProjectile(); }
+        }
+        if (other.CompareTag("Player") && 
+            (ProjectileOwner.CharacterType == Character.CharacterTypes.AI ||
+            ProjectileOwner.CharacterType == Character.CharacterTypes.Boss))	
+        {
+            Health health = other.gameObject.GetComponent<Health>();
+		
+            health.TakeDamage(damage);	
             //fx
             if (!canPierce) { DisableProjectile(); }
         }

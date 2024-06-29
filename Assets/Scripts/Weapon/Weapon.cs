@@ -34,10 +34,11 @@ public class Weapon : MonoBehaviour
 
     // Reference of the Character that controls this Weapon
     public Character WeaponOwner { get; set; }
-
     public CharacterStats stats { get; set; }
     public BuffDealer buffDealer { get; set; }
     public CharacterLook WeaponOwnerLook { get; set; }
+
+    public DetectPlayer detectPlayer { get; set; }
     protected Vector2 weaponFacing { get { return GetWeaponFacing(); } }
 
     // Returns if we can shoot now
@@ -57,7 +58,8 @@ public class Weapon : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (internalCooldown > 0f) { internalCooldown -= (Time.deltaTime * 0.01f * stats.attackSpeedFinal); }
+        float aspdScaling = (stats != null) ? 0.01f * stats.attackSpeedFinal : 1f;
+        if (internalCooldown > 0f) { internalCooldown -= (Time.deltaTime * aspdScaling); }
     }
 
     // Trigger our Weapon in order to use it
@@ -73,6 +75,7 @@ public class Weapon : MonoBehaviour
             controller.ApplyRecoil(Vector2.one, 0f);
         } */
     }
+
 
     // Makes our weapon start shooting
     protected virtual void RequestShot()
@@ -95,15 +98,17 @@ public class Weapon : MonoBehaviour
     {
         WeaponOwner = owner; 
         WeaponOwnerLook = owner?.GetComponent<CharacterLook>();
+        detectPlayer = owner?.GetComponent<DetectPlayer>();
         stats = owner?.GetComponent<CharacterStats>();
         buffDealer = owner?.GetComponent<BuffDealer>();
         //controller = WeaponOwner.GetComponent<PCController>();
     }
 
-    private Vector3 GetWeaponFacing()
+    private Vector2 GetWeaponFacing()
     {
-        if ( WeaponOwnerLook == null ) { return Vector3.zero; }
-        return WeaponOwnerLook.direction;
+        if ( WeaponOwnerLook != null ) { return WeaponOwnerLook.direction; }
+        if ( detectPlayer != null ) { return detectPlayer.direction; }
+        return Vector2.zero;
     }
 
     private float GetDamageX()
