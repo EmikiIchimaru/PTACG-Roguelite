@@ -15,6 +15,7 @@ MonoBehaviour:
   upgradeLevel: 1
   elementType: 2
   upgradeType: 0
-  upgradeName: Machine Gun
+  upgradeName: Machine Gun I
   upgradeDescript: 
   newWeapon: {fileID: 7890344321430585536, guid: 133aedbe150ca9747a150289e5a966b9, type: 3}
+  newStats: {fileID: 0}

@@ -15,7 +15,7 @@ MonoBehaviour:
   upgradeLevel: 3
   elementType: 3
   upgradeType: 0
-  upgradeName: Parallel 2
+  upgradeName: Parallel Shooter III
   upgradeDescript: 
-  newWeapon: {fileID: 7890344321430585536, guid: 5a256dcd98764bc448ad29145f4d4d6c, type: 3}
+  newWeapon: {fileID: 7890344321430585536, guid: 382025dfae95a09419063e76fd7609e3, type: 3}
   newStats: {fileID: 0}

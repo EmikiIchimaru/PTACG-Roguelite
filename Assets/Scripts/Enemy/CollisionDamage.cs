@@ -6,6 +6,7 @@ public class CollisionDamage : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag("Shield")) { Destroy(gameObject); }
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             // Destroy the sprite GameObject

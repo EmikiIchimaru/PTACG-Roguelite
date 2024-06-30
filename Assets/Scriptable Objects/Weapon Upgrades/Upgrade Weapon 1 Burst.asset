@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3745ad6372b50f24cb4718d66f27dff6, type: 3}
-  m_Name: Upgrade Weapon 2 Default
+  m_Name: Upgrade Weapon 1 Burst
   m_EditorClassIdentifier: 
-  upgradeLevel: 2
-  elementType: 0
+  upgradeLevel: 1
+  elementType: 1
   upgradeType: 0
-  upgradeName: Default
+  upgradeName: Burst Gun I
   upgradeDescript: 
-  newWeapon: {fileID: 7890344321430585536, guid: 1850a15465254a041b924fefdc6a8cde, type: 3}
+  newWeapon: {fileID: 7890344321430585536, guid: e97791ddf1d08b04c96f244798b193fd, type: 3}
   newStats: {fileID: 0}

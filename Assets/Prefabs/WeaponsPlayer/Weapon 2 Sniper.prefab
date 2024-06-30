@@ -223,7 +223,8 @@ MonoBehaviour:
   baseDamage: 5
   baseAttackCooltime: 1.2
   projectileSpawnPosition: {x: 0, y: 0, z: 0}
-  projectileSpread: {x: 0, y: 0, z: 0}
+  projectileColor: {r: 1, g: 0, b: 1, a: 1}
+  projectileColor2: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &7184854162324236936
 MonoBehaviour:
   m_ObjectHideFlags: 0

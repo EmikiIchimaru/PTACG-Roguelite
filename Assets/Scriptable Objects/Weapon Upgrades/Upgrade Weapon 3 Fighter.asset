@@ -15,7 +15,7 @@ MonoBehaviour:
   upgradeLevel: 3
   elementType: 2
   upgradeType: 0
-  upgradeName: Fighter 2
+  upgradeName: Light Fighter III
   upgradeDescript: 
-  newWeapon: {fileID: 7890344321430585536, guid: 795d9e77a10a4e44c9d0c49e95ad895f, type: 3}
+  newWeapon: {fileID: 7890344321430585536, guid: b34b82db32be06e489ecea5c7685aab1, type: 3}
   newStats: {fileID: 0}

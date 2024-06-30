@@ -9,6 +9,7 @@ TagManager:
   - Room
   - Wall
   - WeaponPart
+  - Shield
   layers:
   - Default
   - TransparentFX

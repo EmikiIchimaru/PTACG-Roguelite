@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3745ad6372b50f24cb4718d66f27dff6, type: 3}
-  m_Name: Upgrade Weapon 2 Wave
+  m_Name: Upgrade Stat 2 Red
   m_EditorClassIdentifier: 
   upgradeLevel: 2
-  elementType: 4
-  upgradeType: 0
-  upgradeName: Arrow 2
+  elementType: 1
+  upgradeType: 1
+  upgradeName: Damage II
   upgradeDescript: 
-  newWeapon: {fileID: 7890344321430585536, guid: 50c3626a0bf05d24bbf72ebacb44f1fe, type: 3}
-  newStats: {fileID: 0}
+  newWeapon: {fileID: 0}
+  newStats: {fileID: 11400000, guid: 8ad7d6a05f617f346979486f7d6e91c4, type: 2}

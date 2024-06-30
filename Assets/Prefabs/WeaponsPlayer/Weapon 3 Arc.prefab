@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 7890344321430585536}
   - component: {fileID: 7184854162324236936}
   m_Layer: 0
-  m_Name: Weapon 3 Wave
+  m_Name: Weapon 3 Arc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -380,7 +380,8 @@ MonoBehaviour:
   baseDamage: 1
   baseAttackCooltime: 1
   projectileSpawnPosition: {x: 0, y: 0, z: 0}
-  projectileSpread: {x: 0, y: 0, z: 0}
+  projectileColor: {r: 0.33333334, g: 0, b: 1, a: 1}
+  projectileColor2: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &7184854162324236936
 MonoBehaviour:
   m_ObjectHideFlags: 0

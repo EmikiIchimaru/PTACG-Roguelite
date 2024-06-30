@@ -15,7 +15,7 @@ MonoBehaviour:
   upgradeLevel: 3
   elementType: 5
   upgradeType: 0
-  upgradeName: Sniper 2
+  upgradeName: Sniper III
   upgradeDescript: 
-  newWeapon: {fileID: 7890344321430585536, guid: 58348d1cdcf6681439405acd2c2ddd0b, type: 3}
+  newWeapon: {fileID: 7890344321430585536, guid: 82a19fcd1fb500a469708e4cf7cb5dd7, type: 3}
   newStats: {fileID: 0}

@@ -15,7 +15,7 @@ MonoBehaviour:
   upgradeLevel: 2
   elementType: 3
   upgradeType: 0
-  upgradeName: Tank 2
+  upgradeName: Battle Tank I
   upgradeDescript: 
   newWeapon: {fileID: 7890344321430585536, guid: f12d9f6842762db4bbfd7914da8bcee4, type: 3}
   newStats: {fileID: 0}

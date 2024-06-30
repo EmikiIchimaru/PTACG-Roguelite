@@ -33,7 +33,7 @@ public class GameManager : Singleton<GameManager>
 
     public void BossCountDown()
     {
-        if (stats.level >= 10) { bossCountdown--; }
+        if (stats.level >= CharacterStats.maxLevel) { bossCountdown--; }
         Debug.Log(bossCountdown.ToString());
         if (bossCountdown == 0) { LevelManager.Instance.InitializeBossRoom(); }
     }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
+    public static int maxLevel = 8;
+
     [Header("Seerice Field")]
     
     [SerializeField] private int requiredXPBase;
@@ -33,9 +35,8 @@ public class CharacterStats : MonoBehaviour
     public int level; //property
     public int experience;
     private int xpToNextLevel;
-    private int maxLevel = 10;
-    
     public float scaleFinal;
+
     public float healthBaseBonus;
     public float healthPercentBonus;
     public float attackDamageBaseBonus;
@@ -62,7 +63,7 @@ public class CharacterStats : MonoBehaviour
         LevelUp();
         experience = 0;
         ResetBonusStats();
-        xpToNextLevel = requiredXPBase;
+        xpToNextLevel = requiredXPBase + level * requiredXPLevelMultiplier;
         UIManager.Instance.UpdateExperience(experience, xpToNextLevel);
     }
 
@@ -70,15 +71,15 @@ public class CharacterStats : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
-            LevelUp();
+            AddExperience(50);
         }
     }
 
     public void AddExperience(int xpGained)
     {
-
+        if (level >= maxLevel) { return; }
         experience += xpGained;
-        if (experience >= xpToNextLevel && level < maxLevel)
+        if (experience >= xpToNextLevel)
         {
             experience -= xpToNextLevel;
             LevelUp();
@@ -89,11 +90,18 @@ public class CharacterStats : MonoBehaviour
     private void LevelUp()
     {
         level++;
-        xpToNextLevel += level * requiredXPLevelMultiplier;
         RecalculateStats();
-        Debug.Log("level up!");
+        if (level < maxLevel) 
+        {
+            xpToNextLevel = requiredXPBase + level * requiredXPLevelMultiplier;
+            if (level > 1) { UpgradeManager.Instance.ShowCanvas(); }
+        }
+        else
+        {
+            experience = xpToNextLevel;
+            UIManager.Instance.UpdateExperience(experience, xpToNextLevel);
+        }
         
-        if (level > 1 && UpgradeManager.Instance.upgradesRemaining >= 0) { UpgradeManager.Instance.ShowCanvas(); }
     }
 
     private void RecalculateStats()

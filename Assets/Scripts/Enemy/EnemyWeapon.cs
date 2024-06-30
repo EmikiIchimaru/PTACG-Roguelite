@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyWeapon : MonoBehaviour
 {
+    public Buff currentBuff { get; set; }
     [SerializeField] private Weapon weaponToUse;
 
     private DetectPlayer detectPlayer;
@@ -32,6 +33,10 @@ public class EnemyWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentBuff != null)
+        {
+            if (currentBuff.type == BuffType.Psychic || currentBuff.type == BuffType.Frost) { return; }
+        }
         if (detectPlayer.isPlayerInRange) { weapon.UseWeapon(); }
     }
 }

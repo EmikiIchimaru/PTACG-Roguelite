@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Upgrade Weapon 1 Spray
   m_EditorClassIdentifier: 
   upgradeLevel: 1
-  elementType: 1
+  elementType: 4
   upgradeType: 0
-  upgradeName: Spray Gun
+  upgradeName: Spray Gun I
   upgradeDescript: 
-  newWeapon: {fileID: 7890344321430585536, guid: e97791ddf1d08b04c96f244798b193fd, type: 3}
+  newWeapon: {fileID: 7890344321430585536, guid: 93c649811633a1442b67ef80197136a4, type: 3}
+  newStats: {fileID: 0}

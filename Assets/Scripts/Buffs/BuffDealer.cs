@@ -8,9 +8,10 @@ public class BuffDealer : MonoBehaviour
 
     public BuffSO buffLibrary;
     public BuffType playerBuffType;
-    /* public float duration;
-    public float speedMultiplier;
-    public float damagePerSecond; */
+
+/*     public float procChance = 20f;
+    public float durationMultiplier = 1f; */
+    
     private CharacterStats stats;
     void Start()
     {

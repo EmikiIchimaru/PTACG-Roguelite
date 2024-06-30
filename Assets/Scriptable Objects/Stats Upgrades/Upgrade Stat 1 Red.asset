@@ -15,7 +15,7 @@ MonoBehaviour:
   upgradeLevel: 1
   elementType: 1
   upgradeType: 1
-  upgradeName: Red
+  upgradeName: Damage I
   upgradeDescript: 
   newWeapon: {fileID: 0}
   newStats: {fileID: 11400000, guid: f4829cc0c7ab0dd4eb83123a173805b5, type: 2}

@@ -13,14 +13,14 @@ public class CharacterAbility : CharacterComponents
     {
         base.Start(); 	  
         mainCamera = Camera.main; 
-        EquipAbility(abilityToUse);      
+        if (abilityToUse != null ) { EquipAbility(abilityToUse); }      
     } 
 
     protected override void HandleAbility()
     {
         base.HandleAbility();
 
-        if (bAbilityInput) 
+        if (bAbilityInput && currentAbility != null) 
         { 
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0;

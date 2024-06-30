@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 7890344321430585536}
   - component: {fileID: 7184854162324236936}
   m_Layer: 0
-  m_Name: Weapon 2 Heavy
+  m_Name: Weapon 2 Energy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,7 +222,8 @@ MonoBehaviour:
   baseDamage: 7
   baseAttackCooltime: 0.75
   projectileSpawnPosition: {x: 0, y: 0, z: 0}
-  projectileSpread: {x: 0, y: 0, z: 0}
+  projectileColor: {r: 1, g: 0, b: 0.5019608, a: 1}
+  projectileColor2: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &7184854162324236936
 MonoBehaviour:
   m_ObjectHideFlags: 0

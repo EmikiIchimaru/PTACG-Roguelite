@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3745ad6372b50f24cb4718d66f27dff6, type: 3}
-  m_Name: Upgrade Weapon 3 Cone
+  m_Name: Upgrade Stat 2 Pink
   m_EditorClassIdentifier: 
-  upgradeLevel: 3
-  elementType: 4
-  upgradeType: 0
-  upgradeName: Cone 2
+  upgradeLevel: 2
+  elementType: 5
+  upgradeType: 1
+  upgradeName: Ability Power II
   upgradeDescript: 
-  newWeapon: {fileID: 7890344321430585536, guid: a2008723320dfb846a136ad69c9cc55a, type: 3}
-  newStats: {fileID: 0}
+  newWeapon: {fileID: 0}
+  newStats: {fileID: 11400000, guid: 6e1d7b068da363f4fb749969c37db234, type: 2}

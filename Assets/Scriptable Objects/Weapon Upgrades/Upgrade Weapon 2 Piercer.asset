@@ -15,7 +15,7 @@ MonoBehaviour:
   upgradeLevel: 2
   elementType: 1
   upgradeType: 0
-  upgradeName: Piercer 2
+  upgradeName: Piercer I
   upgradeDescript: 
   newWeapon: {fileID: 7890344321430585536, guid: 05f93c08bed43d94ba133f676a50235a, type: 3}
   newStats: {fileID: 0}

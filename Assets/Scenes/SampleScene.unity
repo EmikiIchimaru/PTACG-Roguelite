@@ -1531,9 +1531,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 325, y: -50}
+  m_AnchoredPosition: {x: 50, y: -25}
   m_SizeDelta: {x: 600, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &854367822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1621,7 +1621,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50, y: -50}
+  m_AnchoredPosition: {x: -50, y: -25}
   m_SizeDelta: {x: 300, y: 40}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &897737378
@@ -3132,7 +3132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d30ad2aeb0588458e9d24c6d91039a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponToUse: {fileID: 7890344321430585536, guid: 52f89733fb460de4f94bc069cd6da8ec, type: 3}
+  weaponToUse: {fileID: 7890344321430585536, guid: 4acf45dc13a4ef04bad56aa7425de0ce, type: 3}
 --- !u!114 &1940298617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3206,18 +3206,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfe89f574211daa4cb033a4c064972aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredXPBase: 10
-  requiredXPLevelMultiplier: 10
-  healthBase: 10
-  healthPerLevel: 5
-  attackDamageBase: 2
-  attackDamagePerLevel: 0
-  attackSpeedBase: 100
-  attackSpeedPerLevel: 3
+  requiredXPBase: 75
+  requiredXPLevelMultiplier: 25
+  healthBase: 100
+  healthPerLevel: 20
+  attackDamageBase: 8
+  attackDamagePerLevel: 1
+  attackSpeedBase: 92
+  attackSpeedPerLevel: 4
   abilityHasteBase: 0
-  abilityHastePerLevel: 5
+  abilityHastePerLevel: 2
   abilityPowerBase: 0
-  abilityPowerPerLevel: 5
+  abilityPowerPerLevel: 2
   healthFinal: 0
   attackDamageFinal: 0
   attackSpeedFinal: 0
@@ -3265,7 +3265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c95cd77a19309c74da2f4c294a92e93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityToUse: {fileID: 5131192218468392456, guid: 475ba41bd754b4b40ab7fc8df25b0797, type: 3}
+  abilityToUse: {fileID: 0}
 --- !u!114 &1940298623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3279,7 +3279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffLibrary: {fileID: 11400000, guid: f7d68ef2a6d0e5043a240d0f86b0952b, type: 2}
-  playerBuffType: 3
+  playerBuffType: 0
 --- !u!1 &1948966918
 GameObject:
   m_ObjectHideFlags: 0
@@ -3348,11 +3348,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ae6e21cab469a824d81c980288b40930, type: 2}
   - {fileID: 11400000, guid: 800662b057e42944db412b6bc95e5723, type: 2}
   upgradesStats2:
-  - {fileID: 11400000, guid: ae6e21cab469a824d81c980288b40930, type: 2}
-  - {fileID: 11400000, guid: 045dc01378298864f8660e5a8765eb93, type: 2}
-  - {fileID: 11400000, guid: 800662b057e42944db412b6bc95e5723, type: 2}
-  - {fileID: 11400000, guid: 9ea81f9972af6f64e86717b80fdc643e, type: 2}
-  - {fileID: 11400000, guid: 2833709ae1d9f0443adce72ca90a0635, type: 2}
+  - {fileID: 11400000, guid: 22b095423f6fb6846b46bade2abf1b3f, type: 2}
+  - {fileID: 11400000, guid: 20931131a6e4cb84b895baab85c319f9, type: 2}
+  - {fileID: 11400000, guid: fd9f054089ba42843a51f031e2885ef3, type: 2}
+  - {fileID: 11400000, guid: 9d7f752cab5e3924487cad34991719be, type: 2}
+  - {fileID: 11400000, guid: 31ae29d203f3c334399604c5a2b70fb4, type: 2}
+  upgradesStats3:
+  - {fileID: 11400000, guid: 94ca679066f7ce845ae5408d63f87375, type: 2}
+  - {fileID: 11400000, guid: d4f59ee30015468489801fc0c54d373e, type: 2}
+  - {fileID: 11400000, guid: cf626f1772c3696419cfdde43194cf3b, type: 2}
+  - {fileID: 11400000, guid: a05d8866b3c74e147a9ecbd82a0c0005, type: 2}
+  - {fileID: 11400000, guid: 0cd4d87308903b44b9148ab95fd57206, type: 2}
+  upgradesAbilities: []
 --- !u!4 &1948966920
 Transform:
   m_ObjectHideFlags: 0
@@ -3530,9 +3537,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 325, y: -100}
+  m_AnchoredPosition: {x: 50, y: -100}
   m_SizeDelta: {x: 600, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &2108512483
 GameObject:
   m_ObjectHideFlags: 0

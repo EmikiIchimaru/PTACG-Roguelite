@@ -7,7 +7,9 @@ using Random = UnityEngine.Random;
 public class ProjectileWeapon : Weapon
 {
     [SerializeField] private Vector3 projectileSpawnPosition;
-    [SerializeField] private Vector3 projectileSpread;
+    [SerializeField] private Color projectileColor = Color.white;
+    [SerializeField] private Color projectileColor2 = Color.white;
+    //[SerializeField] private Vector3 projectileSpread;
 
     // Controls the position of our projectile spawn
     public Vector3 ProjectileSpawnPosition { get; set; }
@@ -51,6 +53,9 @@ public class ProjectileWeapon : Weapon
         projectilePooled.transform.position = spawnPosition;
         projectilePooled.SetActive(true);
 
+        SpriteRenderer sr = projectilePooled.GetComponent<SpriteRenderer>();
+        sr.color = projectileColor;
+
         // Get reference to the projectile
         Projectile projectile = projectilePooled.GetComponent<Projectile>();
         projectile.EnableProjectile();
@@ -65,7 +70,7 @@ public class ProjectileWeapon : Weapon
         //Debug.Log($"{Quaternion.Euler(rotatedVector)}");
         Vector2 rotatedVector = Utility.RotateVector(weaponFacing.normalized, angle);
         projectile.SetDirection(rotatedVector.normalized);
-        Debug.Log($"{angle}");
+        //Debug.Log($"{angle}");
 
     }
 

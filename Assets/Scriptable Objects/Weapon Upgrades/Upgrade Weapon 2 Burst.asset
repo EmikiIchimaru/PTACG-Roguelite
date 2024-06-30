@@ -15,7 +15,7 @@ MonoBehaviour:
   upgradeLevel: 2
   elementType: 1
   upgradeType: 0
-  upgradeName: Burst Gun
+  upgradeName: Burst Gun II
   upgradeDescript: 
   newWeapon: {fileID: 7890344321430585536, guid: efdddb8970563614ba58d04fda05b613, type: 3}
   newStats: {fileID: 0}

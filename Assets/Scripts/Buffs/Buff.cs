@@ -10,6 +10,7 @@ public class Buff : MonoBehaviour
     
     private EnemyHealth enemy;
     private EnemyMovement enemyMovement;
+    private EnemyWeapon enemyWeapon;
 
     void Update()
     {
@@ -26,6 +27,8 @@ public class Buff : MonoBehaviour
         enemy = newEnemy;
         enemyMovement = newEnemy.GetComponent<EnemyMovement>();
         if (enemyMovement != null) { enemyMovement.currentBuff = this; }
+        enemyWeapon = newEnemy.GetComponent<EnemyWeapon>();
+        if (enemyWeapon != null) { enemyWeapon.currentBuff = this; }
         InvokeRepeating("BuffDealDamage", damageInterval, damageInterval);
     }
 

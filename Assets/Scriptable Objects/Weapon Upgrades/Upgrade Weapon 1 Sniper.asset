@@ -15,6 +15,7 @@ MonoBehaviour:
   upgradeLevel: 1
   elementType: 5
   upgradeType: 0
-  upgradeName: Sniper 1
+  upgradeName: Sniper I
   upgradeDescript: 
   newWeapon: {fileID: 7890344321430585536, guid: 4ec6e134776772141aac64a0706825b6, type: 3}
+  newStats: {fileID: 0}

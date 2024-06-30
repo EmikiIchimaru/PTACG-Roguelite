@@ -8,7 +8,7 @@ public class EnemyMovement : MonoBehaviour
     public Buff currentBuff { get; set; }
     [SerializeField] private bool isHostile = true;
     [SerializeField] private bool shouldChasePlayer = false;
-    [SerializeField] private float moveSpeed = 30f;
+    [SerializeField] private float baseMoveSpeed = 30f;
     [SerializeField] private float reflectVariance = 0.2f;
     [SerializeField] private float speedVariance = 0.1f;
     public Transform rotatePart;
@@ -16,11 +16,14 @@ public class EnemyMovement : MonoBehaviour
     private Rigidbody2D rb;
     private DetectPlayer detectPlayer;
     // Private variable to store the movement direction
+
+    private float moveSpeed;
     private Vector2 moveDirection;
     private float internalBumpTimer = 0f;
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        moveSpeed = baseMoveSpeed;
         rb = GetComponent<Rigidbody2D>();
 
         if (isHostile)
@@ -105,7 +108,7 @@ public class EnemyMovement : MonoBehaviour
 
             //Add randomness
             moveDirection += new Vector2(Random.Range(-reflectVariance, reflectVariance), Random.Range(-reflectVariance, reflectVariance));
-            moveSpeed *= Random.Range(1-speedVariance, 1+speedVariance);
+            moveSpeed = Random.Range(1-speedVariance, 1+speedVariance) * baseMoveSpeed;
             
             if (internalBumpTimer <= 0f) 
             { 

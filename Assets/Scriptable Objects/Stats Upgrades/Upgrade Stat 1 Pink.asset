@@ -15,7 +15,7 @@ MonoBehaviour:
   upgradeLevel: 1
   elementType: 5
   upgradeType: 1
-  upgradeName: Pink
+  upgradeName: Ability Power I
   upgradeDescript: 
   newWeapon: {fileID: 0}
   newStats: {fileID: 11400000, guid: 4835f1f896e8a174bacb0612d96a358f, type: 2}

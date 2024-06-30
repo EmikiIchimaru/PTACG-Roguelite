@@ -15,7 +15,7 @@ MonoBehaviour:
   upgradeLevel: 1
   elementType: 3
   upgradeType: 1
-  upgradeName: Green
+  upgradeName: Health I
   upgradeDescript: 
   newWeapon: {fileID: 0}
   newStats: {fileID: 11400000, guid: 0d5071c3d59521d498de74db45ab61c4, type: 2}

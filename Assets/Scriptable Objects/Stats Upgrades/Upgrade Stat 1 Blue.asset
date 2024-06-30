@@ -15,7 +15,7 @@ MonoBehaviour:
   upgradeLevel: 1
   elementType: 4
   upgradeType: 1
-  upgradeName: Blue
+  upgradeName: Ability Haste I
   upgradeDescript: 
   newWeapon: {fileID: 0}
   newStats: {fileID: 11400000, guid: 81d6e507adefab14d83e5b1e9f684d94, type: 2}

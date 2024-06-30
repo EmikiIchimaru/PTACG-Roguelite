@@ -55,6 +55,7 @@ public class Room : MonoBehaviour
             RoomEntity entity = child.GetComponent<RoomEntity>();
             if (entity != null)
             {
+                entity.room = this;
                 entity.positionIndexX = positionIndexX;
                 entity.positionIndexY = positionIndexY;
             }

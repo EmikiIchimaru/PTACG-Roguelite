@@ -19,6 +19,8 @@ public class UpgradeManager : Singleton<UpgradeManager>
     [SerializeField] private List<UpgradeSO> upgradesWeapon3 = new List<UpgradeSO>();
     [SerializeField] private List<UpgradeSO> upgradesStats1 = new List<UpgradeSO>();
     [SerializeField] private List<UpgradeSO> upgradesStats2 = new List<UpgradeSO>();
+    [SerializeField] private List<UpgradeSO> upgradesStats3 = new List<UpgradeSO>();
+    [SerializeField] private List<UpgradeSO> upgradesAbilities = new List<UpgradeSO>(); // includes buffs
 
     private CharacterWeapon characterWeapon;
     private CharacterStats characterStats;
@@ -79,7 +81,7 @@ public class UpgradeManager : Singleton<UpgradeManager>
 
     private void SetupThreeUpgrades(List<UpgradeSO> upgrades)
     {
-        List<UpgradeSO> tempUpgrades = Utility.ShuffleUpgradeList(upgrades);
+        List<UpgradeSO> tempUpgrades = Utility.ShuffleUpgrades(upgrades);
         upgrade0 = tempUpgrades[0];
         upgrade1 = tempUpgrades[1];
         //upgrade2 = tempUpgrades[2];
@@ -129,25 +131,54 @@ public class UpgradeManager : Singleton<UpgradeManager>
 
     private void InitializeUpgradeList1()
     {
-        upgradesMegaList.Add(upgradesWeapon1);
-        upgradesMegaList.Add(upgradesStats1);
-        upgradesMegaList.Add(upgradesStats1);
+        List<List<UpgradeSO>> tempList = new List<List<UpgradeSO>>();
+        upgradesWeapon1 = upgradesWeapon1.Where(upgrade => elementsRunPool.Contains(upgrade.elementType)).ToList();
+        upgradesStats1 = upgradesStats1.Where(upgrade => elementsRunPool.Contains(upgrade.elementType)).ToList();
+
+        tempList.Add(upgradesWeapon1);
+        tempList.Add(upgradesStats1);
+        tempList.Add(upgradesStats1);
+
+        Utility.ShuffleUpgradeLists(tempList);
+        upgradesMegaList.AddRange(tempList);
         playerUpgradeTierIndex++;
     }
 
     private void InitializeUpgradeList2()
     {
+        List<List<UpgradeSO>> tempList = new List<List<UpgradeSO>>();
+
+        RemoveRandomElementNotInList(elementsRunPool, elementsPlayer);
         //if (elementsPlayer.Count > 1) { elementsPlayer.Remove(ElementType.None); }
         upgradesWeapon2 = upgradesWeapon2.Where(upgrade => elementsPlayer.Contains(upgrade.elementType)).ToList();
-        upgradesMegaList.Add(upgradesWeapon2);
-        upgradesMegaList.Add(upgradesStats2);
-        upgradesMegaList.Add(upgradesStats2);
+        upgradesStats2 = upgradesStats2.Where(upgrade => elementsRunPool.Contains(upgrade.elementType)).ToList();
+        //upgradesAbilities = upgradesAbilities.Where(upgrade => elementsPlayer.Contains(upgrade.elementType)).ToList();
+
+        tempList.Add(upgradesWeapon2);
+        tempList.Add(upgradesStats2);
+        tempList.Add(upgradesStats2);
+
+        Utility.ShuffleUpgradeLists(tempList);
+        upgradesMegaList.AddRange(tempList);
         playerUpgradeTierIndex++;
     }
     private void InitializeUpgradeList3()
     {
+        List<List<UpgradeSO>> tempList = new List<List<UpgradeSO>>();
+
+        RemoveRandomElementNotInList(elementsRunPool, elementsPlayer);
+
         upgradesWeapon3 = upgradesWeapon3.Where(upgrade => elementsPlayer.Contains(upgrade.elementType)).ToList();
-        upgradesMegaList.Add(upgradesWeapon3);
+        upgradesStats2 = upgradesStats2.Where(upgrade => elementsRunPool.Contains(upgrade.elementType)).ToList();
+        upgradesStats3 = upgradesStats3.Where(upgrade => elementsRunPool.Contains(upgrade.elementType)).ToList();
+
+        tempList.Add(upgradesWeapon3);
+        tempList.Add(upgradesStats3);
+        tempList.Add(upgradesStats3);
+
+        Utility.ShuffleUpgradeLists(tempList);
+        upgradesMegaList.AddRange(tempList);
+
         playerUpgradeTierIndex++;
     }
 
@@ -156,6 +187,26 @@ public class UpgradeManager : Singleton<UpgradeManager>
         elementsRunPool = new List<ElementType>{ ElementType.Red, ElementType.Yellow, ElementType.Green, ElementType.Blue, ElementType.Pink};
         int randomBan = Random.Range(0, elementsRunPool.Count);
         elementsRunPool.RemoveAt(randomBan);
+    }
+
+    private void RemoveRandomElementNotInList(List<ElementType> sourceList, List<ElementType> exclusionList)
+    {
+        // Filter the source list to exclude elements in the exclusion list
+        var filteredList = sourceList.Except(exclusionList).ToList();
+
+        // Check if there are any elements left to remove
+        if (filteredList.Count == 0)
+        {
+            //Debug.LogWarning("No elements available to remove that are not in the exclusion list.");
+            return;
+        }
+
+        // Select a random element from the filtered list
+        System.Random random = new System.Random();
+        ElementType elementToRemove = filteredList[random.Next(filteredList.Count)];
+
+        // Remove the chosen element from the original list
+        sourceList.Remove(elementToRemove);
     }
 
     private void AddElement(ElementType elementType)
