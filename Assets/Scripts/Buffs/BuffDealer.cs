@@ -9,8 +9,8 @@ public class BuffDealer : MonoBehaviour
     public BuffSO buffLibrary;
     public BuffType playerBuffType;
 
-/*     public float procChance = 20f;
-    public float durationMultiplier = 1f; */
+   public float procChance = 0.2f;
+    //public float durationMultiplier = 1f; 
     
     private CharacterStats stats;
     void Start()
@@ -20,6 +20,8 @@ public class BuffDealer : MonoBehaviour
 
     public void DealBuff(EnemyHealth enemy)
     {
+        if (Random.Range(0f,1f) > procChance) { return; }
+
         Buff selectedBuff = FindBuffOfType(buffLibrary.buffs, playerBuffType);
         
         if (enemy.currentBuff != null)

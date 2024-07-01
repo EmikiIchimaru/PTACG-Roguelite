@@ -513,10 +513,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85002fdcb28a70f4eb048bb71ca9fdc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHostile: 1
   shouldChasePlayer: 0
-  moveSpeed: 4
-  reflectVariance: 0.2
   speedVariance: 0.1
+  rotatePart: {fileID: 0}
 --- !u!114 &7448476785480589718
 MonoBehaviour:
   m_ObjectHideFlags: 0

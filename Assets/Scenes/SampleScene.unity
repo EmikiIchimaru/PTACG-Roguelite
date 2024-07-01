@@ -652,8 +652,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c445d1e511c0c4c918150e11903d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockSize: 10
-  roomSize: 60
+  blockSize: 6
+  roomSize: 48
   levelSize: 10
   wallChance: 0.2
   wallPrefab: {fileID: 568332425795463292, guid: 5f9ee58536a403b4890852d89afdbb4e, type: 3}
@@ -2092,7 +2092,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1293057913
 SpriteRenderer:
   m_ObjectHideFlags: 0

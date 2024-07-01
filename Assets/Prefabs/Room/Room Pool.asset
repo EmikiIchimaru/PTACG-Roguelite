@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e2673d3f65d4f146b823d3747674bfb, type: 3}
   m_Name: Room Pool
   m_EditorClassIdentifier: 
-  roomPrefabs:
-  - {fileID: 6792578708735493937, guid: 82bcbbc607258244485c5e582a0f11cd, type: 3}
-  - {fileID: 6792578708735493937, guid: a964575a01c65474cbf59a2f779fc88c, type: 3}
-  - {fileID: 6792578708735493937, guid: 00ff53d000aa5054ab6056f75cb4d498, type: 3}
-  - {fileID: 6792578708735493937, guid: 7e832dd0a1e7fcb4cb15063e16fa7851, type: 3}
+  tutorialRoom: {fileID: 136895915332200405, guid: 82bcbbc607258244485c5e582a0f11cd, type: 3}
+  roomContents:
+  - {fileID: -7065654022370673888, guid: a964575a01c65474cbf59a2f779fc88c, type: 3}
+  - {fileID: 5477702905226144955, guid: 00ff53d000aa5054ab6056f75cb4d498, type: 3}
+  - {fileID: -6573718968802381242, guid: 7e832dd0a1e7fcb4cb15063e16fa7851, type: 3}
+  - {fileID: -6573718968802381242, guid: e2539aaa94044f242a342b38ada012be, type: 3}

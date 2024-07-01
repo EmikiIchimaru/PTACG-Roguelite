@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Room : MonoBehaviour
@@ -7,14 +8,16 @@ public class Room : MonoBehaviour
     //public LevelManager levelManager;
 
     public RoomPrefabSO roomPool;
-    [SerializeField] private GameObject bossRoomPrefab;
+    [SerializeField] private RoomContent bossRoomPrefab;
     
     public int roomNumber;
     public int positionIndexX;
     public int positionIndexY;
+    
 
-    public GameObject roomContent = null;
+    public RoomContent roomContent = null;
     private int roomContentIndex;
+    private int difficultyLevel;
 
     //public bool isLoaded = false;
 
@@ -29,14 +32,14 @@ public class Room : MonoBehaviour
         }
         else
         {
-            roomContent.SetActive(true);
+            roomContent.gameObject.SetActive(true);
         }
     }
 
     public void HideRoom()
     {
         if (roomContent == null) { return; }
-        roomContent.SetActive(false);
+        roomContent.gameObject.SetActive(false);
     }
 
     public void ReplaceWithBossRoom()
@@ -45,11 +48,22 @@ public class Room : MonoBehaviour
         roomContent = Instantiate(bossRoomPrefab, transform.position, Quaternion.identity, transform);
     }
 
+    public void SetDifficultyLevel(int x, int y)
+    {
+        int dX = Mathf.Abs(x-LevelManager.Instance.currentX);
+        int dY = Mathf.Abs(y-LevelManager.Instance.currentY);
+        difficultyLevel = Mathf.Max(dX, dY);
+    }
+
+    public void PlayerEnter()
+    {
+        //Debug.Log($"player enter {positionIndexX}, {positionIndexY}");
+        LevelManager.Instance.PlayerEnteredRoom(positionIndexX, positionIndexY);
+    }
+
     private void InitializeRoom()
     {
-        roomContentIndex = GetRoomContentIndex();
-        GameObject prefab = roomPool.roomPrefabs[roomContentIndex];
-        roomContent = Instantiate(prefab, transform.position, Quaternion.identity, transform);
+        roomContent = Instantiate(GetRoomContent(), transform.position, Quaternion.identity, transform);
         foreach (Transform child in roomContent.transform)
         {
             RoomEntity entity = child.GetComponent<RoomEntity>();
@@ -62,24 +76,35 @@ public class Room : MonoBehaviour
         }
     }
 
-    public void PlayerEnter()
-    {
-        //Debug.Log($"player enter {positionIndexX}, {positionIndexY}");
-        LevelManager.Instance.PlayerEnteredRoom(positionIndexX, positionIndexY);
-    }
+    
 
-    private int GetRoomContentIndex()
+    private RoomContent GetRoomContent()
     {
-        if (positionIndexX == LevelManager.Instance.currentX && positionIndexY == LevelManager.Instance.currentY)
+        if (positionIndexX == LevelManager.Instance.startX && positionIndexY == LevelManager.Instance.startY)
         {
-            return 0;
+            return roomPool.tutorialRoom;
         }
+
+        List<RoomContent> tempList = new List<RoomContent>();
+        tempList.AddRange(roomPool.roomContents);
+
+        tempList = tempList.Where(roomContent => roomContent.difficultyLevel == difficultyLevel).ToList(); 
+
+        if (tempList.Count > 0)
+        { 
+            return tempList.RandomItem();
+        } 
         else
         {
-            return Random.Range(1,roomPool.roomPrefabs.Length);
+            //roomPool.roomContents.Count;
+            return roomPool.GetRandomMaxRoomContent(); //roomPool.roomContents.Count];
         }
+        //Random.Range(1,roomPool.roomPrefabs.Length);
+        
         
     }
+
+
 
 /*     private bool IsPlayer()
     {

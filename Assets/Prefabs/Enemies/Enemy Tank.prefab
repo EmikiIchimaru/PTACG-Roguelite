@@ -75,7 +75,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentBuff: {fileID: 0}
   healthBarPrefab: {fileID: 6247972103376105306, guid: 140f6aeb18e0dfb4b86de7cbdc08ffac, type: 3}
-  offSetScale: 1
+  offSetScale: 2
 --- !u!114 &-2085335478237967535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,8 +118,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHostile: 1
   shouldChasePlayer: 0
-  moveSpeed: 1
-  reflectVariance: 0.2
   speedVariance: 0.1
   rotatePart: {fileID: 2390706219843094594}
 --- !u!114 &6516078609819919413

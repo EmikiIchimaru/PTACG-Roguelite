@@ -36,10 +36,10 @@ public class UIManager : Singleton<UIManager>
     void Update()
     {
         healthBar.value = Mathf.Lerp(healthBar.value, playerCurrentHealth / playerMaxHealth, 5f * Time.deltaTime);
-        currentHealthText.text = Mathf.Round(playerCurrentHealth).ToString() + "/" + Mathf.Round(playerMaxHealth).ToString(); 
+        currentHealthText.text = Mathf.Round(playerCurrentHealth).ToString() + " / " + Mathf.Round(playerMaxHealth).ToString(); 
 
         experienceBar.value = Mathf.Lerp(experienceBar.value, playerCurrentExperience / playerMaxExperience, 5f * Time.deltaTime);
-        currentExperienceText.text = Mathf.Round(playerCurrentExperience).ToString() + "/" + playerMaxExperience.ToString();
+        currentExperienceText.text = Mathf.Round(playerCurrentExperience).ToString() + " / " + playerMaxExperience.ToString();
 
         abilityBar.value = playerAbilityCooltimePercent;
 

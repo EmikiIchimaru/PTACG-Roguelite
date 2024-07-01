@@ -143,6 +143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4034139826093088081}
   - component: {fileID: 2114772519660907210}
+  - component: {fileID: -613873347002023691}
   m_Layer: 0
   m_Name: Boss Room
   m_TagString: Untagged
@@ -180,3 +181,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockPrefab: {fileID: 6744666814527503897, guid: 7bcb54d86be20af48acb922d773471bd, type: 3}
   bossPrefab: {fileID: 4329386225776292504, guid: dc03404dc23a91046b1a7529fc597559, type: 3}
+--- !u!114 &-613873347002023691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6792578708735493937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77673258e2542514f844bfba52cc988f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficultyLevel: -1

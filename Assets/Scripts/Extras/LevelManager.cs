@@ -15,9 +15,11 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField] private GameObject roomPrefab;
 
 
-    [Header("Player Position")]
-    public int currentX;
-    public int currentY;
+    //[Header("Player Position")]
+    public int currentX { get; private set; }
+    public int currentY { get; private set; }
+    public int startX;
+    public int startY;
 
     [Header("Misc")]
     public WallGroup[] horiWalls;
@@ -41,10 +43,12 @@ public class LevelManager : Singleton<LevelManager>
         vertWalls = new WallGroup[levelSize*(levelSize-1)];
         rooms = new Room[levelSize*levelSize];
         //does not spawn in corner
-        offsetX = Random.Range(1, levelSize-1)-levelSize;
-        offsetY = Random.Range(1, levelSize-1)-levelSize;
+        offsetX = Random.Range(2, levelSize-1)-levelSize;
+        offsetY = Random.Range(2, levelSize-1)-levelSize;
         currentX = -(offsetX+1);
         currentY = -(offsetY+1);
+        startX = currentX;
+        startY = currentY;
         blocksPerRoom = (int) (roomSize / blockSize);
         //Debug.Log($"offsetX = {offsetX}, offsetY = {offsetY}");
         GenerateBoundary();
@@ -128,6 +132,7 @@ public class LevelManager : Singleton<LevelManager>
         room.positionIndexX = indexX;
         room.positionIndexY = indexY;
         rooms[tempRoomNumber] = room;
+        room.SetDifficultyLevel(indexX,indexY);
     }
 
   
