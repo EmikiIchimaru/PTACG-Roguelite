@@ -16,6 +16,6 @@ MonoBehaviour:
   elementType: 1
   upgradeType: 0
   upgradeName: Burst Gun I
-  upgradeDescript: 
+  upgradeDescript: Short range weapon which deals damage in bursts.
   newWeapon: {fileID: 7890344321430585536, guid: e97791ddf1d08b04c96f244798b193fd, type: 3}
   newStats: {fileID: 0}

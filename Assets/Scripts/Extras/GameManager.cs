@@ -28,7 +28,7 @@ public class GameManager : Singleton<GameManager>
         isPlayerMovementEnabled = true;
         isPlayerAlive = true;
         isBossAlive = true;
-        bossCountdown = Random.Range(6,9);
+        bossCountdown = Random.Range(2,5);
     }
 
     public void BossCountDown()

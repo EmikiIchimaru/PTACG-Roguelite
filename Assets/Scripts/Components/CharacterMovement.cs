@@ -15,7 +15,7 @@ public class CharacterMovement : CharacterComponents
     protected override void Start()
     {
         base.Start(); 
-        MoveSpeed = 100f * baseMoveSpeed;		       
+        SetMoveSpeed(1f);		       
     } 
 
     protected override void HandleAbility()
@@ -53,7 +53,10 @@ public class CharacterMovement : CharacterComponents
             }
         }
     } */
-
+    public void SetMoveSpeed(float multiplier)
+    {
+        MoveSpeed = multiplier * 100f * baseMoveSpeed;
+    }
     // Resets our speed from the run speed to the walk speed
     public void ResetSpeed()
     {

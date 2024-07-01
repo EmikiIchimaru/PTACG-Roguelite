@@ -13,6 +13,9 @@ public class StatsSO : ScriptableObject
     public float abilityHastePercentBonus;
     public float abilityPowerBaseBonus;
     public float abilityPowerPercentBonus;
-
-
+    //
+    public float scaleBaseBonus;
+    public float scalePercentScaling;
+    public float moveSpeedBaseBonus;
+    public float moveSpeedPercentScaling;
 }

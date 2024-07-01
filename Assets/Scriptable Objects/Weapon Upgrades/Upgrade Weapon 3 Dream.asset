@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3745ad6372b50f24cb4718d66f27dff6, type: 3}
-  m_Name: Upgrade Weapon 1 Parallel
+  m_Name: Upgrade Weapon 3 Dream
   m_EditorClassIdentifier: 
-  upgradeLevel: 1
-  elementType: 3
+  upgradeLevel: 3
+  elementType: 5
   upgradeType: 0
-  upgradeName: Parallel Shooter I
-  upgradeDescript: Balanced weapon with two parallel guns.
-  newWeapon: {fileID: 7890344321430585536, guid: a128e7290aab8a342833a0021941c315, type: 3}
+  upgradeName: Dream Cannon II
+  upgradeDescript: 
+  newWeapon: {fileID: 7890344321430585536, guid: 0c82e2769938c034b81e476bed25bced, type: 3}
   newStats: {fileID: 0}

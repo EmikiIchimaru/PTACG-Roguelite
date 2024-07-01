@@ -43,7 +43,7 @@ public class WallGroup : MonoBehaviour
 
     private void GenerateInnerWall()
     {
-        if (door == -1) { door = Random.Range(3, blocksPerRoom-2); }
+        if (door == -1) { door = Random.Range(1, blocksPerRoom); }
         Vector3 wallVector = (isHorizontal)?new Vector2(blockSize,0f): new Vector2(0f, blockSize);
         bool isWalled = (Random.Range(0f,1f) > wallChance);
         

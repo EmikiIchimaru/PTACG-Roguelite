@@ -10,6 +10,7 @@ public class UpgradeSO : ScriptableObject
     public string upgradeDescript;
     public Weapon newWeapon;
     public StatsSO newStats;
-
+    public Ability newAbility;
+    public BuffType newBuffType;
 
 }

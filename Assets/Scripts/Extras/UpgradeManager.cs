@@ -20,10 +20,9 @@ public class UpgradeManager : Singleton<UpgradeManager>
     [SerializeField] private List<UpgradeSO> upgradesStats1 = new List<UpgradeSO>();
     [SerializeField] private List<UpgradeSO> upgradesStats2 = new List<UpgradeSO>();
     [SerializeField] private List<UpgradeSO> upgradesStats3 = new List<UpgradeSO>();
-    [SerializeField] private List<UpgradeSO> upgradesAbilities = new List<UpgradeSO>(); // includes buffs
+    [SerializeField] private List<UpgradeSO> upgradesAbilities = new List<UpgradeSO>();
+    [SerializeField] private List<UpgradeSO> upgradesBuffs = new List<UpgradeSO>();
 
-    private CharacterWeapon characterWeapon;
-    private CharacterStats characterStats;
 
     private List<List<UpgradeSO>> upgradesMegaList = new List<List<UpgradeSO>>();
     private List<ElementType> elementsPlayer = new List<ElementType>();
@@ -37,11 +36,19 @@ public class UpgradeManager : Singleton<UpgradeManager>
 
     private bool isUpgrading;
 
+    
+    private CharacterAbility characterAbility;
+    private CharacterWeapon characterWeapon;
+    private CharacterStats characterStats;
+    private BuffDealer buffDealer;
+
     protected override void Awake()
     {
         base.Awake();
+        characterAbility = character.GetComponent<CharacterAbility>();
         characterWeapon = character.GetComponent<CharacterWeapon>();
         characterStats = character.GetComponent<CharacterStats>();
+        buffDealer = character.GetComponent<BuffDealer>();
     }
 
     void Start()
@@ -62,7 +69,7 @@ public class UpgradeManager : Singleton<UpgradeManager>
         
         //Time.timeScale = 0f;
         //playerUpgradeTierIndex = ;
-        SetupThreeUpgrades(upgradesMegaList[characterStats.level-2]);
+        SetupTwoUpgrades(upgradesMegaList[characterStats.level-2]);
     }
 
     public void HideCanvas()
@@ -79,7 +86,7 @@ public class UpgradeManager : Singleton<UpgradeManager>
         }
     }
 
-    private void SetupThreeUpgrades(List<UpgradeSO> upgrades)
+    private void SetupTwoUpgrades(List<UpgradeSO> upgrades)
     {
         List<UpgradeSO> tempUpgrades = Utility.ShuffleUpgrades(upgrades);
         upgrade0 = tempUpgrades[0];
@@ -104,6 +111,18 @@ public class UpgradeManager : Singleton<UpgradeManager>
             {
                 characterStats.AddStats(upgrade.newStats);
                 Debug.Log("new stats equipped");
+                break;
+            }
+            case UpgradeType.Ability:
+            {
+                characterAbility.EquipAbility(upgrade.newAbility);
+                Debug.Log("new ability equipped");
+                break;
+            }
+            case UpgradeType.Buff:
+            {
+                buffDealer.playerBuffType = upgrade.newBuffType;
+                Debug.Log("new buff equipped");
                 break;
             }
         }
@@ -134,12 +153,13 @@ public class UpgradeManager : Singleton<UpgradeManager>
         List<List<UpgradeSO>> tempList = new List<List<UpgradeSO>>();
         upgradesWeapon1 = upgradesWeapon1.Where(upgrade => elementsRunPool.Contains(upgrade.elementType)).ToList();
         upgradesStats1 = upgradesStats1.Where(upgrade => elementsRunPool.Contains(upgrade.elementType)).ToList();
+        upgradesAbilities = upgradesAbilities.Where(upgrade => elementsRunPool.Contains(upgrade.elementType)).ToList();
 
+        tempList.Add(upgradesStats1);
         tempList.Add(upgradesWeapon1);
-        tempList.Add(upgradesStats1);
-        tempList.Add(upgradesStats1);
+        tempList.Add(upgradesAbilities);
 
-        Utility.ShuffleUpgradeLists(tempList);
+        //Utility.ShuffleUpgradeLists(tempList);
         upgradesMegaList.AddRange(tempList);
         playerUpgradeTierIndex++;
     }
@@ -152,11 +172,11 @@ public class UpgradeManager : Singleton<UpgradeManager>
         //if (elementsPlayer.Count > 1) { elementsPlayer.Remove(ElementType.None); }
         upgradesWeapon2 = upgradesWeapon2.Where(upgrade => elementsPlayer.Contains(upgrade.elementType)).ToList();
         upgradesStats2 = upgradesStats2.Where(upgrade => elementsRunPool.Contains(upgrade.elementType)).ToList();
-        //upgradesAbilities = upgradesAbilities.Where(upgrade => elementsPlayer.Contains(upgrade.elementType)).ToList();
-
+        upgradesBuffs = upgradesBuffs.Where(upgrade => elementsRunPool.Contains(upgrade.elementType)).ToList();
+        
         tempList.Add(upgradesWeapon2);
         tempList.Add(upgradesStats2);
-        tempList.Add(upgradesStats2);
+        tempList.Add(upgradesBuffs);
 
         Utility.ShuffleUpgradeLists(tempList);
         upgradesMegaList.AddRange(tempList);
@@ -169,11 +189,11 @@ public class UpgradeManager : Singleton<UpgradeManager>
         RemoveRandomElementNotInList(elementsRunPool, elementsPlayer);
 
         upgradesWeapon3 = upgradesWeapon3.Where(upgrade => elementsPlayer.Contains(upgrade.elementType)).ToList();
-        upgradesStats2 = upgradesStats2.Where(upgrade => elementsRunPool.Contains(upgrade.elementType)).ToList();
-        upgradesStats3 = upgradesStats3.Where(upgrade => elementsRunPool.Contains(upgrade.elementType)).ToList();
+        //upgradesStats2 = upgradesStats2.Where(upgrade => elementsRunPool.Contains(upgrade.elementType)).ToList();
+        upgradesStats3 = upgradesStats3.Where(upgrade => elementsPlayer.Contains(upgrade.elementType)).ToList();
 
         tempList.Add(upgradesWeapon3);
-        tempList.Add(upgradesStats3);
+        //tempList.Add(upgradesStats2);
         tempList.Add(upgradesStats3);
 
         Utility.ShuffleUpgradeLists(tempList);

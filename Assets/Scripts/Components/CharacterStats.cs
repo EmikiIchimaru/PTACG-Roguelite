@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
-    public static int maxLevel = 8;
+    public static int maxLevel = 9;
 
     [Header("Seerice Field")]
     
@@ -21,8 +21,10 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] private float abilityPowerBase;
     [SerializeField] private float abilityPowerPerLevel;
 
-    private float scaleBase = 1f;
-    private float scalePerLevel = 0.1f;
+    private float scaleBase = 0.95f;
+    private float scalePerLevel = 0.05f;
+    private float moveSpeedBase = 1f;
+    private float moveSpeedPerLevel = 0f;
 
 
     [Header("public ReadOnly")]
@@ -36,6 +38,7 @@ public class CharacterStats : MonoBehaviour
     public int experience;
     private int xpToNextLevel;
     public float scaleFinal;
+    public float moveSpeedFinal;
 
     public float healthBaseBonus;
     public float healthPercentBonus;
@@ -48,12 +51,23 @@ public class CharacterStats : MonoBehaviour
     public float abilityPowerBaseBonus;
     public float abilityPowerPercentBonus;
 
+    public float scaleBaseBonus;
+    public float scalePercentScaling;
+    public float moveSpeedBaseBonus;
+    public float moveSpeedPercentScaling;
+
+
 
     [Header("Components")]
+    private CharacterMovement characterMovement;
+    private CharacterWeapon characterWeapon;
     private Health health;
 
     void Awake()
     {
+        
+        characterMovement = GetComponent<CharacterMovement>();
+        characterWeapon = GetComponent<CharacterWeapon>();
         health = GetComponent<Health>();
     }
 
@@ -94,26 +108,32 @@ public class CharacterStats : MonoBehaviour
         if (level < maxLevel) 
         {
             xpToNextLevel = requiredXPBase + level * requiredXPLevelMultiplier;
-            if (level > 1) { UpgradeManager.Instance.ShowCanvas(); }
         }
         else
         {
             experience = xpToNextLevel;
             UIManager.Instance.UpdateExperience(experience, xpToNextLevel);
         }
-        
+        if (level > 1) { UpgradeManager.Instance.ShowCanvas(); }
     }
 
     private void RecalculateStats()
     {
-        scaleFinal = CalculateFinalStat(scaleBase, scalePerLevel, 0f,0f);
-        transform.localScale = new Vector3(scaleFinal, scaleFinal, 1f);
+        scaleFinal = CalculateFinalStat(scaleBase, scalePerLevel, scaleBaseBonus, scalePercentScaling);
+        moveSpeedFinal = CalculateFinalStat(moveSpeedBase, moveSpeedPerLevel, moveSpeedBaseBonus, moveSpeedPercentScaling);
+        
         healthFinal = CalculateFinalStat(healthBase, healthPerLevel, healthBaseBonus, healthPercentBonus);
-        health.SetNewMaxHealth(healthFinal);
+        
         attackDamageFinal = CalculateFinalStat(attackDamageBase, attackDamagePerLevel, attackDamageBaseBonus, attackDamagePercentBonus);
         attackSpeedFinal = CalculateFinalStat(attackSpeedBase, attackSpeedPerLevel, attackSpeedBaseBonus, attackSpeedPercentBonus);
         abilityHasteFinal = CalculateFinalStat(abilityHasteBase, abilityHastePerLevel, abilityHasteBaseBonus, abilityHastePercentBonus);
         abilityPowerFinal = CalculateFinalStat(abilityPowerBase, abilityPowerPerLevel, abilityPowerBaseBonus, abilityPowerPercentBonus);
+        
+        characterMovement.SetMoveSpeed(moveSpeedFinal);
+        characterWeapon.CurrentWeapon.transform.localScale = new Vector3(scaleFinal, scaleFinal, 1f);
+        health.SetNewMaxHealth(healthFinal);
+        
+        
     }
 
     public void AddStats(StatsSO statBonus)
@@ -128,6 +148,9 @@ public class CharacterStats : MonoBehaviour
         attackSpeedPercentBonus += statBonus.attackSpeedPercentBonus;
         abilityHastePercentBonus += statBonus.abilityHastePercentBonus;
         abilityPowerPercentBonus += statBonus.abilityPowerPercentBonus;
+        //
+        scalePercentScaling = statBonus.scalePercentScaling;
+        moveSpeedPercentScaling = statBonus.moveSpeedPercentScaling;
         RecalculateStats();
     }
 

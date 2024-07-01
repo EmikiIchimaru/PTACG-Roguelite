@@ -8,8 +8,8 @@ public class EnemyMovement : MonoBehaviour
     public Buff currentBuff { get; set; }
     [SerializeField] private bool isHostile = true;
     [SerializeField] private bool shouldChasePlayer = false;
-    [SerializeField] private float baseMoveSpeed = 30f;
-    [SerializeField] private float reflectVariance = 0.2f;
+    [SerializeField] private readonly float baseMoveSpeed = 30f;
+    //[SerializeField] private float reflectVariance = 0.2f;
     [SerializeField] private float speedVariance = 0.1f;
     public Transform rotatePart;
 
@@ -105,16 +105,16 @@ public class EnemyMovement : MonoBehaviour
 
             // Reflect the direction based on the collision normal
             moveDirection = Vector2.Reflect(moveDirection, normal);
-
-            //Add randomness
-            moveDirection += new Vector2(Random.Range(-reflectVariance, reflectVariance), Random.Range(-reflectVariance, reflectVariance));
-            moveSpeed = Random.Range(1-speedVariance, 1+speedVariance) * baseMoveSpeed;
             
             if (internalBumpTimer <= 0f) 
             { 
                 rb.AddForce(moveDirection * moveSpeed, ForceMode2D.Impulse);
                 internalBumpTimer = 1f;
             }
+
+            //Add randomness
+            //moveDirection += new Vector2(Random.Range(-reflectVariance, reflectVariance), Random.Range(-reflectVariance, reflectVariance));
+            moveSpeed = Random.Range(1 - speedVariance, 1 + speedVariance) * baseMoveSpeed;
         }
         
     }
