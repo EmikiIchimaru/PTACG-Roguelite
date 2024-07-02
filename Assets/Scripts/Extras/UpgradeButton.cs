@@ -9,7 +9,7 @@ public class UpgradeButton : MonoBehaviour
     [SerializeField] private Text upgradeDescriptText;  
     public void LoadUpgradeInformation(UpgradeSO upgrade)
     {
-        imageBackground.color = Color.red; // change to upgrade color
+        imageBackground.color = Colour.ElementToColour(upgrade.elementType); // change to upgrade color
         upgradeNameText.text = upgrade.upgradeName;
         upgradeDescriptText.text = upgrade.upgradeDescript;
     }

@@ -658,8 +658,8 @@ MonoBehaviour:
   wallChance: 0.2
   wallPrefab: {fileID: 568332425795463292, guid: 5f9ee58536a403b4890852d89afdbb4e, type: 3}
   roomPrefab: {fileID: 3392653186384542890, guid: 31d8affe9129a764e9d4f2433a1bee08, type: 3}
-  currentX: 0
-  currentY: 0
+  startX: 0
+  startY: 0
   horiWalls: []
   vertWalls: []
   rooms: []
@@ -3364,7 +3364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfe89f574211daa4cb033a4c064972aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredXPBase: 50
+  requiredXPBase: 25
   requiredXPLevelMultiplier: 25
   healthBase: 100
   healthPerLevel: 20
@@ -3443,6 +3443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffLibrary: {fileID: 11400000, guid: f7d68ef2a6d0e5043a240d0f86b0952b, type: 2}
   playerBuffType: 0
+  procChance: 0.2
 --- !u!1 &1948966918
 GameObject:
   m_ObjectHideFlags: 0
@@ -3899,7 +3900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7490196}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4072,7 +4073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7490196}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

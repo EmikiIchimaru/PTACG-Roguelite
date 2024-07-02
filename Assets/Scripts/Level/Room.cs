@@ -44,8 +44,8 @@ public class Room : MonoBehaviour
 
     public void ReplaceWithBossRoom()
     {
-        Destroy(roomContent);
-        roomContent = Instantiate(bossRoomPrefab, transform.position, Quaternion.identity, transform);
+        Destroy(roomContent.gameObject);
+        Instantiate(bossRoomPrefab, transform.position, Quaternion.identity, transform);
     }
 
     public void SetDifficultyLevel(int x, int y)
@@ -75,8 +75,6 @@ public class Room : MonoBehaviour
             }
         }
     }
-
-    
 
     private RoomContent GetRoomContent()
     {

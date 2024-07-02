@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 8203643418636656185}
   - component: {fileID: 916725493514690873}
   m_Layer: 7
-  m_Name: Enemy Cross
+  m_Name: Enemy Arrow
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e29ddf4f6c5596d48a3fcaf8e63696a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cf85e008bb26c4e47a424de4871ea831, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -198,6 +198,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHostile: 1
   shouldChasePlayer: 1
+  baseMoveSpeed: 30
+  reflectVariance: 0.2
   speedVariance: 0.1
   rotatePart: {fileID: 0}
 --- !u!114 &6516078609819919413

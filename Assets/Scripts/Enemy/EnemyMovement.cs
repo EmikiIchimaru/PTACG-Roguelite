@@ -16,10 +16,11 @@ public class EnemyMovement : MonoBehaviour
     private Rigidbody2D rb;
     private DetectPlayer detectPlayer;
     // Private variable to store the movement direction
-
     private float moveSpeed;
     private Vector2 moveDirection;
     //private float internalBumpTimer = 0f;
+
+    private float maxSpeedMultiplier = 0.25f;
     // Start is called before the first frame update
     void Start()
     {   
@@ -55,7 +56,7 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        MoveUnit();
+        if (rb.velocity.magnitude < maxSpeedMultiplier * moveSpeed) { MoveUnit(); }
         if (detectPlayer != null && rotatePart != null) { MakeUnitFacePlayer(); }
     }
 
