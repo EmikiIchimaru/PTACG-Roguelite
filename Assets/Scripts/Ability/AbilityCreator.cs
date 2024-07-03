@@ -9,7 +9,7 @@ public static class AbilityCreator
         GameObject bulletGO = Object.Instantiate(bulletPrefab, position, Quaternion.identity);
         SpellProjectile projectile = bulletGO.GetComponent<SpellProjectile>();
         projectile.ProjectileOwner = character;
-        projectile.buffDealer = character.GetComponent<BuffDealer>();
+        projectile.buffDealer = character?.GetComponent<BuffDealer>();
         projectile.damage = damage;
         projectile.SetAngle(angle);
     }

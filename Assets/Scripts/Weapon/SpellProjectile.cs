@@ -66,7 +66,7 @@ public class SpellProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))		
+        if (other.CompareTag("Enemy") && ProjectileOwner.CharacterType == Character.CharacterTypes.Player)		
         {
             EnemyHealth enemy = other.gameObject.GetComponent<EnemyHealth>();
 			
@@ -82,6 +82,29 @@ public class SpellProjectile : MonoBehaviour
             enemy.TakeDamage(damage);	
             //fx
             if (!canPierce) { DestroyProjectile(); }
+        }
+        else if (other.CompareTag("Player") && 
+            (ProjectileOwner.CharacterType == Character.CharacterTypes.AI ||
+            ProjectileOwner.CharacterType == Character.CharacterTypes.Boss))	
+        {
+            Health health = other.gameObject.GetComponent<Health>();
+		
+            health.TakeDamage(damage);	
+            //fx
+            if (!canPierce) { DestroyProjectile(); }
+        }
+        else if (other.CompareTag("Shield") && 
+            ProjectileOwner.CharacterType != other.gameObject.transform.parent.GetComponent<Character>().CharacterType)		
+        {
+			//other.gameObject.GetComponent<Health>().TakeDamage(bulletDamage);		
+            //fx
+            DestroyProjectile();
+        }
+        else if (other.CompareTag("Wall"))		
+        {
+			//other.gameObject.GetComponent<Health>().TakeDamage(bulletDamage);		
+            //fx
+            DestroyProjectile();
         }
     }
   

@@ -92,8 +92,7 @@ public class Projectile : MonoBehaviour
             //fx
             if (!canPierce) { DisableProjectile(); }
         }
-
-        if (other.CompareTag("Player") && 
+        else if (other.CompareTag("Player") && 
             (ProjectileOwner.CharacterType == Character.CharacterTypes.AI ||
             ProjectileOwner.CharacterType == Character.CharacterTypes.Boss))	
         {
@@ -103,15 +102,14 @@ public class Projectile : MonoBehaviour
             //fx
             if (!canPierce) { DisableProjectile(); }
         }
-
-        if (other.CompareTag("Shield") && ProjectileOwner.CharacterType != other.gameObject.transform.parent.GetComponent<Character>().CharacterType)		
+        else if (other.CompareTag("Shield") && 
+            ProjectileOwner.CharacterType != other.gameObject.transform.parent.GetComponent<Character>().CharacterType)		
         {
 			//other.gameObject.GetComponent<Health>().TakeDamage(bulletDamage);		
             //fx
             DisableProjectile();
         }
-
-        if (other.CompareTag("Wall"))		
+        else if (other.CompareTag("Wall"))		
         {
 			//other.gameObject.GetComponent<Health>().TakeDamage(bulletDamage);		
             //fx

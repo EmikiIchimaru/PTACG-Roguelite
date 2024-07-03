@@ -14,7 +14,7 @@ public class BossRoom : MonoBehaviour
     {
         Destroy(vfx);
         Destroy(circle);
-        Instantiate(bossPrefab, transform.position + new Vector3(0f, 20f, 0f), Quaternion.identity, transform);
+        Instantiate(bossPrefab, transform.position + new Vector3(0f, 15f, 0f), Quaternion.identity, transform);
         UIManager.Instance.ShowBossHUD();
         //Health bossHealth = bossPrefab.GetComponent<Health>();
         //bossHealth.CurrentHealth = bossHealth.MaxHealth;
