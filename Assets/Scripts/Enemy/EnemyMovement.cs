@@ -32,48 +32,48 @@ public class EnemyMovement : MonoBehaviour
             detectPlayer = GetComponent<DetectPlayer>();
         }
 
-        if (!shouldChasePlayer)
-        {
-            float moveX = Random.Range(-1f, 1f);
-            float moveY = Random.Range(-1f, 1f);
+        SetRandomDirection();
 
-            // Create a Vector3 for movement direction
-            moveDirection = new Vector2(moveX, moveY);
-
-            // Normalize the direction vector to ensure consistent movement speed
-            if (moveDirection.magnitude > 1)
-            {
-                moveDirection.Normalize();
-            }
-        }      
+         
     }
 
-    void Update()
+    private void SetRandomDirection()
     {
-        //if (internalBumpTimer > 0) { internalBumpTimer -= Time.deltaTime; }
+        float moveX = Random.Range(-1f, 1f);
+        float moveY = Random.Range(-1f, 1f);
+
+        // Create a Vector3 for movement direction
+        moveDirection = new Vector2(moveX, moveY);
+
+        // Normalize the direction vector to ensure consistent movement speed
+        if (moveDirection.magnitude > 1)
+        {
+            moveDirection.Normalize();
+        }   
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         if (rb.velocity.magnitude < maxSpeedMultiplier * moveSpeed) { MoveUnit(); }
-        if (detectPlayer != null && rotatePart != null) { MakeUnitFacePlayer(); }
+        if (rotatePart != null) { RotateUnit(); }
     }
 
     private void MoveUnit()
     {
         //if (positionIndexX != LevelManager.Instance.currentX || positionIndexY != LevelManager.Instance.currentY) { return; }
         // Move the sprite by translating its position
+        Vector3 tempMoveDirection = moveDirection;
         if (shouldChasePlayer) 
         { 
             if (detectPlayer.isPlayerInRange)
             {
-                moveDirection = GameManager.Instance.playerCharacter.transform.position - transform.position;
+                tempMoveDirection = GameManager.Instance.playerCharacter.transform.position - transform.position;
 
                 // Normalize the direction vector to ensure consistent movement speed
-                if (moveDirection.magnitude > 1)
+                if (tempMoveDirection.magnitude > 1)
                 {
-                    moveDirection.Normalize();
+                    tempMoveDirection.Normalize();
                 }
             }
         }
@@ -82,15 +82,20 @@ public class EnemyMovement : MonoBehaviour
         {
             buffMultiplier = currentBuff.speedMultiplier;
         }
-        rb.AddForce(100f * moveDirection * moveSpeed * buffMultiplier * Time.fixedDeltaTime);
+        rb.AddForce(100f * tempMoveDirection * moveSpeed * buffMultiplier * Time.fixedDeltaTime);
         //transform.Translate(moveDirection * moveSpeed * buffMultiplier * Time.deltaTime);
     }
 
-    private void MakeUnitFacePlayer()
+    private void RotateUnit()
     {
-        if (isHostile) 
+        
+        if (detectPlayer != null && detectPlayer.isPlayerInRange) 
         {
             rotatePart.rotation = Quaternion.Euler(new Vector3(0, 0, detectPlayer.angle+90f));
+        }
+        else
+        {
+            rotatePart.rotation = Quaternion.Euler(Utility.ConvertV2ToV3(moveDirection));
         }
     }
 
