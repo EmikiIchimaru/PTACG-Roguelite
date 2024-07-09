@@ -8,12 +8,7 @@ public class Health : MonoBehaviour
     public static event Action OnBossDeath;
     public static event Action OnPlayerDeath;
  
-    [Header("Health")]
-    [SerializeField] private float initialHealth = 10f;
     [SerializeField] private float maxHealth = 10f;
-
-    [Header("Shield")] 
-    [SerializeField] private float initialShield = 0f;
     [SerializeField] private float maxShield = 5f;
 
     [Header("Settings")] 
@@ -53,8 +48,8 @@ public class Health : MonoBehaviour
 
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        CurrentHealth = initialHealth;
-        CurrentShield = initialShield;
+        CurrentHealth = maxHealth;
+        CurrentShield = maxShield;
 
         if (character != null)
         {
@@ -86,7 +81,7 @@ public class Health : MonoBehaviour
             return;
         }
 
-        if (!shieldBroken && character != null && initialShield > 0)
+        if (!shieldBroken && character != null && CurrentShield > 0)
         {
             CurrentShield -= damage;
 
@@ -165,8 +160,8 @@ public class Health : MonoBehaviour
 
         gameObject.SetActive(true);
 
-        CurrentHealth = initialHealth;
-        CurrentShield = initialShield;
+        CurrentHealth = maxHealth;
+        CurrentShield = maxShield;
 
         shieldBroken = false;
        

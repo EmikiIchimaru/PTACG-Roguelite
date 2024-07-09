@@ -3013,6 +3013,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1817894354}
+  - component: {fileID: 1817894355}
   m_Layer: 5
   m_Name: Victory Screen
   m_TagString: Untagged
@@ -3041,6 +3042,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1817894355
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817894353}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d25ca504edd89a74a81b890c63dcf0ab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1839145900
 GameObject:
   m_ObjectHideFlags: 0
@@ -3411,9 +3433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8088e96eea75549a3bb62035ba793d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealth: 10
   maxHealth: 10
-  initialShield: 0
   maxShield: 5
   destroyObject: 0
 --- !u!114 &1940298622
@@ -3523,12 +3543,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cf626f1772c3696419cfdde43194cf3b, type: 2}
   - {fileID: 11400000, guid: a05d8866b3c74e147a9ecbd82a0c0005, type: 2}
   - {fileID: 11400000, guid: 0cd4d87308903b44b9148ab95fd57206, type: 2}
-  upgradesAbilities:
-  - {fileID: 11400000, guid: 1a5058656adec7e4ebf2da743b963470, type: 2}
+  upgradesAbilities1:
   - {fileID: 11400000, guid: 64233b0c45c6c4d4fbfa4719bae82868, type: 2}
   - {fileID: 11400000, guid: ed8663bb68b9bc74eb843e60813fbf31, type: 2}
+  - {fileID: 11400000, guid: 1a5058656adec7e4ebf2da743b963470, type: 2}
   - {fileID: 11400000, guid: 1b2f068ea11283d46b5f88ed9ec7474f, type: 2}
   - {fileID: 11400000, guid: b1d2683de615f8c42869c9e7a73041ca, type: 2}
+  upgradesAbilities2:
+  - {fileID: 11400000, guid: ca562d2f2d204b14aad5933a820e7941, type: 2}
+  - {fileID: 11400000, guid: b14f0cb352947af489d59c63d7060372, type: 2}
   upgradesBuffs:
   - {fileID: 11400000, guid: d4611a9b01d33dd42b7772dcf83669f1, type: 2}
   - {fileID: 11400000, guid: 3221155f30ae0344bb3aa60e4b17a531, type: 2}

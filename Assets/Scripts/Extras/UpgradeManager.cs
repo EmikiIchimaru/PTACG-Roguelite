@@ -20,7 +20,8 @@ public class UpgradeManager : Singleton<UpgradeManager>
     [SerializeField] private List<UpgradeSO> upgradesStats1 = new List<UpgradeSO>();
     [SerializeField] private List<UpgradeSO> upgradesStats2 = new List<UpgradeSO>();
     [SerializeField] private List<UpgradeSO> upgradesStats3 = new List<UpgradeSO>();
-    [SerializeField] private List<UpgradeSO> upgradesAbilities = new List<UpgradeSO>();
+    [SerializeField] private List<UpgradeSO> upgradesAbilities1 = new List<UpgradeSO>();
+    [SerializeField] private List<UpgradeSO> upgradesAbilities2 = new List<UpgradeSO>();
     [SerializeField] private List<UpgradeSO> upgradesBuffs = new List<UpgradeSO>();
 
 
@@ -41,6 +42,9 @@ public class UpgradeManager : Singleton<UpgradeManager>
     private CharacterWeapon characterWeapon;
     private CharacterStats characterStats;
     private BuffDealer buffDealer;
+
+    private ElementType playerWeaponElement;
+    private ElementType playerAbilityElement;
 
     protected override void Awake()
     {
@@ -104,6 +108,7 @@ public class UpgradeManager : Singleton<UpgradeManager>
             case UpgradeType.Weapon:
             {
                 characterWeapon.EquipWeapon(upgrade.newWeapon);
+                if (upgrade.upgradeLevel == 2) { playerWeaponElement = upgrade.elementType; }
                 Debug.Log("new weapon equipped");
                 break;
             }
@@ -116,6 +121,7 @@ public class UpgradeManager : Singleton<UpgradeManager>
             case UpgradeType.Ability:
             {
                 characterAbility.EquipAbility(upgrade.newAbility);
+                if (upgrade.upgradeLevel == 1) { playerAbilityElement = upgrade.elementType; }
                 Debug.Log("new ability equipped");
                 break;
             }
@@ -153,11 +159,11 @@ public class UpgradeManager : Singleton<UpgradeManager>
         List<List<UpgradeSO>> tempList = new List<List<UpgradeSO>>();
         upgradesWeapon1 = upgradesWeapon1.Where(upgrade => elementsRunPool.Contains(upgrade.elementType)).ToList();
         upgradesStats1 = upgradesStats1.Where(upgrade => elementsRunPool.Contains(upgrade.elementType)).ToList();
-        upgradesAbilities = upgradesAbilities.Where(upgrade => elementsRunPool.Contains(upgrade.elementType)).ToList();
+        upgradesAbilities1 = upgradesAbilities1.Where(upgrade => elementsRunPool.Contains(upgrade.elementType)).ToList();
 
         tempList.Add(upgradesStats1);
         tempList.Add(upgradesWeapon1);
-        tempList.Add(upgradesAbilities);
+        tempList.Add(upgradesAbilities1);
 
         //Utility.ShuffleUpgradeLists(tempList);
         upgradesMegaList.AddRange(tempList);
@@ -188,12 +194,12 @@ public class UpgradeManager : Singleton<UpgradeManager>
 
         RemoveRandomElementNotInList(elementsRunPool, elementsPlayer);
 
-        upgradesWeapon3 = upgradesWeapon3.Where(upgrade => elementsPlayer.Contains(upgrade.elementType)).ToList();
-        //upgradesStats2 = upgradesStats2.Where(upgrade => elementsRunPool.Contains(upgrade.elementType)).ToList();
+        upgradesWeapon3 = upgradesWeapon3.Where(upgrade => upgrade.elementType == playerWeaponElement).ToList();
+        upgradesAbilities2 = upgradesAbilities2.Where(upgrade => upgrade.elementType == playerAbilityElement).ToList();
         upgradesStats3 = upgradesStats3.Where(upgrade => elementsPlayer.Contains(upgrade.elementType)).ToList();
 
         tempList.Add(upgradesWeapon3);
-        //tempList.Add(upgradesStats2);
+        tempList.Add(upgradesAbilities2);
         tempList.Add(upgradesStats3);
 
         Utility.ShuffleUpgradeLists(tempList);

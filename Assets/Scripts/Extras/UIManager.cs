@@ -27,6 +27,13 @@ public class UIManager : Singleton<UIManager>
     private float bossMaxHealth;
     private bool isBossHUDActive;
     //private bool isPlayer;
+    private Animator animVictory;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        animVictory = victoryScreen.GetComponent<Animator>();
+    }
 
     void Start()
     {
@@ -89,6 +96,7 @@ public class UIManager : Singleton<UIManager>
             HideHUD();
             GameManager.isPlayerControlEnabled = false;
             victoryScreen.SetActive(true);
+            animVictory.SetTrigger("StartLoad");
             Debug.Log("victory");
         }
     }

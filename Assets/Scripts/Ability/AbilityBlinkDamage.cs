@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbilityBlink : Ability
+public class AbilityBlinkDamage : Ability
 {
+    [SerializeField] private float baseDamage;
+    [SerializeField] private float radius;
     public LayerMask wallLayerMask;
     protected override void CastAbility()
     {
@@ -16,6 +18,7 @@ public class AbilityBlink : Ability
         if (hit.collider == null)
         {
             AbilityOwner.transform.position = targetPosition;
+            AbilityCreator.AreaDamage(AbilityOwner, targetPosition, baseDamage * (1f + 0.03f * stats.abilityPowerFinal), radius);
             // Wall detected, set the target position to the point just before the wall
             //targetPosition = hit.point - (hit.point - currentPosition).normalized * 0.1f; // Adjust the offset as needed
         }

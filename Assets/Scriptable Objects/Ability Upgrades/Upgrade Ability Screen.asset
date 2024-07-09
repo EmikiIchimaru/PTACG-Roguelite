@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3745ad6372b50f24cb4718d66f27dff6, type: 3}
   m_Name: Upgrade Ability Screen
   m_EditorClassIdentifier: 
-  upgradeLevel: 2
+  upgradeLevel: 1
   elementType: 5
   upgradeType: 2
   upgradeName: 'Ability: ScreenDamage'
