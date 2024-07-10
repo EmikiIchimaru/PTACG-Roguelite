@@ -475,7 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: default weapon
-  baseDamage: 1
+  baseDamage: 3
   baseAttackCooltime: 0.4
   projectileSpawnPosition: {x: 0, y: 0, z: 0}
   projectileColor: {r: 0.6666667, g: 1, b: 0, a: 1}
@@ -495,6 +495,7 @@ MonoBehaviour:
   objectPrefab: {fileID: 138594487432681173, guid: a097551e80e3a7a4baaf06b5fa63d1d1, type: 3}
   poolSize: 10
   poolCanExpand: 1
+  parentObject: {fileID: 0}
 --- !u!1 &3992452377670635397
 GameObject:
   m_ObjectHideFlags: 0

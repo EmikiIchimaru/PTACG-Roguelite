@@ -35,7 +35,26 @@ public class BossBehaviour : MonoBehaviour
 
     private void ChooseBossAbility()
     {
-        StartCoroutine(BossSpinSpray());
+        int abilityIndex = Random.Range(0,5);
+        switch (abilityIndex)
+        {
+            case 0:
+                StartCoroutine(BossSpinSpray());
+                break;
+            case 1:
+                StartCoroutine(BossShootPlayer());
+                break;
+            case 2:
+                StartCoroutine(BossShootPlayer());
+                break;
+            case 3:
+                StartCoroutine(BossShootPlayer());
+                break;
+            case 4:
+                StartCoroutine(BossShootPlayer());
+                break;
+        }
+        
     }
     private IEnumerator BossSpinSpray()
     {
@@ -61,5 +80,26 @@ public class BossBehaviour : MonoBehaviour
         //GameManager.isPlayerMovementEnabled = true;
         isCasting = false;
         internalCooldown = 4f;
+    }
+    private IEnumerator BossShootPlayer()
+    {
+        isCasting = true;
+        //GameManager.isPlayerControlEnabled = false;
+        //GameManager.isPlayerMovementEnabled = false;
+
+        float interval = 0.1f;
+
+        for (int i = 0; i < 25; i++)
+        {
+            float angle = Utility.GetAngleBetweenPoints(transform.position, GameManager.Instance.playerCharacter.transform.position);
+            //Debug.Log(i);
+            AbilityCreator.ShootSP(boss, transform.position, 10f, angle + Random.Range(-10f,10f), bulletPrefab);
+            yield return new WaitForSeconds(interval);
+        }
+
+        //GameManager.isPlayerControlEnabled = true;
+        //GameManager.isPlayerMovementEnabled = true;
+        isCasting = false;
+        internalCooldown = 3f;
     }
 }

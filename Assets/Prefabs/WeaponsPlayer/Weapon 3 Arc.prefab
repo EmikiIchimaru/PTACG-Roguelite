@@ -461,7 +461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Tank
-  baseDamage: 1
+  baseDamage: 3
   baseAttackCooltime: 1
   projectileSpawnPosition: {x: 0, y: 0, z: 0}
   projectileColor: {r: 0.33333334, g: 0, b: 1, a: 1}
@@ -481,6 +481,7 @@ MonoBehaviour:
   objectPrefab: {fileID: 138594487432681173, guid: c0f7ef9404e7dd642b47fba7614c323e, type: 3}
   poolSize: 10
   poolCanExpand: 1
+  parentObject: {fileID: 0}
 --- !u!1 &3951245841996814215
 GameObject:
   m_ObjectHideFlags: 0

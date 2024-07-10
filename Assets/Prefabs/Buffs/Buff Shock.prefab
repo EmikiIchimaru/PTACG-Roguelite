@@ -47,10 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  duration: 0.5
-  speedMultiplier: 0.1
-  damagePerTick: 10
-  damageInterval: 0.15
+  duration: 0.51
+  speedMultiplier: 0.25
+  damagePerTick: 25
+  damageInterval: 0.25
 --- !u!198 &-4786263419912640970
 ParticleSystem:
   m_ObjectHideFlags: 0

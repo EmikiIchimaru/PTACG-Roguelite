@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 749bfba69208745429d147dddd0c7f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityCooltime: 5
-  baseDamage: 1
+  abilityCooltime: 10
+  baseDamage: 50

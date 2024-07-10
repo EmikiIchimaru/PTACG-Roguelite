@@ -6,7 +6,7 @@ public class BossRoom : MonoBehaviour
 {
     [SerializeField] private GameObject blockPrefab;
     [SerializeField] private GameObject bossPrefab;
-
+    [SerializeField] private HSVChange bg;
     [SerializeField] private GameObject circle;
     [SerializeField] private GameObject vfx;
 
@@ -14,6 +14,7 @@ public class BossRoom : MonoBehaviour
     {
         Destroy(vfx);
         Destroy(circle);
+        bg.DecreaseColourChange();
         Instantiate(bossPrefab, transform.position + new Vector3(0f, 15f, 0f), Quaternion.identity, transform);
         UIManager.Instance.ShowBossHUD();
         //Health bossHealth = bossPrefab.GetComponent<Health>();

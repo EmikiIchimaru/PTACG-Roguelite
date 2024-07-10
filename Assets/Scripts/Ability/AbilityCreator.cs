@@ -7,7 +7,7 @@ public static class AbilityCreator
     public static void ShootSP(Character character, Vector3 position, float damage, float angle, GameObject bulletPrefab)
     {
         GameObject bulletGO = Object.Instantiate(bulletPrefab, position, Quaternion.identity);
-        SpellProjectile projectile = bulletGO.GetComponent<SpellProjectile>();
+        Projectile projectile = bulletGO.GetComponent<Projectile>();
         projectile.ProjectileOwner = character;
         projectile.buffDealer = character?.GetComponent<BuffDealer>();
         projectile.damage = damage;

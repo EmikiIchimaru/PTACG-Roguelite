@@ -20,6 +20,8 @@ public class ProjectileWeapon : Weapon
     private Vector3 projectileSpawnValue;
     private Vector3 randomProjectileSpread;
 
+    public GameObject Pool { get { return GetPool(); } }
+
     protected override void Awake()
     {
 	    base.Awake();
@@ -86,5 +88,10 @@ public class ProjectileWeapon : Weapon
 
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(ProjectileSpawnPosition, 0.1f);
+    }
+
+    private GameObject GetPool()
+    {
+        return Pooler.parentObject;
     }
 }

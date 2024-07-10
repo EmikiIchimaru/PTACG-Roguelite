@@ -6,6 +6,7 @@ using UnityEngine;
 public class RoomPrefabSO : ScriptableObject
 {
     public RoomContent tutorialRoom;
+    public RoomContent bossRoom;
     public List<RoomContent> roomContents = new List<RoomContent>();
 
     public RoomContent GetRandomMaxRoomContent()

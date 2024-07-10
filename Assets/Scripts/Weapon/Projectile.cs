@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public bool hasPool = true;
+    public bool hasTimedLife = false;
     public float damage;
     [SerializeField] private float speed = 100f;
     [SerializeField] private float acceleration = 0f;
@@ -14,19 +16,11 @@ public class Projectile : MonoBehaviour
 
     // Returns the direction of this projectile    
     public Vector2 Direction { get; set; }
-    
-    // Returns if the projectile is facing right   
-    //public bool FacingRight { get; set; }
-
     // Returns the speed of the projectile    
     public float Speed { get; set; }
 
     public Character ProjectileOwner { get; set; }
     public BuffDealer buffDealer { get; set; }
-
-    public bool hasTimedLife;
-    
-    
     // Internal
     private Rigidbody2D myRigidbody2D;
     private new Collider2D collider2D;
@@ -109,6 +103,14 @@ public class Projectile : MonoBehaviour
             //fx
             DisableProjectile();
         }
+        else if (other.CompareTag("Mirror") && 
+            ProjectileOwner.CharacterType != other.gameObject.transform.parent.GetComponent<Character>().CharacterType)		
+        {
+			//other.gameObject.GetComponent<Health>().TakeDamage(bulletDamage);		
+            //fx
+            ProjectileOwner = other.gameObject.transform.parent.GetComponent<Character>();
+            Direction = new Vector2(-Direction.x, -Direction.y);
+        }
         else if (other.CompareTag("Wall"))		
         {
 			//other.gameObject.GetComponent<Health>().TakeDamage(bulletDamage);		
@@ -139,12 +141,36 @@ public class Projectile : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle-90f);
     }
 
+    public void SetAngle(float angle) // Angle in degrees
+    {
+        // Convert the angle from degrees to radians
+        float angleRad = angle * Mathf.Deg2Rad;
+
+        // Calculate the direction vector using cosine and sine
+        Vector2 direction = new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
+
+        // Normalize the direction vector
+        Direction = direction.normalized;
+
+        // Set the rotation of the transform
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
+
     public void DisableProjectile()
     {
-        canMove = false;
-        spriteRenderer.enabled = false;
-        collider2D.enabled = false;
-        light2D.enabled = false;
+        VFXManager.Instance.BulletHit(transform, spriteRenderer.color);
+        if (hasPool)
+        {
+            canMove = false;
+            spriteRenderer.enabled = false;
+            collider2D.enabled = false;
+            light2D.enabled = false;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
     }
 
     public void EnableProjectile()

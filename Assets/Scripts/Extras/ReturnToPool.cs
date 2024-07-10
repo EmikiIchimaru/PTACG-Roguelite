@@ -12,12 +12,12 @@ public class ReturnToPool : MonoBehaviour
     //[Header("Effects")]
     //[SerializeField] private ParticleSystem impactPS;
 
-    private Projectile projectile;
+    //private Projectile projectile;
     //private BossProjectile bossProjectile;    
 
     private void Start()
     {
-        projectile = GetComponent<Projectile>();
+        //projectile = GetComponent<Projectile>();
         //bossProjectile = GetComponent<BossProjectile>();
     }
 

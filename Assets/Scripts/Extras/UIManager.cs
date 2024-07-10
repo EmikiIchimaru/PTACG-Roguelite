@@ -12,6 +12,8 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private Text currentExperienceText;
     [SerializeField] private Slider bossHealthBar;
     [SerializeField] private Image bossHealthFillBar;
+
+    [SerializeField] private Image flashImage;
     [SerializeField] private GameObject victoryScreen;
     [SerializeField] private GameObject defeatScreen;
     [SerializeField] private GameObject defaultHUD;
@@ -56,6 +58,11 @@ public class UIManager : Singleton<UIManager>
             float hue = 200f/360f * bossHealthBar.value;
             Color newColor = Color.HSVToRGB(hue, 0.8f, 1f);
             bossHealthFillBar.color = newColor;
+        }
+
+        if (flashImage.color.a > 0f) 
+        { 
+            flashImage.color = new Color(flashImage.color.r, flashImage.color.g, flashImage.color.b, flashImage.color.a - 1.5f * Time.deltaTime);
         }
     }
 
@@ -117,5 +124,10 @@ public class UIManager : Singleton<UIManager>
         defaultHUD.SetActive(false);
         isBossHUDActive = false;
         bossHUD.SetActive(false);
+    }
+
+    public void Flash()
+    {
+        flashImage.color = new Color(flashImage.color.r, flashImage.color.g, flashImage.color.b, 0.6f);
     }
 }

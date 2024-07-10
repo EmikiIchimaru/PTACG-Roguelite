@@ -6,9 +6,15 @@ public class DamageCircle : MonoBehaviour
 {
     [HideInInspector] public Character character;
     [HideInInspector] public float damage;
-    private float radius = 2.25f;
-    void Update()
+    private float radiusX = 2.25f;
+    private float interval = 0.2f;
+    void Start()
     {
-        AbilityCreator.AreaDamage(character, transform.position, damage * Time.deltaTime , radius);
+        InvokeRepeating("DamageCircleRepeating", interval, interval);
+    }
+
+    private void DamageCircleRepeating()
+    {
+        AbilityCreator.AreaDamage(character, transform.position, damage * interval, radiusX * transform.localScale.x);
     }
 }

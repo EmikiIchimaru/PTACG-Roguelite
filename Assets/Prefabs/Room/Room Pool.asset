@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Room Pool
   m_EditorClassIdentifier: 
   tutorialRoom: {fileID: 136895915332200405, guid: 82bcbbc607258244485c5e582a0f11cd, type: 3}
+  bossRoom: {fileID: -613873347002023691, guid: 436c08d6b6da30c4fa1822c62b537cf6, type: 3}
   roomContents:
   - {fileID: -7065654022370673888, guid: a964575a01c65474cbf59a2f779fc88c, type: 3}
   - {fileID: 5477702905226144955, guid: 00ff53d000aa5054ab6056f75cb4d498, type: 3}

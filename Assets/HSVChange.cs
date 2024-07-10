@@ -52,4 +52,11 @@ public class HSVChange : MonoBehaviour
             spriteRenderer.color = newColor;
         }
     }
+
+    public void DecreaseColourChange()
+    {
+        minValue = 0.05f;
+        maxValue = 0.1f;
+        valueChangeSpeed *= 0.25f;
+    }
 }

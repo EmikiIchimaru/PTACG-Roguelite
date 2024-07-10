@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 5
-  duration: 5
-  speedMultiplier: 0.5
+  duration: 5.01
+  speedMultiplier: 0.75
   damagePerTick: 5
   damageInterval: 0.25
 --- !u!198 &-4786263419912640970

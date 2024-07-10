@@ -7,6 +7,7 @@ public class GameManager : Singleton<GameManager>
     public static bool isPlayerControlEnabled;
     public static bool isPlayerMovementEnabled;
     [SerializeField] private Texture2D cursorTexture;
+    [SerializeField] private Camera2D camera2D;
 
     public Character playerCharacter;
     public CharacterStats stats;
@@ -36,6 +37,13 @@ public class GameManager : Singleton<GameManager>
         if (stats.level >= CharacterStats.maxLevel) { bossCountdown--; }
         Debug.Log(bossCountdown.ToString());
         if (bossCountdown == 0) { LevelManager.Instance.InitializeBossRoom(); }
+    }
+
+    public void CameraBossRoom(Transform target)
+    {
+        //isPlayerControlEnabled = false;
+        //isPlayerMovementEnabled = false;
+        camera2D.StartBossPanSequence(target);
     }
 
     public void RestartGame()

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bf001e17c6e8294c946bf45d08051d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityCooltime: 5
+  abilityCooltime: 10
   bulletPrefab: {fileID: 138594487432681173, guid: 5d6be8bdc14935f44b5a28e027802846, type: 3}
-  baseDamage: 1
-  bulletCount: 60
+  baseDamage: 10
+  bulletCount: 72

@@ -101,10 +101,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 369bd41894b76434289bb7baa43809a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasPool: 1
+  hasTimedLife: 0
   damage: 1
   speed: 20
   acceleration: 0
-  hasTimedLife: 0
+  canPierce: 0
 --- !u!50 &9141853090530105361
 Rigidbody2D:
   serializedVersion: 4

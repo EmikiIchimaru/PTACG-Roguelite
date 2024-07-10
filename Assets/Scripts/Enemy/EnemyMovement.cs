@@ -81,6 +81,7 @@ public class EnemyMovement : MonoBehaviour
         if (currentBuff != null)
         {
             buffMultiplier = currentBuff.speedMultiplier;
+            if (currentBuff.type == BuffType.Frost) { rb.velocity = Vector2.zero; }
         }
         rb.AddForce(100f * tempMoveDirection * moveSpeed * buffMultiplier * Time.fixedDeltaTime);
         //transform.Translate(moveDirection * moveSpeed * buffMultiplier * Time.deltaTime);

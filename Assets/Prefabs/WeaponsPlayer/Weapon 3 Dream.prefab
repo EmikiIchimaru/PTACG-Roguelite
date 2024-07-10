@@ -305,8 +305,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Cannon
-  baseDamage: 7
-  baseAttackCooltime: 0.75
+  baseDamage: 6
+  baseAttackCooltime: 0.8
   projectileSpawnPosition: {x: 0, y: 0, z: 0}
   projectileColor: {r: 1, g: 0, b: 0.5019608, a: 1}
   projectileColor2: {r: 1, g: 1, b: 1, a: 1}
@@ -325,6 +325,7 @@ MonoBehaviour:
   objectPrefab: {fileID: 138594487432681173, guid: 05154bfbad257434a95b92613efc4693, type: 3}
   poolSize: 10
   poolCanExpand: 1
+  parentObject: {fileID: 0}
 --- !u!1 &4667198750377712908
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3745ad6372b50f24cb4718d66f27dff6, type: 3}
-  m_Name: Upgrade Ability Pulse
+  m_Name: Upgrade Ability 2 Ring Large
   m_EditorClassIdentifier: 
-  upgradeLevel: 1
-  elementType: 3
+  upgradeLevel: 2
+  elementType: 1
   upgradeType: 2
-  upgradeName: 'Ability: Circle Pulse'
-  upgradeDescript: 
+  upgradeName: Ring of Death
+  upgradeDescript: Improves the AoE of this ability
   newWeapon: {fileID: 0}
   newStats: {fileID: 0}
-  newAbility: {fileID: 75399719002871034, guid: 3678aa6f05144a84bbf8d39b6294e754, type: 3}
+  newAbility: {fileID: -1873994192090698365, guid: 1b89d1a65831bd74183c7ab804b64c73, type: 3}
   newBuffType: 0

@@ -43,5 +43,6 @@ public class AbilityScreenDamage : Ability
                 }
             }
         }
+        UIManager.Instance.Flash();
     }
 }

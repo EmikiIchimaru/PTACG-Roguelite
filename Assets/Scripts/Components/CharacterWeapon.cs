@@ -83,14 +83,14 @@ public class CharacterWeapon : CharacterComponents
 
         if (CurrentWeapon != null)
         {
-            
+            ProjectileWeapon projectileWeapon = (ProjectileWeapon) CurrentWeapon;
             //WeaponAim.DestroyReticle();       // Each weapon has its own Reticle component
-            Destroy(GameObject.Find("Pool"));
+            Destroy(projectileWeapon.Pool);
             Destroy(CurrentWeapon.gameObject);
         }
 
         CurrentWeapon = Instantiate(weapon, transform.position, transform.rotation);
-        CurrentWeapon.transform.localScale = new Vector3(stats.scaleFinal,stats.scaleFinal,1f);
+        CurrentWeapon.transform.localScale = new Vector3(stats.scaleFinal, stats.scaleFinal, 1f);
         CurrentWeapon.transform.parent = transform;
         CurrentWeapon.SetOwner(character);     
 

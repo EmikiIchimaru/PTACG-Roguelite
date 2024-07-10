@@ -9,6 +9,6 @@ public class AbilityCirclePulse : Ability
     [SerializeField] private int bulletCount;
     protected override void CastAbility()
     {
-        AbilityCreator.CirclePulse(AbilityOwner, transform.position, baseDamage * stats.abilityPowerFinal, bulletCount, bulletPrefab);
+        AbilityCreator.CirclePulse(AbilityOwner, transform.position, baseDamage * (1f + 0.05f * stats.abilityPowerFinal), bulletCount, bulletPrefab);
     }
 }

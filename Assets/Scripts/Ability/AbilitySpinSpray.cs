@@ -20,14 +20,14 @@ public class AbilitySpinSpray : Ability
         //GameManager.isPlayerControlEnabled = false;
         //GameManager.isPlayerMovementEnabled = false;
 
-        float interval = 5f / aspd;
+        float interval = 0.02f;
 
         for (int i = 0; i < bulletCount; i++)
         {
             float angle = i * 18f;
             //Debug.Log(i);
-            AbilityCreator.ShootSP(AbilityOwner, transform.position, baseDamage * stats.abilityPowerFinal, angle, bulletPrefab);
-            AbilityCreator.ShootSP(AbilityOwner, transform.position, baseDamage * stats.abilityPowerFinal, angle+180f, bulletPrefab);
+            AbilityCreator.ShootSP(AbilityOwner, transform.position, 0.01f * aspd * baseDamage * (1f + 0.05f * stats.abilityPowerFinal), angle, bulletPrefab);
+            AbilityCreator.ShootSP(AbilityOwner, transform.position, 0.01f * aspd * baseDamage * (1f + 0.05f * stats.abilityPowerFinal), angle+180f, bulletPrefab);
             yield return new WaitForSeconds(interval);
         }
         //GameManager.isPlayerControlEnabled = true;

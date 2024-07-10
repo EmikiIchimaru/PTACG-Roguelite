@@ -10,6 +10,7 @@ TagManager:
   - Wall
   - WeaponPart
   - Shield
+  - Mirror
   layers:
   - Default
   - TransparentFX

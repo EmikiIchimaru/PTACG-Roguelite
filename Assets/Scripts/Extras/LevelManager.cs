@@ -5,10 +5,10 @@ using UnityEngine;
 public class LevelManager : Singleton<LevelManager>
 {
     [Header("Generation Parameters")]
-    [SerializeField] private float blockSize = 10f;
-    [SerializeField] private float roomSize = 50f;
-    [SerializeField] private int levelSize = 10;
-    [SerializeField] private float wallChance = 0.2f;
+    [SerializeField] private float blockSize;
+    [SerializeField] private float roomSize;
+    [SerializeField] private int levelSize;
+    [SerializeField] private float wallChance;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject wallPrefab;

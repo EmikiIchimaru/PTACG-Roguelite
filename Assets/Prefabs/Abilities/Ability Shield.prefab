@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityCooltime: 5
-  duration: 1
+  duration: 2
   shieldPrefab: {fileID: 4177813070832359130, guid: 03ad8a3ea9e4c6440afe2b2801a5d24f, type: 3}

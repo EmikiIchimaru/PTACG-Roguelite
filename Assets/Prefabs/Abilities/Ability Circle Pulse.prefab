@@ -47,4 +47,4 @@ MonoBehaviour:
   abilityCooltime: 10
   bulletPrefab: {fileID: 138594487432681173, guid: 5d6be8bdc14935f44b5a28e027802846, type: 3}
   baseDamage: 15
-  bulletCount: 24
+  bulletCount: 36

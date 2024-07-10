@@ -46,6 +46,7 @@ public class Weapon : MonoBehaviour
 
     // Internal
     protected float internalCooldown = 0f;
+
     //protected Animator animator;
     //private readonly int weaponUseParameter = Animator.StringToHash("WeaponUse");
 

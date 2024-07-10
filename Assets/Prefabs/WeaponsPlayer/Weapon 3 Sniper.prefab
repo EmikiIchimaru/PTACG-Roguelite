@@ -308,8 +308,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Sniper
-  baseDamage: 5
-  baseAttackCooltime: 1.2
+  baseDamage: 20
+  baseAttackCooltime: 1.5
   projectileSpawnPosition: {x: 0, y: 0, z: 0}
   projectileColor: {r: 1, g: 0, b: 1, a: 1}
   projectileColor2: {r: 1, g: 1, b: 1, a: 1}
@@ -328,6 +328,7 @@ MonoBehaviour:
   objectPrefab: {fileID: 138594487432681173, guid: 29befaea250d7b24288b9c1f67e6e0a6, type: 3}
   poolSize: 10
   poolCanExpand: 1
+  parentObject: {fileID: 0}
 --- !u!1 &3938246112791738710
 GameObject:
   m_ObjectHideFlags: 0

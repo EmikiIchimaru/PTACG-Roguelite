@@ -299,6 +299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockPrefab: {fileID: 6744666814527503897, guid: 7bcb54d86be20af48acb922d773471bd, type: 3}
   bossPrefab: {fileID: 4329386225776292504, guid: dc03404dc23a91046b1a7529fc597559, type: 3}
+  bg: {fileID: 1997348808668566918}
   circle: {fileID: 5575863340799506177}
   vfx: {fileID: 5208760726491222996}
 --- !u!114 &-613873347002023691

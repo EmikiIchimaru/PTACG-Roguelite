@@ -17,6 +17,13 @@ public static class Utility
         return new Vector2(newX, newY);
     }
 
+    public static float GetAngleBetweenPoints(Vector2 a, Vector2 b)
+    {
+        Vector2 direction = b - a;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        return angle;
+    }
+
     public static Vector3 ConvertV2ToV3(Vector2 vector)
     {
         // Calculate the angle in radians

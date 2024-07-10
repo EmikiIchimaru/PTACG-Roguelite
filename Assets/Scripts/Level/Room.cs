@@ -6,9 +6,9 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     //public LevelManager levelManager;
-
+    public static bool isNextRoomBossRoom = false;
     public RoomPrefabSO roomPool;
-    [SerializeField] private RoomContent bossRoomPrefab;
+    //[SerializeField] private RoomContent bossRoomPrefab;
     
     public int roomNumber;
     public int positionIndexX;
@@ -19,7 +19,7 @@ public class Room : MonoBehaviour
     private int roomContentIndex;
     private int difficultyLevel;
 
-    //public bool isLoaded = false;
+    
 
     private Character character;
     private GameObject objectCollided;
@@ -44,8 +44,9 @@ public class Room : MonoBehaviour
 
     public void ReplaceWithBossRoom()
     {
-        Destroy(roomContent.gameObject);
-        Instantiate(bossRoomPrefab, transform.position, Quaternion.identity, transform);
+        //Destroy(roomContent.gameObject);
+        //Instantiate(bossRoomPrefab, transform.position, Quaternion.identity, transform);
+        isNextRoomBossRoom = true;
     }
 
     public void SetDifficultyLevel(int x, int y)
@@ -64,6 +65,13 @@ public class Room : MonoBehaviour
     private void InitializeRoom()
     {
         roomContent = Instantiate(GetRoomContent(), transform.position, Quaternion.identity, transform);
+
+        if (isNextRoomBossRoom)
+        {
+            isNextRoomBossRoom = false;
+            GameManager.Instance.CameraBossRoom(transform);
+        }
+
         foreach (Transform child in roomContent.transform)
         {
             RoomEntity entity = child.GetComponent<RoomEntity>();
@@ -78,6 +86,11 @@ public class Room : MonoBehaviour
 
     private RoomContent GetRoomContent()
     {
+        if (isNextRoomBossRoom)
+        {
+            return roomPool.bossRoom;
+        }
+
         if (positionIndexX == LevelManager.Instance.startX && positionIndexY == LevelManager.Instance.startY)
         {
             return roomPool.tutorialRoom;

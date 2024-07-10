@@ -9,7 +9,7 @@ public class ObjectPooler : MonoBehaviour
     [SerializeField] private bool poolCanExpand = true;
 
     private List<GameObject> pooledObjects;
-    private GameObject parentObject;
+    [HideInInspector] public GameObject parentObject;
     
     private void Start()
     {
