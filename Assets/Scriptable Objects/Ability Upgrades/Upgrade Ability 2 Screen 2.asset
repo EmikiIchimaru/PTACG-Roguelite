@@ -19,5 +19,5 @@ MonoBehaviour:
   upgradeDescript: 
   newWeapon: {fileID: 0}
   newStats: {fileID: 0}
-  newAbility: {fileID: 5131192218468392456, guid: 475ba41bd754b4b40ab7fc8df25b0797, type: 3}
+  newAbility: {fileID: 5131192218468392456, guid: 5fdfead7c6352254f8a26f734cf7ca4d, type: 3}
   newBuffType: 0

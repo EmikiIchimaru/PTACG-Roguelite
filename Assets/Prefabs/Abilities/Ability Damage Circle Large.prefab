@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityCooltime: 10
-  baseDamage: 20
+  baseDamage: 30
   duration: 3
   circlePrefab: {fileID: 3867254370844427656, guid: 450e33922f510fe48bff5944bf767835, type: 3}

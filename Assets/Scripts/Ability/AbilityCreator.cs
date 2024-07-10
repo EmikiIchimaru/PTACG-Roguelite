@@ -48,4 +48,24 @@ public static class AbilityCreator
             ShootSP(character, position, damage, angle, bulletPrefab);
         }
     }
+    public static void MineField(Character character, Vector3 position, float damage, int fieldSize, GameObject minePrefab)
+    {
+        float spacing = 2f;
+        for (int i = 0; i < fieldSize; i++)
+        {
+            for (int j = 0; j < fieldSize; j++)
+            {
+                float x = (i - 0.5f * fieldSize) * spacing;
+                float y = (j - 0.5f * fieldSize) * spacing;
+                Vector3 minePosition = new Vector3(x,y,0) + position;
+                GameObject bulletGO = Object.Instantiate(minePrefab, minePosition, Quaternion.identity);
+                Projectile projectile = bulletGO.GetComponent<Projectile>();
+                projectile.ProjectileOwner = character;
+                projectile.buffDealer = character?.GetComponent<BuffDealer>();
+                projectile.damage = damage;
+                TimedLife timedLife = bulletGO.GetComponent<TimedLife>();
+                timedLife.lifetime = 10f;
+            }
+        }
+    }
 }

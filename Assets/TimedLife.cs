@@ -5,7 +5,7 @@ using UnityEngine;
 public class TimedLife : MonoBehaviour
 {
     // Duration of the timer in seconds
-    [HideInInspector] public float lifetime;
+    public float lifetime;
 
     // Internal timer
     private float timer;

@@ -15,8 +15,8 @@ MonoBehaviour:
   upgradeLevel: 2
   elementType: 1
   upgradeType: 2
-  upgradeName: Ring of Death
-  upgradeDescript: Improves the AoE of this ability
+  upgradeName: Circle of Death
+  upgradeDescript: A large AoE surrounds the user which damages nearby enemies.
   newWeapon: {fileID: 0}
   newStats: {fileID: 0}
   newAbility: {fileID: -1873994192090698365, guid: 1b89d1a65831bd74183c7ab804b64c73, type: 3}

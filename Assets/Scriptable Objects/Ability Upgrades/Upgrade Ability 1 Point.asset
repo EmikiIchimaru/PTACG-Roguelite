@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3745ad6372b50f24cb4718d66f27dff6, type: 3}
-  m_Name: Upgrade Ability 2 Ring Damage
+  m_Name: Upgrade Ability 1 Point
   m_EditorClassIdentifier: 
-  upgradeLevel: 2
-  elementType: 1
+  upgradeLevel: 1
+  elementType: 5
   upgradeType: 2
-  upgradeName: Ring of Death
+  upgradeName: 'Ability: ScreenDamage'
   upgradeDescript: 
   newWeapon: {fileID: 0}
   newStats: {fileID: 0}
-  newAbility: {fileID: -1873994192090698365, guid: 56e60046d9b7668429e84abd677c8631, type: 3}
+  newAbility: {fileID: 7477851986702869801, guid: 475ba41bd754b4b40ab7fc8df25b0797, type: 3}
   newBuffType: 0

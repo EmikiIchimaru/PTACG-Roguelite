@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VFXManager : Singleton<VFXManager>
 {
-    //[SerializeField] private GameObject bulletHitPrefab;
+    [SerializeField] private ParticleSystem spellHit;
 
     private ObjectPooler Pool;
 
@@ -22,6 +22,14 @@ public class VFXManager : Singleton<VFXManager>
         vfxPooled.SetActive(true);
 
         ParticleSystem vfxPS = vfxPooled.GetComponent<ParticleSystem>();
+        var mainModule = vfxPS.main;
+        mainModule.startColor = newColor;
+    }
+
+    public void SpellHit(Vector3 position, float scale, Color newColor)
+    {
+        ParticleSystem vfxPS = Instantiate(spellHit, position, Quaternion.identity);
+        vfxPS.transform.localScale = new Vector3(scale, scale, 1f);
         var mainModule = vfxPS.main;
         mainModule.startColor = newColor;
     }

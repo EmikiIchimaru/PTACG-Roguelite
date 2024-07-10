@@ -639,6 +639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d40a5d0fdecdcf4b89147ca746d45b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spellHit: {fileID: 6931613803896931841, guid: 8d4f97600645e4440b40a42b1b9cd2c4, type: 3}
 --- !u!4 &336227674
 Transform:
   m_ObjectHideFlags: 0
@@ -3896,7 +3897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c95cd77a19309c74da2f4c294a92e93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityToUse: {fileID: 0}
+  abilityToUse: {fileID: 4957205143009913814, guid: 06249dd638badc141b68da086951fed2, type: 3}
 --- !u!114 &1940298623
 MonoBehaviour:
   m_ObjectHideFlags: 0
