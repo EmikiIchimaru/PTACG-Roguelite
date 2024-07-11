@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 47f0d7dd83788a14e8a2a83141cdc554, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -593,7 +593,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 47f0d7dd83788a14e8a2a83141cdc554, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -876,10 +876,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 138594487432681173, guid: 069a70a2db136ca45a6ae90df769f586, type: 3}
+  ringPrefab: {fileID: 138594487432681173, guid: 903aca366d4faff41b28efcddd10599d, type: 3}
   bombPrefab: {fileID: 138594487432681173, guid: 574dd223859c7ce459e0ce82371dd880, type: 3}
+  kitePrefab: {fileID: 138594487432681173, guid: dfd1c328e759fc64ab70edfb425ddc14, type: 3}
   arrowPrefab: {fileID: 82926272725612347, guid: dc7990eb12fa4b94e9dc7683ed168ab5, type: 3}
   WingWeapon1: {fileID: 2379803563479919570}
   WingWeapon2: {fileID: 4578248172499925498}
+  OuterWing1: {fileID: 5850760747018910116}
+  OuterWing2: {fileID: 723540872134247437}
 --- !u!114 &6786221483543700348
 MonoBehaviour:
   m_ObjectHideFlags: 0

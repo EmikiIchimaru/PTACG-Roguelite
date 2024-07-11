@@ -153,7 +153,7 @@ public class Projectile : MonoBehaviour
         Direction = direction.normalized;
 
         // Set the rotation of the transform
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        transform.rotation = Quaternion.Euler(0, 0, angle-90f);
     }
 
     public void DisableProjectile()

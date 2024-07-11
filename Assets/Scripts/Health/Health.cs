@@ -222,4 +222,9 @@ public class Health : MonoBehaviour
             UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth);
         }
     }   
+
+    public float GetPercentHP()
+    {
+        return CurrentHealth/maxHealth;
+    }
 } 

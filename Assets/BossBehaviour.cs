@@ -6,10 +6,15 @@ public class BossBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject ringPrefab;
     [SerializeField] private GameObject bombPrefab;
+    [SerializeField] private GameObject kitePrefab;
     [SerializeField] private GameObject arrowPrefab;
+
     [SerializeField] private Transform WingWeapon1;
     [SerializeField] private Transform WingWeapon2;
+    [SerializeField] private Transform OuterWing1;
+    [SerializeField] private Transform OuterWing2;
     private float internalCooldown;
 
     private float maxInternalCD;
@@ -18,9 +23,7 @@ public class BossBehaviour : MonoBehaviour
     private EnemyMovement enemyMovement;
     private Health health;
 
-    private bool isCasting;
-
-    private bool hasRaged;
+    private int rage;
 
     void Awake()
     {
@@ -31,10 +34,9 @@ public class BossBehaviour : MonoBehaviour
 
     void Start()
     {
-        hasRaged = false;
-        isCasting = false;
+        rage = 0;
         internalCooldown = 2f;
-        maxInternalCD = 1.5f;
+        maxInternalCD = 2f;
     }
 
     void FixedUpdate()
@@ -45,16 +47,27 @@ public class BossBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health.CurrentHealth < 10000f && !hasRaged)
+        if (health.GetPercentHP() < 0.6f && rage == 0)
         {
-            hasRaged = true;
-            maxInternalCD = 0.75f;
+            rage = 1;
+            maxInternalCD = 1f;
+            //abilityPool = 4;
         }
-        if (!isCasting)
+
+        if (health.GetPercentHP() < 0.3f && rage == 1)
         {
-            if (internalCooldown > 0) { internalCooldown -= Time.deltaTime; }
-            if (internalCooldown <= 0) { ChooseBossAbility(); }
-        } 
+            rage = 2;
+            maxInternalCD = 0f;
+            //abilityPool = 5;
+        }
+        
+        if (internalCooldown > 0) { internalCooldown -= Time.deltaTime; }
+        if (internalCooldown <= 0) 
+        {
+            ChooseBossAbility(); 
+            
+        }
+    
         
     }
 
@@ -65,27 +78,33 @@ public class BossBehaviour : MonoBehaviour
         {
             case 0:
                 StartCoroutine(BossSpinSpray());
+                internalCooldown = maxInternalCD + 3f;
                 break;
             case 1:
-                StartCoroutine(BossShootPlayer());
+                StartCoroutine(BossShootPlayer(WingWeapon1, 30, 0.1f, 5f));
+                StartCoroutine(BossShootPlayer(WingWeapon2, 30, 0.1f, 5f));
+                internalCooldown = maxInternalCD + 3f;
                 break;
             case 2:
-                StartCoroutine(BossSpawnArrows());
+                StartCoroutine(BossSpawnArrows(OuterWing1));
+                StartCoroutine(BossSpawnArrows(OuterWing2));
+                internalCooldown = maxInternalCD + 2f;
                 break;
             case 3:
-                StartCoroutine(BossSpawnArrows());
+                StartCoroutine(BossRing());
+                StartCoroutine(BossBombPlayer(WingWeapon1, 20, 0.3f, 30f));
+                StartCoroutine(BossBombPlayer(WingWeapon2, 20, 0.3f, 30f));
+                internalCooldown = maxInternalCD + 6f;
                 break;
             case 4:
-                StartCoroutine(BossSpawnArrows());
+                StartCoroutine(BossMachineGun());
+                internalCooldown = maxInternalCD + 4f;
                 break;
         }
         
     }
     private IEnumerator BossSpinSpray()
     {
-        isCasting = true;
-        //GameManager.isPlayerControlEnabled = false;
-        //GameManager.isPlayerMovementEnabled = false;
 
         float interval = 0.05f;
 
@@ -94,58 +113,94 @@ public class BossBehaviour : MonoBehaviour
             float angle1 = i * 20f;
             float angle2 = 180f - i * 20f;
             //Debug.Log(i);
-            AbilityCreator.ShootSP(boss, WingWeapon1.position, 10f, angle2, bombPrefab);
+            AbilityCreator.ShootSP(boss, WingWeapon1.position, 30f, angle2, bombPrefab);
             //AbilityCreator.ShootSP(boss, WingWeapon1.position, 10f, angle+180f, bulletPrefab);
-            AbilityCreator.ShootSP(boss, WingWeapon2.position, 10f, angle1, bombPrefab);
+            AbilityCreator.ShootSP(boss, WingWeapon2.position, 30f, angle1, bombPrefab);
             //AbilityCreator.ShootSP(boss, WingWeapon2.position, 10f, angle+180f, bulletPrefab);
             yield return new WaitForSeconds(interval);
         }
 
-        //GameManager.isPlayerControlEnabled = true;
-        //GameManager.isPlayerMovementEnabled = true;
-        isCasting = false;
-        internalCooldown = maxInternalCD;
     }
-    private IEnumerator BossShootPlayer()
+    private IEnumerator BossShootPlayer(Transform newTransform, int bulletCount, float interval, float spray)
     {
-        isCasting = true;
-        //GameManager.isPlayerControlEnabled = false;
-        //GameManager.isPlayerMovementEnabled = false;
+        //float interval = 0.1f;
 
-        float interval = 0.1f;
-
-        for (int i = 0; i < 25; i++)
+        for (int i = 0; i < bulletCount; i++)
         {
-            float angle = Utility.GetAngleBetweenPoints(transform.position, GameManager.Instance.playerCharacter.transform.position);
+            float angle = Utility.GetAngleBetweenPoints(newTransform.position, GameManager.Instance.playerCharacter.transform.position);
             //Debug.Log(i);
-            AbilityCreator.ShootSP(boss, transform.position, 10f, angle + Random.Range(-10f,10f), bulletPrefab);
+            AbilityCreator.ShootSP(boss, newTransform.position, 15f, angle + Random.Range(-spray,spray), bulletPrefab);
             yield return new WaitForSeconds(interval);
         }
 
-        //GameManager.isPlayerControlEnabled = true;
-        //GameManager.isPlayerMovementEnabled = true;
-        isCasting = false;
-        internalCooldown = maxInternalCD;
+
     }
-    private IEnumerator BossSpawnArrows()
-    {
-        isCasting = true;
-        //GameManager.isPlayerControlEnabled = false;
-        //GameManager.isPlayerMovementEnabled = false;
-        bool isLeftorRight = true;
-        float interval = 0.1f;
 
-        for (int i = 0; i < 20; i++)
+    private IEnumerator BossBombPlayer(Transform newTransform, int bulletCount, float interval, float spray)
+    {
+        //float interval = 0.1f;
+
+        for (int i = 0; i < bulletCount; i++)
         {
-            isLeftorRight = !isLeftorRight;
-            Vector3 wingPosition = (isLeftorRight) ? WingWeapon1.position : WingWeapon2.position;
-            Instantiate(arrowPrefab, wingPosition, Quaternion.identity);
+            float angle = Utility.GetAngleBetweenPoints(newTransform.position, GameManager.Instance.playerCharacter.transform.position);
+            //Debug.Log(i);
+            AbilityCreator.ShootSP(boss, newTransform.position, 15f, angle + Random.Range(-spray,spray), bombPrefab);
             yield return new WaitForSeconds(interval);
         }
 
-        //GameManager.isPlayerControlEnabled = true;
-        //GameManager.isPlayerMovementEnabled = true;
-        isCasting = false;
-        internalCooldown = maxInternalCD;
+
+    }
+
+    private IEnumerator BossSpawnArrows(Transform newTransform)
+    {
+        float interval = 0.2f;
+
+        for (int i = 0; i < 10; i++)
+        {
+            Instantiate(arrowPrefab, newTransform.position, Quaternion.identity);
+            yield return new WaitForSeconds(interval);
+        }
+
+
+    }
+
+    private IEnumerator BossRing()
+    {
+
+        float interval = 0.75f;
+
+        for (int i = 0; i < 6; i++)
+        {
+            for (int j = 0; j < 12; j++)
+            {
+                float angleP = j * 30f;
+                Vector2 offset2D = Utility.RotateVector(new Vector2(3,0), angleP);
+                Vector3 transformOffset = transform.position + new Vector3(offset2D.x, offset2D.y, 0);
+                float angle = Utility.GetAngleBetweenPoints(transformOffset, GameManager.Instance.playerCharacter.transform.position);
+                AbilityCreator.ShootSP(boss, transformOffset, 10f, angle, ringPrefab);
+            }
+            float extraInterval = (i == 1 || i == 3 ) ? interval * 2f : interval;  
+            yield return new WaitForSeconds(extraInterval);
+        }
+
+    }
+
+    private IEnumerator BossMachineGun()
+    {
+        float interval = 0.04f;
+        float angle = Utility.GetAngleBetweenPoints(transform.position, GameManager.Instance.playerCharacter.transform.position);
+        for (int i = 0; i < 100; i++)
+        {
+            
+            //float angle1 = Utility.GetAngleBetweenPoints(OuterWing1.position, GameManager.Instance.playerCharacter.transform.position);
+            //float angle2 = Utility.GetAngleBetweenPoints(OuterWing2.position, GameManager.Instance.playerCharacter.transform.position);
+            //Debug.Log(i);
+            float angle3 = Mathf.Abs(50-i) - 15f;
+            AbilityCreator.ShootSP(boss, OuterWing1.position, 10f, angle - angle3, kitePrefab);
+            AbilityCreator.ShootSP(boss, OuterWing2.position, 10f, angle + angle3, kitePrefab);
+            yield return new WaitForSeconds(interval);
+        }
+
+
     }
 }
