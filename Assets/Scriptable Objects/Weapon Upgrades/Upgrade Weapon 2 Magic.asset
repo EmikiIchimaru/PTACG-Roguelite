@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3745ad6372b50f24cb4718d66f27dff6, type: 3}
-  m_Name: Upgrade Weapon 2 Dream
+  m_Name: Upgrade Weapon 2 Magic
   m_EditorClassIdentifier: 
   upgradeLevel: 2
   elementType: 5
   upgradeType: 0
-  upgradeName: Dream Cannon I
+  upgradeName: Magic Cannon I
   upgradeDescript: Magic weapon which fires slow yet devastating orbs of energy.
   newWeapon: {fileID: 7890344321430585536, guid: 1bbeccc7ff1dfd048b443221a1e989d9, type: 3}
   newStats: {fileID: 11400000, guid: b86c290a02e65c3439ee2af1e26a53d3, type: 2}

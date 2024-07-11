@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3745ad6372b50f24cb4718d66f27dff6, type: 3}
-  m_Name: Upgrade Weapon 2 Burst
+  m_Name: Upgrade Weapon 1 Juggernaut
   m_EditorClassIdentifier: 
-  upgradeLevel: 2
+  upgradeLevel: 1
   elementType: 1
   upgradeType: 0
-  upgradeName: Burst Gun II
-  upgradeDescript: Heavy weapon which deals burst damage at short range.
-  newWeapon: {fileID: 7890344321430585536, guid: efdddb8970563614ba58d04fda05b613, type: 3}
-  newStats: {fileID: 11400000, guid: 6e5132b0fb233d64cb75f0c34efbe600, type: 2}
+  upgradeName: Juggernaut I
+  upgradeDescript: Basic short range weapon which shoots volleys of bullets.
+  newWeapon: {fileID: 7890344321430585536, guid: e97791ddf1d08b04c96f244798b193fd, type: 3}
+  newStats: {fileID: 11400000, guid: 8fe5a95cff0a317449790f2f676787e2, type: 2}
   newAbility: {fileID: 0}
   newBuffType: 0

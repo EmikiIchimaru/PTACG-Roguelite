@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5795857971139315717}
   - component: {fileID: 1443523316508850498}
   m_Layer: 0
-  m_Name: WeaponTransform (6)
+  m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -305,9 +305,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b401aaf2707d0a49acbb347952bd077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: default weapon
-  baseDamage: 4
+  baseDamage: 4.5
   baseAttackCooltime: 0.75
+  isMagicWeapon: 0
   projectileSpawnPosition: {x: 0, y: 0, z: 0}
   projectileColor: {r: 1, g: 0, b: 0, a: 1}
   projectileColor2: {r: 1, g: 1, b: 1, a: 1}

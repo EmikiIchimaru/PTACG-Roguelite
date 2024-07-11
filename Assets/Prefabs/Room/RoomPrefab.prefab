@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 48, y: 48, z: 1}
+  m_LocalScale: {x: 60, y: 60, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7265946898395078473}
@@ -131,7 +131,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomPool: {fileID: 11400000, guid: 0d858d564658e6d4998dc3bed49b03d6, type: 2}
-  bossRoomPrefab: {fileID: -613873347002023691, guid: 436c08d6b6da30c4fa1822c62b537cf6, type: 3}
   roomNumber: 0
   positionIndexX: 0
   positionIndexY: 0
@@ -179,5 +178,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 48, y: 48}
+  m_Size: {x: 54, y: 54}
   m_EdgeRadius: 0

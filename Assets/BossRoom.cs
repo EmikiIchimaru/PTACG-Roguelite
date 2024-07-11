@@ -26,7 +26,7 @@ public class BossRoom : MonoBehaviour
     IEnumerator ZoomOutCoroutine()
     {
         float duration = 2f;
-        float targetSize = 14f;
+        float targetSize = 15f;
         float startSize = Camera.main.orthographicSize;
         float elapsedTime = 0f;
 

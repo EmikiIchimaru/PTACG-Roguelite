@@ -282,6 +282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acquisitionRange: 40
   isPlayerInRange: 0
+  isPlayerAlwaysInRange: 0
   direction: {x: 0, y: 0, z: 0}
 --- !u!114 &691336297717918662
 MonoBehaviour:
@@ -376,14 +377,14 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 5273276243715501047}
     m_ColliderPaths:
-    - - X: 18000000
-        Y: 18000000
-      - X: -18000000
-        Y: 18000000
-      - X: -18000000
-        Y: -18000000
-      - X: 18000000
-        Y: -18000000
+    - - X: 25455846
+        Y: -1
+      - X: 1
+        Y: 25455846
+      - X: -25455846
+        Y: 1
+      - X: -1
+        Y: -25455846
   - m_Collider: {fileID: 2384504099701005149}
     m_ColliderPaths:
     - - X: 6000000
@@ -427,24 +428,20 @@ CompositeCollider2D:
   m_CompositePaths:
     m_Paths:
     - - {x: 0.5999707, y: -2.6000001}
-      - {x: 0.6000294, y: -1.8000001}
-      - {x: 1.8000001, y: -1.7999709}
-      - {x: 1.8000294, y: -0.6}
+      - {x: 0.60000753, y: -1.9455773}
+      - {x: 1.9455956, y: -0.6}
       - {x: 2.6000001, y: -0.5999707}
       - {x: 2.5999708, y: 0.6}
-      - {x: 1.8000001, y: 0.6000294}
-      - {x: 1.7999709, y: 1.8000001}
-      - {x: 0.6, y: 1.8000294}
+      - {x: 1.9455773, y: 0.60000753}
+      - {x: 0.6, y: 1.9455956}
       - {x: 0.5999707, y: 2.6000001}
       - {x: -0.6, y: 2.5999708}
-      - {x: -0.6000294, y: 1.8000001}
-      - {x: -1.8000001, y: 1.7999709}
-      - {x: -1.8000294, y: 0.6}
+      - {x: -0.60000753, y: 1.9455773}
+      - {x: -1.9455956, y: 0.6}
       - {x: -2.6000001, y: 0.5999707}
       - {x: -2.5999708, y: -0.6}
-      - {x: -1.8000001, y: -0.6000294}
-      - {x: -1.7999709, y: -1.8000001}
-      - {x: -0.6, y: -1.8000294}
+      - {x: -1.9455773, y: -0.60000753}
+      - {x: -0.6, y: -1.9455956}
       - {x: -0.5999707, y: -2.6000001}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
@@ -866,13 +863,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8534662438142784923}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 321098536656571052}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
 --- !u!212 &853460889176147109
 SpriteRenderer:
   m_ObjectHideFlags: 0

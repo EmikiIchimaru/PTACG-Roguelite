@@ -36,7 +36,8 @@ public class VFXManager : Singleton<VFXManager>
     public void DeathVFX(Vector3 position, float scale)
     {
         ParticleSystem vfxPS = Instantiate(deathVFX, position, Quaternion.identity);
-        vfxPS.transform.localScale = new Vector3(scale, scale, 1f);
+        float newScale = 0.75f + 0.25f * scale;
+        vfxPS.transform.localScale = new Vector3(newScale, newScale, 1f);
         //var mainModule = vfxPS.main;
         //mainModule.startColor = newColor;
     }

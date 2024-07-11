@@ -54,8 +54,10 @@ public class BossBehaviour : MonoBehaviour
         {
             rage = 1;
             maxInternalCD = 1.5f;
-            internalCooldown = 5f;
-            ShieldBoss();
+            internalCooldown = 10f;
+            ShieldBoss(10f);
+            StartCoroutine(BossSpawnShooters(OuterWing1, 4));
+            StartCoroutine(BossSpawnShooters(OuterWing2, 4));
             //abilityPool = 4;
         }
 
@@ -63,8 +65,10 @@ public class BossBehaviour : MonoBehaviour
         {
             rage = 2;
             maxInternalCD = 0.5f;
-            internalCooldown = 5f;
-            ShieldBoss();
+            internalCooldown = 10f;
+            ShieldBoss(10f);
+            StartCoroutine(BossSpawnShooters(OuterWing1, 7));
+            StartCoroutine(BossSpawnShooters(OuterWing2, 7));
             //abilityPool = 5;
         }
         
@@ -80,7 +84,7 @@ public class BossBehaviour : MonoBehaviour
 
     private void ChooseBossAbility()
     {
-        int abilityIndex = Random.Range(0,6);
+        int abilityIndex = Random.Range(0,5);
         switch (abilityIndex)
         {
             case 0:
@@ -106,11 +110,6 @@ public class BossBehaviour : MonoBehaviour
             case 4:
                 StartCoroutine(BossMachineGun());
                 internalCooldown = maxInternalCD + 4f;
-                break;
-            case 5:
-                StartCoroutine(BossSpawnShooters(OuterWing1));
-                StartCoroutine(BossSpawnShooters(OuterWing2));
-                internalCooldown = maxInternalCD + 2f;
                 break;
         }
         
@@ -174,11 +173,11 @@ public class BossBehaviour : MonoBehaviour
             yield return new WaitForSeconds(interval);
         }
     }
-    private IEnumerator BossSpawnShooters(Transform newTransform)
+    private IEnumerator BossSpawnShooters(Transform newTransform, int count)
     {
         float interval = 0.5f;
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < count; i++)
         {
             GameObject spawn = Instantiate(shooterPrefab, newTransform.position, Quaternion.identity);
             spawns.Add(spawn);
@@ -227,10 +226,10 @@ public class BossBehaviour : MonoBehaviour
         }
     }
 
-    private void ShieldBoss()
+    private void ShieldBoss(float time)
     {
         GameObject shieldGO = Instantiate(shieldPrefab, transform.position, Quaternion.identity);
         shieldGO.transform.parent = transform;
-        shieldGO.GetComponent<TimedLife>().lifetime = 7f;
+        shieldGO.GetComponent<TimedLife>().lifetime = time;
     }
 }
