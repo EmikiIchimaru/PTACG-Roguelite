@@ -717,6 +717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellHit: {fileID: 6931613803896931841, guid: 8d4f97600645e4440b40a42b1b9cd2c4, type: 3}
+  deathVFX: {fileID: 4272210536476420953, guid: c10073adb2ceb4d499805c893e4af7fd, type: 3}
 --- !u!4 &336227674
 Transform:
   m_ObjectHideFlags: 0
@@ -1478,7 +1479,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 25
+    m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1489,9 +1490,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Ability
-
-'
+  m_Text: Ability
 --- !u!222 &578767952
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1906,7 +1905,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 50, y: -25}
-  m_SizeDelta: {x: 600, y: 50}
+  m_SizeDelta: {x: 720, y: 60}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &854367822
 MonoBehaviour:
@@ -1996,7 +1995,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -50, y: -25}
-  m_SizeDelta: {x: 300, y: 40}
+  m_SizeDelta: {x: 300, y: 60}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &897737378
 MonoBehaviour:
@@ -3990,7 +3989,7 @@ MonoBehaviour:
   requiredXPBase: 25
   requiredXPLevelMultiplier: 25
   healthBase: 100
-  healthPerLevel: 20
+  healthPerLevel: 50
   attackDamageBase: 8
   attackDamagePerLevel: 1
   attackSpeedBase: 92
@@ -4064,7 +4063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffLibrary: {fileID: 11400000, guid: f7d68ef2a6d0e5043a240d0f86b0952b, type: 2}
   playerBuffType: 0
-  procChance: 0.4
+  procChance: 0.5
 --- !u!1 &1948966918
 GameObject:
   m_ObjectHideFlags: 0
@@ -4167,6 +4166,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9a2f644337cef0243afc9df802bd9917, type: 2}
   - {fileID: 11400000, guid: 33e10bec1e3e27340a10eff1e057b4eb, type: 2}
   - {fileID: 11400000, guid: 7ce3f9572197c1c40947d896ae8bb4c8, type: 2}
+  playerAbilityElement: 0
 --- !u!4 &1948966920
 Transform:
   m_ObjectHideFlags: 0
@@ -4344,8 +4344,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -100}
-  m_SizeDelta: {x: 600, y: 30}
+  m_AnchoredPosition: {x: 50, y: -110}
+  m_SizeDelta: {x: 720, y: 40}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &2108512483
 GameObject:

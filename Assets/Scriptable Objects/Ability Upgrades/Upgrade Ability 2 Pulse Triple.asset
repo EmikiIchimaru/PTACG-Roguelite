@@ -15,8 +15,8 @@ MonoBehaviour:
   upgradeLevel: 2
   elementType: 3
   upgradeType: 2
-  upgradeName: Triple Circle Pulse
-  upgradeDescript: 
+  upgradeName: Triple Pulse
+  upgradeDescript: Fires three Circle Pulses in rapid succession
   newWeapon: {fileID: 0}
   newStats: {fileID: 0}
   newAbility: {fileID: 214941481321632942, guid: dba18da420a3a894a89a32218f03a094, type: 3}

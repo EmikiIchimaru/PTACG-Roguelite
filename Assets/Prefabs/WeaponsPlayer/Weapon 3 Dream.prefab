@@ -304,9 +304,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b401aaf2707d0a49acbb347952bd077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: Cannon
   baseDamage: 6
   baseAttackCooltime: 0.8
+  isMagicWeapon: 1
   projectileSpawnPosition: {x: 0, y: 0, z: 0}
   projectileColor: {r: 1, g: 0, b: 0.5019608, a: 1}
   projectileColor2: {r: 1, g: 1, b: 1, a: 1}

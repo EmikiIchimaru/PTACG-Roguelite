@@ -219,9 +219,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b401aaf2707d0a49acbb347952bd077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: Sniper
-  baseDamage: 12.5
+  baseDamage: 10
   baseAttackCooltime: 1.5
+  isMagicWeapon: 0
   projectileSpawnPosition: {x: 0, y: 0, z: 0}
   projectileColor: {r: 1, g: 0, b: 1, a: 1}
   projectileColor2: {r: 1, g: 1, b: 1, a: 1}

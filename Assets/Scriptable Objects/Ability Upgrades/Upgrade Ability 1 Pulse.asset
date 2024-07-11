@@ -16,7 +16,7 @@ MonoBehaviour:
   elementType: 3
   upgradeType: 2
   upgradeName: Circle Pulse
-  upgradeDescript: 
+  upgradeDescript: Fires a circle of bullets which expand outwards.
   newWeapon: {fileID: 0}
   newStats: {fileID: 0}
   newAbility: {fileID: 75399719002871034, guid: 3678aa6f05144a84bbf8d39b6294e754, type: 3}

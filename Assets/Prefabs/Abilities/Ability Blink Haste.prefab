@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5165a4de360681e4f88d7a8f45b4d4ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityCooltime: 3
+  abilityCooltime: 1
   baseDamage: 10
   radius: 5
   wallLayerMask:

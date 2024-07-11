@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba59022c1b520a45a7b5282ab5ba9e0, type: 3}
+  m_Name: Weapon Scaling Light 1
+  m_EditorClassIdentifier: 
+  healthBaseBonus: 0
+  healthPercentBonus: -25
+  attackDamageBaseBonus: 0
+  attackDamagePercentBonus: 0
+  attackSpeedBaseBonus: 0
+  attackSpeedPercentBonus: 25
+  abilityHasteBaseBonus: 0
+  abilityHastePercentBonus: 0
+  abilityPowerBaseBonus: 0
+  abilityPowerPercentBonus: 0
+  scaleBaseBonus: 0
+  scalePercentScaling: 0
+  moveSpeedBaseBonus: 0
+  moveSpeedPercentScaling: 40

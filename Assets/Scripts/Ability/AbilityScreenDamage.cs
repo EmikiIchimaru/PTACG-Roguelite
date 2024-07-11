@@ -5,6 +5,7 @@ using UnityEngine;
 public class AbilityScreenDamage : Ability
 {
     [SerializeField] private float baseDamage;
+    public LayerMask wallLayerMask;
     protected override void CastAbility()
     {
         Camera playerCamera = Camera.main;
@@ -44,5 +45,16 @@ public class AbilityScreenDamage : Ability
             }
         }
         UIManager.Instance.Flash();
+
+        Vector2 currentPosition = AbilityOwner.transform.position;
+        Vector2 targetPosition = mousePosition;
+
+        // Perform the linecast to check for walls
+        RaycastHit2D hit = Physics2D.Linecast(currentPosition, targetPosition, wallLayerMask);
+
+        if (hit.collider == null)
+        {
+            AbilityOwner.transform.position = targetPosition;
+        }
     }
 }

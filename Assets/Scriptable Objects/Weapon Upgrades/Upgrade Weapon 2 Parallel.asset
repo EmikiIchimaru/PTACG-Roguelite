@@ -16,6 +16,8 @@ MonoBehaviour:
   elementType: 3
   upgradeType: 0
   upgradeName: Parallel Shooter II
-  upgradeDescript: 
+  upgradeDescript: Balanced weapon with three parallel guns.
   newWeapon: {fileID: 7890344321430585536, guid: 5a256dcd98764bc448ad29145f4d4d6c, type: 3}
-  newStats: {fileID: 0}
+  newStats: {fileID: 11400000, guid: 7e931fca9b1929a4c94669d084a85036, type: 2}
+  newAbility: {fileID: 0}
+  newBuffType: 0

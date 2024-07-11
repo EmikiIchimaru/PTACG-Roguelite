@@ -16,6 +16,8 @@ MonoBehaviour:
   elementType: 2
   upgradeType: 0
   upgradeName: Machine Gun III
-  upgradeDescript: 
+  upgradeDescript: Artillery weapon which excels at consistent damage output.
   newWeapon: {fileID: 7890344321430585536, guid: 24153ca3af8cd6a4a9a9aad3fd51284d, type: 3}
-  newStats: {fileID: 0}
+  newStats: {fileID: 11400000, guid: dde108fd7ca742344a9a5e897a102243, type: 2}
+  newAbility: {fileID: 0}
+  newBuffType: 0

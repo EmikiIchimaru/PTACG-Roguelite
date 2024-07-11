@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8970302275802048392}
-  - component: {fileID: 5131192218468392456}
+  - component: {fileID: -2233547896242731252}
   m_Layer: 0
-  m_Name: Ability Screen Damage2
+  m_Name: Ability Ring Blade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5131192218468392456
+--- !u!114 &-2233547896242731252
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,8 +41,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5169670028483226731}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 749bfba69208745429d147dddd0c7f88, type: 3}
+  m_Script: {fileID: 11500000, guid: f351ad2840f52ef4591bebbb0ef9f55c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityCooltime: 10
-  baseDamage: 120
+  abilityCooltime: 3
+  ringPrefab: {fileID: 138594487432681173, guid: 29befaea250d7b24288b9c1f67e6e0a6, type: 3}
+  baseDamage: 5

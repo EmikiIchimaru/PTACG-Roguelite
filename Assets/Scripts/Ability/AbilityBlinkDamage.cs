@@ -19,7 +19,7 @@ public class AbilityBlinkDamage : Ability
         {
             AbilityOwner.transform.position = targetPosition;
             AbilityCreator.AreaDamage(AbilityOwner, targetPosition, baseDamage * (1f + 0.03f * stats.abilityPowerFinal), radius);
-            VFXManager.Instance.SpellHit(targetPosition, 1f, Color.HSVToRGB(60f/360f, 0.75f, 1f));
+            VFXManager.Instance.SpellHit(targetPosition, 1f, Color.HSVToRGB(320f/360f, 0.75f, 1f));
             // Wall detected, set the target position to the point just before the wall
             //targetPosition = hit.point - (hit.point - currentPosition).normalized * 0.1f; // Adjust the offset as needed
         }

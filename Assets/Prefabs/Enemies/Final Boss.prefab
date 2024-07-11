@@ -880,6 +880,8 @@ MonoBehaviour:
   bombPrefab: {fileID: 138594487432681173, guid: 574dd223859c7ce459e0ce82371dd880, type: 3}
   kitePrefab: {fileID: 138594487432681173, guid: dfd1c328e759fc64ab70edfb425ddc14, type: 3}
   arrowPrefab: {fileID: 82926272725612347, guid: dc7990eb12fa4b94e9dc7683ed168ab5, type: 3}
+  shooterPrefab: {fileID: 82926272725612347, guid: b40e4119889d53643a0fa9c6a4dfa389, type: 3}
+  shieldPrefab: {fileID: 4177813070832359130, guid: c922a8a86bbbc0249ac1a5b946b7bff9, type: 3}
   WingWeapon1: {fileID: 2379803563479919570}
   WingWeapon2: {fileID: 4578248172499925498}
   OuterWing1: {fileID: 5850760747018910116}

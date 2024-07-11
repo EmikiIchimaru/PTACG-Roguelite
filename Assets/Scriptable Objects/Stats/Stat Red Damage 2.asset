@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBaseBonus: 0
   healthPercentBonus: 0
-  attackDamageBaseBonus: 5
+  attackDamageBaseBonus: 4
   attackDamagePercentBonus: 0
   attackSpeedBaseBonus: 0
   attackSpeedPercentBonus: 0

@@ -16,6 +16,8 @@ MonoBehaviour:
   elementType: 1
   upgradeType: 1
   upgradeName: Damage III
-  upgradeDescript: 
+  upgradeDescript: Increases your weapon's attack damage.
   newWeapon: {fileID: 0}
   newStats: {fileID: 11400000, guid: 11b0f241e5109b14a991771d8ae0aaf8, type: 2}
+  newAbility: {fileID: 0}
+  newBuffType: 0

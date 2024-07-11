@@ -16,6 +16,8 @@ MonoBehaviour:
   elementType: 2
   upgradeType: 1
   upgradeName: Attack Speed III
-  upgradeDescript: 
+  upgradeDescript: Increases your weapon's attack speed.
   newWeapon: {fileID: 0}
   newStats: {fileID: 11400000, guid: 2dd8499eb4d275e41b5395fd3e0b0a89, type: 2}
+  newAbility: {fileID: 0}
+  newBuffType: 0

@@ -12,6 +12,12 @@ public static class AbilityCreator
         projectile.buffDealer = character?.GetComponent<BuffDealer>();
         projectile.damage = damage;
         projectile.SetAngle(angle);
+        if (character.CharacterType == Character.CharacterTypes.Player)
+        {
+            SpriteRenderer sr = bulletGO.GetComponent<SpriteRenderer>();
+            Color projectileColor = Colour.ElementToColour(UpgradeManager.Instance.playerAbilityElement);
+            sr.color = projectileColor;
+        }
     }
 
     public static void AreaDamage(Character character, Vector3 position, float damage, float radius)

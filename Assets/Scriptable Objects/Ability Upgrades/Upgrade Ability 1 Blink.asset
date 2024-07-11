@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Upgrade Ability 1 Blink
   m_EditorClassIdentifier: 
   upgradeLevel: 1
-  elementType: 2
+  elementType: 5
   upgradeType: 2
   upgradeName: Blink
-  upgradeDescript: 
+  upgradeDescript: Teleports the user to the cursor, and deals aoe damage on arrival.
   newWeapon: {fileID: 0}
   newStats: {fileID: 0}
   newAbility: {fileID: 4957205143009913814, guid: 06249dd638badc141b68da086951fed2, type: 3}

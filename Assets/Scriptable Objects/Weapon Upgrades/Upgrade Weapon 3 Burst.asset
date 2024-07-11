@@ -16,6 +16,8 @@ MonoBehaviour:
   elementType: 1
   upgradeType: 0
   upgradeName: Burst Gun III
-  upgradeDescript: 
+  upgradeDescript: Heavy weapon which deals burst damage at short range.
   newWeapon: {fileID: 7890344321430585536, guid: 64807fb711e767941bcee8ef5de71e40, type: 3}
-  newStats: {fileID: 0}
+  newStats: {fileID: 11400000, guid: 6e5132b0fb233d64cb75f0c34efbe600, type: 2}
+  newAbility: {fileID: 0}
+  newBuffType: 0

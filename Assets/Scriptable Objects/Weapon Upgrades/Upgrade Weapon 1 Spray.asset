@@ -16,6 +16,8 @@ MonoBehaviour:
   elementType: 4
   upgradeType: 0
   upgradeName: Spray Gun I
-  upgradeDescript: Balanced weapon which sprays bullets in a cone.
+  upgradeDescript: Basic weapon which sprays bullets in a cone.
   newWeapon: {fileID: 7890344321430585536, guid: 93c649811633a1442b67ef80197136a4, type: 3}
-  newStats: {fileID: 0}
+  newStats: {fileID: 11400000, guid: 8fe5a95cff0a317449790f2f676787e2, type: 2}
+  newAbility: {fileID: 0}
+  newBuffType: 0

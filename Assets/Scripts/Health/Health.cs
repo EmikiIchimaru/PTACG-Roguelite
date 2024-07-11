@@ -67,7 +67,7 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.L) && GameManager.isCheatingAllowed)
         {
             if (isPlayer){ TakeDamage(1); }
         }
@@ -149,6 +149,7 @@ public class Health : MonoBehaviour
                 
             }
         }
+        VFXManager.Instance.DeathVFX(transform.position, 0.5f * (transform.localScale.x + transform.localScale.y) );
     }
     
     // Revive this game object    
@@ -191,7 +192,10 @@ public class Health : MonoBehaviour
     {
         float percent = CurrentHealth/maxHealth;
         maxHealth = newMaxHealth;
-        if ((newMaxHealth * percent) > CurrentHealth) { CurrentHealth = (newMaxHealth * percent); }
+        if ((newMaxHealth * percent) > CurrentHealth) 
+        {   
+            CurrentHealth = Mathf.Min((newMaxHealth * percent), newMaxHealth); 
+        }
         UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth);
     }
 	

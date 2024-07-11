@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CollisionDamage : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer sr;
     public float damage;
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -16,6 +17,7 @@ public class CollisionDamage : MonoBehaviour
             { 
                 health.TakeDamage(damage); 
             }
+            VFXManager.Instance.SpellHit(transform.position, 1f, sr.color);
             Destroy(gameObject);
         }
     }

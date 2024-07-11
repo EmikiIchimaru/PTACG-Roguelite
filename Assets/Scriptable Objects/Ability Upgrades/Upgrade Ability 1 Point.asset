@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Upgrade Ability 1 Point
   m_EditorClassIdentifier: 
   upgradeLevel: 1
-  elementType: 5
+  elementType: 2
   upgradeType: 2
-  upgradeName: 'Ability: ScreenDamage'
+  upgradeName: Precision Shot
   upgradeDescript: 
   newWeapon: {fileID: 0}
   newStats: {fileID: 0}

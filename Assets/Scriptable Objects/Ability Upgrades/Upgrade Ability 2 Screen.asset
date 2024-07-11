@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3745ad6372b50f24cb4718d66f27dff6, type: 3}
-  m_Name: Upgrade Ability 2 Screen Damage
+  m_Name: Upgrade Ability 2 Screen
   m_EditorClassIdentifier: 
   upgradeLevel: 2
   elementType: 5
   upgradeType: 2
-  upgradeName: Screen Damage
-  upgradeDescript: 
+  upgradeName: Psychic Flash
+  upgradeDescript: Deals massive damage to all enemies on the screen, then blinks
+    to the cursor's location.
   newWeapon: {fileID: 0}
   newStats: {fileID: 0}
   newAbility: {fileID: 5131192218468392456, guid: 5fdfead7c6352254f8a26f734cf7ca4d, type: 3}

@@ -16,6 +16,8 @@ MonoBehaviour:
   elementType: 3
   upgradeType: 0
   upgradeName: Battle Tank I
-  upgradeDescript: 
+  upgradeDescript: Heavy weapon with guns firing all around the main body.
   newWeapon: {fileID: 7890344321430585536, guid: f12d9f6842762db4bbfd7914da8bcee4, type: 3}
-  newStats: {fileID: 0}
+  newStats: {fileID: 11400000, guid: 6e5132b0fb233d64cb75f0c34efbe600, type: 2}
+  newAbility: {fileID: 0}
+  newBuffType: 0

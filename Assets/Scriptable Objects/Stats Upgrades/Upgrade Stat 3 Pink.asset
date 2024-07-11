@@ -16,6 +16,8 @@ MonoBehaviour:
   elementType: 5
   upgradeType: 1
   upgradeName: Ability Power III
-  upgradeDescript: 
+  upgradeDescript: Increases the damage dealt by abilities.
   newWeapon: {fileID: 0}
   newStats: {fileID: 11400000, guid: e472e5a5c456b1d4889be0c833c7ba77, type: 2}
+  newAbility: {fileID: 0}
+  newBuffType: 0

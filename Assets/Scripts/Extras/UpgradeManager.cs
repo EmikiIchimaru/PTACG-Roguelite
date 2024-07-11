@@ -44,7 +44,7 @@ public class UpgradeManager : Singleton<UpgradeManager>
     private BuffDealer buffDealer;
 
     private ElementType playerWeaponElement;
-    private ElementType playerAbilityElement;
+    public ElementType playerAbilityElement;
 
     protected override void Awake()
     {
@@ -107,8 +107,10 @@ public class UpgradeManager : Singleton<UpgradeManager>
         {
             case UpgradeType.Weapon:
             {
+                characterStats.SetScalingStats(upgrade.newStats);
                 characterWeapon.EquipWeapon(upgrade.newWeapon);
-                if (upgrade.upgradeLevel == 2) { playerWeaponElement = upgrade.elementType; }
+                playerWeaponElement = upgrade.elementType;
+                
                 Debug.Log("new weapon equipped");
                 break;
             }
@@ -121,7 +123,7 @@ public class UpgradeManager : Singleton<UpgradeManager>
             case UpgradeType.Ability:
             {
                 characterAbility.EquipAbility(upgrade.newAbility);
-                if (upgrade.upgradeLevel == 1) { playerAbilityElement = upgrade.elementType; }
+                playerAbilityElement = upgrade.elementType;
                 Debug.Log("new ability equipped");
                 break;
             }
@@ -190,20 +192,23 @@ public class UpgradeManager : Singleton<UpgradeManager>
     }
     private void InitializeUpgradeList3()
     {
-        List<List<UpgradeSO>> tempList = new List<List<UpgradeSO>>();
+        List<UpgradeSO> tempUpgrades = new List<UpgradeSO>();
 
         RemoveRandomElementNotInList(elementsRunPool, elementsPlayer);
 
         upgradesWeapon3 = upgradesWeapon3.Where(upgrade => upgrade.elementType == playerWeaponElement).ToList();
-        upgradesAbilities2 = upgradesAbilities2.Where(upgrade => upgrade.elementType == playerAbilityElement).ToList();
+        upgradesAbilities2 = upgradesAbilities2.Where(upgrade => elementsPlayer.Contains(upgrade.elementType)).ToList();
         upgradesStats3 = upgradesStats3.Where(upgrade => elementsPlayer.Contains(upgrade.elementType)).ToList();
 
-        tempList.Add(upgradesWeapon3);
-        tempList.Add(upgradesAbilities2);
-        tempList.Add(upgradesStats3);
+        
 
-        Utility.ShuffleUpgradeLists(tempList);
-        upgradesMegaList.AddRange(tempList);
+        tempUpgrades.AddRange(upgradesAbilities2);
+        tempUpgrades.AddRange(upgradesStats3);
+
+        //Utility.ShuffleUpgradeLists(tempList);
+        
+        upgradesMegaList.Add(tempUpgrades);
+        upgradesMegaList.Add(upgradesWeapon3);
 
         playerUpgradeTierIndex++;
     }

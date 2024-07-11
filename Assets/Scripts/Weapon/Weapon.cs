@@ -5,13 +5,15 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 { 
-    [Header("Name")] 
-    [SerializeField] private string weaponName = "";
+    //[Header("Name")] 
+    //[SerializeField] private string weaponName = "";
   
     [Header("Settings")] 
 
     [SerializeField] protected float baseDamage;
     [SerializeField] protected float baseAttackCooltime;
+
+    [SerializeField] protected bool isMagicWeapon = false;
 
     public float finalAttackCooltime { protected get; set; }
 
@@ -30,7 +32,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private ParticleSystem muzzlePS; */
 
     // Returns the name of this Weapon
-    public string WeaponName => weaponName;
+    //public string WeaponName => weaponName;
 
     // Reference of the Character that controls this Weapon
     public Character WeaponOwner { get; set; }
@@ -114,7 +116,19 @@ public class Weapon : MonoBehaviour
 
     private float GetDamageX()
     {
-        float tempDamageX = (stats != null)?stats.attackDamageFinal:1f;
+        float tempDamageX = 1f;
+        if (stats != null)
+        {
+            if (!isMagicWeapon)
+            {
+                tempDamageX = stats.attackDamageFinal;
+            }
+            else
+            {
+                tempDamageX = 10f * (1 + 0.01f * stats.abilityPowerFinal);
+            }
+            
+        }
         return tempDamageX;
     }
  

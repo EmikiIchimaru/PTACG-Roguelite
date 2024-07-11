@@ -15,8 +15,8 @@ MonoBehaviour:
   upgradeLevel: 2
   elementType: 4
   upgradeType: 2
-  upgradeName: 'Ability: Shield II'
-  upgradeDescript: 
+  upgradeName: Mirror Shield
+  upgradeDescript: A variation of the Bubble Shield which reflects projectiles instead.
   newWeapon: {fileID: 0}
   newStats: {fileID: 0}
   newAbility: {fileID: -8256671993902337447, guid: 268fbfe3c8d281f43ba7469f468fb8c6, type: 3}

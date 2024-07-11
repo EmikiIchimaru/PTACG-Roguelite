@@ -13,12 +13,13 @@ GameObject:
   - component: {fileID: 7142160005271725791}
   - component: {fileID: 3488578108904659598}
   - component: {fileID: -6634800578000351700}
+  - component: {fileID: 4320752119576983731}
   - component: {fileID: 1191032378767783313}
   - component: {fileID: 551813955032315460}
+  - component: {fileID: 7524917515524399717}
   - component: {fileID: 71886856546616398}
   - component: {fileID: 8203643418636656185}
   - component: {fileID: 916725493514690873}
-  - component: {fileID: 4320752119576983731}
   m_Layer: 7
   m_Name: Enemy ArrowBoss
   m_TagString: Enemy
@@ -36,7 +37,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4248261187717773338}
@@ -54,7 +55,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8088e96eea75549a3bb62035ba793d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 25
   maxShield: 0
   destroyObject: 1
 --- !u!114 &7142160005271725791
@@ -102,6 +103,20 @@ MonoBehaviour:
   isPlayerInRange: 0
   isPlayerAlwaysInRange: 1
   direction: {x: 0, y: 0, z: 0}
+--- !u!114 &4320752119576983731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82926272725612347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93e46d0363e13524cb04f40f0e7ef4b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionIndexX: 0
+  positionIndexY: 0
 --- !u!114 &1191032378767783313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHostile: 1
   shouldChasePlayer: 1
-  baseMoveSpeed: 60
+  baseMoveSpeed: 70
   reflectVariance: 0.2
   speedVariance: 0.1
   rotatePart: {fileID: 4248261187717773338}
@@ -132,7 +147,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d71d46fe4a8402d4a919163cfa21995e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sr: {fileID: 7431074207802063147}
   damage: 5
+--- !u!114 &7524917515524399717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82926272725612347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d54d70f78d3c487418f7b3818c1c20a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 10
 --- !u!50 &71886856546616398
 Rigidbody2D:
   serializedVersion: 4
@@ -250,20 +279,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.75, y: 0.75}
   m_EdgeRadius: 0
---- !u!114 &4320752119576983731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 82926272725612347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93e46d0363e13524cb04f40f0e7ef4b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  positionIndexX: 0
-  positionIndexY: 0
 --- !u!1 &944229286249315397
 GameObject:
   m_ObjectHideFlags: 0

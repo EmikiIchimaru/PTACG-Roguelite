@@ -15,7 +15,7 @@ MonoBehaviour:
   upgradeLevel: 2
   elementType: 3
   upgradeType: 2
-  upgradeName: Sprinkler
+  upgradeName: Bullet Sprinkler
   upgradeDescript: The user fires projectiles in a spiralling pattern.
   newWeapon: {fileID: 0}
   newStats: {fileID: 0}

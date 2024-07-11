@@ -16,7 +16,8 @@ MonoBehaviour:
   elementType: 2
   upgradeType: 3
   upgradeName: 'Buff: Shock'
-  upgradeDescript: 
+  upgradeDescript: Your weapon and abilities apply the Shock Debuff, dealing extra
+    damage on hit and ministunning enemies.
   newWeapon: {fileID: 0}
   newStats: {fileID: 0}
   newAbility: {fileID: 0}

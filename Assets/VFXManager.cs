@@ -5,7 +5,7 @@ using UnityEngine;
 public class VFXManager : Singleton<VFXManager>
 {
     [SerializeField] private ParticleSystem spellHit;
-
+    [SerializeField] private ParticleSystem deathVFX;
     private ObjectPooler Pool;
 
     protected override void Awake()
@@ -32,5 +32,12 @@ public class VFXManager : Singleton<VFXManager>
         vfxPS.transform.localScale = new Vector3(scale, scale, 1f);
         var mainModule = vfxPS.main;
         mainModule.startColor = newColor;
+    }
+    public void DeathVFX(Vector3 position, float scale)
+    {
+        ParticleSystem vfxPS = Instantiate(deathVFX, position, Quaternion.identity);
+        vfxPS.transform.localScale = new Vector3(scale, scale, 1f);
+        //var mainModule = vfxPS.main;
+        //mainModule.startColor = newColor;
     }
 }

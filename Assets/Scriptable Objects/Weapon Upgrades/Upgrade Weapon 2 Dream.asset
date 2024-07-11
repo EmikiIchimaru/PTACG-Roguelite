@@ -16,6 +16,8 @@ MonoBehaviour:
   elementType: 5
   upgradeType: 0
   upgradeName: Dream Cannon I
-  upgradeDescript: 
+  upgradeDescript: Magic weapon which fires slow yet devastating orbs of energy.
   newWeapon: {fileID: 7890344321430585536, guid: 1bbeccc7ff1dfd048b443221a1e989d9, type: 3}
-  newStats: {fileID: 0}
+  newStats: {fileID: 11400000, guid: b86c290a02e65c3439ee2af1e26a53d3, type: 2}
+  newAbility: {fileID: 0}
+  newBuffType: 0

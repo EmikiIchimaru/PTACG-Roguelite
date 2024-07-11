@@ -16,6 +16,8 @@ MonoBehaviour:
   elementType: 4
   upgradeType: 0
   upgradeName: Arc Cannon II
-  upgradeDescript: 
+  upgradeDescript: Magic weapon which fires large arcs of energy.
   newWeapon: {fileID: 7890344321430585536, guid: 8a2e027f8f1fe1142898ad2910c21afd, type: 3}
-  newStats: {fileID: 0}
+  newStats: {fileID: 11400000, guid: b86c290a02e65c3439ee2af1e26a53d3, type: 2}
+  newAbility: {fileID: 0}
+  newBuffType: 0

@@ -10,13 +10,14 @@ public class BossBehaviour : MonoBehaviour
     [SerializeField] private GameObject bombPrefab;
     [SerializeField] private GameObject kitePrefab;
     [SerializeField] private GameObject arrowPrefab;
+    [SerializeField] private GameObject shooterPrefab;
+    [SerializeField] private GameObject shieldPrefab;
 
     [SerializeField] private Transform WingWeapon1;
     [SerializeField] private Transform WingWeapon2;
     [SerializeField] private Transform OuterWing1;
     [SerializeField] private Transform OuterWing2;
     private float internalCooldown;
-
     private float maxInternalCD;
 
     private Character boss;
@@ -24,6 +25,8 @@ public class BossBehaviour : MonoBehaviour
     private Health health;
 
     private int rage;
+
+    public static List<GameObject> spawns = new List<GameObject>();
 
     void Awake()
     {
@@ -36,7 +39,7 @@ public class BossBehaviour : MonoBehaviour
     {
         rage = 0;
         internalCooldown = 2f;
-        maxInternalCD = 2f;
+        maxInternalCD = 2.5f;
     }
 
     void FixedUpdate()
@@ -50,14 +53,18 @@ public class BossBehaviour : MonoBehaviour
         if (health.GetPercentHP() < 0.6f && rage == 0)
         {
             rage = 1;
-            maxInternalCD = 1f;
+            maxInternalCD = 1.5f;
+            internalCooldown = 5f;
+            ShieldBoss();
             //abilityPool = 4;
         }
 
         if (health.GetPercentHP() < 0.3f && rage == 1)
         {
             rage = 2;
-            maxInternalCD = 0f;
+            maxInternalCD = 0.5f;
+            internalCooldown = 5f;
+            ShieldBoss();
             //abilityPool = 5;
         }
         
@@ -73,7 +80,7 @@ public class BossBehaviour : MonoBehaviour
 
     private void ChooseBossAbility()
     {
-        int abilityIndex = Random.Range(0,5);
+        int abilityIndex = Random.Range(0,6);
         switch (abilityIndex)
         {
             case 0:
@@ -99,6 +106,11 @@ public class BossBehaviour : MonoBehaviour
             case 4:
                 StartCoroutine(BossMachineGun());
                 internalCooldown = maxInternalCD + 4f;
+                break;
+            case 5:
+                StartCoroutine(BossSpawnShooters(OuterWing1));
+                StartCoroutine(BossSpawnShooters(OuterWing2));
+                internalCooldown = maxInternalCD + 2f;
                 break;
         }
         
@@ -153,11 +165,23 @@ public class BossBehaviour : MonoBehaviour
 
     private IEnumerator BossSpawnArrows(Transform newTransform)
     {
-        float interval = 0.2f;
+        float interval = 0.15f;
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 15; i++)
         {
-            Instantiate(arrowPrefab, newTransform.position, Quaternion.identity);
+            GameObject spawn = Instantiate(arrowPrefab, newTransform.position, Quaternion.identity);
+            spawns.Add(spawn);
+            yield return new WaitForSeconds(interval);
+        }
+    }
+    private IEnumerator BossSpawnShooters(Transform newTransform)
+    {
+        float interval = 0.5f;
+
+        for (int i = 0; i < 4; i++)
+        {
+            GameObject spawn = Instantiate(shooterPrefab, newTransform.position, Quaternion.identity);
+            spawns.Add(spawn);
             yield return new WaitForSeconds(interval);
         }
 
@@ -189,18 +213,24 @@ public class BossBehaviour : MonoBehaviour
     {
         float interval = 0.04f;
         float angle = Utility.GetAngleBetweenPoints(transform.position, GameManager.Instance.playerCharacter.transform.position);
+        //Debug.Log(angle);
         for (int i = 0; i < 100; i++)
         {
             
             //float angle1 = Utility.GetAngleBetweenPoints(OuterWing1.position, GameManager.Instance.playerCharacter.transform.position);
             //float angle2 = Utility.GetAngleBetweenPoints(OuterWing2.position, GameManager.Instance.playerCharacter.transform.position);
             //Debug.Log(i);
-            float angle3 = Mathf.Abs(50-i) - 15f;
-            AbilityCreator.ShootSP(boss, OuterWing1.position, 10f, angle - angle3, kitePrefab);
-            AbilityCreator.ShootSP(boss, OuterWing2.position, 10f, angle + angle3, kitePrefab);
+            float angle3 = Mathf.Abs(50-i) - 20f;
+            AbilityCreator.ShootSP(boss, OuterWing1.position, 10f, 0.5f * (-90f+angle) - angle3, kitePrefab);
+            AbilityCreator.ShootSP(boss, OuterWing2.position, 10f, 0.5f * (-90f+angle) + angle3, kitePrefab);
             yield return new WaitForSeconds(interval);
         }
+    }
 
-
+    private void ShieldBoss()
+    {
+        GameObject shieldGO = Instantiate(shieldPrefab, transform.position, Quaternion.identity);
+        shieldGO.transform.parent = transform;
+        shieldGO.GetComponent<TimedLife>().lifetime = 7f;
     }
 }

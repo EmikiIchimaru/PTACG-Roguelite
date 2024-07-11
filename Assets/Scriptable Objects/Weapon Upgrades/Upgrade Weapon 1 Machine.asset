@@ -16,6 +16,8 @@ MonoBehaviour:
   elementType: 2
   upgradeType: 0
   upgradeName: Machine Gun I
-  upgradeDescript: Rapidfire weapon, adept at consistent damage output.
+  upgradeDescript: Basic rifle weapon, adept at consistent damage output.
   newWeapon: {fileID: 7890344321430585536, guid: 133aedbe150ca9747a150289e5a966b9, type: 3}
-  newStats: {fileID: 0}
+  newStats: {fileID: 11400000, guid: 8fe5a95cff0a317449790f2f676787e2, type: 2}
+  newAbility: {fileID: 0}
+  newBuffType: 0

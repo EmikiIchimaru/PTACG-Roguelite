@@ -15,8 +15,8 @@ MonoBehaviour:
   upgradeLevel: 1
   elementType: 4
   upgradeType: 2
-  upgradeName: 'Ability: Shield'
-  upgradeDescript: 
+  upgradeName: Bubble Shield
+  upgradeDescript: Creates a protective shield which protects its user from harm.
   newWeapon: {fileID: 0}
   newStats: {fileID: 0}
   newAbility: {fileID: -8256671993902337447, guid: 4966b60a13f4bed418f79e6888077bd7, type: 3}

@@ -16,6 +16,8 @@ MonoBehaviour:
   elementType: 1
   upgradeType: 0
   upgradeName: Piercer I
-  upgradeDescript: 
+  upgradeDescript: Light weapon which uses a medium-range powerful piercing bullet.
   newWeapon: {fileID: 7890344321430585536, guid: 05f93c08bed43d94ba133f676a50235a, type: 3}
-  newStats: {fileID: 0}
+  newStats: {fileID: 11400000, guid: d13d83e32b12ebe4997d29edd34c6125, type: 2}
+  newAbility: {fileID: 0}
+  newBuffType: 0

@@ -15,8 +15,9 @@ MonoBehaviour:
   upgradeLevel: 2
   elementType: 4
   upgradeType: 2
-  upgradeName: 'Ability: Shield II'
-  upgradeDescript: 
+  upgradeName: Null Shield
+  upgradeDescript: An improved version of the Bubble Shield with increased size and
+    duration.
   newWeapon: {fileID: 0}
   newStats: {fileID: 0}
   newAbility: {fileID: -8256671993902337447, guid: ab980761b0e306c459399798b1ea4aac, type: 3}

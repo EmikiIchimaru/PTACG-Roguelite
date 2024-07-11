@@ -151,6 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acquisitionRange: 40
   isPlayerInRange: 0
+  isPlayerAlwaysInRange: 0
   direction: {x: 0, y: 0, z: 0}
 --- !u!114 &691336297717918662
 MonoBehaviour:
@@ -177,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xpPrefab: {fileID: 712893119121178463, guid: 3180ef871c3c84f4abf058aba8051fdd, type: 3}
-  amount: 10
+  amount: 25
   orbCount: 2
 --- !u!50 &71886856546616398
 Rigidbody2D:

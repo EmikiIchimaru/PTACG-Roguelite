@@ -83,7 +83,7 @@ public class CharacterStats : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.V) && GameManager.isCheatingAllowed)
         {
             AddExperience(50);
         }
@@ -117,6 +117,29 @@ public class CharacterStats : MonoBehaviour
         if (level > 1) { UpgradeManager.Instance.ShowCanvas(); }
     }
 
+    public void AddStats(StatsSO statBonus)
+    {
+        healthBaseBonus += statBonus.healthBaseBonus;
+        attackDamageBaseBonus += statBonus.attackDamageBaseBonus;
+        attackSpeedBaseBonus += statBonus.attackSpeedBaseBonus;
+        abilityHasteBaseBonus += statBonus.abilityHasteBaseBonus;
+        abilityPowerBaseBonus += statBonus.abilityPowerBaseBonus;
+        RecalculateStats();
+    }
+
+    public void SetScalingStats(StatsSO statBonus)
+    {
+        //
+        healthPercentBonus = statBonus.healthPercentBonus;
+        attackDamagePercentBonus = statBonus.attackDamagePercentBonus;
+        attackSpeedPercentBonus = statBonus.attackSpeedPercentBonus;
+        abilityHastePercentBonus = statBonus.abilityHastePercentBonus;
+        abilityPowerPercentBonus = statBonus.abilityPowerPercentBonus;
+        scalePercentScaling = statBonus.scalePercentScaling;
+        moveSpeedPercentScaling = statBonus.moveSpeedPercentScaling;
+        RecalculateStats();
+    }
+    
     private void RecalculateStats()
     {
         scaleFinal = CalculateFinalStat(scaleBase, scalePerLevel, scaleBaseBonus, scalePercentScaling);
@@ -134,24 +157,6 @@ public class CharacterStats : MonoBehaviour
         health.SetNewMaxHealth(healthFinal);
         
         
-    }
-
-    public void AddStats(StatsSO statBonus)
-    {
-        healthBaseBonus += statBonus.healthBaseBonus;
-        attackDamageBaseBonus += statBonus.attackDamageBaseBonus;
-        attackSpeedBaseBonus += statBonus.attackSpeedBaseBonus;
-        abilityHasteBaseBonus += statBonus.abilityHasteBaseBonus;
-        abilityPowerBaseBonus += statBonus.abilityPowerBaseBonus;
-        healthPercentBonus += statBonus.healthPercentBonus;
-        attackDamagePercentBonus += statBonus.attackDamagePercentBonus;
-        attackSpeedPercentBonus += statBonus.attackSpeedPercentBonus;
-        abilityHastePercentBonus += statBonus.abilityHastePercentBonus;
-        abilityPowerPercentBonus += statBonus.abilityPowerPercentBonus;
-        //
-        scalePercentScaling = statBonus.scalePercentScaling;
-        moveSpeedPercentScaling = statBonus.moveSpeedPercentScaling;
-        RecalculateStats();
     }
 
     private float CalculateFinalStat(float baseStat, float perlevelStat, float baseBonus, float percentBonus)

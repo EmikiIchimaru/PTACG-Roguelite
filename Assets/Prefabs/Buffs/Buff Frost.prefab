@@ -49,8 +49,8 @@ MonoBehaviour:
   type: 4
   duration: 2.01
   speedMultiplier: 0
-  damagePerTick: 10
-  damageInterval: 0.5
+  damagePerTick: 0
+  damageInterval: 1
 --- !u!198 &-4786263419912640970
 ParticleSystem:
   m_ObjectHideFlags: 0

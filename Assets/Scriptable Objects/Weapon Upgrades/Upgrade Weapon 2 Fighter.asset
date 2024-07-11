@@ -15,7 +15,9 @@ MonoBehaviour:
   upgradeLevel: 2
   elementType: 2
   upgradeType: 0
-  upgradeName: ' Light Fighter I'
-  upgradeDescript: 
+  upgradeName: Light Fighter I
+  upgradeDescript: Light weapon with rifle attachments on its wings.
   newWeapon: {fileID: 7890344321430585536, guid: 795d9e77a10a4e44c9d0c49e95ad895f, type: 3}
-  newStats: {fileID: 0}
+  newStats: {fileID: 11400000, guid: d13d83e32b12ebe4997d29edd34c6125, type: 2}
+  newAbility: {fileID: 0}
+  newBuffType: 0

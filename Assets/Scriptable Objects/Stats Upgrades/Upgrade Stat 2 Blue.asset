@@ -16,6 +16,8 @@ MonoBehaviour:
   elementType: 4
   upgradeType: 1
   upgradeName: Ability Haste II
-  upgradeDescript: 
+  upgradeDescript: Improves the casting rate of abilities.
   newWeapon: {fileID: 0}
   newStats: {fileID: 11400000, guid: c1822590b0fe26b4988ea0efb3e5b380, type: 2}
+  newAbility: {fileID: 0}
+  newBuffType: 0

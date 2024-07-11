@@ -16,6 +16,8 @@ MonoBehaviour:
   elementType: 5
   upgradeType: 0
   upgradeName: Sniper I
-  upgradeDescript: Slow but powerful weapon with piercing bullets.
+  upgradeDescript: Basic artillery weapon with piercing bullets.
   newWeapon: {fileID: 7890344321430585536, guid: 4ec6e134776772141aac64a0706825b6, type: 3}
-  newStats: {fileID: 0}
+  newStats: {fileID: 11400000, guid: 8fe5a95cff0a317449790f2f676787e2, type: 2}
+  newAbility: {fileID: 0}
+  newBuffType: 0
