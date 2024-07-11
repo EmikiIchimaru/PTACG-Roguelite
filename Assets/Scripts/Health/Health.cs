@@ -104,6 +104,13 @@ public class Health : MonoBehaviour
         }
     }
 
+    public void Heal(float healAmount)
+    {
+        CurrentHealth += healAmount;
+
+        UpdateCharacterHealth();
+    }
+
     // Kills the game object
     private void Die()
     {

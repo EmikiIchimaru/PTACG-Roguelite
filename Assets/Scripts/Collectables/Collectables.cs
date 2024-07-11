@@ -10,6 +10,7 @@ public class Collectables : MonoBehaviour
     
     protected Character character;
     protected CharacterStats characterStats;
+    protected Health health;
     protected GameObject objectCollided;
     protected SpriteRenderer spriteRenderer;
     protected new Collider2D collider2D;
@@ -48,6 +49,7 @@ public class Collectables : MonoBehaviour
             return false;
         }
         characterStats = objectCollided.GetComponent<CharacterStats>();
+        health = objectCollided.GetComponent<Health>();
         return character.CharacterType == Character.CharacterTypes.Player;
 	}
 

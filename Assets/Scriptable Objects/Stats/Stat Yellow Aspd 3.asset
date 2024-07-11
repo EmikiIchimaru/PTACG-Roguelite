@@ -16,9 +16,13 @@ MonoBehaviour:
   healthPercentBonus: 0
   attackDamageBaseBonus: 0
   attackDamagePercentBonus: 0
-  attackSpeedBaseBonus: 50
-  attackSpeedPercentBonus: 0
+  attackSpeedBaseBonus: 0
+  attackSpeedPercentBonus: 100
   abilityHasteBaseBonus: 0
   abilityHastePercentBonus: 0
   abilityPowerBaseBonus: 0
   abilityPowerPercentBonus: 0
+  scaleBaseBonus: 0
+  scalePercentScaling: 0
+  moveSpeedBaseBonus: 0
+  moveSpeedPercentScaling: 0

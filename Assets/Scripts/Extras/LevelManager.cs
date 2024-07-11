@@ -43,8 +43,10 @@ public class LevelManager : Singleton<LevelManager>
         vertWalls = new WallGroup[levelSize*(levelSize-1)];
         rooms = new Room[levelSize*levelSize];
         //does not spawn in corner
-        offsetX = Random.Range(2, levelSize-1)-levelSize;
-        offsetY = Random.Range(2, levelSize-1)-levelSize;
+        int margin = (int) Mathf.Floor(levelSize/4);
+        //Debug.Log(margin);
+        offsetX = Random.Range(margin, levelSize-margin)-levelSize;
+        offsetY = Random.Range(margin, levelSize-margin)-levelSize;
         currentX = -(offsetX+1);
         currentY = -(offsetY+1);
         startX = currentX;
@@ -183,6 +185,18 @@ public class LevelManager : Singleton<LevelManager>
             wallGO3.transform.localScale = new Vector2(blockSize, blockSize);
             GameObject wallGO4 = Instantiate(blockPrefab, botRightCorner + new Vector3(0f, j * blockSize, 0f), Quaternion.identity, transform);
             wallGO4.transform.localScale = new Vector2(blockSize, blockSize);
+        }
+    }
+
+    public void ToggleCurrentRoom(bool showOrHide)
+    {
+        if (showOrHide)
+        {
+            rooms[XYToRoomNumber(currentX, currentY)].ShowRoom();
+        }
+        else
+        {
+            rooms[XYToRoomNumber(currentX, currentY)].HideRoom();
         }
     }
 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7593556980565327336}
   - component: {fileID: 3000591577648296941}
   m_Layer: 7
-  m_Name: Kite
+  m_Name: Kite Outer Wing L
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 5746630477412793040}
   - component: {fileID: 2343941368253031228}
   m_Layer: 7
-  m_Name: Kite (4)
+  m_Name: Kite Inner Wing R
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -532,7 +532,7 @@ GameObject:
   - component: {fileID: 8291560617912413234}
   - component: {fileID: 5681792951345628399}
   m_Layer: 7
-  m_Name: Kite (3)
+  m_Name: Kite Outer Wing R
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -799,6 +799,7 @@ GameObject:
   - component: {fileID: -1995100940681927154}
   - component: {fileID: 4453189647538651629}
   - component: {fileID: 460227022398572789}
+  - component: {fileID: 5409075717222399129}
   m_Layer: 7
   m_Name: Final Boss
   m_TagString: Enemy
@@ -859,9 +860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8088e96eea75549a3bb62035ba793d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealth: 2000
-  maxHealth: 2000
-  initialShield: 0
+  maxHealth: 25000
   maxShield: 0
   destroyObject: 1
 --- !u!114 &2960300264161116436
@@ -876,7 +875,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ddafed262d65b4292b3987b5009e53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 138594487432681173, guid: 574dd223859c7ce459e0ce82371dd880, type: 3}
+  bulletPrefab: {fileID: 138594487432681173, guid: 069a70a2db136ca45a6ae90df769f586, type: 3}
+  bombPrefab: {fileID: 138594487432681173, guid: 574dd223859c7ce459e0ce82371dd880, type: 3}
+  arrowPrefab: {fileID: 82926272725612347, guid: dc7990eb12fa4b94e9dc7683ed168ab5, type: 3}
   WingWeapon1: {fileID: 2379803563479919570}
   WingWeapon2: {fileID: 4578248172499925498}
 --- !u!114 &6786221483543700348
@@ -908,7 +909,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHostile: 1
   shouldChasePlayer: 0
-  baseMoveSpeed: 30
+  baseMoveSpeed: 5
   reflectVariance: 0.2
   speedVariance: 0.1
   rotatePart: {fileID: 0}
@@ -1271,6 +1272,27 @@ CompositeCollider2D:
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 4329386225776292504}
+--- !u!95 &5409075717222399129
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4329386225776292504}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f7b5e5a6b468eed4dbe6e806f769ca52, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4713552882473622272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1432,7 +1454,7 @@ GameObject:
   - component: {fileID: 5799751703513104963}
   - component: {fileID: 2580687396497804352}
   m_Layer: 7
-  m_Name: Kite
+  m_Name: Kite Inner Wing L
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

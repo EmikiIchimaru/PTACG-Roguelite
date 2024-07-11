@@ -19,11 +19,12 @@ public class EnemyMovement : MonoBehaviour
     private float moveSpeed;
     private Vector2 moveDirection;
     //private float internalBumpTimer = 0f;
-
     private float maxSpeedMultiplier = 0.25f;
+    private float initialY;
     // Start is called before the first frame update
     void Start()
     {   
+        initialY = transform.position.y;
         moveSpeed = baseMoveSpeed;
         rb = GetComponent<Rigidbody2D>();
 
@@ -122,6 +123,15 @@ public class EnemyMovement : MonoBehaviour
             //Add randomness
             moveDirection += new Vector2(Random.Range(-reflectVariance, reflectVariance), Random.Range(-reflectVariance, reflectVariance));
             moveSpeed = Random.Range(1 - speedVariance, 1 + speedVariance) * baseMoveSpeed;
+        }
+        
+    }
+
+    public void SetPositiveYMovement()
+    {
+        if (initialY - transform.position.y > 5f && moveDirection.y < 0) 
+        {
+            moveDirection = new Vector2(moveDirection.x, Mathf.Abs(moveDirection.y));
         }
         
     }

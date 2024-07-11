@@ -7,6 +7,7 @@ public class DetectPlayer : MonoBehaviour
     [SerializeField] private float acquisitionRange = 40f;
 
     public bool isPlayerInRange;
+    public bool isPlayerAlwaysInRange = false;
     public Vector3 direction;// { get; set; }
     public float angle { get; set; }
     //public float angleTowardsPlayer;
@@ -22,7 +23,14 @@ public class DetectPlayer : MonoBehaviour
     {
         float dx = GameManager.Instance.playerCharacter.transform.position.x - transform.position.x;
         float dy = GameManager.Instance.playerCharacter.transform.position.y - transform.position.y;
-        isPlayerInRange = (roomEntity.isPlayerInSameRoom && (acquisitionRange * acquisitionRange) > (dx * dx + dy * dy));
+        if (isPlayerAlwaysInRange)
+        {
+            isPlayerInRange = true;
+        }
+        else
+        {
+            isPlayerInRange = (roomEntity.isPlayerInSameRoom && (acquisitionRange * acquisitionRange) > (dx * dx + dy * dy));
+        }
 
         direction = GameManager.Instance.playerCharacter.transform.position - transform.position;
         

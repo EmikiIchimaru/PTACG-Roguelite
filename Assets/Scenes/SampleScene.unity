@@ -717,7 +717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockSize: 6
   roomSize: 48
-  levelSize: 10
+  levelSize: 21
   wallChance: 0.2
   wallPrefab: {fileID: 568332425795463292, guid: 5f9ee58536a403b4890852d89afdbb4e, type: 3}
   roomPrefab: {fileID: 3392653186384542890, guid: 31d8affe9129a764e9d4f2433a1bee08, type: 3}
@@ -3883,7 +3883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  maxShield: 5
+  maxShield: 0
   destroyObject: 0
 --- !u!114 &1940298622
 MonoBehaviour:
@@ -3897,7 +3897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c95cd77a19309c74da2f4c294a92e93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityToUse: {fileID: 4957205143009913814, guid: 06249dd638badc141b68da086951fed2, type: 3}
+  abilityToUse: {fileID: 0}
 --- !u!114 &1940298623
 MonoBehaviour:
   m_ObjectHideFlags: 0

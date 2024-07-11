@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -6634800578000351700}
   - component: {fileID: 1191032378767783313}
   - component: {fileID: 551813955032315460}
+  - component: {fileID: 3942326188139139664}
   - component: {fileID: 71886856546616398}
   - component: {fileID: 8203643418636656185}
   - component: {fileID: 916725493514690873}
@@ -55,9 +56,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8088e96eea75549a3bb62035ba793d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealth: 100
   maxHealth: 100
-  initialShield: 0
   maxShield: 0
   destroyObject: 1
 --- !u!114 &7142160005271725791
@@ -160,6 +159,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d71d46fe4a8402d4a919163cfa21995e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 6
+--- !u!114 &3942326188139139664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82926272725612347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b469465720cf544fbe37b85d9d302ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xpPrefab: {fileID: 712893119121178463, guid: c335cc03c17aab44fb572de13e263fe6, type: 3}
+  amount: 5
+  orbCount: 1
 --- !u!50 &71886856546616398
 Rigidbody2D:
   serializedVersion: 4

@@ -22,3 +22,7 @@ MonoBehaviour:
   abilityHastePercentBonus: 0
   abilityPowerBaseBonus: 0
   abilityPowerPercentBonus: 0
+  scaleBaseBonus: 0
+  scalePercentScaling: 0
+  moveSpeedBaseBonus: 0
+  moveSpeedPercentScaling: 0

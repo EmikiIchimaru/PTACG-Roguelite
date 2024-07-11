@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7890344321430585536}
   - component: {fileID: 7184854162324236936}
   m_Layer: 0
-  m_Name: Weapon 0 Bot
+  m_Name: Weapon 1 Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,8 +78,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: default weapon
-  baseDamage: 2
-  baseAttackCooltime: 1.5
+  baseDamage: 15
+  baseAttackCooltime: 0.75
   projectileSpawnPosition: {x: 0, y: 0, z: 0}
   projectileColor: {r: 1, g: 0, b: 0, a: 1}
   projectileColor2: {r: 1, g: 1, b: 1, a: 1}

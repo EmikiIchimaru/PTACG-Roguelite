@@ -75,6 +75,7 @@ public class Camera2D : Singleton<Camera2D>
     IEnumerator PanCamera(Transform target)
     {
         isSequencing = true;
+        LevelManager.Instance.ToggleCurrentRoom(false);
         float panDuration = 1f;
         // Move to the target location
         yield return StartCoroutine(MoveToPosition(target.position, panDuration));
@@ -85,6 +86,7 @@ public class Camera2D : Singleton<Camera2D>
         // Move back to the original location
         yield return StartCoroutine(MoveToPosition(Target.position, panDuration));
         isSequencing = false;
+        LevelManager.Instance.ToggleCurrentRoom(true);
     }
 
     IEnumerator MoveToPosition(Vector3 targetPosition, float duration)
