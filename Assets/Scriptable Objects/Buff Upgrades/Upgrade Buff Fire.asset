@@ -16,7 +16,7 @@ MonoBehaviour:
   elementType: 1
   upgradeType: 3
   upgradeName: 'Buff: Fire'
-  upgradeDescript: Your weapon and abilities apply the Fire Debuff, dealing dps to
+  upgradeDescript: Your weapon and abilities apply the Fire Debuff, dealing dot to
     enemies.
   newWeapon: {fileID: 0}
   newStats: {fileID: 0}

@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float speed = 100f;
     [SerializeField] private float acceleration = 0f;
     [SerializeField] private bool canPierce = false;
+    [SerializeField] private bool isPersistent = false;
     private float bulletDuration = 0.5f;
 
     // Returns the direction of this projectile    
@@ -158,6 +159,8 @@ public class Projectile : MonoBehaviour
 
     public void DisableProjectile()
     {
+        
+        if (isPersistent) { return; }
         VFXManager.Instance.BulletHit(transform, spriteRenderer.color);
         if (hasPool)
         {

@@ -16,7 +16,7 @@ MonoBehaviour:
   elementType: 3
   upgradeType: 3
   upgradeName: 'Buff: Toxic'
-  upgradeDescript: Your weapon and abilities apply the Toxic Debuff, dealing dps
+  upgradeDescript: Your weapon and abilities apply the Toxic Debuff, dealing dot
     and slowing enemies.
   newWeapon: {fileID: 0}
   newStats: {fileID: 0}

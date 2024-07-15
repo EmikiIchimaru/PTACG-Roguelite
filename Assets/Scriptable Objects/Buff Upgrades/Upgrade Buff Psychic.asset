@@ -16,7 +16,7 @@ MonoBehaviour:
   elementType: 5
   upgradeType: 3
   upgradeName: 'Buff: Psychic'
-  upgradeDescript: Your weapon and abilities apply the Psychic Debuff, dealing dps
+  upgradeDescript: Your weapon and abilities apply the Psychic Debuff, dealing dot
     and disarming enemies.
   newWeapon: {fileID: 0}
   newStats: {fileID: 0}

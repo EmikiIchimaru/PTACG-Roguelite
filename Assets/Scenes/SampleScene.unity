@@ -4093,7 +4093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c95cd77a19309c74da2f4c294a92e93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityToUse: {fileID: 0}
+  abilityToUse: {fileID: 6171514032892391341, guid: 153474844ab58714f8f57aa0fed7f236, type: 3}
 --- !u!114 &1940298623
 MonoBehaviour:
   m_ObjectHideFlags: 0

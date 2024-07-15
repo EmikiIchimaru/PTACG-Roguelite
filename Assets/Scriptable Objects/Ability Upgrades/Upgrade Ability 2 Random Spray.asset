@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3745ad6372b50f24cb4718d66f27dff6, type: 3}
-  m_Name: Upgrade Ability 2 Ring Blade
+  m_Name: Upgrade Ability 2 Random Spray
   m_EditorClassIdentifier: 
   upgradeLevel: 2
   elementType: 2
   upgradeType: 2
-  upgradeName: Ring Blade
-  upgradeDescript: 
+  upgradeName: Random Spray
+  upgradeDescript: Sprays bullets around the user in a random pattern. Scales with
+    attack speed.
   newWeapon: {fileID: 0}
   newStats: {fileID: 0}
-  newAbility: {fileID: -2233547896242731252, guid: f3f92f2b7b4a8be46ac510e73127f0be, type: 3}
+  newAbility: {fileID: 896623114174941300, guid: aed99a38a4c686049bfe86434dee7f1e, type: 3}
   newBuffType: 0
