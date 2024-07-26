@@ -44,7 +44,7 @@ public class ProjectileWeapon : Weapon
                 SpawnProjectile(child.position, child.localEulerAngles.z);
             }
         }
-        if (transform.gameObject.tag == "WeaponPart") { SpawnProjectile(transform.position, transform.localEulerAngles.z); }
+        //if (transform.gameObject.tag == "WeaponPart") { SpawnProjectile(transform.position, transform.localEulerAngles.z); }
         internalCooldown = finalAttackCooltime;
     }
 

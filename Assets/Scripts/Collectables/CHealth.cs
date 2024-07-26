@@ -6,7 +6,7 @@ public class CHealth : Collectables
 
     void Start()
     {
-        float scale = 0.4f + hpHealed * 0.05f;
+        float scale = 0.5f + hpHealed * 0.01f;
         transform.localScale = new Vector3(scale, scale, 1f);
     }
     

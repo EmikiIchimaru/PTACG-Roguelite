@@ -16,7 +16,7 @@ MonoBehaviour:
   elementType: 2
   upgradeType: 2
   upgradeName: Bullet Ring
-  upgradeDescript: Throws a ring of bullets to the target point.
+  upgradeDescript: Fires a ring of bullets to the target point.
   newWeapon: {fileID: 0}
   newStats: {fileID: 0}
   newAbility: {fileID: -2233547896242731252, guid: f3f92f2b7b4a8be46ac510e73127f0be, type: 3}

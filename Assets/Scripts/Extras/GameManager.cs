@@ -8,6 +8,7 @@ public class GameManager : Singleton<GameManager>
     public static bool isPlayerControlEnabled;
     public static bool isPlayerMovementEnabled;
     public static bool isCheatingAllowed;
+    public static bool isAutoShoot;
     [SerializeField] private Texture2D cursorTexture;
     [SerializeField] private Camera2D camera2D;
 
@@ -32,6 +33,7 @@ public class GameManager : Singleton<GameManager>
         isGamePlaying = true;
         isPlayerControlEnabled = true;
         isPlayerMovementEnabled = true;
+        isAutoShoot = false;
         isPlayerAlive = true;
         isBossAlive = true;
         isCheatingAllowed = false;
@@ -41,6 +43,11 @@ public class GameManager : Singleton<GameManager>
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            isAutoShoot = !isAutoShoot;
+        }
+
         if (Input.GetKeyDown(KeyCode.Q) && !isCheatingAllowed)
         {
             cheatCounter++;
@@ -51,6 +58,11 @@ public class GameManager : Singleton<GameManager>
         {
             bossCountdown = -999;
             LevelManager.Instance.InitializeBossRoom();
+        }
+
+        if (Input.GetKeyDown(KeyCode.H) && isCheatingAllowed)
+        {
+            stats.healthBaseBonus += 10000f;
         }
     }
 

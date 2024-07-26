@@ -28,7 +28,7 @@ public class CharacterWeapon : CharacterComponents
         if (!GameManager.isPlayerControlEnabled) { return; }
         if (character.CharacterType == Character.CharacterTypes.Player)
         {
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(0) || GameManager.isAutoShoot)
             {
                 Shoot();
             }

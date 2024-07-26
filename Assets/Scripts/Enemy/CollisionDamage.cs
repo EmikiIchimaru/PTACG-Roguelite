@@ -17,7 +17,7 @@ public class CollisionDamage : MonoBehaviour
             { 
                 health.TakeDamage(damage); 
             }
-            VFXManager.Instance.SpellHit(transform.position, 1f, sr.color);
+            VFXManager.Instance.SpellHit(transform.position, transform.localScale.x, sr.color);
             Destroy(gameObject);
         }
     }

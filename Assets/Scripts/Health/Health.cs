@@ -106,7 +106,8 @@ public class Health : MonoBehaviour
 
     public void Heal(float healAmount)
     {
-        CurrentHealth += healAmount;
+        //CurrentHealth += healAmount;
+        CurrentHealth = Mathf.Min(CurrentHealth + healAmount, maxHealth);
 
         UpdateCharacterHealth();
     }

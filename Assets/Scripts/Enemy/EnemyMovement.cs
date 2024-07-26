@@ -7,6 +7,7 @@ public class EnemyMovement : MonoBehaviour
  // Public variable to control movement speed
     public Buff currentBuff { get; set; }
     [SerializeField] private bool isHostile = true;
+    //[SerializeField] private bool shouldFacePlayer = true;
     [SerializeField] private bool shouldChasePlayer = false;
     [SerializeField] private float baseMoveSpeed = 30f;
     [SerializeField] private float reflectVariance = 0.2f;
