@@ -93,7 +93,16 @@ public class CharacterWeapon : CharacterComponents
         CurrentWeapon.transform.localScale = new Vector3(stats.scaleFinal, stats.scaleFinal, 1f);
         CurrentWeapon.transform.parent = transform;
         CurrentWeapon.SetOwner(character);     
-
+        
+        foreach (Transform t in CurrentWeapon.transform)
+        {
+            ProjectileWeapon subWeapon = t.GetComponent<ProjectileWeapon>();
+            if (subWeapon != null) 
+            { 
+                subWeapon.SetOwner(character); 
+                CurrentWeapon.SetChildWeapon(subWeapon);
+            }
+        }
 
         /* if (character.CharacterType == Character.CharacterTypes.Player)
         {

@@ -47,6 +47,7 @@ public class Weapon : MonoBehaviour
     public bool CanShoot { get { return internalCooldown <= 0f; } }
 
     // Internal
+    protected List<ProjectileWeapon> childWeapons = new List<ProjectileWeapon>();
     protected float internalCooldown = 0f;
 
     //protected Animator animator;
@@ -69,6 +70,12 @@ public class Weapon : MonoBehaviour
     public virtual void UseWeapon()
     {
         RequestShot();
+        if (childWeapons.Count == 0) { return; }
+        
+        foreach (ProjectileWeapon childWeapon in childWeapons)
+        {
+            childWeapon.RequestShot();
+        }
     }
 
     public void StopWeapon()
@@ -82,18 +89,7 @@ public class Weapon : MonoBehaviour
 
     // Makes our weapon start shooting
     protected virtual void RequestShot()
-    {
-        if (!CanShoot) { return; }
-        
-/*      
-        if (useRecoil)
-        {
-            Recoil();
-        } */
-         
-        //animator.SetTrigger(weaponUseParameter);
-        //WeaponAmmo.ConsumeAmmo(); 
-        //muzzlePS.Play();     
+    {    
     }
 
     // Reference the owner of this Weapon
@@ -105,6 +101,11 @@ public class Weapon : MonoBehaviour
         stats = owner?.GetComponent<CharacterStats>();
         buffDealer = owner?.GetComponent<BuffDealer>();
         //controller = WeaponOwner.GetComponent<PCController>();
+    }
+
+    public void SetChildWeapon(ProjectileWeapon childWeapon)
+    {
+        childWeapons.Add(childWeapon);
     }
 
     private Vector2 GetWeaponFacing()

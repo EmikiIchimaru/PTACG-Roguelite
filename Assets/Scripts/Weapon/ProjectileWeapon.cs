@@ -8,7 +8,7 @@ public class ProjectileWeapon : Weapon
 {
     [SerializeField] private Vector3 projectileSpawnPosition;
     [SerializeField] private Color projectileColor = Color.white;
-    [SerializeField] private Color projectileColor2 = Color.white;
+
     //[SerializeField] private Vector3 projectileSpread;
 
     // Controls the position of our projectile spawn
@@ -34,16 +34,17 @@ public class ProjectileWeapon : Weapon
 
     protected override void RequestShot()
     {
-        base.RequestShot();
+        //base.RequestShot();
         if (!CanShoot) { return; }
         foreach (Transform child in transform)
         {
             //EvaluateProjectileSpawnPosition();
-            if (child.gameObject.activeInHierarchy && (child.gameObject.tag == "WeaponPart"))
+            if (child.gameObject.tag == "WeaponPart")
             {
                 SpawnProjectile(child.position, child.localEulerAngles.z);
             }
         }
+        if (transform.gameObject.tag == "WeaponPart") { SpawnProjectile(transform.position, transform.localEulerAngles.z); }
         internalCooldown = finalAttackCooltime;
     }
 
@@ -75,6 +76,8 @@ public class ProjectileWeapon : Weapon
         //Debug.Log($"{angle}");
 
     }
+
+    
 
     // Calculates the position where our projectile is going to be fired
     private void EvaluateProjectileSpawnPosition()

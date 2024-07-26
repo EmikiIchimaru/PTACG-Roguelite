@@ -31,6 +31,11 @@ public class CharacterAbility : CharacterComponents
 
     public void EquipAbility(Ability ability)
     {
+
+        if (currentAbility != null)
+        {
+            Destroy(currentAbility.gameObject);
+        }
         currentAbility = Instantiate(ability, transform.position, transform.rotation);
         currentAbility.transform.parent = transform;
         currentAbility.SetOwner(character);     
