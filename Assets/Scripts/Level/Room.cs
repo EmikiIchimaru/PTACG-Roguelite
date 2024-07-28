@@ -13,13 +13,11 @@ public class Room : MonoBehaviour
     public int roomNumber;
     public int positionIndexX;
     public int positionIndexY;
-    
+
 
     public RoomContent roomContent = null;
     private int roomContentIndex;
     private int difficultyLevel;
-
-    
 
     private Character character;
     private GameObject objectCollided;
@@ -99,7 +97,9 @@ public class Room : MonoBehaviour
         List<RoomContent> tempList = new List<RoomContent>();
         tempList.AddRange(roomPool.roomContents);
 
-        tempList = tempList.Where(roomContent => roomContent.difficultyLevel == difficultyLevel).ToList(); 
+        tempList = tempList.Where(roomContent => 
+                          roomContent.difficultyLevel == difficultyLevel || 
+                          roomContent.difficultyLevel == difficultyLevel+1).ToList();
 
         if (tempList.Count > 0)
         { 
