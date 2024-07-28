@@ -86,6 +86,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acquisitionRange: 40
   isPlayerInRange: 0
+  isPlayerAlwaysInRange: 0
   direction: {x: 0, y: 0, z: 0}
 --- !u!114 &419412968086867854
 MonoBehaviour:
@@ -99,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8088e96eea75549a3bb62035ba793d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 40
   maxShield: 0
   destroyObject: 1
 --- !u!114 &7142160005271725791

@@ -16,7 +16,7 @@ MonoBehaviour:
   elementType: 1
   upgradeType: 2
   upgradeName: Mine Field
-  upgradeDescript: 
+  upgradeDescript: Unleashes a minefield which detonates on enemy contact.
   newWeapon: {fileID: 0}
   newStats: {fileID: 0}
   newAbility: {fileID: 1577474886154673481, guid: be6fc6fdc2b6aad4a9ef73235e042047, type: 3}

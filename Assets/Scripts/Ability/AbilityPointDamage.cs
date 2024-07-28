@@ -9,6 +9,6 @@ public class AbilityPointDamage : Ability
     protected override void CastAbility()
     {
         AbilityCreator.AreaDamage(AbilityOwner, mousePosition, baseDamage * (1f + 0.05f * stats.abilityPowerFinal), radius);
-        VFXManager.Instance.SpellHit(mousePosition, 1f, Color.HSVToRGB(60f/360f, 0.75f, 1f));
+        VFXManager.Instance.SpellHit(mousePosition, 1f, Color.HSVToRGB(60f/360f, 2f, 1f));
     }
 }

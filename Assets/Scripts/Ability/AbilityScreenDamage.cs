@@ -46,7 +46,7 @@ public class AbilityScreenDamage : Ability
         }
         UIManager.Instance.Flash();
 
-        Vector2 currentPosition = AbilityOwner.transform.position;
+        /* Vector2 currentPosition = AbilityOwner.transform.position;
         Vector2 targetPosition = mousePosition;
 
         // Perform the linecast to check for walls
@@ -55,6 +55,6 @@ public class AbilityScreenDamage : Ability
         if (hit.collider == null)
         {
             AbilityOwner.transform.position = targetPosition;
-        }
+        } */
     }
 }

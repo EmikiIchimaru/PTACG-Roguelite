@@ -16,7 +16,7 @@ MonoBehaviour:
   elementType: 2
   upgradeType: 2
   upgradeName: Precision Shot
-  upgradeDescript: 
+  upgradeDescript: Deals damage at the location of the cursor.
   newWeapon: {fileID: 0}
   newStats: {fileID: 0}
   newAbility: {fileID: 7477851986702869801, guid: 475ba41bd754b4b40ab7fc8df25b0797, type: 3}
