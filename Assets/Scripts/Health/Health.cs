@@ -104,10 +104,10 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void Heal(float healAmount)
+    public void HealPercent(float healAmount)
     {
         //CurrentHealth += healAmount;
-        CurrentHealth = Mathf.Min(CurrentHealth + healAmount, maxHealth);
+        CurrentHealth = Mathf.Min((CurrentHealth * (1f + 0.01f * healAmount)), maxHealth);
 
         UpdateCharacterHealth();
     }

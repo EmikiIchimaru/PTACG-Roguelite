@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba59022c1b520a45a7b5282ab5ba9e0, type: 3}
   m_Name: Stat Green HP 3
   m_EditorClassIdentifier: 
-  healthBaseBonus: 500
+  healthBaseBonus: 1000
   healthPercentBonus: 0
   attackDamageBaseBonus: 0
   attackDamagePercentBonus: 0

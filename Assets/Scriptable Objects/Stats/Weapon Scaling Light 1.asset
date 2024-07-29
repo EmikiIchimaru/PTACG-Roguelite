@@ -25,4 +25,4 @@ MonoBehaviour:
   scaleBaseBonus: 0
   scalePercentScaling: 0
   moveSpeedBaseBonus: 0
-  moveSpeedPercentScaling: 40
+  moveSpeedPercentScaling: 25

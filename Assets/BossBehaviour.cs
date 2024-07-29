@@ -66,21 +66,20 @@ public class BossBehaviour : MonoBehaviour
         {
             rage = 1;
             maxInternalCD = 1.25f;
-            internalCooldown = 12f;
+            internalCooldown = 15f;
             ShieldBoss(10f);
-            StartCoroutine(BossSpawnShooters(OuterWing1, 4));
-            StartCoroutine(BossSpawnShooters(OuterWing2, 4));
+            StartCoroutine(BossSpawnRoomShooters());
+            //StartCoroutine(BossSpawnShooters(OuterWing2, 1));
             //abilityPool = 4;
         }
 
         if (health.GetPercentHP() < 0.3f && rage == 1)
         {
             rage = 2;
-            maxInternalCD = 0.5f;
-            internalCooldown = 12f;
+            maxInternalCD = 0.5f;   
+            internalCooldown = 15f;
             ShieldBoss(10f);
-            StartCoroutine(BossSpawnShooters(OuterWing1, 7));
-            StartCoroutine(BossSpawnShooters(OuterWing2, 7));
+            StartCoroutine(BossSpawnRoomShooters());
             //abilityPool = 5;
         }
         playerLastSeen = Vector3.MoveTowards(playerLastSeen, GameManager.Instance.playerCharacter.transform.position, 1f);
@@ -237,8 +236,8 @@ public class BossBehaviour : MonoBehaviour
 
         for (int i = 0; i < count; i++)
         {
-            GameObject spawn = Instantiate(shooterPrefab, newTransform.position, Quaternion.identity);
-            spawns.Add(spawn);
+            GameObject spawn = Instantiate(shooterPrefab, newTransform.position, Quaternion.identity, transform);
+            //spawns.Add(spawn);
             yield return new WaitForSeconds(interval);
         }
 
@@ -304,9 +303,9 @@ public class BossBehaviour : MonoBehaviour
                 //AbilityCreator.ShootSP(boss, WingWeapon2.position, 30f, angle1, bombPrefab);
             }
             yield return new WaitForSeconds(interval);
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 24; i++)
             {
-                float angle = i * 12f;
+                float angle = i * 15f;
                 AbilityCreator.ShootSP(boss, WingWeapon1.position, 15f, angle, aquaPrefab);
                 AbilityCreator.ShootSP(boss, WingWeapon2.position, 15f, angle, aquaPrefab);
                 //AbilityCreator.ShootSP(boss, WingWeapon2.position, 30f, angle1, bombPrefab);
@@ -334,7 +333,23 @@ public class BossBehaviour : MonoBehaviour
             yield return new WaitForSeconds(interval);
         }
     } */
+    private IEnumerator BossSpawnRoomShooters()
+    {
 
+        float interval = 0.5f;
+        Vector3 room = transform.parent.position;
+
+        for (int i = 0; i < 5; i++)
+        {
+            Vector3 newPosition1 = room + new Vector3(20f, 20f - 10*i, 0f);
+            Vector3 newPosition2 = room + new Vector3(-20f, -20f + 10*i, 0f);
+            GameObject spawn1 = Instantiate(shooterPrefab, newPosition1, Quaternion.identity);
+            GameObject spawn2 = Instantiate(shooterPrefab, newPosition2, Quaternion.identity);
+            spawns.Add(spawn1);
+            spawns.Add(spawn2);
+            yield return new WaitForSeconds(interval);
+        }
+    }
 
     private void ShieldBoss(float time)
     {

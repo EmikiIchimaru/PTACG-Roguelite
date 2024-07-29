@@ -23,6 +23,6 @@ public class CHealth : Collectables
     private void AddHP()
     {
         //Debug.Log($"{xpGain} xp gained!");
-        health.Heal(hpHealed);
+        health.HealPercent(hpHealed);
     }
 }
