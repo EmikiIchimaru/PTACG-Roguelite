@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canDestroyItem: 1
+  sfx: Health Gain
   hpHealed: 0
 --- !u!114 &-748381911088630849
 MonoBehaviour:

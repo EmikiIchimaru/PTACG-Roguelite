@@ -574,7 +574,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80181d2d5d5e8ef4baace42c24dbb421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: XP Gain
+    clip: {fileID: 8300000, guid: 78419f98379502c4dbfb2774bc94e7c1, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Health Gain
+    clip: {fileID: 8300000, guid: c48a972d3d024c2408a3331750786a29, type: 3}
+    volume: 1
+    source: {fileID: 0}
 --- !u!4 &155801100
 Transform:
   m_ObjectHideFlags: 0
@@ -4014,7 +4022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c95cd77a19309c74da2f4c294a92e93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityToUse: {fileID: 0}
+  abilityToUse: {fileID: -8256671993902337447, guid: 268fbfe3c8d281f43ba7469f468fb8c6, type: 3}
 --- !u!114 &1940298623
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ public class BossBehaviour : MonoBehaviour
     [SerializeField] private GameObject ringPrefab;
     [SerializeField] private GameObject bombPrefab;
     [SerializeField] private GameObject bluePrefab;
+    [SerializeField] private GameObject aquaPrefab;
     [SerializeField] private GameObject kitePrefab;
     [SerializeField] private GameObject arrowPrefab;
     [SerializeField] private GameObject shooterPrefab;
@@ -151,7 +152,7 @@ public class BossBehaviour : MonoBehaviour
                 newColour = new Color(1f,0.25f,0f);
                 break;
             case 2:
-                newColour = new Color(1f,0f,0.75f);
+                newColour = new Color(0f,1f,0f);
                 break;
             case 3:
                 newColour = new Color(1f,1f,0f);
@@ -252,7 +253,7 @@ public class BossBehaviour : MonoBehaviour
 
         float angle = 90f;
 
-        for (int i = 0; i < 288; i++)
+        for (int i = 0; i < 216; i++)
         {
             bool direction = ((i / 36) % 2 == 0);
             angle = (direction) ? angle + 10f : angle - 10f;
@@ -306,8 +307,8 @@ public class BossBehaviour : MonoBehaviour
             for (int i = 0; i < 30; i++)
             {
                 float angle = i * 12f;
-                AbilityCreator.ShootSP(boss, WingWeapon1.position, 15f, angle, bulletPrefab);
-                AbilityCreator.ShootSP(boss, WingWeapon2.position, 15f, angle, bulletPrefab);
+                AbilityCreator.ShootSP(boss, WingWeapon1.position, 15f, angle, aquaPrefab);
+                AbilityCreator.ShootSP(boss, WingWeapon2.position, 15f, angle, aquaPrefab);
                 //AbilityCreator.ShootSP(boss, WingWeapon2.position, 30f, angle1, bombPrefab);
             }
             yield return new WaitForSeconds(interval);
@@ -340,5 +341,6 @@ public class BossBehaviour : MonoBehaviour
         GameObject shieldGO = Instantiate(shieldPrefab, transform.position, Quaternion.identity);
         shieldGO.transform.parent = transform;
         shieldGO.GetComponent<TimedLife>().lifetime = time;
+
     }
 }

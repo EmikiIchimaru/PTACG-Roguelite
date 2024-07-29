@@ -29,7 +29,7 @@ public class AbilityOrbit : Ability
             } */
 
 
-            Orbit orbit = starGO.GetComponent<Orbit>();
+            FollowParent orbit = starGO.GetComponent<FollowParent>();
             orbit.parent = transform;
             orbit.speed = orbitSpeed;
             starGO.GetComponent<TimedLife>().lifetime = duration;

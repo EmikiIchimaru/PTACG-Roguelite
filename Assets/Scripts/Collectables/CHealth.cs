@@ -15,6 +15,11 @@ public class CHealth : Collectables
         AddHP();
     }
 
+    protected override void PlayEffects()
+    {
+        base.PlayEffects();     
+    }
+
     private void AddHP()
     {
         //Debug.Log($"{xpGain} xp gained!");

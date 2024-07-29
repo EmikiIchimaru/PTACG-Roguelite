@@ -7,7 +7,7 @@ public class Collectables : MonoBehaviour
 {    
     [Header("Settings")]
     [SerializeField] private bool canDestroyItem = true;
-    
+    [SerializeField] private string sfx;
     protected Character character;
     protected CharacterStats characterStats;
     protected Health health;
@@ -60,6 +60,7 @@ public class Collectables : MonoBehaviour
 
     protected virtual void PlayEffects()
     {
+        AudioManager.Instance.Play(sfx); 
         // -------        
     }
 }

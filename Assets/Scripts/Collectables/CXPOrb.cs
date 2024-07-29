@@ -15,6 +15,11 @@ public class CXPOrb : Collectables
         AddXP();
     }
 
+    protected override void PlayEffects()
+    {
+        base.PlayEffects();     
+    }
+
     private void AddXP()
     {
         //Debug.Log($"{xpGain} xp gained!");

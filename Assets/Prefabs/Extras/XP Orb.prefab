@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canDestroyItem: 1
+  sfx: XP Gain
   xpGranted: 1
 --- !u!114 &1731177778950668632
 MonoBehaviour:
@@ -164,3 +165,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54d70f78d3c487418f7b3818c1c20a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifetime: 60

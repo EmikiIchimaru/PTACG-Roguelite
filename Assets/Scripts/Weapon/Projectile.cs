@@ -109,6 +109,7 @@ public class Projectile : MonoBehaviour
         {
 			//other.gameObject.GetComponent<Health>().TakeDamage(bulletDamage);		
             //fx
+            damage = 5f * damage;
             ProjectileOwner = other.gameObject.transform.parent.GetComponent<Character>();
             Direction = new Vector2(-Direction.x, -Direction.y);
         }

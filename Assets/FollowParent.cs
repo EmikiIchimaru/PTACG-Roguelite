@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Orbit : MonoBehaviour
+public class FollowParent : MonoBehaviour
 {
     // Duration of the timer in seconds
     public Transform parent;
@@ -10,7 +10,7 @@ public class Orbit : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(0f,0f, speed * Time.deltaTime);
-        transform.position = parent.transform.position;
+        if (speed > 0f) {transform.Rotate(0f,0f, speed * Time.deltaTime);}
+        transform.position = parent.position;
     }
 }
