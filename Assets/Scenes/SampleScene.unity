@@ -4022,7 +4022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c95cd77a19309c74da2f4c294a92e93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityToUse: {fileID: -8256671993902337447, guid: 268fbfe3c8d281f43ba7469f468fb8c6, type: 3}
+  abilityToUse: {fileID: 0}
 --- !u!114 &1940298623
 MonoBehaviour:
   m_ObjectHideFlags: 0
