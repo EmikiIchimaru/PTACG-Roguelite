@@ -16,7 +16,7 @@ MonoBehaviour:
   elementType: 5
   upgradeType: 1
   upgradeName: Ability Power I
-  upgradeDescript: Increases the damage dealt by abilities.
+  upgradeDescript: Increases the damage dealt by abilities and magic weapons.
   newWeapon: {fileID: 0}
   newStats: {fileID: 11400000, guid: 4835f1f896e8a174bacb0612d96a358f, type: 2}
   newAbility: {fileID: 0}

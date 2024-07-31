@@ -48,11 +48,14 @@ TagManager:
   - name: Background
     uniqueID: 4244534889
     locked: 0
-  - name: Weapon
-    uniqueID: 3353850177
+  - name: Walls
+    uniqueID: 4217096277
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Weapon
+    uniqueID: 3353850177
     locked: 0
   - name: Effects
     uniqueID: 4220308535

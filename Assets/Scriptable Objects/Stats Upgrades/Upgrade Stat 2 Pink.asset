@@ -16,7 +16,7 @@ MonoBehaviour:
   elementType: 5
   upgradeType: 1
   upgradeName: Ability Power II
-  upgradeDescript: Increases the damage dealt by abilities.
+  upgradeDescript: Increases the damage dealt by abilities and magic weapons.
   newWeapon: {fileID: 0}
   newStats: {fileID: 11400000, guid: 6e1d7b068da363f4fb749969c37db234, type: 2}
   newAbility: {fileID: 0}

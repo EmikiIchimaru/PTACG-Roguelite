@@ -16,7 +16,8 @@ MonoBehaviour:
   elementType: 5
   upgradeType: 2
   upgradeName: Mirror Shield
-  upgradeDescript: A magical shield which reflects enemy projectiles.
+  upgradeDescript: A magical shield which reflects enemy projectiles and amplifies
+    their damage.
   newWeapon: {fileID: 0}
   newStats: {fileID: 0}
   newAbility: {fileID: -8256671993902337447, guid: 268fbfe3c8d281f43ba7469f468fb8c6, type: 3}

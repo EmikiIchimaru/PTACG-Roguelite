@@ -16,7 +16,7 @@ MonoBehaviour:
   elementType: 5
   upgradeType: 2
   upgradeName: Psionic Blast
-  upgradeDescript: Deals massive damage to all enemies on the screen..
+  upgradeDescript: Deals massive damage to all enemies on the screen.
   newWeapon: {fileID: 0}
   newStats: {fileID: 0}
   newAbility: {fileID: 5131192218468392456, guid: 5fdfead7c6352254f8a26f734cf7ca4d, type: 3}
