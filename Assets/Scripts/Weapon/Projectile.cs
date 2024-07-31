@@ -30,6 +30,8 @@ public class Projectile : MonoBehaviour
 	private Vector2 movement;
 	private bool canMove;
     private float internalTimer;
+
+    private List<EnemyHealth> hitList = new List<EnemyHealth>();
     
     private void Awake()
     {
@@ -74,16 +76,20 @@ public class Projectile : MonoBehaviour
         {
             EnemyHealth enemy = other.gameObject.GetComponent<EnemyHealth>();
 			
-            if (buffDealer != null)	
+            if ((canPierce && !hitList.Contains(enemy)) || !canPierce)
             {
-                if (buffDealer.playerBuffType != BuffType.None)
+                if (buffDealer != null)	
                 {
-                    buffDealer.DealBuff(enemy);
-                    Debug.Log("applying debuff!");
+                    if (buffDealer.playerBuffType != BuffType.None)
+                    {
+                        buffDealer.DealBuff(enemy);
+                        Debug.Log("applying debuff!");
+                    }
                 }
-            }
 
-            enemy.TakeDamage(damage);	
+                enemy.TakeDamage(damage);
+                hitList.Add(enemy);
+            }	
             //fx
             if (!canPierce) { DisableProjectile(); }
         }
@@ -163,6 +169,7 @@ public class Projectile : MonoBehaviour
     {
         
         if (isPersistent) { return; }
+        if (hitList.Count > 0) { hitList.Clear(); }
         VFXManager.Instance.BulletHit(transform, spriteRenderer.color);
         if (hasPool)
         {

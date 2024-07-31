@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseDamage: 20
-  baseAttackCooltime: 2
+  baseAttackCooltime: 3
   isMagicWeapon: 0
   projectileSpawnPosition: {x: 0, y: 0, z: 0}
   projectileColor: {r: 1, g: 0, b: 0.3333335, a: 1}

@@ -151,6 +151,7 @@ public class Health : MonoBehaviour
             }
         }
         VFXManager.Instance.DeathVFX(transform.position, 0.5f * (transform.localScale.x + transform.localScale.y) );
+        AudioManager.Instance.Play("Death");
     }
     
     // Revive this game object    
