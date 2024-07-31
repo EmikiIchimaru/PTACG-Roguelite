@@ -163,8 +163,9 @@ public class UpgradeManager : Singleton<UpgradeManager>
         upgradesStats1 = upgradesStats1.Where(upgrade => elementsRunPool.Contains(upgrade.elementType)).ToList();
         upgradesAbilities1 = upgradesAbilities1.Where(upgrade => elementsRunPool.Contains(upgrade.elementType)).ToList();
 
-        tempList.Add(upgradesStats1);
+        
         tempList.Add(upgradesWeapon1);
+        tempList.Add(upgradesStats1);
         tempList.Add(upgradesAbilities1);
 
         //Utility.ShuffleUpgradeLists(tempList);

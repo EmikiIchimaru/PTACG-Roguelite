@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class CollisionDamage : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer sr;
     public float damage;
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Shield")) { Destroy(gameObject); }
+        if (other.CompareTag("Shield")) { DeathDestroy(); }
         if (other.CompareTag("Player"))
         {
             // Destroy the sprite GameObject
@@ -17,7 +16,19 @@ public class CollisionDamage : MonoBehaviour
             { 
                 health.TakeDamage(damage); 
             }
-            VFXManager.Instance.SpellHit(transform.position, transform.localScale.x, sr.color);
+            DeathDestroy();
+        }
+    }
+
+    private void DeathDestroy()
+    {
+        Death death = GetComponent<Death>();
+        if ( death != null)
+        {
+            death.DestroyWithFX();
+        }
+        else
+        {
             Destroy(gameObject);
         }
     }

@@ -25,7 +25,15 @@ public class TimedLife : MonoBehaviour
         if (timer <= 0f)
         {
             // Perform the action (e.g., destroy the GameObject)
-            Destroy(gameObject);
+            Death death = GetComponent<Death>();
+            if ( death != null)
+            {
+                death.DestroyWithFX();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
