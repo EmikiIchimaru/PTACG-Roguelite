@@ -46,6 +46,7 @@ public class ProjectileWeapon : Weapon
         }
         //if (transform.gameObject.tag == "WeaponPart") { SpawnProjectile(transform.position, transform.localEulerAngles.z); }
         internalCooldown = finalAttackCooltime;
+        if (WeaponOwner.gameObject.CompareTag("Player")) { AudioManager.Instance.Play("Shoot"); }
     }
 
     // Spawns a projectile from the pool, setting it's new direction based on the character's direction (WeaponOwner)

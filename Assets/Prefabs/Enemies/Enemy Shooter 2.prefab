@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHostile: 1
   shouldChasePlayer: 0
-  baseMoveSpeed: 30
+  baseMoveSpeed: 20
   reflectVariance: 0.2
   speedVariance: 0.1
   rotatePart: {fileID: 1858814941908303494}

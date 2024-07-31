@@ -583,6 +583,30 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: c48a972d3d024c2408a3331750786a29, type: 3}
     volume: 1
     source: {fileID: 0}
+  - name: Shoot
+    clip: {fileID: 8300000, guid: 4310474905e266640852f43bd609a1a4, type: 3}
+    volume: 0.5
+    source: {fileID: 0}
+  - name: Damage Taken
+    clip: {fileID: 8300000, guid: 80e397195ea2940b69ee7bdbded856a5, type: 3}
+    volume: 0.3
+    source: {fileID: 0}
+  - name: Level Up
+    clip: {fileID: 8300000, guid: 7478151cf36724a7dada558f746c3633, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Upgrade
+    clip: {fileID: 8300000, guid: 5e1a9f876d3dafd47bc6b3dde25135fa, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Defeat
+    clip: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Victory
+    clip: {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
+    volume: 1
+    source: {fileID: 0}
 --- !u!4 &155801100
 Transform:
   m_ObjectHideFlags: 0

@@ -114,7 +114,11 @@ public class CharacterStats : MonoBehaviour
             experience = xpToNextLevel;
             UIManager.Instance.UpdateExperience(experience, xpToNextLevel);
         }
-        if (level > 1) { UpgradeManager.Instance.ShowCanvas(); }
+        if (level > 1) 
+        { 
+            UpgradeManager.Instance.ShowCanvas();
+            AudioManager.Instance.Play("Level Up"); 
+        }
     }
 
     public void AddStats(StatsSO statBonus)

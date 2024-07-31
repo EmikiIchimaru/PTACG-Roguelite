@@ -95,6 +95,7 @@ public class Projectile : MonoBehaviour
 		
             health.TakeDamage(damage);	
             //fx
+            AudioManager.Instance.Play("Damage Taken");
             if (!canPierce) { DisableProjectile(); }
         }
         else if (other.CompareTag("Shield") && 

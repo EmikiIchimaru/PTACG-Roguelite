@@ -94,6 +94,7 @@ public class GameManager : Singleton<GameManager>
             isPlayerAlive = false;
             isGamePlaying = false;
             UIManager.Instance.ShowDefeatScreen();
+            AudioManager.Instance.Play("Defeat"); 
         }
         
     }
@@ -111,6 +112,7 @@ public class GameManager : Singleton<GameManager>
             }
             
             UIManager.Instance.ShowVictoryScreen();
+            AudioManager.Instance.Play("Victory"); 
         }
         
     }

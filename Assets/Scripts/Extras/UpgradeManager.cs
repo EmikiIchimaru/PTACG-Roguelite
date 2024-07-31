@@ -253,6 +253,7 @@ public class UpgradeManager : Singleton<UpgradeManager>
         //Debug.Log("upgrade 0");
         if (!isUpgrading) { return; }
         ApplyUpgrade(upgrade0);
+        AudioManager.Instance.Play("Upgrade");
         HideCanvas();
     }
     
@@ -261,6 +262,7 @@ public class UpgradeManager : Singleton<UpgradeManager>
         //Debug.Log("upgrade 1");
         if (!isUpgrading) { return; }
         ApplyUpgrade(upgrade1);
+        AudioManager.Instance.Play("Upgrade");
         HideCanvas();
     }
     
