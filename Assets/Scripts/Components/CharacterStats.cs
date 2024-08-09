@@ -107,7 +107,7 @@ public class CharacterStats : MonoBehaviour
         RecalculateStats();
         if (level < maxLevel) 
         {
-            xpToNextLevel = requiredXPBase + level * requiredXPLevelMultiplier;
+            xpToNextLevel = requiredXPBase + (level-1) * requiredXPLevelMultiplier;
         }
         else
         {
