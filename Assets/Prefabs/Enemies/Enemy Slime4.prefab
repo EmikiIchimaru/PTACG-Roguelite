@@ -309,8 +309,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xpPrefab: {fileID: 712893119121178463, guid: c335cc03c17aab44fb572de13e263fe6, type: 3}
-  amount: 6
-  orbCount: 6
+  amount: 25
+  orbCount: 1
 --- !u!50 &71886856546616398
 Rigidbody2D:
   serializedVersion: 4

@@ -646,8 +646,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b401aaf2707d0a49acbb347952bd077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 2
-  baseAttackCooltime: 0.7
+  baseDamage: 1.25
+  baseAttackCooltime: 0.75
   isMagicWeapon: 0
   projectileSpawnPosition: {x: 0, y: 0, z: 0}
   projectileColor: {r: 0, g: 0.9960785, b: 0.9960785, a: 1}

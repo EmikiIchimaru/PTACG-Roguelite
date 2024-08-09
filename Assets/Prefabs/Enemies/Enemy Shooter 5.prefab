@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 71886856546616398}
   - component: {fileID: 6388372750890051760}
   m_Layer: 7
-  m_Name: Enemy Shooter 10
+  m_Name: Enemy Shooter 5
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9073096385865499126}
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ceb3625c364a8a45bbe8a32b394c007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acquisitionRange: 40
+  acquisitionRange: 20
   isPlayerInRange: 0
   isPlayerAlwaysInRange: 0
   direction: {x: 0, y: 0, z: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8088e96eea75549a3bb62035ba793d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 2000
+  maxHealth: 1000
   maxShield: 0
   destroyObject: 1
 --- !u!114 &7142160005271725791
@@ -177,8 +177,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xpPrefab: {fileID: 712893119121178463, guid: c335cc03c17aab44fb572de13e263fe6, type: 3}
-  amount: 6
-  orbCount: 6
+  amount: 5
+  orbCount: 5
 --- !u!50 &71886856546616398
 Rigidbody2D:
   serializedVersion: 4

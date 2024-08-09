@@ -77,7 +77,7 @@ public class CharacterStats : MonoBehaviour
         LevelUp();
         experience = 0;
         ResetBonusStats();
-        xpToNextLevel = requiredXPBase + level * requiredXPLevelMultiplier;
+        xpToNextLevel = requiredXPBase + (level-1) * requiredXPLevelMultiplier;
         UIManager.Instance.UpdateExperience(experience, xpToNextLevel);
     }
 

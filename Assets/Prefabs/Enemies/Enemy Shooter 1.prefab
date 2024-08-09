@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8088e96eea75549a3bb62035ba793d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 40
+  maxHealth: 50
   maxShield: 0
   destroyObject: 1
 --- !u!114 &3488578108904659598
@@ -177,8 +177,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xpPrefab: {fileID: 712893119121178463, guid: c335cc03c17aab44fb572de13e263fe6, type: 3}
-  amount: 5
-  orbCount: 1
+  amount: 1
+  orbCount: 5
 --- !u!50 &71886856546616398
 Rigidbody2D:
   serializedVersion: 4
